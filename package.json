@@ -1,0 +1,19 @@
+{
+  "name": "pepo",
+  "version": "1.0.0",
+  "description": "pepo – twitter clone",
+  "main": "index.js",
+  "scripts": {
+    "test": "npm run test"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/FrontendSimf20016/team3.git"
+  },
+  "author": "team3",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/FrontendSimf20016/team3/issues"
+  },
+  "homepage": "https://github.com/FrontendSimf20016/team3#readme"
+}
