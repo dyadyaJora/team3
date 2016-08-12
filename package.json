@@ -4,7 +4,9 @@
   "description": "pepo – twitter clone",
   "main": "index.js",
   "scripts": {
-    "test": "npm run test"
+    "test": "npm run test",
+    "build": "./node_modules/.bin/gulp",
+    "build:watch": "./node_modules/.bin/gulp watch"
   },
   "repository": {
     "type": "git",

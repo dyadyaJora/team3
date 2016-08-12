@@ -8,15 +8,15 @@ autoprefixer = require('gulp-autoprefixer');
 
 path = {
   src: {
-    js: './src/app/**/*.js',
-    css: './src/css/*.css',
-    sass: './src/sass/*.scss',
-    templates: './src/app/templates/**/*.html',
-    fonts: './src/fonts/*',
-    img: './src/img/*',
-    imgSvg: './src/img/*.svg',
-    imgJpg: './src/img/*.jpg',
-    imgPng: './src/img/*.png'
+    js: './static/src/app/**/*.js',
+    css: './static/src/css/*.css',
+    sass: './static/src/sass/*.scss',
+    templates: './static/src/app/templates/**/*.html',
+    fonts: './static/src/fonts/*',
+    img: './static/src/img/*',
+    imgSvg: './static/src/img/*.svg',
+    imgJpg: './static/src/img/*.jpg',
+    imgPng: './static/src/img/*.png'
   },
   dist: {
     js: './build/js/',
@@ -29,9 +29,9 @@ path = {
 
 gulp.task('vendors', function() {
   gulp.src([
-    '../node_modules/angular/angular.min.js',
-    '../node_modules/angular-route/angular-route.min.js',
-    '../node_modules/angular-resource/angular-resource.min.js'
+    './node_modules/angular/angular.min.js',
+    './node_modules/angular-route/angular-route.min.js',
+    './node_modules/angular-resource/angular-resource.min.js'
     ])
     .pipe(concat('vendors.js'))
     .pipe(gulp.dest(path.dist.js));
