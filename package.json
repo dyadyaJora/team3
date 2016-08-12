@@ -15,5 +15,13 @@
   "bugs": {
     "url": "https://github.com/FrontendSimf20016/team3/issues"
   },
-  "homepage": "https://github.com/FrontendSimf20016/team3#readme"
+  "homepage": "https://github.com/FrontendSimf20016/team3#readme",
+  "dependencies": {
+    "angular": "^1.5.0-beta.0",
+    "gulp": "^3.9.1",
+    "gulp-sass": "^2.3.2"
+  },
+  "devDependencies": {
+    "gulp-jslint": "^1.0.1"
+  }
 }
