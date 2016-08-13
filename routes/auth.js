@@ -1,12 +1,15 @@
 var express = require('express');
+var satellizerAdapter = require('../middleware/satellizer-adapter');
 var router = express.Router();
 
 module.exports = function(passport) {
 
-  router.get('/facebook',
-    passport.authenticate('facebook', { session: false, failureRedirect: '/' }),
+  router.post('/facebook',
+    satellizerAdapter(),
+    passport.authenticate('facebook', { session: false }),
     function(req, res) {
-      res.json('authorized');
+      console.log(req.query);
+      res.json(req.user);
     });
 
   return router;
