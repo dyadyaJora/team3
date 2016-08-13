@@ -26,6 +26,7 @@
 .text-center {
   text-align: center;
 }
+
 .profile-image {
   img {
     display: block;
@@ -45,9 +46,18 @@
   box-shadow: 0 0 40px -10px rgba(0, 0, 0, 0.75);
 }
 
-.my-profile_description {
-  padding-left: 30px;
-  padding-right: 30px;
+.my-profile {
+  .my-profile_description {
+    padding-left: 30px;
+    padding-right: 30px;
+    text-align: center;
+  }
+  .my-profile_name {
+    text-align: center;
+  }
+  .my-profile_edit {
+    text-align: center;
+  }
 }
 
 .edit-profile {
@@ -66,6 +76,7 @@
     input {
       width: 100%;
     }
+
   }
   .edit-profile_description {
     textarea {
@@ -73,6 +84,9 @@
       margin-bottom: 20px;
       resize: none;
     }
+  }
+  .edit-profile_save {
+    text-align: center;
   }
 }
 
