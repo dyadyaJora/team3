@@ -55,7 +55,7 @@ gulp.task('jsConcat', function () {
 });
 
 gulp.task('templates', function () {
-    gulp.src(path.src.templates)
+    gulp.src(path.src.templates) 
         .pipe(gulp.dest(path.dist.templates));
 });
 
