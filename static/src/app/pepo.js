@@ -1,5 +1,5 @@
-window.pepo = angular.module('pepo', ['ngRoute'])
-    .config(function ($routeProvider) {
+window.pepo = angular.module('pepo', ['ngRoute', 'satellizer'])
+  .config(function($routeProvider, $authProvider) {
     $routeProvider
       .when('/', {
         templateUrl: './build/templates/login.html',
@@ -18,5 +18,11 @@ window.pepo = angular.module('pepo', ['ngRoute'])
           controller: 'feedCtrl'
       })
       .otherwise({redirectTo: '/'});
+
+    $authProvider.facebook({
+      clientId: '100397853745218',
+      redirectUri: window.location.origin + '/api/auth/facebook',
+      url: '/api/auth/facebook'
+    });
   });
 
