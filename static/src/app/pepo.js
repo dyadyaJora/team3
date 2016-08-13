@@ -10,9 +10,13 @@ window.pepo = angular.module('pepo', ['ngRoute'])
         templateUrl: './build/templates/choose-login.html',
         controller: 'chooseLoginCtrl'
       })
-        .when('/my-profile', {
-            templateUrl: './build/templates/my-profile.html',
-            controller: 'myProfile'
-        })
+      .when('/my-profile', {
+          templateUrl: './build/templates/my-profile.html',
+          controller: 'myProfile'
+      })
+      .when('/feed', {
+          templateUrl: './build/templates/feed.html',
+          controller: 'feedCtrl'
+      })
       .otherwise({redirectTo: '/'});
   });
