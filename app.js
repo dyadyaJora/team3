@@ -16,6 +16,7 @@ var config = require('./config');
 
 mongoose.connect(config.mongodbUri);
 require('./models/user');
+require('./models/status');
 
 //app.use(favicon(path.join(__dirname, 'public', 'favicon.ico')));
 app.use(logger('dev'));
