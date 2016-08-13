@@ -1,5 +1,6 @@
 body {
   background: #f7f7f7;
+  @include outer-container();
 }
 .test{
 	paddin:10px;
