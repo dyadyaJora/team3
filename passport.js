@@ -37,6 +37,7 @@ module.exports = function(passport) {
             user.name = profile.displayName;
             // TODO генерировать уникальный токен
             user.token = require('crypto').randomBytes(64).toString('hex');
+            user.fbId = id;
 
             user.save(function(err, user) {
               if (err) { return done(err); }
