@@ -20,16 +20,21 @@
   },
   "homepage": "https://github.com/FrontendSimf20016/team3#readme",
   "dependencies": {
-    "body-parser": "~1.15.1",
-    "debug": "~2.2.0",
-    "express": "~4.13.4",
-    "morgan": "~1.7.0",
-    "serve-favicon": "~2.3.0",
     "angular": "^1.5.0-beta.0",
     "angular-resource": "^1.5.8",
     "angular-route": "^1.5.8",
+    "body-parser": "~1.15.1",
+    "debug": "~2.2.0",
+    "dotenv": "^2.0.0",
+    "express": "~4.13.4",
     "gulp": "^3.9.1",
-    "gulp-sass": "^2.3.2"
+    "gulp-sass": "^2.3.2",
+    "morgan": "~1.7.0",
+    "passport": "^0.3.2",
+    "passport-facebook": "^2.1.1",
+    "passport-http-bearer": "^1.0.1",
+    "satellizer": "^0.15.4",
+    "serve-favicon": "~2.3.0"
   },
   "devDependencies": {
     "bourbon": "^4.2.7",
