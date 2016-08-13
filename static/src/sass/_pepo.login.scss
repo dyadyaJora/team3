@@ -1,0 +1,12 @@
+.header {
+	@include other-container;
+	height: 200px;
+}
+.head_logo {
+ 	@include span-columns(2);
+	backgraund-color: grey;
+} 
+.head_user {
+	@include span-columns(2);
+	backgraund-color: green;
+} 
