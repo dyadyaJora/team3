@@ -40,6 +40,7 @@
     "gulp-imagemin": "^3.0.2",
     "gulp-jslint": "^1.0.1",
     "gulp-svgmin": "^1.2.2",
-    "gulp-watch": "^4.3.9"
+    "gulp-watch": "^4.3.9",
+    "node-bourbon": "^4.2.8"
   }
 }
