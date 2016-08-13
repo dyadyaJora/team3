@@ -1,13 +1,10 @@
-// pepo.service('userApi', function($resource) {
-//   $resource('/api/:content/:prefix', {},
-//     getUsers: {
-//       method: 'GET',
-//       isArray: false,
-//       params: {
-//         content: ''
-//       }
-//     }
-
-//   );
-// });
+pepo.service('userApi', function($resource) {
+  return $resource('/api/user', {}, {
+    getUser: {
+      method: 'GET',
+      isArray: false
+    }
+  }
+  );
+});
 
