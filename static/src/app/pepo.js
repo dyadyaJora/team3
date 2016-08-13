@@ -1,4 +1,4 @@
-window.pepo = angular.module('pepo', ['ngRoute', 'satellizer'])
+window.pepo = angular.module('pepo', ['ngRoute', 'ngResource', 'satellizer'])
   .config(function($routeProvider, $authProvider) {
     $routeProvider
       .when('/', {
