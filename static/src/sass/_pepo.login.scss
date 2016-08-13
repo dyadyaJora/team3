@@ -1,12 +1,62 @@
-.header {
-	@include other-container;
-	height: 200px;
+body {
+	padding: 0;
+	margin: 0;
 }
-.head_logo {
- 	@include span-columns(2);
-	backgraund-color: grey;
-} 
-.head_user {
-	@include span-columns(2);
-	backgraund-color: green;
-} 
+.header {
+	@include outer-container();
+	background: aqua;
+	height:80px;
+
+}	
+
+.header_logo {
+	@include span-columns(8);
+	padding-left: 10px;
+	color: white;
+	float:left;
+	font-size: 40px;
+	line-height: 70px;
+
+}
+.header_logo-simvolic {
+	color:grey;
+}
+.header_user {
+	position: relative;
+	@include span-columns(4);
+	max-height: 100px;
+
+}
+
+.header_user_avatar {
+	
+}
+.header_user_avatar-name {
+	font:bold 15px Geneva;
+	color:grey;
+	padding: 0;
+	margin: 0;
+}
+.header_user_avatar-img {
+	margin-top: 10px;
+	max-height: 50px;
+	max-width: 50px;
+	border-radius: 50%;
+}
+
+.header_user_logout-btn{
+	position: absolute;
+	top: 0;
+	right: 0;
+	height: 15px;
+	width: 15px;
+	border: none;
+	
+}
+.header_user-profil {
+	position: relative;
+	text-align: center;
+	margin-left:auto;
+	max-height: 75px;
+	max-width: 75px;
+}
