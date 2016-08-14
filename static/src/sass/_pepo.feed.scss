@@ -5,6 +5,7 @@
 }
 
 .tweets {
+  margin-bottom: 100px;
   margin-top: 40px;
 }
 .tweets_item {
@@ -97,3 +98,55 @@
   font-size: 10px;
   margin-top: 3px;
 }
+
+.tweet-form {
+  background: $colorWhite;
+  border-top: 1px solid $colorBorder;
+  position: fixed;
+  left: 0;
+  line-height: 80px;
+  bottom: 0;
+  padding: 0 20px;
+  width: 100%;
+}
+.tweet-form_inputs {
+  @include outer-container();
+}
+.tweet-form_input {
+  border: 1px solid $colorBorder;
+  box-sizing: border-box;
+  border-radius: 4px 0 0 4px;
+  font-size: 18px;
+  line-height: 34px;
+  padding: 0 10px;
+  margin-right: -6px;
+  width: calc(100% - 100px);
+  transition: border 300ms;
+  &:active {
+    outline: none;
+  }
+  &:focus {
+    outline: none;
+    border: 1px solid $colorBlue;
+  }
+}
+.tweet-form_btn {
+  cursor: pointer;
+  background: $colorBlue;
+  border: 1px solid $colorBorder;
+  border-radius: 0 4px 4px 0;
+  color: $colorWhite;
+  transition: background 200ms;
+  font-size: 18px;
+  line-height: 29px;
+  width: 100px;
+  -webkit-appearance: none;
+  &:hover {
+    background: $colorBlue__hover;
+  }
+}
+
+
+
+
+
