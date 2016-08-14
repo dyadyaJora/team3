@@ -10,10 +10,9 @@ body {
 }	
 
 .header_logo {
-	@include span-columns(8);
-	padding-left: 10px;
+	@include span-columns(3);
+	align: right;
 	color: white;
-	float:left;
 	font-size: 40px;
 	line-height: 70px;
 
@@ -22,14 +21,22 @@ body {
 	color:grey;
 }
 .header_user {
-	position: relative;
-	@include span-columns(4);
+	@include span-columns(6);
 	max-height: 100px;
+	vertical-align: middle;
 
+}  
+.header_logout{
+	@include span-columns(3);
+	padding-top: 15px;
 }
-
-.header_user_avatar {
-	
+.header_user_logout-btn{
+	background-image: url('/static/img/logout.svg');
+	display: block;
+	margin:auto;
+	height: 50px;
+	width: 50px;
+	border: none;
 }
 .header_user_avatar-name {
 	font:bold 15px Geneva;
@@ -44,19 +51,9 @@ body {
 	border-radius: 50%;
 }
 
-.header_user_logout-btn{
-	position: absolute;
-	top: 0;
-	right: 0;
-	height: 15px;
-	width: 15px;
-	border: none;
-	
-}
-.header_user-profil {
-	position: relative;
+.header_user-profil {	
+	margin:auto;
 	text-align: center;
-	margin-left:auto;
 	max-height: 75px;
 	max-width: 75px;
 }
