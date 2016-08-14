@@ -1,13 +1,21 @@
+/* Color map */
+$colorWhite: #ffffff;
+$colorBlue: #29abe2;
+$colorBorder: #999999;
+
 body {
-  background: #f7f7f7;
   @include outer-container();
+  background: #f7f7f7;
+  font-family: sans-serif;
+  margin: 0;
 }
-.test{
-	paddin:10px;
+
+ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
 }
-.test2{
-	color: #fff;
-}
+
 .pepo_btn {
 	height: 40px; 
     width: 250px;
@@ -15,3 +23,7 @@ body {
 	border: none;
 	-webkit-appearance:none;
 }
+.page-container {
+  padding: 0 20px;
+}
+

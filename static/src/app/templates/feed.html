@@ -1,1 +1,43 @@
-feed
+<div class="header-stub"></div>
+
+<section class="page-container">
+  <ul class="tweets">
+    <li class="tweets_item" ng-repeat="tweet in tweets">
+      <header class="tweet-header">
+        <div class="tweet-header_user">
+          <img ng-src="{{tweet.owner.thumbUrl}}" alt="" class="tweet-header_user-img">
+          <div class="tweet-header_user-name">{{tweet.owner.name}}</div>
+        </div>
+        <div class="tweet-header_date">{{tweet.createdAt}}</div>
+      </header>
+
+      <section class="tweet-content">
+        <p class="tweet-content_text">{{tweet.text}}</p>
+      </section>
+
+      <footer class="tweet-footer">
+        <ul class="tweet-actions">
+          <li class="tweet-actions_item tweet-actions_item__likes">
+            <div class="tweet-actions_icon"></div>
+            <div class="tweet-actions_coutn">3</div>
+          </li>
+
+           <li class="tweet-actions_item tweet-actions_item__answers">
+            <div class="tweet-actions_icon"></div>
+            <div class="tweet-actions_coutn">2</div>
+          </li>
+
+          <li class="tweet-actions_item tweet-actions_item__edit">
+            <div class="tweet-actions_icon"></div>
+          </li>
+
+           <li class="tweet-actions_item tweet-actions_item__remove">
+            <div class="tweet-actions_icon"></div>
+          </li>
+
+        </ul>
+      </footer>
+    </li>
+  </ul>
+</section>
+
