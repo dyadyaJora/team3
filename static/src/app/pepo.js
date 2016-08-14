@@ -10,7 +10,7 @@ window.pepo = angular.module('pepo', ['ngRoute', 'ngResource', 'satellizer'])
         templateUrl: './build/templates/choose-login.html',
         controller: 'chooseLoginCtrl'
       })
-      .when('/profile/:username', {
+      .when('/@:username', {
         templateUrl: './build/templates/my-profile.html',
         controller: 'myProfileCtrl'
       })
