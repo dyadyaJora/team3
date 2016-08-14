@@ -3,10 +3,13 @@ var path = require('path');
 var favicon = require('serve-favicon');
 var logger = require('morgan');
 var bodyParser = require('body-parser');
-
-var routes = require('./routes/index');
+var passport = require('passport');
 
 var app = express();
+
+if (app.get('env') === 'development') {
+  require('dotenv').config();
+}
 
 //app.use(favicon(path.join(__dirname, 'public', 'favicon.ico')));
 app.use(logger('dev'));
@@ -14,7 +17,18 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use('/build', express.static(path.join(__dirname, 'build')));
 
+app.use(passport.initialize());
+
+var initPassport = require('./passport');
+initPassport(passport);
+
+var routes = require('./routes/index');
+var authRoutes = require('./routes/auth')(passport);
+var userRoutes = require('./routes/user')(passport);
+
 app.use('/', routes);
+app.use('/api/auth', authRoutes);
+app.use('/api/user', userRoutes);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {

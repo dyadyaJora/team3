@@ -31,7 +31,8 @@ gulp.task('vendors', function () {
     gulp.src([
         './node_modules/angular/angular.min.js',
         './node_modules/angular-route/angular-route.min.js',
-        './node_modules/angular-resource/angular-resource.min.js'
+        './node_modules/angular-resource/angular-resource.min.js',
+        './node_modules/satellizer/dist/satellizer.min.js'
     ])
         .pipe(concat('vendors.js'))
         .pipe(gulp.dest(path.dist.js));
