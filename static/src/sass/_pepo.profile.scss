@@ -1,0 +1,79 @@
+
+.profile-btn {
+  display: inline-block;
+  padding: 10px 40px;
+  margin-right: auto;
+  margin-left: auto;
+  text-decoration: none;
+  border-radius: 5px;
+  background-color: #0c7abf;
+  font-size: 1.2em;
+  color: #ffffff;
+  &:hover {
+    text-decoration: none;
+  }
+  &:focus {
+    text-decoration: none;
+  }
+  &:active {
+    text-decoration: none;
+  }
+  &:visited {
+    text-decoration: none;
+  }
+}
+
+.text-center {
+  text-align: center;
+}
+.profile-image {
+  img {
+    display: block;
+    width: 100%;
+    max-width: 200px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+}
+
+.profile-container {
+  @include outer-container;
+  margin: 15px;
+  padding: 10px;
+  border-radius: 5px;
+  background-color: #ffffff;
+  box-shadow: 0 0 40px -10px rgba(0, 0, 0, 0.75);
+}
+
+.my-profile_description {
+  padding-left: 30px;
+  padding-right: 30px;
+}
+
+.edit-profile {
+  .edit-profile_image {
+    margin-top: 20px;
+    margin-bottom: 30px;
+    input {
+      width: 70%;
+      display: block;
+      margin-right: auto;
+      margin-left: auto;
+    }
+  }
+  .edit-profile_name {
+    margin-bottom: 15px;
+    input {
+      width: 100%;
+    }
+  }
+  .edit-profile_description {
+    textarea {
+      width: 100%;
+      margin-bottom: 20px;
+      resize: none;
+    }
+  }
+}
+
+
