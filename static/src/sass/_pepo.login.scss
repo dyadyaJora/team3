@@ -17,9 +17,7 @@ body {
 	line-height: 70px;
 
 }
-.header_logo-simvolic {
-	color:grey;
-}
+
 .header_user {
 	@include span-columns(6);
 	max-height: 100px;
