@@ -6,7 +6,10 @@
       <header class="tweet-header">
         <div class="tweet-header_user">
           <img ng-src="{{tweet.owner.thumbUrl}}" alt="" class="tweet-header_user-img">
-          <div class="tweet-header_user-name">{{tweet.owner.name}}</div>
+          <div class="tweet-header_name-wrapper">
+            <div class="tweet-header_user-name">{{tweet.owner.name}}</div>
+            <div class="tweet-header_user-login">@{{tweet.owner.username}}</div>
+          </div>
         </div>
         <div class="tweet-header_date">{{tweet.createdAt}}</div>
       </header>
