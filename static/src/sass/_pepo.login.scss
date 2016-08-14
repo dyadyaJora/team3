@@ -1,7 +1,3 @@
-body {
-	padding: 0;
-	margin: 0;
-}
 .header {
 	@include outer-container();
 	background: #29abe2;
@@ -96,10 +92,6 @@ body {
    font: bold 15px Tahoma; 
    margin-bottom: 10px;
 }
-.user_autorization-btn {
-	height: 40px; // высота на свое усмотрение
-    width: 250px;
-    background-color: #8cc53f;
-    border-radius: 10px; 
-	border: none;
+.pepo_btn__ok {
+    background: #8cc53f url('../img/ok.svg') no-repeat center;
 }

@@ -1,6 +1,5 @@
 window.pepo = angular.module('pepo', ['ngRoute', 'ngResource', 'satellizer'])
   .config(function($routeProvider, $authProvider) {
-
     $routeProvider
       .when('/', {
         templateUrl: './build/templates/login.html',
@@ -30,3 +29,4 @@ window.pepo = angular.module('pepo', ['ngRoute', 'ngResource', 'satellizer'])
       url: '/api/auth/facebook'
     });
   });
+

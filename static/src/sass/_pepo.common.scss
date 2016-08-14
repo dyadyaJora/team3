@@ -9,6 +9,7 @@ body {
   @include outer-container();
   background: #f7f7f7;
   font-family: sans-serif;
+  margin: 0;
 }
 
 ul {
@@ -17,6 +18,13 @@ ul {
   padding: 0;
 }
 
+.pepo_btn {
+	height: 40px; 
+    width: 250px;
+    border-radius: 10px; 
+	border: none;
+	-webkit-appearance:none;
+}
 .page-container {
   padding: 0 20px;
 }
