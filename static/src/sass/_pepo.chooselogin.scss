@@ -1,0 +1,80 @@
+.header {
+	@include outer-container();
+	background: #80a8cc;
+	padding: 9px 10px 10px 10px;
+	height: 40px;
+}	
+
+.header_logo {
+	@include span-columns(3);
+	color: white;
+	font-size: 20px;
+
+}
+.header_logo-img {
+	margin: 0;
+}
+
+.header_user {
+	@include span-columns(6);
+	position: relative;
+	max-height: 100px;
+	text-align: center;
+	vertical-align: middle;
+
+}  
+.header_logout{
+	@include span-columns(3);
+	position: relative;
+ }
+.header_logout-contein {
+	border: none;
+}
+.header_user_logout-btn {
+	display: block;
+	background: #80a8cc url('../img/menu-lines.svg') ;
+	background-size: 25px 25px;
+	height: 25px;
+	width: 25px;
+	margin-left: auto;
+	border: none;
+}
+
+.header_user_avatar-name {
+	font:bold 15px Tahoma;
+	line-height: 25px;
+	color: white;
+	margin: 0;
+	padding: 0;
+	text-align:center;
+}
+.header_user-profil {
+	text-align:center;
+	margin:auto;
+	max-height: 80px;
+	max-width: 80px;
+}
+//-----------------------
+.user_autorization {
+	padding-top: 50px;
+	text-align: center;
+}
+.user_autorization_text {
+	color: gray;
+	font:bold 20px Geneva;
+	margin-bottom: 20px;
+}
+.user_autorization .user_autorization-nick {
+   border: 2px solid #cccccc; 
+   border-radius: 10px; 
+   outline: none; 
+   padding: 0px 0px 0px 9px;
+   height: 40px;
+   width: 250px; 
+   color: gray; 
+   font: bold 15px Tahoma; 
+   margin-bottom: 10px;
+}
+.pepo_btn__ok {
+    background: #8cc53f url('../img/ok.svg') no-repeat center;
+}
