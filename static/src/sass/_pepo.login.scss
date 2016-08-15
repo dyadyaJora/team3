@@ -2,6 +2,10 @@
 	background: #0071bd url('../img/login_f.svg') no-repeat center;
 	background-size: 60px 60px;
 	margin-bottom: 10px;
+	transition: background-color 300ms;
+	&:hover {
+		background-color: $colorBlue__hover;
+	}
 }
 .pepo_btn__vk {
 	background: #2aaae3 url('../img/login_vk.svg') no-repeat center;
