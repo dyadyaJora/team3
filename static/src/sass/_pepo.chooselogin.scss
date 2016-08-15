@@ -4,7 +4,6 @@
 	padding: 9px 10px 10px 10px;
 	height: 40px;
 }	
-
 .header_logo {
 	@include span-columns(3);
 	color: white;
@@ -14,7 +13,6 @@
 .header_logo-img {
 	margin: 0;
 }
-
 .header_user {
 	@include span-columns(6);
 	position: relative;
@@ -31,6 +29,7 @@
 	border: none;
 }
 .header_user_logout-btn {
+	display: block;
 	cursor: pointer;
 	display: block;
 	opacity: 0.8;
@@ -40,11 +39,15 @@
 	width: 25px;
 	margin-left: auto;
 	border: none;
-}
-.header_user_logout-btn:hover {
-	opacity: 1;
+	&:focus {
+    	display: none;
+    }
 }
 
+.header_user_logout-btn:hover {
+	opacity: 1;
+
+}
 .header_user_avatar-name {
 	font:bold 15px Tahoma;
 	line-height: 25px;
@@ -66,6 +69,10 @@
 }
 .user_autorization_text {
 	color: gray;
+	font: bold 20px Geneva;
+	margin-bottom: 20px;
+}
+.user_autorization-nick {
 	font:bold 20px Geneva;
 	margin-bottom: 20px;
 }
