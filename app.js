@@ -1,3 +1,7 @@
+if (process.env.NODE_ENV !== 'production') {
+  require('dotenv').config();
+}
+
 var express = require('express');
 var path = require('path');
 var favicon = require('serve-favicon');
@@ -7,10 +11,6 @@ var passport = require('passport');
 var mongoose = require('mongoose');
 
 var app = express();
-
-if (app.get('env') === 'development') {
-  require('dotenv').config();
-}
 
 var config = require('./config');
 
