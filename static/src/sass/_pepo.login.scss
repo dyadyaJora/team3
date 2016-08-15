@@ -1,22 +1,18 @@
 .header {
 	@include outer-container();
-	background: #29abe2;
-	height: 80px;
+	background: #80a8cc;
+	padding: 9px 10px 10px 10px;
+	height: 40px;
 }	
 
 .header_logo {
 	@include span-columns(3);
-	align: right;
 	color: white;
-	font-size: 40px;
-	line-height: 70px;
+	font-size: 20px;
 
 }
 .header_logo-img {
-	display: block;
-	margin: auto;
-	height: 70px;
-	width: 70px;
+	margin: 0;
 }
 
 .header_user {
@@ -30,41 +26,32 @@
 
 .header_logout{
 	@include span-columns(3);
-	height: 80px;
 	position: relative;
  }
 .header_logout-contein {
-	margin-top: 20px;
-	margin-left: 30px;
-	height: 40px;
-	width: 40px;
 	border: none;
 }
 .header_user_logout-btn {
 	display: block;
-	background-image: url('../img/logout.svg');
-	height: 40px;
-	width: 40px;
+	background: #80a8cc url('../img/four-lines.svg') ;
+	background-size: 25px 25px;
+	height: 25px;
+	width: 25px;
+	margin-left: auto;
 	border: none;
 }
 
 .header_user_avatar-name {
 	font:bold 15px Tahoma;
+	line-height: 25px;
 	color: white;
 	margin: 0;
 	padding: 0;
 	text-align:center;
 }
 
-.header_user_avatar-img {
-	margin-top: 7px;
-	max-height: 50px;
-	max-width: 50px;
-	border-radius: 50%;
-}
 
 .header_user-profil {
-	overflow: hidden;
 	text-align:center;
 	margin:auto;
 	max-height: 80px;
@@ -76,16 +63,15 @@
 	text-align: center;
 }
 .user_autorization_text {
-	text-align: center;
 	color: gray;
 	font:bold 20px Geneva;
 	margin-bottom: 20px;
 }
 .user_autorization .user_autorization-nick {
-   text-align:center;
    border: 2px solid #cccccc; 
    border-radius: 10px; 
    outline: none; 
+   padding: 0px 0px 0px 9px;
    height: 40px;
    width: 250px; 
    color: gray; 
