@@ -16,6 +16,18 @@
 
 <section class="page-container">
   <div class="users-search">
-    <input type="text" class="users-search_input" placeholder="Search...">
+    <input ng-model="searchValue.name" type="text" class="users-search_input" placeholder="Search...">
   </div>
+
+  <div class="pepo-info">
+    <div class="pepo-info_text">Найдено 5 пеповчан</div>
+  </div>
+
+  <ul class="users-list">
+    <li ng-repeat="user in users | filter:searchValue"  class="users-list_item">
+      {{user.name}}
+      {{searchValue}}
+    </li>
+  </ul>
+
 </section>

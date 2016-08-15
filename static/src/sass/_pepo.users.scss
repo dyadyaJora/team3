@@ -3,7 +3,7 @@
   box-sizing: border-box;
   padding: 0 10px 15px 10px;
   position: relative;
-  margin-top: 40px;
+  margin-top: 30px;
   &:before {
     content: '';
     background: url('../img/icon-zoom.svg')no-repeat center;
@@ -29,4 +29,17 @@
     outline: none;
     box-shadow: 0 1px 0 0 $colorBlack;
   }
+}
+
+.pepo-info {
+  background: $colorWhite;
+  text-align: center;
+  padding: 20px 10px;
+  max-width: 260px;
+  margin: 30px auto;
+}
+
+.pepo-info_text {
+  font-size: 18px;
+  color: #7f807f;
 }
