@@ -1,0 +1,151 @@
+.users-search {
+  background: $colorWhite;
+  box-sizing: border-box;
+  padding: 0 10px 15px 10px;
+  position: relative;
+  margin-top: 30px;
+  &:before {
+    content: '';
+    background: url('../img/icon-zoom.svg')no-repeat center;
+    background-size: contain;
+    position: absolute;
+    height: 30px;
+    width: 30px;
+    top: 20px;
+    right: 18px;
+  }
+}
+
+.users-search_input {
+  border: none;
+  border-bottom: 1px solid $colorBlack;
+  box-sizing: border-box;
+  color: $colorTextGrey;
+  font-size: 22px;
+  padding: 22px 0 6px 0;
+  transition: box-shadow 300ms;
+  width: calc(100% - 60px);
+  &:focus {
+    outline: none;
+    box-shadow: 0 1px 0 0 $colorBlack;
+  }
+}
+
+.pepo-info {
+  background: $colorWhite;
+  text-align: center;
+  padding: 20px 10px;
+  max-width: 260px;
+  margin: 30px auto;
+}
+
+.pepo-info_text {
+  font-size: 18px;
+  color: #7f807f;
+}
+
+.users-list_item {
+  background: $colorWhite;
+  margin-bottom: 30px;
+  padding: 30px 15px;
+  position: relative;
+  &:last-child {
+    margin-bottom: 0;
+  }
+}
+
+.user_img {
+  width: 175px;
+}
+
+.user_img,
+.user_content {
+  display: inline-block;
+  vertical-align: top;
+}
+
+.user_content {
+  margin-left: 20px;
+  width: calc(100% - 200px);
+}
+
+.user_name {
+  color: #3d3d48;
+  font-size: 20px;
+  font-weight: bold;
+}
+
+.user_nickname {
+  color: $colorTextLightGrey;
+  font-size: 13px;
+  position: relative;
+  top: -3px;
+}
+
+.user_subscribe {
+  color: $colorWhite;
+  background: $colorBtnSubscribe;
+  font-size: 14px;
+  position: absolute;
+  top: 30px;
+  transition: background 200ms;
+  right: 15px;
+  width: 95px;
+  &:hover {
+    background: $colorBtnSubscribe__hover;
+  }
+}
+
+.user_description {
+  color: #5d5b55;
+  font-size: 12px;
+  margin-bottom: 26px;
+}
+
+.user-info_item {
+  display: inline-block;
+  text-align: center;
+  margin-right: 20px;
+  vertical-align: top;
+  &:last-child {
+    margin-right: 0;
+  }
+}
+
+.user-info_number {
+  font-size: 24px;
+  color: #3d3d48;
+}
+
+.user-info_label {
+  color: $colorTextLightGrey;
+  font-size: 13px;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

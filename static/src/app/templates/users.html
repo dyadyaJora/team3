@@ -1,0 +1,53 @@
+<header class="header">
+    <div class="header_logo">
+      <p class="header_logo-img">PEPO</p>
+    </div>
+    <div class="header_user">
+      <div class="header_user-profil">
+        <p class="header_user_avatar-name">BobDodo</p>
+      </div>
+    </div>
+    <div class="header_logout">
+      <div class="header_logout-contein">
+          <input type="button" class="header_user_logout-btn" title="Button" value=""/>
+      </div>
+    </div>
+</header>
+
+<section class="page-container">
+  <div class="users-search">
+    <input ng-model="searchValue.name" type="text" class="users-search_input" placeholder="Search...">
+  </div>
+
+  <div class="pepo-info">
+    <div class="pepo-info_text">Найдено {{(users | filter:searchValue).length}} пеповчан</div>
+  </div>
+
+  <ul class="users-list">
+    <li ng-repeat="user in users | filter:searchValue"  class="users-list_item user">
+      <img src="{{user.avatarUrl}}" alt="" class="user_img">
+      <div class="user_content">
+        <div class="user_name">{{user.name}}</div>
+        <div class="user_nickname">@{{user.username}}</div>
+        <button class="pepo_btn user_subscribe">+ Читать</button>
+        <p class="user_description">{{user.description}}</p>
+
+        <ul class="user-info">
+          <li class="user-info_item">
+            <div class="user-info_number">{{user.statusesCount}}</div>
+            <div class="user-info_label">пепов</div>
+          </li>
+          <li class="user-info_item">
+            <div class="user-info_number">{{user.followingCount}}</div>
+            <div class="user-info_label">читаемых</div>
+          </li>
+          <li class="user-info_item">
+            <div class="user-info_number">{{user.followersCount}}</div>
+            <div class="user-info_label">читателей</div>
+          </li>
+        </ul>
+      </div>
+    </li>
+  </ul>
+
+</section>
