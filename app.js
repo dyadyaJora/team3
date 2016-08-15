@@ -4,12 +4,19 @@ var favicon = require('serve-favicon');
 var logger = require('morgan');
 var bodyParser = require('body-parser');
 var passport = require('passport');
+var mongoose = require('mongoose');
 
 var app = express();
 
 if (app.get('env') === 'development') {
   require('dotenv').config();
 }
+
+var config = require('./config');
+
+mongoose.connect(config.mongodbUri);
+require('./models/user');
+require('./models/status');
 
 //app.use(favicon(path.join(__dirname, 'public', 'favicon.ico')));
 app.use(logger('dev'));
