@@ -1,0 +1,32 @@
+.users-search {
+  background: $colorWhite;
+  box-sizing: border-box;
+  padding: 0 10px 15px 10px;
+  position: relative;
+  margin-top: 40px;
+  &:before {
+    content: '';
+    background: url('../img/icon-zoom.svg')no-repeat center;
+    background-size: contain;
+    position: absolute;
+    height: 30px;
+    width: 30px;
+    top: 20px;
+    right: 18px;
+  }
+}
+
+.users-search_input {
+  border: none;
+  border-bottom: 1px solid $colorBlack;
+  box-sizing: border-box;
+  color: $colorTextGrey;
+  font-size: 22px;
+  padding: 22px 0 6px 0;
+  transition: box-shadow 300ms;
+  width: calc(100% - 60px);
+  &:focus {
+    outline: none;
+    box-shadow: 0 1px 0 0 $colorBlack;
+  }
+}

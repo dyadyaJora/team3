@@ -21,6 +21,10 @@ window.pepo = angular.module('pepo', ['ngRoute', 'ngResource', 'satellizer'])
           templateUrl: './build/templates/feed.html',
           controller: 'feedCtrl'
       })
+      .when('/users', {
+          templateUrl: './build/templates/users.html',
+          controller: 'usersCtrl'
+      })
       .otherwise({redirectTo: '/'});
 
     $authProvider.facebook({
