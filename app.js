@@ -31,11 +31,12 @@ initPassport(passport);
 
 var routes = require('./routes/index');
 var authRoutes = require('./routes/auth')(passport);
-var userRoutes = require('./routes/user')(passport);
+var userRoutes = require('./routes/user');
 
+var bearerAuth = passport.authenticate('bearer', { session: false });
 app.use('/', routes);
 app.use('/api/auth', authRoutes);
-app.use('/api/user', userRoutes);
+app.use('/api/user', bearerAuth, userRoutes);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
