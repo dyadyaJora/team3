@@ -24,9 +24,29 @@
   </div>
 
   <ul class="users-list">
-    <li ng-repeat="user in users | filter:searchValue"  class="users-list_item">
-      {{user.name}}
-      {{searchValue}}
+    <li ng-repeat="user in users | filter:searchValue"  class="users-list_item user">
+      <img src="{{user.avatarUrl}}" alt="" class="user_img">
+      <div class="user_content">
+        <div class="user_name">{{user.name}}</div>
+        <div class="user_nickname">@{{user.username}}</div>
+        <button class="pepo_btn user_subscribe">+ Читать</button>
+        <p class="user_description">{{user.description}}</p>
+
+        <ul class="user-info">
+          <li class="user-info_item">
+            <div class="user-info_number">{{user.statusesCount}}</div>
+            <div class="user-info_label">пепов</div>
+          </li>
+          <li class="user-info_item">
+            <div class="user-info_number">{{user.followingCount}}</div>
+            <div class="user-info_label">читаемых</div>
+          </li>
+          <li class="user-info_item">
+            <div class="user-info_number">{{user.followersCount}}</div>
+            <div class="user-info_label">читателей</div>
+          </li>
+        </ul>
+      </div>
     </li>
   </ul>
 

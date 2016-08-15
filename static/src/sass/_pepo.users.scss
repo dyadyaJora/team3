@@ -43,3 +43,109 @@
   font-size: 18px;
   color: #7f807f;
 }
+
+.users-list_item {
+  background: $colorWhite;
+  margin-bottom: 30px;
+  padding: 30px 15px;
+  position: relative;
+  &:last-child {
+    margin-bottom: 0;
+  }
+}
+
+.user_img {
+  width: 175px;
+}
+
+.user_img,
+.user_content {
+  display: inline-block;
+  vertical-align: top;
+}
+
+.user_content {
+  margin-left: 20px;
+  width: calc(100% - 200px);
+}
+
+.user_name {
+  color: #3d3d48;
+  font-size: 20px;
+  font-weight: bold;
+}
+
+.user_nickname {
+  color: $colorTextLightGrey;
+  font-size: 13px;
+  position: relative;
+  top: -3px;
+}
+
+.user_subscribe {
+  color: $colorWhite;
+  background: $colorBtnSubscribe;
+  font-size: 14px;
+  position: absolute;
+  top: 30px;
+  transition: background 200ms;
+  right: 15px;
+  width: 95px;
+  &:hover {
+    background: $colorBtnSubscribe__hover;
+  }
+}
+
+.user_description {
+  color: #5d5b55;
+  font-size: 12px;
+  margin-bottom: 26px;
+}
+
+.user-info_item {
+  display: inline-block;
+  text-align: center;
+  margin-right: 20px;
+  vertical-align: top;
+  &:last-child {
+    margin-right: 0;
+  }
+}
+
+.user-info_number {
+  font-size: 24px;
+  color: #3d3d48;
+}
+
+.user-info_label {
+  color: $colorTextLightGrey;
+  font-size: 13px;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

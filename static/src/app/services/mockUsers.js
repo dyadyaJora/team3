@@ -28,6 +28,34 @@ pepo.constant('MOCKUSERS',
       "fbId": 123,
       "createdAt": "2016-08-13T00:00:00Z",
       "updatedAt": "2016-08-13T00:00:00Z"
+    }, {
+      "id": 3,
+      "username": "homerzilla",
+      "name": "Homer Simpson",
+      "avatarUrl": "build/img/homer.jpg",
+      "thumbUrl": "build/img/homer-thumb.jpg",
+      "description": "Homer works as a low level safety inspector at the Springfield Nuclear Power Plant, in Sector 7G, although he is often incompetent and mostly sleeps on duty and eats the donuts that are provided. ",
+      "statusesCount": 12,
+      "followingCount": 34,
+      "followersCount": 16,
+      "vkId": 123,
+      "fbId": 123,
+      "createdAt": "2016-08-13T00:00:00Z",
+      "updatedAt": "2016-08-13T00:00:00Z"
+    }, {
+      "id": 4,
+      "username": "margerine",
+      "name": "Marge Simpson",
+      "avatarUrl": "build/img/marge.jpg",
+      "thumbUrl": "build/img/marge-thumb.jpg",
+      "description": "Marjorie Jacqueline 'Marge' Bouvier-Simpson is the homemaker and full-time mom of the Simpson family. She and her husband Homer have three children: Bart, Lisa, and Maggie. ",
+      "statusesCount": 8,
+      "followingCount": 3,
+      "followersCount": 65,
+      "vkId": 123,
+      "fbId": 123,
+      "createdAt": "2016-08-13T00:00:00Z",
+      "updatedAt": "2016-08-13T00:00:00Z"
     }
   ]
   );

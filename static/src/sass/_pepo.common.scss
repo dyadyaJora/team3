@@ -6,6 +6,9 @@ $colorBlue__hover: #2497c7;
 $colorGrey: #c7c7c7;
 $colorBorder: #999999;
 $colorTextGrey: #212221;
+$colorTextLightGrey: #a7a59f;
+$colorBtnSubscribe: #80a8cc;
+$colorBtnSubscribe__hover: #759abb;
 
 body {
   @include outer-container();
@@ -23,8 +26,8 @@ ul {
 .pepo_btn {
   cursor: pointer;
 	height: 40px;
-  width: 250px;
-  border-radius: 10px;
+  width: 100%;
+  border-radius: 3px;
 	border: none;
 	-webkit-appearance:none;
   &:focus {
@@ -32,6 +35,6 @@ ul {
   }
 }
 .page-container {
-  padding: 0 20px;
+  padding: 0 20px 80px;
 }
 
