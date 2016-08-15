@@ -25,7 +25,7 @@
 
   <ul class="users-list">
     <li ng-repeat="user in users | filter:searchValue"  class="users-list_item user">
-      <img src="{{user.avatarUrl}}" alt="" class="user_img">
+      <img ng-src="{{user.avatarUrl}}" alt="" class="user_img">
       <div class="user_content">
         <div class="user_name">{{user.name}}</div>
         <div class="user_nickname">@{{user.username}}</div>
