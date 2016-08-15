@@ -7,6 +7,19 @@ router.get('/', function(req, res) {
   res.json(req.user);
 });
 
+router.patch('/', function(req, res, next) {
+  req.user.patch(req.body, function(err, user) {
+    if (err) {
+      if (err.name == 'ValidationError') {
+        err.status = 422;
+      }
+      return next(err);
+    }
+
+    res.json(user);
+  });
+});
+
 router.delete('/', function(req, res, next) {
   req.user.remove(function(err) {
     if (err) { return next(err); }
