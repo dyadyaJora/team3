@@ -17,9 +17,10 @@
 	<p class="user_autorization_text">Choose you login:</p>
 	<form class="autoorization-form">
 		<ul class="autoorization-list">
-			<li class="autoorization-list_item"><input class="user_autorization-nick" type="text" size="20" /></li>
-			<li class="autoorization-list_item"><input type="submit" class="pepo_btn pepo_btn__ok"  value=""/></li>
+			<li class="autoorization-list_item"><button class="pepo_btn" ng-click="authenticate('facebook')">FB</button></li>
+			<li class="autoorization-list_item"><button class="pepo_btn" ng-click="authenticate('vk')">VK</button></li>
 		</ul>
 	</form>	
 </div>
+<div>{{isAuthenticated()}}</div>
 

@@ -1,4 +1,25 @@
-<h1>choose login</h1>
-<button ng-click="authenticate('facebook')">FB</button>
-<button ng-click="logout()">logout</button>
-<div>{{isAuthenticated()}}</div>
+<header class="header">
+		<div class="header_logo">
+			<p class="header_logo-img">PEPO</p>
+		</div> 
+		<div class="header_user">
+			<div class="header_user-profil">
+				<p class="header_user_avatar-name">BobDodo</p>
+			</div>		
+		</div>
+		<div class="header_logout">
+			<div class="header_logout-contein">
+					<input type="button" class="header_user_logout-btn" title="Button" value=""/>
+			</div>
+		</div>
+</header>
+<div class="user_autorization">
+	<p class="user_autorization_text">Choose you login:</p>
+	<form class="autoorization-form">
+		<ul class="autoorization-list">
+			<li class="autoorization-list_item"><input class="user_autorization-nick" type="text" size="20" /></li>
+			<li class="autoorization-list_item"><input type="submit" class="pepo_btn pepo_btn__ok"  value=""/></li>
+		</ul>
+	</form>	
+</div>
+
