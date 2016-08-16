@@ -7,7 +7,7 @@ var userSchema = new Schema({
   name: { type: String, required: true, maxlength: 20 },
   fbId: Number,
   vkId: Number,
-  token: { type: String, required: true }
+  token: { type: String }
 }, {
   timestamps: true
 });
@@ -32,4 +32,25 @@ userSchema.plugin(patchPlugin, {
   permitParams: ['username', 'name']
 });
 
+userSchema.pre('save', function(next) {
+  if (this.token) { return next(); }
+
+  generateToken(this, next);
+});
+
 mongoose.model('User', userSchema);
+
+function generateToken(user, done) {
+  var token = require('crypto').randomBytes(64).toString('hex');
+
+  user.model('User').count({ token: token }, function(err, count) {
+    if (err) { return done(err); }
+
+    if (!count) {
+      user.token = token;
+      return done();
+    }
+
+    generateToken(user, done);
+  });
+}

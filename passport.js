@@ -35,8 +35,6 @@ module.exports = function(passport) {
             user.username = 'fb' + id;
             // TODO удалять лишние пробелы
             user.name = profile.displayName;
-            // TODO генерировать уникальный токен
-            user.token = require('crypto').randomBytes(64).toString('hex');
             user.fbId = id;
 
             user.save(function(err, user) {
