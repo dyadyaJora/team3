@@ -10,6 +10,9 @@ $colorTextLightGrey: #a7a59f;
 $colorBtnSubscribe: #80a8cc;
 $colorBtnSubscribe__hover: #759abb;
 
+/* Width map */
+$mobileWidth: 540px;
+
 body {
   @include outer-container();
   background: #f2eee8;
@@ -38,3 +41,8 @@ ul {
   padding: 0 20px 80px;
 }
 
+@media only screen and (max-width: $mobileWidth) {
+  .page-container {
+    padding: 0 10px 80px;
+  }
+}
