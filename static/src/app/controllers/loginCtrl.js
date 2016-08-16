@@ -1,10 +1,23 @@
-pepo.controller('loginCtrl', function($q, $scope, $auth, userApi){
+pepo.controller('loginCtrl', function($location, $q, $scope, $auth, userApi){
   console.log('loginCtrl');
+
+  if ($auth.isAuthenticated()) {$location.path('/feed')}
 
   $scope.authenticate = function(provider) {
       console.log('auth');
       $auth.authenticate(provider).then(function(response) {
-        console.log(response.status == 201 ? 'New user!' : 'Old user!');
+        switch (response.status) {
+          case 200:
+            $location.path('/feed');
+            break;
+
+          case 201:
+            $location.path('/edit-profile');
+            break;
+
+          default:
+            throw new Error('Error. Unexpected value response.status: ' + response.status);
+        }
       });
   };
 
