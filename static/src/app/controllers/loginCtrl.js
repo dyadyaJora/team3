@@ -3,7 +3,9 @@ pepo.controller('loginCtrl', function($q, $scope, $auth, userApi){
 
   $scope.authenticate = function(provider) {
       console.log('auth');
-      console.log($auth.authenticate(provider));
+      $auth.authenticate(provider).then(function(response) {
+        console.log(response.status == 201 ? 'New user!' : 'Old user!');
+      });
   };
 
   $scope.isAuthenticated = function() {
@@ -12,10 +14,5 @@ pepo.controller('loginCtrl', function($q, $scope, $auth, userApi){
 
   $scope.logout = function() {
     $auth.logout();
-  }
-
-  $q.when(userApi.getUser().$promise).then(function(data){
-    console.log('get user');
-    console.log(data);
-  });
+  };
 });

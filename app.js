@@ -14,6 +14,7 @@ var app = express();
 
 var config = require('./config');
 
+mongoose.Promise = global.Promise;
 mongoose.connect(config.mongodbUri);
 require('./models/user');
 require('./models/status');

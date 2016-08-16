@@ -1,5 +1,6 @@
 var BearerStrategy = require('passport-http-bearer').Strategy;
 var FacebookStrategy = require('passport-facebook').Strategy;
+var VKontakteStrategy = require('passport-vkontakte').Strategy;
 
 var mongoose = require('mongoose');
 var User = mongoose.model('User');
@@ -24,30 +25,55 @@ module.exports = function(passport) {
     new FacebookStrategy(
       config.passportOptions.facebook,
       function(accessToken, refreshToken, profile, done) {
-        var id = parseInt(profile.id, 10);
-        User.findOne({ fbId: id }, function(err, user) {
+        User.findOne({ fbId: profile.id }, function(err, user) {
           if (err) { return done(err); }
 
-          if (user) {
-            done(null, user);
-          } else {
-            user = new User();
-            user.username = 'fb' + id;
-            // TODO удалять лишние пробелы
-            user.name = profile.displayName;
-            // TODO генерировать уникальный токен
-            user.token = require('crypto').randomBytes(64).toString('hex');
-            user.fbId = id;
+          if (user) { return done(null, user); }
 
-            user.save(function(err, user) {
-              if (err) { return done(err); }
+          user = new User({
+            username: 'fb' + profile.id,
+            name: prepareName(profile.displayName),
+            fbId: profile.id
+          });
 
-              done(null, user);
-            });
-          }
+          user.save(function(err, user) {
+            if (err) { return done(err); }
+
+            done(null, user, { isNew: true });
+          });
+        });
+      }
+    )
+  );
+
+  passport.use(
+    new VKontakteStrategy(
+      config.passportOptions.vkontakte,
+      function(accessToken, refreshToken, profile, done) {
+        User.findOne({ vkId: profile.id }, function(err, user) {
+          if (err) { return done(err); }
+
+          if (user) { return done(null, user); }
+
+          user = new User({
+            username: 'vk' + profile.id,
+            name: prepareName(profile.displayName),
+            vkId: profile.id
+          });
+
+          user.save(function(err, user) {
+            if (err) { return done(err); }
+
+            done(null, user, { isNew: true });
+          });
         });
       }
     )
   );
 
 };
+
+function prepareName(name) {
+  return name.replace(/\s+/, ' ')
+    .substring(0, 20);
+}
