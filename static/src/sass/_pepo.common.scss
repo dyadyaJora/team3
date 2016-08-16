@@ -25,7 +25,6 @@ ul {
   margin: 0;
   padding: 0;
 }
-
 .page-container {
   padding: 0 20px 80px;
   max-width: 600px;
@@ -72,8 +71,6 @@ ul {
     display: none;
   }
 }
-
-
 @media only screen and (max-width: $mobileWidth) {
   .page-container {
     padding: 0 10px 80px;
