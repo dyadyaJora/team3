@@ -32,5 +32,15 @@ window.pepo = angular.module('pepo', ['ngRoute', 'ngResource', 'satellizer'])
       redirectUri: window.location.origin + '/api/auth/facebook',
       url: '/api/auth/facebook'
     });
+
+    $authProvider.oauth2({
+      name: 'vkontakte',
+      url: '/api/auth/vkontakte',
+      clientId: '5589421',
+      redirectUri: window.location.origin + '/api/auth/vkontakte',
+      authorizationEndpoint: 'https://oauth.vk.com/authorize',
+      optionalUrlParams: ['display'],
+      display: 'mobile'
+    });
   });
 

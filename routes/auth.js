@@ -15,6 +15,10 @@ module.exports = function(passport) {
       res.json(req.user);
     });
 
+  router.get('/vkontakte', function(req, res) {
+    res.end();
+  });
+
   router.post('/vkontakte',
     satellizerAdapter(),
     passport.authenticate('vkontakte', { session: false }),

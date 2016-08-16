@@ -13,14 +13,13 @@
 			</div>
 		</div>
 </header>
-<div class="user_autorization">
+<div class="user_autorization" ng-hide="isAuthenticated()">
 	<p class="user_autorization_text">Choose you login:</p>
 	<form class="autoorization-form">
 		<ul class="autoorization-list">
 			<li class="autoorization-list_item"><button class="pepo_btn pepo_btn__facebook" ng-click="authenticate('facebook')"></button></li>
-			<li class="autoorization-list_item"><button class="pepo_btn pepo_btn__vk" ng-click="authenticate('facebook')"></button></li>
+			<li class="autoorization-list_item"><button class="pepo_btn pepo_btn__vk" ng-click="authenticate('vkontakte')"></button></li>
 		</ul>
 	</form>
 </div>
-<button ng-click="logout()">logout</button>
-<div>{{isAuthenticated()}}</div>
+<button ng-click="logout()" ng-show="isAuthenticated()">logout</button>
