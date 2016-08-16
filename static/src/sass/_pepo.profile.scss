@@ -1,125 +1,141 @@
+.user-profile {
+  background: $colorWhite;
+  margin-bottom: 20px;
+  padding: 30px 15px;
+  position: relative;
+  &:last-child {
+    margin-bottom: 0;
+  }
+  .user-profile_img{
+    width: 175px;
+    display: inline-block;
+    vertical-align: top;
+  }
 
-.profile-btn {
-  display: inline-block;
-  padding: 10px 40px;
-  margin-right: auto;
-  margin-left: auto;
+  .user-profile_content {
+    display: inline-block;
+    margin-left: 20px;
+    width: calc(100% - 200px);
+    vertical-align: top;
+  }
+  .user-profile_name {
+    color: #3d3d48;
+    font-size: 20px;
+    font-weight: bold;
+    max-width: calc(100% - 100px);
+    text-overflow: ellipsis;
+    overflow: hidden;
+  }
+  .user-profile_nickname{
+    color: $colorTextLightGrey;
+    font-size: 13px;
+    position: relative;
+    top: -3px;
+  }
+  .user-profile_subscribe {
+    width: 95px;
+    color: $colorWhite;
+    background: $colorBtnSubscribe;
+    font-size: 14px;
+    transition: background 200ms;
+    border-radius: 0;
+    &:hover {
+      background: $colorBtnSubscribe__hover;
+    }
+  }
+
+  .user-profile_description {
+    color: #5d5b55;
+    font-size: 14px;
+    margin-bottom: 26px;
+    max-width: 100%;
+  }
+}
+
+.user-profile-info{
   width: 100%;
-  margin-bottom: 10px;
-  min-height: 40px;
-  text-decoration: none;
-  border-radius: 5px;
-  font-size: 1.2em;
-  text-align: center;
-  color: #ffffff;
-  &:hover {
-    text-decoration: none;
-  }
-  &:focus {
-    text-decoration: none;
-  }
-  &:active {
-    text-decoration: none;
-  }
-  &:visited {
-    text-decoration: none;
-  }
-  .profile-btn_text{
+  max-width: 265px;
+  margin-left: auto;
+  margin-right: auto;
+  padding: 7px 15px;
+  background: $colorWhite;
+  .user-profile-info_item {
     display: inline-block;
-    vertical-align:3px;
+    text-align: center;
+    padding: 0 10px;
+    vertical-align: top;
+    &.user-profile-info_item__active{
+      border-bottom: 2px solid $colorBtnSubscribe;
+    }
+    &:last-child {
+      margin-right: 0;
+    }
+    .user-profile-info_number {
+      font-size: 24px;
+      color: #3d3d48;
+    }
+
+    .user-profile-info_label {
+      color: $colorTextLightGrey;
+      font-size: 13px;
+    }
   }
-  .profile-btn_icon{
-    display: inline-block;
-    width: 24px;
-    img{
+}
+
+
+@media only screen and (max-width: $mobileWidth) {
+  .user-profile{
+    .user-profile_subscribe {
+      position: initial;
+      margin: 15px 0;
+      width: 100%;
+    }
+    .user-profile_name,
+    .user-profile_description {
+      max-width: 100%;
+    }
+    .user-profile_img,
+    .user-profile_content {
       display: block;
       width: 100%;
     }
-  }
-  &.profile-btn__small{
-    padding: 5px 15px;
-  }
-  &.profile-btn__blue{
-    background-color: #29aae3;
-  }
-  &.profile-btn__green{
-    background-color: #8cc63e;
-    border: 1px solid black;
-  }
-}
-
-.text-center {
-  text-align: center;
-}
-
-.profile-image {
-  img {
-    display: block;
-    width: 100%;
-    max-width: 200px;
-    margin-left: auto;
-    margin-right: auto;
-  }
-}
-
-.profile-container {
-  @include outer-container;
-  margin: 15px;
-  padding: 25px;
-  background-color: #CCCCCC;
-  box-shadow: 0 0 40px -10px rgba(0, 0, 0, 0.75);
-}
-
-.my-profile {
-  @include outer-container;
-  .my-profile_description {
-    padding-left: 30px;
-    padding-right: 30px;
-    text-align: center;
-  }
-  .my-profile_name {
-    text-align: center;
-  }
-
-}
-
-.edit-profile {
-  .edit-profile_image {
-    margin-top: 20px;
-    margin-bottom: 30px;
-    input {
-      width: 70%;
-      display: block;
-      margin-right: auto;
-      margin-left: auto;
+    .user-profile_img {
+      border-radius: 50%;
+    }
+    .user-profile_content {
+      margin-left: 0;
+      margin-top: 15px;
+    }
+    .user-profile-info {
+      text-align: center;
     }
   }
-  .edit-profile_name {
-    margin-bottom: 15px;
-    input {
-      width: 100%;
-      height: 36px;
-      padding-left: 5px;
-      border-radius: 10px;
-      border: 1px solid #bfbfbf;
-
-    }
-
   }
-  .edit-profile_description {
-    textarea {
-      width: 100%;
-      margin-bottom: 20px;
-      padding-left: 5px;
-      resize: none;
-      border-radius: 10px;
-      border: 1px solid #bfbfbf;
 
-    }
-  }
-  .edit-profile_save {
-    text-align: center;
-  }
-}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 

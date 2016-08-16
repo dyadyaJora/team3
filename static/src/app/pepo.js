@@ -17,6 +17,10 @@ window.pepo = angular.module('pepo', ['ngRoute', 'ngResource', 'satellizer'])
             templateUrl: './build/templates/edit-profile.html',
             controller: 'editProfileCtrl'
         })
+        .when('/my-profile', {
+            templateUrl: './build/templates/my-profile.html',
+            controller: 'myProfileCtrl'
+        })
       .when('/feed', {
           templateUrl: './build/templates/feed.html',
           controller: 'feedCtrl'
