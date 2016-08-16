@@ -1,0 +1,45 @@
+.slide-efect_bg {
+	position: absolute;
+	background-color: rgba(0, 0, 0, 0.8);
+    top: 0;
+    left: 0;
+    height: 100%;
+	width:100%;
+}
+.slide-menu {
+	background-color: $colorBtnSubscribe;
+	padding: 50px 0px 0px 10px;
+	margin-left: auto;
+	height:100%;
+	width: 50%;
+	text-align: left;
+}
+.slide-menu_item a {
+	color: white;
+	text-decoration: none;
+}
+.slide-menu_item {
+	margin-bottom: 15px;
+}
+.slide-menu_item_border {
+	height: 1px;
+	width: 90%;
+	margin-bottom: 10px;
+	background-color: gray;
+
+}
+.cancel-menu_btn {
+	display: block;
+	position: absolute;
+	background: $colorBtnSubscribe url('../img/cancel.svg') no-repeat center;
+	top: 0;
+	right: 0;
+	height: 30px;
+	width: 30px;
+	cursor: pointer;
+ 	&:focus {
+    	display: none;
+  	}
+	border:none;
+	
+}
