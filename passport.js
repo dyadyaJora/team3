@@ -25,27 +25,31 @@ module.exports = function(passport) {
       config.passportOptions.facebook,
       function(accessToken, refreshToken, profile, done) {
         var id = parseInt(profile.id, 10);
+
         User.findOne({ fbId: id }, function(err, user) {
           if (err) { return done(err); }
 
-          if (user) {
+          if (user) { return done(null, user); }
+
+          user = new User({
+            username: 'fb' + id,
+            name: prepareName(profile.displayName),
+            fbId: id
+          });
+
+          user.save(function(err, user) {
+            if (err) { return done(err); }
+
             done(null, user);
-          } else {
-            user = new User();
-            user.username = 'fb' + id;
-            // TODO удалять лишние пробелы
-            user.name = profile.displayName;
-            user.fbId = id;
-
-            user.save(function(err, user) {
-              if (err) { return done(err); }
-
-              done(null, user);
-            });
-          }
+          });
         });
       }
     )
   );
 
 };
+
+function prepareName(name) {
+  return name.replace(/\s+/, ' ')
+    .substring(0, 20);
+}
