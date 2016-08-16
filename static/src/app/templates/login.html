@@ -1,11 +1,11 @@
 <header class="header">
 		<div class="header_logo">
 			<p class="header_logo-img">PEPO</p>
-		</div> 
+		</div>
 		<div class="header_user">
 			<div class="header_user-profil">
 				<p class="header_user_avatar-name">BobDodo</p>
-			</div>		
+			</div>
 		</div>
 		<div class="header_logout">
 			<div class="header_logout-contein">
@@ -20,6 +20,7 @@
 			<li class="autoorization-list_item"><button class="pepo_btn pepo_btn__facebook" ng-click="authenticate('facebook')"></button></li>
 			<li class="autoorization-list_item"><button class="pepo_btn pepo_btn__vk" ng-click="authenticate('facebook')"></button></li>
 		</ul>
-	</form>	
+	</form>
 </div>
+<button ng-click="logout()">logout</button>
 <div>{{isAuthenticated()}}</div>
