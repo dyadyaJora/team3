@@ -26,6 +26,12 @@ ul {
   padding: 0;
 }
 
+.page-container {
+  padding: 0 20px 80px;
+  max-width: 600px;
+  margin: auto;
+}
+
 .pepo-title {
   color: $colorTextLightGrey;
   font-size: 24px;
@@ -66,9 +72,7 @@ ul {
     display: none;
   }
 }
-.page-container {
-  padding: 0 20px 80px;
-}
+
 
 @media only screen and (max-width: $mobileWidth) {
   .page-container {
