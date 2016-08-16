@@ -1,0 +1,35 @@
+.user-edit {
+  background: $colorWhite;
+  padding: 30px 15px;
+  margin: 0 auto;
+  max-width: 600px;
+}
+
+.user-edit_item {
+  border-bottom: 1px solid #c7c7c7;
+  margin-bottom: 22px;
+  padding-bottom: 22px;
+  &:last-child {
+    margin-bottom: 0;
+    padding-bottom: 0;
+    border-bottom: none;
+  }
+}
+
+.user-edit_img {
+  width: 200px;
+}
+
+.user-edit_description {
+  height: 180px;
+}
+
+.user-edit_save {
+  background: $colorBlue;
+  color: $colorWhite;
+  font-size: 22px;
+  transition: background 200ms;
+  &:hover {
+    background: $colorBlue__hover;
+  }
+}

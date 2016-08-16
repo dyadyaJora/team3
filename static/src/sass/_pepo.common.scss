@@ -26,6 +26,35 @@ ul {
   padding: 0;
 }
 
+.pepo-title {
+  color: $colorTextLightGrey;
+  font-size: 24px;
+  font-weight: normal;
+  text-align: center;
+  margin: 30px auto 20px;
+  &::first-letter {
+    color: $colorBlue;
+  }
+}
+
+.pepo_textinput {
+  border: 1px solid $colorBorder;
+  box-sizing: border-box;
+  border-radius: 4px;
+  font-size: 18px;
+  line-height: 34px;
+  padding: 0 10px;
+  width: 100%;
+  transition: border 300ms;
+  &:active {
+    outline: none;
+  }
+  &:focus {
+    outline: none;
+    border: 1px solid $colorBlue;
+  }
+}
+
 .pepo_btn {
   cursor: pointer;
 	height: 40px;
