@@ -1,4 +1,5 @@
 var mongoose = require('mongoose');
+var crypto = require('crypto');
 var patchPlugin = require('../lib/patch-plugin.js');
 var Schema = mongoose.Schema;
 
@@ -7,7 +8,8 @@ var userSchema = new Schema({
   name: { type: String, required: true, maxlength: 20 },
   fbId: Number,
   vkId: Number,
-  token: { type: String }
+  token: { type: String },
+  following: [{ type: Schema.ObjectId, ref: 'User' }]
 }, {
   timestamps: true
 });
@@ -41,7 +43,7 @@ userSchema.pre('save', function(next) {
 mongoose.model('User', userSchema);
 
 function generateToken(user, done) {
-  var token = require('crypto').randomBytes(64).toString('hex');
+  var token = crypto.randomBytes(64).toString('hex');
 
   user.model('User').count({ token: token }, function(err, count) {
     if (err) { return done(err); }
