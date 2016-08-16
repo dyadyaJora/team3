@@ -4,6 +4,10 @@ var router = express.Router();
 
 module.exports = function(passport) {
 
+  router.get('/facebook', function(req, res) {
+    res.end();
+  });
+
   router.post('/facebook',
     satellizerAdapter(),
     passport.authenticate('facebook', { session: false }),
