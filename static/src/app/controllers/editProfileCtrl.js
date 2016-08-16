@@ -1,3 +1,4 @@
-pepo.controller('editProfileCtrl', function($scope){
-    console.log('My profile');
+pepo.controller('editProfileCtrl', function($scope, MOCKUSERS){
+    console.log('Edit profile');
+    $scope.user = MOCKUSERS[1];
 });
