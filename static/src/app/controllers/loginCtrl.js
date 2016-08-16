@@ -4,7 +4,7 @@ pepo.controller('loginCtrl', function($q, $scope, $auth, userApi){
   $scope.authenticate = function(provider) {
       console.log('auth');
       $auth.authenticate(provider).then(function(response) {
-        console.log(response);
+        console.log(response.status == 201 ? 'New user!' : 'Old user!');
       });
   };
 

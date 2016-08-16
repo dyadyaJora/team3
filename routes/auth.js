@@ -12,6 +12,9 @@ module.exports = function(passport) {
     satellizerAdapter(),
     passport.authenticate('facebook', { session: false }),
     function(req, res) {
+      if (req.authInfo.isNew) {
+        res.status(201);
+      }
       res.json(req.user);
     });
 
@@ -23,7 +26,9 @@ module.exports = function(passport) {
     satellizerAdapter(),
     passport.authenticate('vkontakte', { session: false }),
     function(req, res) {
-      console.log(req.user);
+      if (req.authInfo.isNew) {
+        res.status(201);
+      }
       res.json(req.user);
     });
 

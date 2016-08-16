@@ -39,7 +39,7 @@ module.exports = function(passport) {
           user.save(function(err, user) {
             if (err) { return done(err); }
 
-            done(null, user);
+            done(null, user, { isNew: true });
           });
         });
       }
@@ -64,7 +64,7 @@ module.exports = function(passport) {
           user.save(function(err, user) {
             if (err) { return done(err); }
 
-            done(null, user);
+            done(null, user, { isNew: true });
           });
         });
       }
