@@ -1,7 +1,8 @@
 <header class="header">
+	<div class="header-restrictor">
 		<div class="header_logo">
-			<p class="header_logo-img">PEPO</p>
-		</div>
+			<a href="/" class="header_logo-img">PEPO</a>
+		</div> 
 		<div class="header_user">
 			<div class="header_user-profil">
 				<p class="header_user_avatar-name">BobDodo</p>
@@ -12,14 +13,18 @@
 					<input type="button" class="header_user_logout-btn" title="Button" value=""/>
 			</div>
 		</div>
+	</div>	
 </header>
-<div class="user_autorization">
-	<p class="user_autorization_text">Choose you login:</p>
-	<form class="autoorization-form">
-		<ul class="autoorization-list">
-			<li class="autoorization-list_item"><button class="pepo_btn pepo_btn__facebook" ng-click="authenticate('facebook')"></button></li>
-			<li class="autoorization-list_item"><button class="pepo_btn pepo_btn__vk" ng-click="authenticate('vkontakte')"></button></li>
-		</ul>
-	</form>
-</div>
-<button ng-click="logout()" ng-show="isAuthenticated()">logout</button>
+<section class="page-container">
+	<div class="user_autorization">
+		<p class="user_autorization_text">Choose you login:</p>
+		<form class="autoorization-form">
+			<ul class="autoorization-list">
+				<li class="autoorization-list_item"><button class="pepo_btn pepo_btn__facebook" ng-click="authenticate('facebook')"></button></li>
+				<li class="autoorization-list_item"><button class="pepo_btn pepo_btn__vk" ng-click="authenticate('vkontakte')"></button></li>
+			</ul>
+		</form>	
+	</div>
+</section>
+
+
