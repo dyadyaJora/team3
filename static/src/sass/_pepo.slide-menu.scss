@@ -1,0 +1,58 @@
+.slide-efect_bg {
+	display: none;
+	position: absolute;
+	background-color: rgba(0, 0, 0, 0.8);
+    top: 0;
+    left: 0;
+    height: 100%;
+	width:100%;
+}
+.slide-menu {
+	background-color: $colorBtnSubscribe;
+	padding: 50px 10px 0px 10px;
+	margin-left: auto;
+	height:100%;
+	width: 260px;
+	text-align: left;
+}
+.slide-menu_link {
+	color: white;
+	text-decoration: none;
+}
+.slide-menu_item {
+	margin-bottom: 15px;
+	cursor: pointer;
+	&:hover {
+		.slide-menu_link {
+			color: gray;
+		}
+	}
+}
+.slide-menu_item__separator {
+	border-bottom: 1px solid #c7c7c7;
+	padding-bottom: 15px;
+}
+.cancel-menu_btn {
+	display: block;
+	opacity: 0.8;
+	position: absolute;
+	background: $colorBtnSubscribe url('../img/cancel.svg') no-repeat center;
+	background-size: contain ;
+	top: 10px;
+	right: 10px;
+	height: 30px;
+	width: 30px;
+	cursor: pointer;
+	border:none;
+ 	&:focus {
+    	display: none;
+  	}
+  	&:hover {
+  		opacity: 1; 
+  	}
+}
+@media only screen and (max-width: $mobileWidth) {
+	.slide-menu {
+		width: 50%;
+	}
+}
