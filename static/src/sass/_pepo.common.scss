@@ -25,6 +25,10 @@ ul {
   margin: 0;
   padding: 0;
 }
+a {
+  text-decoration: none;
+  color: $colorWhite;
+}
 .page-container {
   padding: 40px 20px 80px;
   max-width: 600px;
