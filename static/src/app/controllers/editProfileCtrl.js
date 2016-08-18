@@ -5,4 +5,7 @@ pepo.controller('editProfileCtrl', function($location, $scope, MOCKUSERS){
     $scope.updateUser = function() {
       $location.path('/feed');
     }
+    $scope.editCancel = function() {
+      $location.path('/feed');
+    }
 });

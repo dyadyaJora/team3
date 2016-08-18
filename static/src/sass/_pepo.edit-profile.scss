@@ -16,6 +16,12 @@
   }
 }
 
+.user-edit_item__nosepation {
+  border-bottom: none;
+  margin-bottom: 22px;
+  padding-bottom: 0;
+}
+
 .user-edit_img {
   width: 200px;
 }
@@ -31,5 +37,14 @@
   transition: background 200ms;
   &:hover {
     background: $colorBlue__hover;
+  }
+}
+.user-edit_cancel {
+  background: $colorRed;
+  color: $colorWhite;
+  font-size: 22px;
+  transition: background 200ms;
+  &:hover {
+    background: $colorRed__hover;
   }
 }
