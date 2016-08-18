@@ -11,7 +11,6 @@
 .tweets_item {
   background: $colorWhite;
   border: 1px solid $colorBorder;
-  border-radius: 4px;
   padding: 12px;
   margin-bottom: 24px;
   &:last-child {
@@ -145,6 +144,29 @@
     background: $colorBlue__hover;
   }
 }
+
+@media only screen and (max-width: $iphonesWidth) {
+  .tweets {
+    margin-bottom: 0;
+  }
+  .tweets_item {
+    border: none;
+    border-bottom: 1px solid $colorBorder;
+    padding-bottom: 24px;
+    &:last-child {
+      border-bottom: none;
+    }
+  }
+}
+
+
+
+
+
+
+
+
+
 
 
 
