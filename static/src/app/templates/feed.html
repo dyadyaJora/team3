@@ -42,7 +42,7 @@
 
            <li class="tweet-actions_item tweet-actions_item__answers">
             <div class="modal">
-            <label for="modal-1">
+            <label for="modal-1" class="pepo-modal_label">
             <div class="modal-trigger">
             <div class="tweet-actions_icon"></div>
             <div class="tweet-actions_coutn">2</div>
@@ -52,9 +52,20 @@
   <div class="modal-fade-screen">
     <div class="modal-inner">
       <div class="modal-close" for="modal-1"></div>
-      <h1>Modal Title</h1>
-      <p class="modal-intro">Intro text lorem ipsum dolor sit ametm, quas, eaque facilis aliquid cupiditate tempora cumque ipsum accusantium illo modi commodi  minima.</p>
-      <p class="modal-content">Body text lorem ipsum dolor ipsum dolor sit sit possimus amet, consectetur adipisicing elit. Itaque, placeat, explicabo, veniam quos aperiam molestias eriam molestias molestiae suscipit ipsum enim quasi sit possimus quod atque nobis voluptas earum odit accusamus quibusdam. Body text lorem ipsum dolor ipsum dolor sit sit possimus amet.</p>
+      <header class="tweet-header">
+        <div class="tweet-header_user">
+          <img ng-src="{{tweet.owner.thumbUrl}}" alt="" class="tweet-header_user-img">
+          <div class="tweet-header_name-wrapper">
+            <div class="tweet-header_user-name">{{tweet.owner.name}}</div>
+            <div class="tweet-header_user-login">@{{tweet.owner.username}}</div>
+          </div>
+        </div>
+        <div class="tweet-header_date">{{tweet.createdAt}}</div>
+      </header>
+
+      <section class="tweet-content">
+        <p class="tweet-content_text">{{tweet.text}}</p>
+      </section>
     </div>
   </div>
           </label>
