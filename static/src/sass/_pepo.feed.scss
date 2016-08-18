@@ -45,10 +45,14 @@
 }
 .tweet-header_date {
   color: $colorGrey;
+  cursor: pointer;
   font-size: 10px;
   position: absolute;
   top: 0;
   right: 0;
+  &:hover {
+    text-decoration: underline;
+  }
 }
 .tweet-content_text {
   font-size: 15px;

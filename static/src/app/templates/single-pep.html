@@ -18,7 +18,26 @@
 
 <section class="page-container">
   <div class="single-tweet-wrapper">
+
+    <div class="single-tweet-parent" ng-show="parent">
+      <header class="single-tweet-header">
+        <div class="single-tweet-header_user">
+          <img ng-click="goToUser(parent.owner.username)" ng-src="{{parent.owner.thumbUrl}}" alt="" class="single-tweet-header_user-img">
+          <div class="single-tweet-header_name-wrapper">
+            <div ng-click="goToUser(parent.owner.username)" class="single-tweet-header_user-name">{{parent.owner.name}}</div>
+            <div ng-click="goToUser(parent.owner.username)" class="single-tweet-header_user-login">@{{parent.owner.username}}</div>
+          </div>
+        </div>
+        <div class="single-tweet-header_date">{{parent.createdAt}}</div>
+      </header>
+
+      <section class="single-tweet-content">
+        <p class="single-tweet-content_text">{{parent.text}}</p>
+      </section>
+    </div>
+
     <div class="single-tweet">
+      <div class="answer-info" ng-show="parent">в ответ пользователю <span class="answer-info_username" ng-click="goToUser(parent.owner.username)">@{{parent.owner.username}}</span></div>
       <header class="single-tweet-header">
         <div class="single-tweet-header_user">
           <img ng-src="{{currentTweet.owner.thumbUrl}}" alt="" class="single-tweet-header_user-img">
@@ -58,7 +77,7 @@
       </footer>
     </div>
 
-    <ul class="tweet-answers">
+    <ul class="tweet-answers" ng-show="currentTweet.childrens">
       <li class="tweet-answers_item" ng-repeat="answer in currentTweet.childrens">
         <header class="tweet-header">
           <div class="tweet-header_user">
