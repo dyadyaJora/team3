@@ -31,8 +31,10 @@
     <li class="user-edit_item">
       <textarea class="pepo_textinput user-edit_description">{{user.description}}</textarea>
 
-    <li class="user-edit_item">
+    <li class="user-edit_item user-edit_item__nosepation">
       <button ng-click="updateUser()" class="pepo_btn user-edit_save">Save changes</button>
+    <li class="user-edit_item">
+      <button ng-click="editCancel()" class="pepo_btn user-edit_cancel">Cancel</button>
   </ul>
 
 </section>
