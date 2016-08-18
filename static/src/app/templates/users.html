@@ -25,10 +25,10 @@
 
   <ul class="users-list">
     <li ng-repeat="user in users | filter:searchValue"  class="users-list_item user">
-      <img ng-src="{{user.avatarUrl}}" alt="" class="user_img">
+      <img ng-click="goToUser(user.username)" ng-src="{{user.avatarUrl}}" alt="" class="user_img">
       <div class="user_content">
-        <div class="user_name">{{user.name}}</div>
-        <div class="user_nickname">@{{user.username}}</div>
+        <div ng-click="goToUser(user.username)" class="user_name">{{user.name}}</div>
+        <div ng-click="goToUser(user.username)" class="user_nickname">@{{user.username}}</div>
         <button class="pepo_btn user_subscribe">+ Читать</button>
         <p class="user_description">{{user.description}}</p>
 

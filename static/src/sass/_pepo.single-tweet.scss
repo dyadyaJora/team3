@@ -1,9 +1,15 @@
 .single-tweet {
   background: $colorWhite;
   border: 1px solid $colorBorder;
-  border-radius: 4px;
+  border-radius: 4px 4px 0 0;
   padding: 12px;
-  margin-top: 40px;
+}
+
+.single-tweet-parent {
+  background: #f7f6f4;
+  border-left: 1px solid $colorBorder;
+  border-right: 1px solid $colorBorder;
+  padding: 12px;
 }
 
 .single-tweet .user_subscribe {
@@ -22,23 +28,57 @@
   vertical-align: middle;
 }
 .single-tweet-header_user-img {
+  cursor: pointer;
   border-radius: 4px;
   margin-right: 6px;
   width: 100%;
-  max-width: 100px;
+  max-width: 70px;
 }
+
+.single-tweet-parent .single-tweet-header_user-img {
+  border-radius: 50%;
+  max-width: 50px;
+}
+
+.single-tweet-parent .single-tweet-header_user-name {
+  color: $colorBlack;
+  font-size: 18px;
+}
+
+.single-tweet-parent .single-tweet-header_user-login {
+  font-size: 12px;
+  color: $colorTextLightGrey;
+}
+
+.single-tweet-parent .single-tweet-content_text {
+  color: #5d5b55;
+  font-size: 14px;
+  padding-left: 60px;
+  margin-top: 0;
+}
+
+
+
 .single-tweet-header_user-name {
-  color: $colorBlue;
+  color: $colorBlack;
+  cursor: pointer;
   font-size: 26px;
   max-width: 330px;
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
+  &:hover {
+    color: $colorBlue;
+  }
 
 }
 .single-tweet-header_user-login {
   font-size: 16px;
   color: $colorGrey;
+  cursor: pointer;
+  &:hover {
+    color: $colorBlue;
+  }
 }
 .single-tweet-header_date {
   color: $colorGrey;
@@ -124,6 +164,34 @@
   }
 }
 
+.answer-info {
+  font-size: 14px;
+  color: $colorTextLightGrey;
+  position: relative;
+  padding-left: 24px;
+  margin-left: 72px;
+  &:before {
+    content: '';
+    background: url('../img/back-arrow.svg')no-repeat center;
+    background-size: contain;
+    position: absolute;
+    top: -2;
+    left: 0;
+    height: 20px;
+    width: 20px;
+
+  }
+}
+
+.answer-info_username {
+  color: $colorBlack;
+  cursor: pointer;
+  transition: color 200ms;
+  &:hover {
+    color: $colorBlue;
+  }
+}
+
 @media only screen and (max-width: $mobileWidth) {
   .single-tweet .user_subscribe {
     position: static;
@@ -138,6 +206,9 @@
     border-bottom: 1px solid $colorBorder;
     border-radius: 0;
     margin-top: 0;
+  }
+  .single-tweet-parent {
+    border: none;
   }
   .single-tweet-header_user-name {
     max-width: calc(100vw - 140px);

@@ -1,8 +1,20 @@
 pepo.constant('MOCKTWEETS',
   MOCKTWEETS = [
   {
-    "id": 2,
-    "parentId": 1,
+    "id": 4471851162,
+    "parent": {
+      "id": "133",
+      "text": "I'm Bart Simpson, who the hell are you?",
+      "owner": {
+        "id": 1,
+        "username": "bartolomew",
+        "name": "Bart Simpson",
+        "avatarUrl": "http://url/to/avatar.jpg",
+        "thumbUrl": "build/img/bart.jpg"
+      },
+      "createdAt": "2016-08-13T00:00:00Z",
+      "updatedAt": "2016-08-13T00:00:00Z"
+    },
     "text": "Poor Krusty. He's like black velvet painting come to life.",
     "imageUrl": "http://url/to/image.jpg",
     "location": [-73.856077, 40.848447],
@@ -51,7 +63,7 @@ pepo.constant('MOCKTWEETS',
     "updatedAt": "2016-08-13T00:00:00Z"
   },
   {
-    "id": 2,
+    "id": 7026604250,
     "parentId": 1,
     "text": "Eat my shorts doesn't mean eat my shorts literally.",
     "imageUrl": "http://url/to/image.jpg",
@@ -119,7 +131,7 @@ pepo.constant('MOCKTWEETS',
     "updatedAt": "2016-08-13T00:00:00Z"
   },
   {
-    "id": 2,
+    "id": 0614343178,
     "parentId": 1,
     "text": "Just because Maggie can't talk doesn't mean she's dumb. Einstein didn't speak until he was three.",
     "imageUrl": "http://url/to/image.jpg",
@@ -153,7 +165,7 @@ pepo.constant('MOCKTWEETS',
     "updatedAt": "2016-08-13T00:00:00Z"
   },
   {
-    "id": 2,
+    "id": 1699141818,
     "parentId": 1,
     "text": "Poor Krusty. He's like black velvet painting come to life.",
     "imageUrl": "http://url/to/image.jpg",
@@ -203,7 +215,7 @@ pepo.constant('MOCKTWEETS',
     "updatedAt": "2016-08-13T00:00:00Z"
   },
   {
-    "id": 2,
+    "id": 0365866809,
     "parentId": 1,
     "text": "Eat my shorts doesn't mean eat my shorts literally.",
     "imageUrl": "http://url/to/image.jpg",
@@ -237,7 +249,7 @@ pepo.constant('MOCKTWEETS',
     "updatedAt": "2016-08-13T00:00:00Z"
   },
   {
-    "id": 2,
+    "id": 9041360592,
     "parentId": 1,
     "text": "Poor Krusty. He's like black velvet painting come to life.",
     "imageUrl": "http://url/to/image.jpg",
@@ -271,7 +283,7 @@ pepo.constant('MOCKTWEETS',
     "updatedAt": "2016-08-13T00:00:00Z"
   },
   {
-    "id": 2,
+    "id": 7283191801,
     "parentId": 1,
     "text": "Just because Maggie can't talk doesn't mean she's dumb. Einstein didn't speak until he was three.",
     "imageUrl": "http://url/to/image.jpg",
