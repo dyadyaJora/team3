@@ -13,16 +13,22 @@
 	margin-bottom: 20px;
 }
 .user_autorization .user_autorization-nick {
-   border: 2px solid #cccccc; 
-   border-radius: 10px; 
-   outline: none; 
+   border: 2px solid #cccccc;
+   border-radius: 10px;
+   outline: none;
    padding: 0px 0px 0px 9px;
    height: 40px;
-   width: 250px; 
-   color: gray; 
-   font: bold 15px Tahoma; 
+   width: 250px;
+   color: gray;
+   font: bold 15px Tahoma;
    margin-bottom: 10px;
 }
 .pepo_btn__ok {
     background: #8cc53f url('../img/ok.svg') no-repeat center;
+}
+
+@media only screen and (max-width: $iphonesWidth) {
+  .user_autorization {
+    padding: 20vh 10px 0;
+  }
 }
