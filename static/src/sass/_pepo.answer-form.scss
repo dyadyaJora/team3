@@ -17,6 +17,11 @@
   $modal-image-width: $modal-image-height;
   $modal-trigger-image-width: 300px;
 
+  .pepo-modal-top{
+    padding: 1.5em;
+    text-align: center;
+    border-bottom: 1px solid #e5e5e5;
+  }
   .pepo-modal_label {
     cursor: pointer;
     margin-bottom: 0;
@@ -90,7 +95,6 @@
     margin-top: 0;
     max-height: 95%;
     overflow: auto;
-    padding: $modal-padding / 2;
     position: relative;
     transition: opacity 0.25s ease;
     width: 95%;
@@ -103,17 +107,6 @@
 
     @include media($large-screen) {
       width: 50%;
-    }
-
-    h1 {
-      color: $base-font-color;
-      text-align: left;
-      text-transform: capitalize;
-    }
-
-    p {
-      color: $base-font-color;
-      line-height: $base-line-height;
     }
 
     .modal-intro {
@@ -154,4 +147,23 @@
   overflow: hidden;
 }
 
-// Based on code by Kasper Mikiewicz
+.tweet_answer{
+  @include outer-container;
+  padding: 1.5em;
+  .tweet-user-img_answer{
+    @include span-columns(3);
+    img{
+      width: 100%;
+    }
+  }
+  .tweet-content_answer{
+    @include span-columns(9);
+    .tweet-content_text__answer{
+      margin: 10px 0;
+    }
+    .tweet-header_date__answer{
+      color: #c7c7c7;
+      font-size: 10px;
+    }
+  }
+}

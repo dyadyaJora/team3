@@ -42,29 +42,30 @@
 
            <li class="tweet-actions_item tweet-actions_item__answers">
             <div class="modal">
-            <label for="modal-1" class="pepo-modal_label">
+            <label for="id{{tweet.id}}" class="pepo-modal_label">
             <div class="modal-trigger">
             <div class="tweet-actions_icon"></div>
             <div class="tweet-actions_coutn">2</div>
          
           </div>
-          <input class="modal-state" id="modal-1" type="checkbox" />
+          <input class="modal-state" id="id{{tweet.id}}" type="checkbox" />
   <div class="modal-fade-screen">
     <div class="modal-inner">
-      <div class="modal-close" for="modal-1"></div>
-      <header class="tweet-header">
-        <div class="tweet-header_user">
-          <img ng-src="{{tweet.owner.thumbUrl}}" alt="" class="tweet-header_user-img">
-          <div class="tweet-header_name-wrapper">
-            <div class="tweet-header_user-name">{{tweet.owner.name}}</div>
-            <div class="tweet-header_user-login">@{{tweet.owner.username}}</div>
-          </div>
-        </div>
-        <div class="tweet-header_date">{{tweet.createdAt}}</div>
+      <div class="modal-close" for="id{{tweet.id}}"></div>
+      <header class="pepo-modal-top">Ответить @{{tweet.owner.username}}
       </header>
-
-      <section class="tweet-content">
-        <p class="tweet-content_text">{{tweet.text}}</p>
+      <section class="tweet_answer">
+        <div class="tweet-user-img_answer">
+          <img ng-src="{{tweet.owner.thumbUrl}}" alt="">
+        </div>
+        <div class="tweet-content_answer">
+          <div class="tweet-header_user-name">{{tweet.owner.name}}
+          </div>
+          <div class="tweet-header_user-login">@{{tweet.owner.username}}
+          </div>
+          <div class="tweet-header_date__answer">{{tweet.createdAt}}</div>
+          <p class="tweet-content_text__answer">{{tweet.text}}</p>
+        </div>
       </section>
     </div>
   </div>
