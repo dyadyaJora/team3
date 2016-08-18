@@ -1,0 +1,119 @@
+<header class="header">
+  <div class="header-restrictor">
+    <div class="header_logo">
+      <a href="/" class="header_logo-img">PEPO</a>
+    </div>
+    <div class="header_user">
+      <div class="header_user-profil">
+        <p class="header_user_avatar-name">BobDodo</p>
+      </div>
+    </div>
+    <div class="header_logout">
+      <div class="header_logout-contein">
+          <input type="button" class="header_user_logout-btn" title="Button" value=""/>
+      </div>
+    </div>
+  </div>
+</header>
+
+<section class="page-container">
+  <div class="single-tweet-wrapper">
+    <div class="single-tweet">
+      <header class="single-tweet-header">
+        <div class="single-tweet-header_user">
+          <img ng-src="{{currentTweet.owner.thumbUrl}}" alt="" class="single-tweet-header_user-img">
+          <div class="single-tweet-header_name-wrapper">
+            <div class="single-tweet-header_user-name">{{currentTweet.owner.name}}</div>
+            <div class="single-tweet-header_user-login">@{{currentTweet.owner.username}}</div>
+          </div>
+        </div>
+        <button class="pepo_btn user_subscribe">+ Читаю</button>
+        <div class="single-tweet-header_date">{{currentTweet.createdAt}}</div>
+      </header>
+
+      <section class="single-tweet-content">
+        <p class="single-tweet-content_text">{{currentTweet.text}}</p>
+      </section>
+
+      <footer class="single-tweet-footer">
+        <ul class="single-tweet-actions">
+          <li class="single-tweet-actions_item single-tweet-actions_item__likes">
+            <div class="single-tweet-actions_icon"></div>
+            <div class="single-tweet-actions_coutn">3</div>
+          </li>
+
+           <li class="single-tweet-actions_item single-tweet-actions_item__answers">
+            <div class="single-tweet-actions_icon"></div>
+            <div class="single-tweet-actions_coutn">2</div>
+          </li>
+
+          <li class="single-tweet-actions_item single-tweet-actions_item__edit">
+            <div class="single-tweet-actions_icon"></div>
+          </li>
+
+           <li class="single-tweet-actions_item single-tweet-actions_item__remove">
+            <div class="single-tweet-actions_icon"></div>
+          </li>
+        </ul>
+      </footer>
+    </div>
+
+    <ul class="tweet-answers">
+      <li class="tweet-answers_item" ng-repeat="answer in currentTweet.childrens">
+        <header class="tweet-header">
+          <div class="tweet-header_user">
+            <img ng-src="{{answer.owner.thumbUrl}}" alt="" class="tweet-header_user-img">
+            <div class="tweet-header_name-wrapper">
+              <div class="tweet-header_user-name">{{answer.owner.name}}</div>
+              <div class="tweet-header_user-login">@{{answer.owner.username}}</div>
+            </div>
+          </div>
+          <div class="tweet-header_date">{{answer.createdAt}}</div>
+        </header>
+
+      <section class="tweet-content">
+        <p class="tweet-content_text">{{answer.text}}</p>
+      </section>
+
+      <footer class="tweet-footer">
+        <ul class="tweet-actions">
+          <li class="tweet-actions_item tweet-actions_item__likes">
+            <div class="tweet-actions_icon"></div>
+            <div class="tweet-actions_coutn">3</div>
+          </li>
+
+           <li class="tweet-actions_item tweet-actions_item__answers">
+            <div class="tweet-actions_icon"></div>
+            <div class="tweet-actions_coutn">2</div>
+          </li>
+
+          <li class="tweet-actions_item tweet-actions_item__edit" ng-show="isOwner(currentTweet.owner.username, answer.owner.username)">
+            <div class="tweet-actions_icon"></div>
+          </li>
+
+           <li class="tweet-actions_item tweet-actions_item__remove" ng-show="isOwner(currentTweet.owner.username, answer.owner.username)">
+            <div class="tweet-actions_icon"></div>
+          </li>
+        </ul>
+      </footer>
+
+      </li>
+    </ul>
+  </div>
+</section>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

@@ -1,0 +1,152 @@
+.single-tweet {
+  background: $colorWhite;
+  border: 1px solid $colorBorder;
+  border-radius: 4px;
+  padding: 12px;
+  margin-top: 40px;
+}
+
+.single-tweet .user_subscribe {
+  right: 0;
+}
+
+.single-tweet-header {
+  position: relative;
+}
+.single-tweet-header_user{
+  padding-top: 8px;
+}
+.single-tweet-header_user-img,
+.single-tweet-header_name-wrapper {
+  display: inline-block;
+  vertical-align: middle;
+}
+.single-tweet-header_user-img {
+  border-radius: 4px;
+  margin-right: 6px;
+  width: 100%;
+  max-width: 100px;
+}
+.single-tweet-header_user-name {
+  color: $colorBlue;
+  font-size: 26px;
+}
+.single-tweet-header_user-login {
+  font-size: 16px;
+  color: $colorGrey;
+}
+.single-tweet-header_date {
+  color: $colorGrey;
+  font-size: 10px;
+  position: absolute;
+  top: 0;
+  right: 0;
+}
+.single-tweet-content_text {
+  color: $colorTextGrey;
+  font-size: 32px;
+  line-height: 34px;
+  margin-top: 15px;
+}
+.single-tweet-footer {
+  padding-left: 3px;
+}
+.single-tweet-actions_item {
+  display: inline-block;
+  vertical-align: top;
+  margin-right: 16px;
+  text-align: center;
+  &:last-child {
+    margin-right: 0;
+  }
+}
+.single-tweet-actions_icon {
+  cursor: pointer;
+  height: 18px;
+  width: 18px;
+  opacity: .8;
+  transition: opacity 400ms;
+  &:hover {
+    opacity: 1;
+    transition: opacity 200ms;
+  }
+}
+.single-tweet-actions_item__likes .single-tweet-actions_icon {
+  background: url(../img/icon-like.svg)no-repeat center;
+}
+.single-tweet-actions_item__answers .single-tweet-actions_icon {
+  background: url(../img/icon-answer.svg)no-repeat center;
+  height: 18px;
+  width: 22px;
+}
+.single-tweet-actions_item__edit .single-tweet-actions_icon {
+  background: url(../img/icon-edit.svg)no-repeat center;
+}
+.single-tweet-actions_item__remove .single-tweet-actions_icon {
+  background: url(../img/icon-remove.svg)no-repeat center;
+}
+.single-tweet-actions_coutn {
+  color: $colorBlue;
+  font-size: 10px;
+  margin-top: 3px;
+}
+
+.tweet-answers {
+  background: #fcfcfc;
+  border: 1px solid #c7c7c7;
+  border-top: none;
+  border-radius: 0 0 4px 4px;
+  padding: 24px 20px 0 30px;
+  position: relative;
+  &:before {
+    content: '';
+    background: $colorBlue;
+    position: absolute;
+    top: 10px;
+    bottom: 10px;
+    left: 15px;
+    width: 2px;
+  }
+}
+.tweet-answers_item {
+  border-bottom: 1px solid #c7c7c7;
+  margin-bottom: 24px;
+  padding-bottom: 24px;
+  &:last-child {
+    border-bottom: none;
+    margin-bottom: 0;
+
+  }
+}
+
+@media only screen and (max-width: $iphonesWidth) {
+  .single-tweet {
+    border: none;
+    border-bottom: 1px solid $colorBorder;
+    border-radius: 0;
+    margin-top: 0;
+  }
+  .single-tweet-content_text {
+    font-size: 22px;
+    line-height: 24px;
+  }
+  .tweet-answers {
+    border: none;
+    border-radius: 0;
+
+  }
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+

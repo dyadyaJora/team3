@@ -4,9 +4,10 @@
 	padding: 9px 10px 10px 10px;
 	height: 40px;
 	top: 0;
-    left: 0;
-    right: 0;
-}	
+  left: 0;
+  right: 0;
+  z-index: 9;
+}
 .header-restrictor {
 	max-width: 600px;
 	margin: 0 auto;
@@ -27,7 +28,7 @@
 	text-align: center;
 	vertical-align: middle;
 
-}  
+}
 .header_logout{
 	@include span-columns(3);
 	position: relative;

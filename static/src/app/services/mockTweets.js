@@ -8,24 +8,40 @@ pepo.constant('MOCKTWEETS',
     "location": [-73.856077, 40.848447],
     "owner": {
       "id": 1,
-      "username": "username",
+      "username": "lisa",
       "name": "Lisa Simpson",
       "avatarUrl": "http://url/to/avatar.jpg",
       "thumbUrl": "build/img/lisa.jpg"
     },
-    "children": [
+    "childrens": [
       {
         "id": 3,
         "parentId": 2,
-        "text": "Lorem ipsum dolor...",
+        "text": "Ay, Karamba!",
         "imageUrl": "http://url/to/image.jpg",
         "location": [-73.856077, 40.848447],
         "owner": {
           "id": 1,
-          "username": "username",
-          "name": "John Doe",
+          "username": "bartolomew",
+          "name": "Bart Simpson",
           "avatarUrl": "http://url/to/avatar.jpg",
-          "thumbUrl": "http://url/to/thumb.jpg"
+          "thumbUrl": "build/img/bart.jpg"
+        },
+        "createdAt": "2016-08-13T00:00:00Z",
+        "updatedAt": "2016-08-13T00:00:00Z"
+      },
+      {
+        "id": 3,
+        "parentId": 2,
+        "text": "Eat my shorts!",
+        "imageUrl": "http://url/to/image.jpg",
+        "location": [-73.856077, 40.848447],
+        "owner": {
+          "id": 1,
+          "username": "bartolomew",
+          "name": "Bart Simpson",
+          "avatarUrl": "http://url/to/avatar.jpg",
+          "thumbUrl": "build/img/bart.jpg"
         },
         "createdAt": "2016-08-13T00:00:00Z",
         "updatedAt": "2016-08-13T00:00:00Z"

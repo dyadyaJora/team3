@@ -12,6 +12,7 @@ $colorBtnSubscribe__hover: #759abb;
 
 /* Width map */
 $mobileWidth: 540px;
+$iphonesWidth: 414px;
 
 body {
   @include outer-container();
@@ -79,5 +80,14 @@ a {
 @media only screen and (max-width: $mobileWidth) {
   .page-container {
     padding: 40px 10px 80px;
+  }
+}
+
+@media only screen and (max-width: $iphonesWidth) {
+  body {
+    background: $colorWhite;
+  }
+  .page-container {
+    padding: 40px 0 80px;
   }
 }

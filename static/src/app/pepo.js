@@ -13,6 +13,10 @@ window.pepo = angular.module('pepo', ['ngRoute', 'ngResource', 'satellizer'])
         templateUrl: './build/templates/my-profile.html',
         controller: 'myProfileCtrl'
       })
+      .when('/pep:pepId', {
+        templateUrl: './build/templates/single-pep.html',
+        controller: 'singlePepCtrl'
+      })
         .when('/edit-profile', {
             templateUrl: './build/templates/edit-profile.html',
             controller: 'editProfileCtrl'
