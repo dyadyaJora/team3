@@ -82,3 +82,12 @@ a {
     padding: 40px 10px 80px;
   }
 }
+
+@media only screen and (max-width: $iphonesWidth) {
+  body {
+    background: $colorWhite;
+  }
+  .page-container {
+    padding: 40px 0 80px;
+  }
+}

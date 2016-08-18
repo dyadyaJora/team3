@@ -87,11 +87,11 @@
             <div class="tweet-actions_coutn">2</div>
           </li>
 
-          <li class="tweet-actions_item tweet-actions_item__edit">
+          <li class="tweet-actions_item tweet-actions_item__edit" ng-show="isOwner(currentTweet.owner.username, answer.owner.username)">
             <div class="tweet-actions_icon"></div>
           </li>
 
-           <li class="tweet-actions_item tweet-actions_item__remove">
+           <li class="tweet-actions_item tweet-actions_item__remove" ng-show="isOwner(currentTweet.owner.username, answer.owner.username)">
             <div class="tweet-actions_icon"></div>
           </li>
         </ul>

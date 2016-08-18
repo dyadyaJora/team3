@@ -92,11 +92,21 @@
 }
 
 .tweet-answers {
-  background: #f7f7f7;
+  background: #fcfcfc;
   border: 1px solid #c7c7c7;
   border-top: none;
   border-radius: 0 0 4px 4px;
-  padding: 0 20px 0 60px;
+  padding: 24px 20px 0 30px;
+  position: relative;
+  &:before {
+    content: '';
+    background: $colorBlue;
+    position: absolute;
+    top: 10px;
+    bottom: 10px;
+    left: 15px;
+    width: 2px;
+  }
 }
 .tweet-answers_item {
   border-bottom: 1px solid #c7c7c7;
@@ -110,8 +120,33 @@
 }
 
 @media only screen and (max-width: $iphonesWidth) {
+  .single-tweet {
+    border: none;
+    border-bottom: 1px solid $colorBorder;
+    border-radius: 0;
+    margin-top: 0;
+  }
   .single-tweet-content_text {
     font-size: 22px;
     line-height: 24px;
   }
+  .tweet-answers {
+    border: none;
+    border-radius: 0;
+
+  }
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+

@@ -8,7 +8,7 @@ pepo.constant('MOCKTWEETS',
     "location": [-73.856077, 40.848447],
     "owner": {
       "id": 1,
-      "username": "username",
+      "username": "lisa",
       "name": "Lisa Simpson",
       "avatarUrl": "http://url/to/avatar.jpg",
       "thumbUrl": "build/img/lisa.jpg"
