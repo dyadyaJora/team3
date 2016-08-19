@@ -1,4 +1,5 @@
 var mongoose = require('mongoose');
+var crypto = require('crypto');
 var patchPlugin = require('../lib/patch-plugin.js');
 var Schema = mongoose.Schema;
 
@@ -7,7 +8,8 @@ var userSchema = new Schema({
   name: { type: String, required: true, maxlength: 20 },
   fbId: Number,
   vkId: Number,
-  token: { type: String }
+  token: { type: String },
+  following: [{ type: Schema.ObjectId, ref: 'User' }]
 }, {
   timestamps: true
 });
@@ -32,6 +34,34 @@ userSchema.plugin(patchPlugin, {
   permitParams: ['username', 'name']
 });
 
+userSchema.methods.isFollowing = function(user) {
+  return this.following.indexOf(user._id) != -1;
+};
+
+userSchema.methods.follow = function(user, cb) {
+  if (this.isFollowing(user)) {
+    return cb();
+  }
+
+  this.model('User').update({
+    _id: this._id
+  }, {
+    $push: {
+      following: user._id
+    }
+  }, cb);
+};
+
+userSchema.methods.unFollow = function(user, cb) {
+  this.model('User').update({
+    _id: this._id
+  }, {
+    $pull: {
+      following: user._id
+    }
+  }, cb);
+};
+
 userSchema.pre('save', function(next) {
   if (this.token) { return next(); }
 
@@ -41,7 +71,7 @@ userSchema.pre('save', function(next) {
 mongoose.model('User', userSchema);
 
 function generateToken(user, done) {
-  var token = require('crypto').randomBytes(64).toString('hex');
+  var token = crypto.randomBytes(64).toString('hex');
 
   user.model('User').count({ token: token }, function(err, count) {
     if (err) { return done(err); }

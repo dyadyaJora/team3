@@ -30,14 +30,10 @@ app.use(passport.initialize());
 var initPassport = require('./passport');
 initPassport(passport);
 
-var routes = require('./routes/index');
-var authRoutes = require('./routes/auth')(passport);
-var userRoutes = require('./routes/user');
-
-var bearerAuth = passport.authenticate('bearer', { session: false });
-app.use('/', routes);
-app.use('/api/auth', authRoutes);
-app.use('/api/user', bearerAuth, userRoutes);
+app.use('/', require('./routes/index'));
+app.use('/api/auth', require('./routes/auth')(passport));
+app.use('/api/user', require('./routes/user')(passport));
+app.use('/api/users', require('./routes/users')(passport));
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
