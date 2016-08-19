@@ -16,11 +16,14 @@
   $modal-image-height: 135px;
   $modal-image-width: $modal-image-height;
   $modal-trigger-image-width: 300px;
-
+  .modal-answer__active{
+    visibility: visible !important;
+    opacity: 1 !important;
+  }
   .pepo-modal-top{
     padding: 1.5em;
     text-align: center;
-    border-bottom: 1px solid #e5e5e5;
+    border-bottom: 1px solid $colorGrey;
   }
   .pepo-modal_label {
     cursor: pointer;
@@ -162,8 +165,21 @@
       margin: 10px 0;
     }
     .tweet-header_date__answer{
-      color: #c7c7c7;
+      color: $colorGrey;
       font-size: 10px;
+    }
+  }
+}
+
+
+.tweet-type_answer{
+  @include outer-container;
+  padding: 1.5em;
+  border-top: 1px solid $colorGrey;
+  .tweet-textarea_answer{
+    @include span-columns(9);
+    textarea{
+      width:100%;
     }
   }
 }
