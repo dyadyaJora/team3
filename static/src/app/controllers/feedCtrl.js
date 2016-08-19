@@ -11,7 +11,8 @@ pepo.controller('feedCtrl', function($location, $auth, $scope, MOCKTWEETS) {
     $location.path('/pep' + pepId);
   }
   $scope.myVar = false;
-  $scope.openModal = function() {
+  $scope.openModal = function(id) {
     $scope.myVar = true;
+   	$scope.pep = MOCKTWEETS[id];
   }
 });
