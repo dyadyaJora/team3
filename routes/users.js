@@ -84,6 +84,9 @@ module.exports = function(passport) {
 
     });
 
+  router.use('/:username/statuses',
+    findUser('_id'), require('./user-statuses'));
+
   return router;
 };
 
