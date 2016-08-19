@@ -5,7 +5,7 @@
 }
 
 .tweets {
-  margin-bottom: 100px;
+  margin-bottom: 40px;
   margin-top: 40px;
 }
 .tweets_item {
@@ -149,10 +149,19 @@
   }
 }
 
-@media only screen and (max-width: $iphonesWidth) {
-  .tweets {
-    margin-bottom: 0;
+.load-more-btn {
+  background: url('../img/icon-add.svg')no-repeat center;
+  background-size: contain;
+  cursor: pointer;
+  margin: 0 auto;
+  height: 50px;
+  width: 50px;
+  &:hover {
+    background-image: url('../img/icon-add__active.svg');
   }
+}
+
+@media only screen and (max-width: $iphonesWidth) {
   .tweets_item {
     border: none;
     border-bottom: 1px solid $colorBorder;
