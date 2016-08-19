@@ -10,9 +10,17 @@ pepo.controller('feedCtrl', function($location, $auth, $scope, MOCKTWEETS) {
   $scope.goToPep = function(pepId) {
     $location.path('/pep' + pepId);
   }
-  $scope.myVar = false;
-  $scope.openModal = function(id) {
-    $scope.myVar = true;
-   	$scope.pep = MOCKTWEETS[id];
+
+  $scope.varAnswer = false;
+  $scope.varDel = false;
+  $scope.openModalAnswer = function(id) {
+    $scope.varAnswer = true;
+  	$scope.pep = MOCKTWEETS[id];
+    
   }
+  $scope.openModalDel = function(id) {
+    $scope.varDel = true;
+  	$scope.pep = MOCKTWEETS[id];
+  }
+
 });

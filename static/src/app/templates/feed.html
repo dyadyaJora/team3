@@ -1,7 +1,7 @@
 <div class="modal">
-  <div class="modal-fade-screen" ng-class="{'modal-answer__active': myVar}">
+  <div class="modal-fade-screen" ng-class="{'modal-answer__active': varAnswer}">
     <div class="modal-inner">
-      <div class="modal-close" ng-click="myVar=''"></div>
+      <div class="modal-close" ng-click="varAnswer=''"></div>
       <header class="pepo-modal-top">Ответить @{{pep.owner.username}}
       </header>
       <section class="tweet_answer">
@@ -25,6 +25,35 @@
         <div class="tweet-buttons-block_answer">
           <input type="file">
           <input type="submit" value="Ответить" class="tweet-btn_answer">
+        </div>
+      </section>
+    </div>
+  </div>
+</div>
+
+<div class="modal">
+  <div class="modal-fade-screen" ng-class="{'modal-answer__active': varDel}">
+    <div class="modal-inner">
+      <div class="modal-close" ng-click="varDel=''"></div>
+      <header class="pepo-modal-top">Вы уверены что хотите удалить пеп?
+      </header>
+      <section class="tweet_answer">
+        <div class="tweet-user-img_answer">
+          <img ng-src="{{pep.owner.thumbUrl}}" alt="">
+        </div>
+        <div class="tweet-content_answer">
+          <div class="tweet-header_user-name">{{pep.owner.name}}
+          </div>
+          <div class="tweet-header_user-login">@{{pep.owner.username}}
+          </div>
+          <div class="tweet-header_date__answer">{{pep.createdAt}}</div>
+          <p class="tweet-content_text__answer">{{pep.text}}</p>
+        </div>
+      </section>
+      <section class="tweet-type_answer">
+        <div class="tweet-buttons-block_answer">
+          <input type="submit" value="Отмена" ng-click="varDel=''">
+          <input type="submit" value="Удалить">
         </div>
       </section>
     </div>
@@ -74,7 +103,7 @@
           </li>
 
 
-           <li class="tweet-actions_item tweet-actions_item__answers" ng-click="openModal($index)">
+           <li class="tweet-actions_item tweet-actions_item__answers" ng-click="openModalAnswer($index)">
             <div class="tweet-actions_icon"> </div>
             <div class="tweet-actions_coutn"> 2</div>
            </li>
@@ -83,7 +112,7 @@
             <div class="tweet-actions_icon"></div>
           </li>
 
-           <li class="tweet-actions_item tweet-actions_item__remove">
+           <li class="tweet-actions_item tweet-actions_item__remove" ng-click="openModalDel($index)">
             <div class="tweet-actions_icon"></div>
           </li>
 
