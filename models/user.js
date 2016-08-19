@@ -34,6 +34,34 @@ userSchema.plugin(patchPlugin, {
   permitParams: ['username', 'name']
 });
 
+userSchema.methods.isFollowing = function(user) {
+  return this.following.indexOf(user._id) != -1;
+};
+
+userSchema.methods.follow = function(user, cb) {
+  if (this.isFollowing(user)) {
+    return cb();
+  }
+
+  this.model('User').update({
+    _id: this._id
+  }, {
+    $push: {
+      following: user._id
+    }
+  }, cb);
+};
+
+userSchema.methods.unFollow = function(user, cb) {
+  this.model('User').update({
+    _id: this._id
+  }, {
+    $pull: {
+      following: user._id
+    }
+  }, cb);
+};
+
 userSchema.pre('save', function(next) {
   if (this.token) { return next(); }
 

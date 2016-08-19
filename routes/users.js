@@ -51,6 +51,39 @@ module.exports = function(passport) {
 
     });
 
+  router.post('/:username/follow',
+    passport.authenticate('bearer', { session: false }),
+    findUser('_id'),
+    function(req, res, next) {
+      console.log(req.user._id, req._user._id, req.user._id.equals(req._user._id));
+      if (req.user._id.equals(req._user._id)) {
+        var err = new Error('Невозможно подписаться на данного пользователя.');
+        err.status = 403;
+        return next(err);
+      }
+
+      req.user.follow(req._user, function(err) {
+        if (err) { return next(err); }
+
+        res.status(204);
+        res.end();
+      });
+
+    });
+
+  router.delete('/:username/follow',
+    passport.authenticate('bearer', { session: false }),
+    findUser('_id'),
+    function(req, res, next) {
+      req.user.unFollow(req._user, function(err) {
+        if (err) { return next(err); }
+
+        res.status(204);
+        res.end();
+      });
+
+    });
+
   return router;
 };
 
