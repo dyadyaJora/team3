@@ -7,26 +7,76 @@ var Status = mongoose.model('Status');
 var statusFields = '_id text owner';
 var userFields = '_id username name';
 
-router.get('/', function(req, res, next) {
+var permitParams = ['text'];
 
-  Status.find({})
-    .populate({ path: 'owner', select: userFields })
-    .select(statusFields)
-    .exec(function(err, statuses) {
-      if (err) { return next(err); }
+module.exports = function(passport) {
 
-      res.json(statuses);
-    });
+  router.get('/', function(req, res, next) {
+    Status.find({})
+      .populate({ path: 'owner', select: userFields })
+      .select(statusFields)
+      .exec(function(err, statuses) {
+        if (err) { return next(err); }
 
-});
-
-router.get('/:id',
-  findStatus(statusFields),
-  function(req, res) {
-    res.json(req._status);
+        res.json(statuses);
+      });
   });
 
-module.exports = router;
+  router.post('/',
+    passport.authenticate('bearer', { session: false }),
+    function(req, res, next) {
+      var params = req.body;
+      var status = new Status();
+
+      for (var param in params) {
+        if (params.hasOwnProperty(param) && permitParams.indexOf(param) != -1) {
+          status[param] = params[param];
+        }
+      }
+
+      status.owner = req.user._id;
+
+      status.save(function(err, status) {
+        if (err) { return next(err); }
+
+        res.status(201);
+        res.json(status);
+      });
+    });
+
+  router.get('/:id',
+    findStatus(statusFields),
+    function(req, res) {
+      res.json(req._status);
+    });
+
+  router.patch('/:id',
+    passport.authenticate('bearer', { session: false }),
+    findStatus(), checkOwner,
+    function(req, res, next) {
+      req._status.patch(req.body, function(err, status) {
+        if (err) { return next(err); }
+
+        res.json(status);
+      });
+    });
+
+  router.delete('/:id',
+    passport.authenticate('bearer', { session: false }),
+    findStatus('_id, owner'), checkOwner,
+    function(req, res, next) {
+      req._status.remove(function(err) {
+        if (err) { return next(err); }
+
+        res.status(204);
+        res.end();
+      });
+    }
+  );
+
+  return router;
+
+};
 
 function findStatus(fields) {
 
@@ -54,4 +104,14 @@ function findStatus(fields) {
       });
   }
 
+}
+
+function checkOwner(req, res, next) {
+  if (!req.user._id.equals(req._status.owner._id)) {
+    var err = new Error('Пеп принадлежит другому пользователю.');
+    err.status = 403;
+    return next(err);
+  }
+
+  next();
 }
