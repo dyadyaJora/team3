@@ -1,5 +1,5 @@
 <div class="modal">
-  <div class="modal-fade-screen" ng-class="myVar">
+  <div class="modal-fade-screen" ng-class="{'modal-answer__active': myVar}">
     <div class="modal-inner">
       <div class="modal-close" ng-click="myVar=''"></div>
       <header class="pepo-modal-top">Ответить @{{tweets[1].owner.username}}
@@ -71,8 +71,8 @@
           </li>
 
 
-           <li class="tweet-actions_item tweet-actions_item__answers" ng-click="myVar='modal-answer__active'">
-            <div class="tweet-actions_icon" ng-click="myVar='modal-answer__active'"></div>
+           <li class="tweet-actions_item tweet-actions_item__answers" ng-click="openModal()">
+            <div class="tweet-actions_icon"> </div>
             <div class="tweet-actions_coutn"> 2</div>
            </li>
  

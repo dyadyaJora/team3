@@ -10,4 +10,8 @@ pepo.controller('feedCtrl', function($location, $auth, $scope, MOCKTWEETS) {
   $scope.goToPep = function(pepId) {
     $location.path('/pep' + pepId);
   }
+  $scope.myVar = false;
+  $scope.openModal = function() {
+    $scope.myVar = true;
+  }
 });
