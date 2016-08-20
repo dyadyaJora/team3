@@ -6,7 +6,7 @@
   &:last-child {
     margin-bottom: 0;
   }
-  .user-profile_img{
+  .user-profile_img {
     width: 175px;
     display: inline-block;
     vertical-align: top;
@@ -26,13 +26,15 @@
     text-overflow: ellipsis;
     overflow: hidden;
   }
-  .user-profile_nickname{
+  .user-profile_nickname {
     color: $colorTextLightGrey;
     font-size: 13px;
     position: relative;
     top: -3px;
   }
   .user-profile_subscribe {
+    position: absolute;
+    bottom: 30px;
     width: 95px;
     color: $colorWhite;
     background: $colorBtnSubscribe;
@@ -52,7 +54,7 @@
   }
 }
 
-.user-profile-info{
+.user-profile-info ul {
   width: 100%;
   max-width: 265px;
   margin-left: auto;
@@ -64,7 +66,7 @@
     text-align: center;
     padding: 0 10px;
     vertical-align: top;
-    &.user-profile-info_item__active{
+    &.user-profile-info_item__active {
       border-bottom: 2px solid $colorBtnSubscribe;
     }
     &:last-child {
@@ -82,35 +84,50 @@
   }
 }
 
-
 @media only screen and (max-width: $mobileWidth) {
-  .user-profile{
+  .user-profile {
     .user-profile_subscribe {
       position: initial;
-      margin: 15px 0;
-      width: 100%;
+      width: calc(100% - 125px);
+      margin: 37px 0 0 125px;
     }
-    .user-profile_name,
+    .user-profile_nickname {
+      width: calc(100% - 125px);
+      margin-left: 125px;
+    }
     .user-profile_description {
-      max-width: 100%;
+      margin-bottom: 0;
     }
-    .user-profile_img,
+    .user-profile_name {
+      width: calc(100% - 125px);
+      margin-left: 125px;
+    }
+    .user-profile_img {
+      position: absolute;
+      width: 115px;
+    }
     .user-profile_content {
       display: block;
       width: 100%;
-    }
-    .user-profile_img {
-      border-radius: 50%;
-    }
-    .user-profile_content {
       margin-left: 0;
-      margin-top: 15px;
     }
+
     .user-profile-info {
       text-align: center;
     }
   }
+}
+
+@media only screen and (max-width: $iphonesWidth) {
+  .user-profile-info,
+  .user-profile {
+    border-bottom: 1px solid #e0e0e0;
   }
+  .user-profile{
+    margin-bottom: 0;
+  }
+}
+
 
 
 
