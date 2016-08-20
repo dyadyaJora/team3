@@ -1,6 +1,9 @@
 .visible-block__edit{
-	display: block;
+	display: block !important; 
+}
+.novisible-block__edit{
+	display: none;
 }
 .hidden-block_edit{
-	display: none;
+	display:none;
 }

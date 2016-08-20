@@ -41,11 +41,13 @@ pepo.controller('feedCtrl', function($q, $location, $auth, $scope, userApi, peps
   $scope.varAnswer = false;
   $scope.varDel = false;
   $scope.openModalAnswer = function(id) {
+    $scope.varEdit1 = [];
     $scope.varAnswer = true;
   	$scope.pep = $scope.tweets[id];
   }
 
   $scope.openModalDel = function(index, id) {
+    $scope.varEdit1 = [];
     $scope.varDel = true;
   	$scope.pep = $scope.tweets[index];
     $scope.delIndex = index;
@@ -58,6 +60,12 @@ pepo.controller('feedCtrl', function($q, $location, $auth, $scope, userApi, peps
 		$scope.varAnswer=false;
 		$scope.varDel=false;
 	  }
+  }
+
+  
+  $scope.edit = function(index){
+    $scope.varEdit1 = [];
+    $scope.varEdit1[index] = true;
   }
 
   $scope.deletePep = function(){
