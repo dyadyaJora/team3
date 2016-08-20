@@ -69,6 +69,31 @@ pepo.controller('feedCtrl', function($q, $location, $auth, $scope, userApi, peps
     });
   }
 
+    
+  $scope.editPepStart = function(index, id, text){
+    $scope.editId = id;
+    console.log(id);
+    $scope.editPepText = text;
+    $scope.editIndex = index;
+    $scope.varEdit1 = [];
+    $scope.varEdit1[index] = true;
+  }
+  
+  $scope.editPep = function(){
+    pepEdit = {text: $scope.editPepText };
+    pepsApi.editPep({id: $scope.editId}, pepEdit).$promise.then(function(data){
+      $scope.tweets.find(function(pep) {
+        if (pep._id === data._id) {
+          currentPep = pep;
+        }
+      });
+      currentPep.text = data.text;
+      $scope.varEdit1 = [];
+  }).catch(function(eror){
+    $scope.varEdit1 = [];
+  });
+  }
+
   // Server latency mock.
   function sleep (milliSeconds) {
     var startTime = new Date().getTime();
