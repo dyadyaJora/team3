@@ -24,6 +24,7 @@ app.use(logger('dev'));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use('/build', express.static(path.join(__dirname, 'build')));
+app.use('/uploads', express.static(path.join(__dirname, 'uploads')));
 
 app.use(passport.initialize());
 

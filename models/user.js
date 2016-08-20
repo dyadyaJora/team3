@@ -7,6 +7,7 @@ var Schema = mongoose.Schema;
 var userSchema = new Schema({
   username: { type: String, required: true, trim: true, minlength: 4 },
   name: { type: String, required: true, maxlength: 20 },
+  avatar: String,
   fbId: Number,
   vkId: Number,
   token: { type: String },
@@ -64,6 +65,10 @@ userSchema.methods.unFollow = function(user, cb) {
     }
   }, cb);
 };
+
+userSchema.virtual('avatarUrl').get(function() {
+  return this.avatar && '/uploads/avatar/' + this.avatar;
+});
 
 userSchema.pre('save', function(next) {
   if (this.token) { return next(); }
