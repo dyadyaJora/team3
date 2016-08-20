@@ -24,6 +24,7 @@ pepo.controller('feedCtrl', function($q, $location, $auth, $scope, userApi, peps
       console.log(err);
     })
     $scope.varAnswer = false;
+    $scope.newPepText = '';
   }
 
   $scope.tweets = MOCKTWEETS;
