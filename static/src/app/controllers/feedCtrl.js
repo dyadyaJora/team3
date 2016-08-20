@@ -10,4 +10,25 @@ pepo.controller('feedCtrl', function($location, $auth, $scope, MOCKTWEETS) {
   $scope.goToPep = function(pepId) {
     $location.path('/pep' + pepId);
   }
+
+  $scope.varAnswer = false;
+  $scope.varDel = false;
+  $scope.openModalAnswer = function(id) {
+    $scope.varAnswer = true;
+  	$scope.pep = MOCKTWEETS[id];
+    
+  }
+  $scope.openModalDel = function(id) {
+    $scope.varDel = true;
+  	$scope.pep = MOCKTWEETS[id];
+  }
+
+  $scope.closeModalAnswer = function($event){
+	var click = angular.element($event.target).parent();
+	if(click.hasClass("modal")){
+		$scope.varAnswer=false;
+		$scope.varDel=false;
+	}
+  }
+
 });
