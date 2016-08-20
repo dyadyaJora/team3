@@ -53,7 +53,7 @@
       <section class="tweet-type_answer">
         <div class="tweet-buttons-block_answer">
           <input type="submit" value="Отмена" ng-click="varDel=''">
-          <input type="submit" value="Удалить">
+          <input type="submit" value="Удалить" ng-click="deletePep()">
         </div>
       </section>
     </div>
@@ -79,7 +79,7 @@
 
 <section class="page-container">
   <ul class="tweets">
-    <li class="tweets_item" ng-init="i=0" ng-repeat="tweet in tweets">
+    <li class="tweets_item" ng-init="i=0" ng-repeat="tweet in tweets" id="{{tweet.id}}">
       <header class="tweet-header">
         <div class="tweet-header_user">
           <img ng-src="{{tweet.owner.thumbUrl}}" alt="" class="tweet-header_user-img">
