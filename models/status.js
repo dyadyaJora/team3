@@ -1,5 +1,6 @@
 var mongoose = require('mongoose');
 var patchPlugin = require('../lib/patch-plugin');
+var paginationPlugin = require('../lib/pagination-plugin');
 var Schema = mongoose.Schema;
 
 var statusSchema = new Schema({
@@ -12,5 +13,7 @@ var statusSchema = new Schema({
 statusSchema.plugin(patchPlugin, {
   permitParams: ['text']
 });
+
+statusSchema.plugin(paginationPlugin);
 
 mongoose.model('Status', statusSchema);
