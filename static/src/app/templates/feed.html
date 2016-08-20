@@ -59,24 +59,7 @@
     </div>
   </div>
 </div>
-
-
-<header class="header">
-    <div class="header_logo">
-      <p class="header_logo-img">PEPO</p>
-    </div>
-    <div class="header_user">
-      <div class="header_user-profil">
-        <p class="header_user_avatar-name">BobDodo</p>
-      </div>
-    </div>
-    <div class="header_logout">
-      <div class="header_logout-contein">
-          <input ng-click="logout()" type="button" class="header_user_logout-btn" title="Button" value=""/>
-      </div>
-    </div>
-</header>
-
+<pepo-header></pepo-header>
 <section class="page-container">
   <ul class="tweets">
     <li class="tweets_item"  ng-repeat="tweet in tweets">
@@ -90,6 +73,9 @@
         </div>
         <div class="tweet-header_date" ng-click="goToPep(tweet.id)">{{tweet.createdAt}}</div>
       </header>
+
+
+
 
       <section class="tweet-content">
         <p class="tweet-content_text">{{tweet.text}}</p>

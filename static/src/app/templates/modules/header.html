@@ -1,0 +1,31 @@
+<header class="header">
+	<div class="header-restrictor">
+		<div class="header_logo">
+			<a href="/" class="header_logo-img">PEPO</a>
+		</div> 
+		<div class="header_user">
+			<div class="header_user-profil">
+				<p class="header_user_avatar-name">BobDodo</p>
+			</div>
+		</div>
+		<div class="header-actions">
+			<ul class="header-actions-list">
+				<li class="header-action_item"><input type="button" class="header-btn add-twitt_contain__mod" title="Button" value=""/></li>
+				<li class="header-action_item"><input type="button" class="header-btn search-user_contain__mod" title="Button" value=""/></li>
+				<li class="header-action_item"><input type="button" ng-click="toggleMenu()" class="header-btn header_user_logout-btn__mod" title="Button" value=""/></li>
+			</ul>
+		</div> 		
+	</div>	
+</header>
+<div class="slide-effect_bg" ng-class="{'slide-effect_bg__show': menuOpened }" ng-click="closeSlideMenu($event)">
+	<div class="slide-menu">
+		<ul class="slide-menu_list">
+			<li class="slide-menu_item"><a class="slide-menu_link" href="">Лента</a></li>
+			<li class="slide-menu_item slide-menu_item__separator "><a class="slide-menu_link" href="">Поиск</a></li>
+			<li class="slide-menu_item"><a class="slide-menu_link" href="">Мой профиль</a></li>
+			<li class="slide-menu_item slide-menu_item__separator"><a class="slide-menu_link" href="">Редактировать</a></li>
+			<li ng-click="logout()" class="slide-menu_item"><a class="slide-menu_link" href="">Выйти</a></li>
+		</ul>
+		<button class="cancel-menu_btn"  ng-click="toggleMenu()" >
+	</div>
+</div>
