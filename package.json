@@ -37,7 +37,8 @@
     "passport-http-bearer": "^1.0.1",
     "passport-vkontakte": "^0.3.2",
     "satellizer": "^0.15.4",
-    "serve-favicon": "~2.3.0"
+    "serve-favicon": "~2.3.0",
+    "sharp": "^0.16.0"
   },
   "devDependencies": {
     "bourbon": "^4.2.7",

@@ -67,7 +67,11 @@ userSchema.methods.unFollow = function(user, cb) {
 };
 
 userSchema.virtual('avatarUrl').get(function() {
-  return this.avatar && '/uploads/avatar/' + this.avatar;
+  return this.avatar && '/uploads/avatar/175_' + this.avatar;
+});
+
+userSchema.virtual('thumbUrl').get(function() {
+  return this.avatar && '/uploads/avatar/50_' + this.avatar;
 });
 
 userSchema.pre('save', function(next) {
