@@ -1,11 +1,20 @@
-pepo.controller('editProfileCtrl', function($location, $scope, MOCKUSERS){
+pepo.controller('editProfileCtrl', function ($location, $scope, MOCKUSERS) {
     console.log('Edit profile');
     $scope.user = MOCKUSERS[1];
-
-    $scope.updateUser = function() {
-      $location.path('/feed');
-    }
-    $scope.editCancel = function() {
-      $location.path('/feed');
+    $scope.varOpenEditPhoto = false;
+    $scope.varNoScroll = false;
+    $scope.updateUser = function () {
+        $location.path('/feed');
+    };
+    $scope.editCancel = function () {
+        $location.path('/feed');
+    };
+    $scope.openModalEditPhoto = function () {
+        $scope.varOpenEditPhoto = true;
+        $scope.varNoScroll = true;
+    };
+    $scope.closeModalEditPhoto = function () {
+        $scope.varOpenEditPhoto = false;
+        $scope.varNoScroll = false;
     }
 });

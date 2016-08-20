@@ -14,7 +14,7 @@
     </div>
 </header>
 
-<section class="page-container">
+<section class="page-container" ng-class="{'page-container__no-scroll':varNoScroll}">
 
   <h1 class="pepo-title">Edit profile:</h1>
 
@@ -24,8 +24,7 @@
 
     <li class="user-edit_item">
       <div class="user-edit_img-wrapper">
-        <img ng-src="{{user.avatarUrl}}" alt="{{user.name}}" class="user-edit_img">
-        <input type="file" class="user-edit_img-input">
+        <img ng-src="{{user.avatarUrl}}" alt="{{user.name}}" ng-click="openModalEditPhoto()" class="user-edit_img">
       </div>
 
     <li class="user-edit_item">
@@ -38,3 +37,15 @@
   </ul>
 
 </section>
+
+<div class="modal-edit-user-photo" ng-class="{'modal-edit-user-photo__active': varOpenEditPhoto}">
+    <div class="modal-edit-user-photo_cover" ng-click="closeModalEditPhoto()"></div>
+    <div class="modal-edit-user-photo_form">
+        <div class="modal-edit-user-photo_close" ng-click="closeModalEditPhoto()"></div>
+            <label>
+                <span class="icon-upload"></span>
+                <span class="text-upload">Upload photo</span>
+                <input type="file" name="upload-user-photo"/>
+            </label>
+    </div>
+</div>

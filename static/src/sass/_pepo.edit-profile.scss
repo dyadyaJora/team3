@@ -1,3 +1,4 @@
+$sizeIconUpload: 24px;
 .user-edit {
   background: $colorWhite;
   padding: 30px 15px;
@@ -23,7 +24,10 @@
 }
 
 .user-edit_img {
+  display: block;
   width: 200px;
+  margin-right: auto;
+  margin-left: auto;
 }
 
 .user-edit_description {
@@ -39,6 +43,7 @@
     background: $colorBlue__hover;
   }
 }
+
 .user-edit_cancel {
   background: $colorRed;
   color: $colorWhite;
@@ -46,5 +51,103 @@
   transition: background 200ms;
   &:hover {
     background: $colorRed__hover;
+  }
+}
+
+.modal-edit-user-photo {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 20;
+  transform: translateX(-100%);
+  &.modal-edit-user-photo__active {
+    transform: translateX(0);
+    transition: opacity ease-out 500ms;
+    .modal-edit-user-photo_cover{
+      opacity: 0.3;
+    }
+    .modal-edit-user-photo_form{
+      opacity: 1;
+    }
+  }
+  .modal-edit-user-photo_form {
+    position: absolute;
+    top: 200px;
+    left: 50%;
+    width: 80%;
+    max-width: 500px;
+    background: $colorWhite;
+    border-radius: 3px;
+    transform: translateX(-50%);
+    opacity: 0;
+    transition: opacity ease-out 500ms;
+    label {
+      display: block;
+      margin: 20px 35px 20px 10px;
+      .icon-upload {
+        display: inline-block;
+        width: $sizeIconUpload;
+        height: $sizeIconUpload;
+        vertical-align: middle;
+        background-image: url("../img/icon_upload.svg");
+        background-size: contain;
+      }
+      .text-upload {
+        display: inline-block;
+        margin-left: 10px;
+        vertical-align: middle;
+      }
+      input {
+        display: none;
+      }
+    }
+  }
+  .modal-edit-user-photo_cover {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: black;
+    opacity: 0;
+    transition: opacity ease-out 300ms;
+  }
+
+  .modal-edit-user-photo_close {
+    position: absolute;
+    top: 3px;
+    right: 3px;
+    width: 24px;
+    height: 24px;
+    &:before {
+      transform: rotate(-45deg);
+      position: absolute;
+      top: 3px;
+      right: 3px;
+      bottom: 0;
+      left: 50%;
+      height: 1.5em;
+      width: 0.15em;
+      background: #ddd;
+      content: "";
+      display: block;
+      margin: -3px 0 0 -1px;
+    }
+    &:after {
+      position: absolute;
+      top: 4px;
+      right: 3px;
+      bottom: 0;
+      left: 50%;
+      height: 1.5em;
+      width: 0.15em;
+      background: #ddd;
+      content: "";
+      display: block;
+      margin: -3px 0 0 -1px;
+      transform: rotate(45deg);
+    }
   }
 }
