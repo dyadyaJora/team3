@@ -30,14 +30,16 @@ pepo.controller('feedCtrl', function($q, $location, $auth, $scope, pepsApi, MOCK
   $scope.varDel = false;
   $scope.openModalAnswer = function(id) {
     $scope.varAnswer = true;
-  	$scope.pep = MOCKTWEETS[id];
+  	$scope.pep = $scope.tweets[id];
 
   }
 
-  $scope.openModalDel = function(id) {
+  $scope.openModalDel = function(index, id) {
     $scope.varDel = true;
-  	$scope.pep = MOCKTWEETS[id];
+  	$scope.pep = $scope.tweets[index];
+    $scope.delIndex = index;
     $scope.delId = id;
+    console.log(id);
   }
 
   $scope.closeModalAnswer = function($event){
@@ -51,8 +53,12 @@ pepo.controller('feedCtrl', function($q, $location, $auth, $scope, pepsApi, MOCK
 
 
   $scope.deletePep = function(){
-    $scope.tweets.splice($scope.delId, 1);
+    pepsApi.deletePep({id: $scope.delId}).$promise.then(function(data){
+      $scope.tweets.splice($scope.delIndex, 1);
+      $scope.varDel=false;
+  }).catch(function(eror){
     $scope.varDel=false;
+  });   
 
   }
 
