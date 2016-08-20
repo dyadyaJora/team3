@@ -22,6 +22,7 @@ module.exports = function(passport) {
         })
         .select(statusFields)
         .populate({ path: 'owner', select: userFields })
+        .paginate(req.query)
         .exec(function(err, statuses) {
           if (err) { return next(err); }
 
