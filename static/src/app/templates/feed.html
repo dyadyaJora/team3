@@ -19,12 +19,12 @@
       </section>
       <section class="tweet-type_answer">
         <div class="tweet-textarea_answer">
-          <textarea name="" id="" >@{{pep.owner.username}}
+          <textarea ng-model="newPepText">
           </textarea>
         </div>
         <div class="tweet-buttons-block_answer">
           <input type="file">
-          <input type="submit" value="Ответить" class="tweet-btn_answer">
+          <input type="submit" value="Ответить" class="tweet-btn_answer" ng-click="sendPep()">
         </div>
       </section>
     </div>
@@ -107,7 +107,7 @@
             <div class="tweet-actions_icon"> </div>
             <div class="tweet-actions_coutn"> 2</div>
            </li>
- 
+
           <li class="tweet-actions_item tweet-actions_item__edit">
             <div class="tweet-actions_icon"></div>
           </li>

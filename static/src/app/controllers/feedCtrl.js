@@ -1,5 +1,20 @@
-pepo.controller('feedCtrl', function($location, $auth, $scope, MOCKTWEETS) {
+pepo.controller('feedCtrl', function($q, $location, $auth, $scope, pepsApi, MOCKTWEETS) {
   console.log('feedCtrl');
+  $scope.newPepText = '';
+  $q.when(pepsApi.getPeps().$promise).then(function(data){
+    $scope.tweets = data;
+  });
+
+  $scope.sendPep = function() {
+    console.log($scope.newPepText);
+    newPep = {
+      text: $scope.newPepText
+    }
+    pepsApi.sendPep(newPep);
+    $scope.tweets.push(newPep);
+  }
+
+
   $scope.tweets = MOCKTWEETS;
 
   $scope.logout = function() {
@@ -16,7 +31,7 @@ pepo.controller('feedCtrl', function($location, $auth, $scope, MOCKTWEETS) {
   $scope.openModalAnswer = function(id) {
     $scope.varAnswer = true;
   	$scope.pep = MOCKTWEETS[id];
-    
+
   }
 
   $scope.openModalDel = function(id) {
