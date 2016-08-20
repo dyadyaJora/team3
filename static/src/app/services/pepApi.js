@@ -21,6 +21,12 @@ pepo.service('pepsApi', function($resource) {
       params: {
         id: '@id'
       }
+    },
+    editPep: {
+      method: 'PUT',
+      params: {
+        id: '@id'
+      }
     }
   }
   );
