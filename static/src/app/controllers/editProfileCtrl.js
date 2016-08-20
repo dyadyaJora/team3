@@ -2,7 +2,6 @@ pepo.controller('editProfileCtrl', function ($location, $scope, MOCKUSERS) {
     console.log('Edit profile');
     $scope.user = MOCKUSERS[1];
     $scope.varOpenEditPhoto = false;
-    $scope.varNoScroll = false;
     $scope.updateUser = function () {
         $location.path('/feed');
     };
@@ -11,10 +10,8 @@ pepo.controller('editProfileCtrl', function ($location, $scope, MOCKUSERS) {
     };
     $scope.openModalEditPhoto = function () {
         $scope.varOpenEditPhoto = true;
-        $scope.varNoScroll = true;
     };
     $scope.closeModalEditPhoto = function () {
         $scope.varOpenEditPhoto = false;
-        $scope.varNoScroll = false;
     }
 });
