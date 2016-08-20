@@ -19,7 +19,6 @@ pepo.controller('feedCtrl', function($location, $auth, $scope, MOCKTWEETS) {
     
   }
 
-  $scope.delId =-1;
   $scope.openModalDel = function(id) {
     $scope.varDel = true;
   	$scope.pep = MOCKTWEETS[id];
@@ -37,11 +36,7 @@ pepo.controller('feedCtrl', function($location, $auth, $scope, MOCKTWEETS) {
 
 
   $scope.deletePep = function(){
-    console.log($scope.tweets);
-    console.log($scope.delId);
-
     $scope.tweets.splice($scope.delId, 1);
-    console.log($scope.tweets);
     $scope.varDel=false;
 
   }
