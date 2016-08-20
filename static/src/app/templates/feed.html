@@ -79,7 +79,7 @@
 
       <section class="tweet-content">
         <p class="tweet-content_text">{{tweet.text}}</p>
-        <div class="hidden-block_edit">
+        <div class="hidden-block_edit" ng-class="{'novisible-block__edit': varEdit}">
           <textarea>{{tweet.text}}</textarea>
           <div class="buttons-block-edit">
             <input type="button" value="Отменить">
