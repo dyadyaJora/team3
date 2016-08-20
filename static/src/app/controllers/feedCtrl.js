@@ -18,9 +18,11 @@ pepo.controller('feedCtrl', function($location, $auth, $scope, MOCKTWEETS) {
   	$scope.pep = MOCKTWEETS[id];
     
   }
+
   $scope.openModalDel = function(id) {
     $scope.varDel = true;
   	$scope.pep = MOCKTWEETS[id];
+    $scope.delId = id;
   }
 
   $scope.closeModalAnswer = function($event){
@@ -29,6 +31,14 @@ pepo.controller('feedCtrl', function($location, $auth, $scope, MOCKTWEETS) {
 		$scope.varAnswer=false;
 		$scope.varDel=false;
 	}
+  }
+
+
+
+  $scope.deletePep = function(){
+    $scope.tweets.splice($scope.delId, 1);
+    $scope.varDel=false;
+
   }
 
 });
