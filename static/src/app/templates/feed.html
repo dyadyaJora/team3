@@ -79,7 +79,7 @@
 
 <section class="page-container">
   <ul class="tweets">
-    <li class="tweets_item" ng-init="i=0" ng-repeat="tweet in tweets" >
+    <li class="tweets_item"  ng-repeat="tweet in tweets | orderBy:'-' ">
       <header class="tweet-header">
         <div class="tweet-header_user">
           <img ng-src="{{tweet.owner.thumbUrl}}" alt="" class="tweet-header_user-img">

@@ -1,17 +1,21 @@
 pepo.controller('feedCtrl', function($q, $location, $auth, $scope, pepsApi, MOCKTWEETS) {
   console.log('feedCtrl');
   $scope.newPepText = '';
-  $q.when(pepsApi.getPeps().$promise).then(function(data){
+  pepsApi.getPeps().$promise.then(function(data){
     $scope.tweets = data;
   });
 
   $scope.sendPep = function() {
-    console.log($scope.newPepText);
     newPep = {
       text: $scope.newPepText
     }
-    pepsApi.sendPep(newPep);
-    $scope.tweets.push(newPep);
+    pepsApi.sendPep(newPep).$promise.then(function(data){
+      $scope.tweets.push(newPep);
+    })
+    .catch(function(err) {
+      console.log(err);
+    })
+    $scope.varAnswer = false;
   }
 
 
