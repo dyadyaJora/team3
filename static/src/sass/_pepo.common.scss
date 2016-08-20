@@ -36,7 +36,10 @@ a {
   padding: 40px 20px 80px;
   max-width: 600px;
   margin: auto;
-
+  &.page-container__no-scroll{
+    overflow: hidden;
+    height: 100vh;
+  }
 }
 
 .pepo-title {
