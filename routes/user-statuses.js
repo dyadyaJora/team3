@@ -11,6 +11,8 @@ router.get('/', function(req, res, next) {
   Status.find({ owner: req._user._id })
     .select(statusFields)
     .populate({ path: 'owner', select: userFields })
+    .paginate(req.query)
+    .sort('-createdAt')
     .exec(function(err, statuses) {
       if (err) { return next(err); }
 

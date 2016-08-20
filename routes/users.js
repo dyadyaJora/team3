@@ -11,6 +11,7 @@ module.exports = function(passport) {
   router.get('/', function(req, res, next) {
     User.find({})
       .select(showFields)
+      .paginate(req.query)
       .exec(function(err, users) {
         if (err) { return next(err); }
 
@@ -43,6 +44,7 @@ module.exports = function(passport) {
 
       User.find({ following: req._user._id })
         .select(showFields)
+        .paginate(req.query)
         .exec(function(err, users) {
           if (err) { return next(err); }
 
