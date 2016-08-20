@@ -12,6 +12,7 @@ router.get('/', function(req, res, next) {
     .select(statusFields)
     .populate({ path: 'owner', select: userFields })
     .paginate(req.query)
+    .sort('-createdAt')
     .exec(function(err, statuses) {
       if (err) { return next(err); }
 

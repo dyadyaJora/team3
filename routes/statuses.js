@@ -16,6 +16,7 @@ module.exports = function(passport) {
       .populate({ path: 'owner', select: userFields })
       .select(statusFields)
       .paginate(req.query)
+      .sort('-createdAt')
       .exec(function(err, statuses) {
         if (err) { return next(err); }
 
