@@ -1,5 +1,5 @@
 <div class="modal">
-  <div class="modal-fade-screen" ng-class="{'modal-answer__active': varAnswer}">
+  <div class="modal-fade-screen" ng-class="{'modal-answer__active': varAnswer}" ng-click="closeModalAnswer($event)">
     <div class="modal-inner">
       <div class="modal-close" ng-click="varAnswer=''"></div>
       <header class="pepo-modal-top">Ответить @{{pep.owner.username}}
@@ -32,7 +32,7 @@
 </div>
 
 <div class="modal">
-  <div class="modal-fade-screen" ng-class="{'modal-answer__active': varDel}">
+  <div class="modal-fade-screen" ng-class="{'modal-answer__active': varDel}" ng-click="closeModalAnswer($event)">
     <div class="modal-inner">
       <div class="modal-close" ng-click="varDel=''"></div>
       <header class="pepo-modal-top">Вы уверены что хотите удалить пеп?

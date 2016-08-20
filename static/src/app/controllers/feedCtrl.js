@@ -23,4 +23,12 @@ pepo.controller('feedCtrl', function($location, $auth, $scope, MOCKTWEETS) {
   	$scope.pep = MOCKTWEETS[id];
   }
 
+  $scope.closeModalAnswer = function($event){
+	var click = angular.element($event.target).parent();
+	if(click.hasClass("modal")){
+		$scope.varAnswer=false;
+		$scope.varDel=false;
+	}
+  }
+
 });
