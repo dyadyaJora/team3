@@ -20,25 +20,74 @@
         <div class="user-profile_content">
             <div class="user-profile_name">Bart Simpson</div>
             <div class="user-profile_nickname">@bartolomew</div>
-            <p class="user-profile_description">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Beatae dolore esse et eum ex illum minus porro quam quos repudiandae?</p>
             <button class="pepo_btn user-profile_subscribe">+ Читать</button>
+            <p class="user-profile_description">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Beatae dolore esse et eum ex illum minus porro quam quos repudiandae?</p>
         </div>
 
     </div>
-    <ul class="user-profile-info">
-        <li class="user-profile-info_item user-profile-info_item__active">
-            <div class="user-profile-info_number">10</div>
-            <div class="user-profile-info_label">пепов</div>
-        </li>
-        <li class="user-profile-info_item">
-            <div class="user-profile-info_number">4</div>
-            <div class="user-profile-info_label">читаемых</div>
-        </li>
-        <li class="user-profile-info_item">
-            <div class="user-profile-info_number">12</div>
-            <div class="user-profile-info_label">читателей</div>
+    <div class="user-profile-info">
+        <ul>
+            <li class="user-profile-info_item user-profile-info_item__active">
+                <div class="user-profile-info_number">10</div>
+                <div class="user-profile-info_label">пепов</div>
+            </li>
+            <li class="user-profile-info_item">
+                <div class="user-profile-info_number">4</div>
+                <div class="user-profile-info_label">читаемых</div>
+            </li>
+            <li class="user-profile-info_item">
+                <div class="user-profile-info_number">12</div>
+                <div class="user-profile-info_label">читателей</div>
+            </li>
+        </ul>
+    </div>
+
+
+
+
+    <ul class="tweets">
+        <li class="tweets_item" ng-repeat="tweet in tweets">
+            <header class="tweet-header">
+                <div class="tweet-header_user">
+                    <img ng-src="{{tweet.owner.thumbUrl}}" alt="" class="tweet-header_user-img">
+                    <div class="tweet-header_name-wrapper">
+                        <div class="tweet-header_user-name">{{tweet.owner.name}}</div>
+                        <div class="tweet-header_user-login">@{{tweet.owner.username}}</div>
+                    </div>
+                </div>
+                <div class="tweet-header_date" ng-click="goToPep(tweet.id)">{{tweet.createdAt}}</div>
+            </header>
+
+            <section class="tweet-content">
+                <p class="tweet-content_text">{{tweet.text}}</p>
+            </section>
+
+            <footer class="tweet-footer">
+                <ul class="tweet-actions">
+                    <li class="tweet-actions_item tweet-actions_item__likes">
+                        <div class="tweet-actions_icon"></div>
+                        <div class="tweet-actions_coutn">3</div>
+                    </li>
+
+                    <li class="tweet-actions_item tweet-actions_item__answers">
+                        <div class="tweet-actions_icon"></div>
+                        <div class="tweet-actions_coutn">2</div>
+                    </li>
+
+                    <li class="tweet-actions_item tweet-actions_item__edit">
+                        <div class="tweet-actions_icon"></div>
+                    </li>
+
+                    <li class="tweet-actions_item tweet-actions_item__remove">
+                        <div class="tweet-actions_icon"></div>
+                    </li>
+
+                </ul>
+            </footer>
         </li>
     </ul>
+
+    <div class="load-more-btn"></div>
 
 
 </section>
