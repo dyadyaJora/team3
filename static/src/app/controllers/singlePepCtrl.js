@@ -1,4 +1,15 @@
-pepo.controller('singlePepCtrl', function($location, $scope, MOCKTWEETS) {
+pepo.controller('singlePepCtrl', function($location, $scope, pepsApi, userApi, MOCKTWEETS) {
+
+  currentPepId = $location.path().slice(4);
+
+  pepsApi.getSinglePep({id: currentPepId}).$promise.then(function(data) {
+    $scope.currentTweet = data;
+    $scope.parent = $scope.currentTweet.parent;
+  });
+  userApi.getUser().$promise.then(function(data) {
+    $scope.currentUser = data;
+  });
+
   $scope.currentTweet = MOCKTWEETS[0];
 
   $scope.parent = $scope.currentTweet.parent;

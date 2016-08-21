@@ -4,6 +4,12 @@ pepo.service('pepsApi', function($resource) {
       method: 'GET',
       isArray: true
     },
+    getSinglePep: {
+      method: 'GET',
+      params: {
+        id: '@id'
+      }
+    },
     sendPep: {
       method: 'POST',
       params: {
