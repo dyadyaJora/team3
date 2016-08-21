@@ -63,6 +63,7 @@ pepo.controller('feedCtrl', function($q, $location, $auth, $scope, userApi, peps
 	  }
   }
 
+<<<<<<< 07b591f7c5637e18b197172eb39b0e1a544f14c5
 
   $scope.editPepStart = function(index, id, text){
     $scope.editId = id;
@@ -88,6 +89,8 @@ pepo.controller('feedCtrl', function($q, $location, $auth, $scope, userApi, peps
   });
   }
 
+=======
+>>>>>>> bugfix edit-pep
   $scope.deletePep = function(){
     pepsApi.deletePep({id: $scope.delId}).$promise.then(function(data){
         $scope.tweets.splice($scope.delIndex, 1);
