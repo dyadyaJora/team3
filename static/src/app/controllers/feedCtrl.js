@@ -63,34 +63,7 @@ pepo.controller('feedCtrl', function($q, $location, $auth, $scope, userApi, peps
 	  }
   }
 
-<<<<<<< 07b591f7c5637e18b197172eb39b0e1a544f14c5
 
-  $scope.editPepStart = function(index, id, text){
-    $scope.editId = id;
-    console.log(id);
-    $scope.editPepText = text;
-    $scope.editIndex = index;
-    $scope.varEdit1 = [];
-    $scope.varEdit1[index] = true;
-  }
-
-  $scope.editPep = function(){
-    pepEdit = {text: $scope.editPepText };
-    pepsApi.editPep({id: $scope.editId}, pepEdit).$promise.then(function(data){
-      $scope.tweets.find(function(pep) {
-        if (pep._id === data._id) {
-          currentPep = pep;
-        }
-      });
-      currentPep.text = data.text;
-      $scope.varEdit1 = [];
-  }).catch(function(eror){
-    $scope.varEdit1 = [];
-  });
-  }
-
-=======
->>>>>>> bugfix edit-pep
   $scope.deletePep = function(){
     pepsApi.deletePep({id: $scope.delId}).$promise.then(function(data){
         $scope.tweets.splice($scope.delIndex, 1);
@@ -110,7 +83,9 @@ pepo.controller('feedCtrl', function($q, $location, $auth, $scope, userApi, peps
     $scope.varEdit1[index] = true;
   }
 
+  $scope.editAnim = [];
   $scope.editPep = function(){
+    $scope.editAnim[$scope.editIndex] = true;
     pepEdit = {text: $scope.editPepText };
     pepsApi.editPep({id: $scope.editId}, pepEdit).$promise.then(function(data){
       $scope.tweets.find(function(pep) {
@@ -123,6 +98,7 @@ pepo.controller('feedCtrl', function($q, $location, $auth, $scope, userApi, peps
   }).catch(function(eror){
     $scope.varEdit1 = [];
   });
+  setTimeout(function(){ $scope.editAnim = [];}, 2000);
   }
 
   // Server latency mock.

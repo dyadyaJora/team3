@@ -1,5 +1,17 @@
 $colorLightGray: #b8b8b8;
 
+@-webkit-keyframes bg {
+from {background: #fff09d;}
+to { background: #fff;}
+}
+@keyframes bg {
+from {background: #fff09d;}
+to { background: #fff;}
+}
+.anim{
+	-webkit-animation: bg 2s ease-in-out;
+	animation: bg  2s ease-in-out;
+}
 .visible-block__edit{
 	display: block !important; 
 }
