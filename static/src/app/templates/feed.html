@@ -19,7 +19,7 @@
       </section>
       <section class="tweet-type_answer">
         <div class="tweet-textarea_answer">
-          <textarea ng-model="newPepText">
+          <textarea ng-model="newPepText" tabindex="1" autofocus id="tt">
           </textarea>
         </div>
         <div class="tweet-buttons-block_answer">
@@ -62,7 +62,7 @@
 <pepo-header></pepo-header>
 <section class="page-container">
   <ul class="tweets">
-    <li class="tweets_item"  ng-repeat="tweet in tweets">
+    <li class="tweets_item" ng-init="i=0" ng-repeat="tweet in tweets" >
       <header class="tweet-header">
         <div class="tweet-header_user">
           <img ng-src="{{tweet.owner.thumbUrl}}" alt="" class="tweet-header_user-img">
@@ -78,7 +78,18 @@
 
 
       <section class="tweet-content">
-        <p class="tweet-content_text">{{tweet.text}}</p>
+        <p class="tweet-content_text" ng-class="{'novisible-block__edit': varEdit1[$index]}">{{tweet.text}}</p>
+        <div class="hidden-block_edit tweet-content_text" ng-class="{'visible-block__edit': varEdit1[$index]}">
+          <textarea ng-model="$parent.editPepText" class="pepo_textinput pep-text_edit"></textarea>
+          <ul class="edit-actions">
+            <li class="edit-actions_item">
+            <input type="button" value="Отменить" ng-click="varEdit1[$index]=''" class="pepo_btn edit-btn-cancel_item">
+            </li>
+            <li class="edit-actions_item">
+            <input type="submit" value="Сохранить" ng-click="editPep()" class="pepo_btn edit-btn-save_item">
+            </li>
+          </ul>
+        </div>
       </section>
 
       <footer class="tweet-footer">
@@ -88,14 +99,13 @@
             <div class="tweet-actions_coutn">3</div>
           </li>
 
-
            <li class="tweet-actions_item tweet-actions_item__answers" ng-click="openModalAnswer($index)">
             <div class="tweet-actions_icon"> </div>
             <div class="tweet-actions_coutn"> 2</div>
            </li>
 
-          <li class="tweet-actions_item tweet-actions_item__edit">
-            <div class="tweet-actions_icon"></div>
+          <li class="tweet-actions_item tweet-actions_item__edit" >
+            <div class="tweet-actions_icon" ng-click="editPepStart($index, tweet._id, tweet.text)"></div>
           </li>
 
            <li class="tweet-actions_item tweet-actions_item__remove" ng-click="openModalDel($index, tweet._id)">

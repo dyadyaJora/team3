@@ -1,0 +1,33 @@
+$colorLightGray: #b8b8b8;
+
+.visible-block__edit{
+	display: block !important; 
+}
+.novisible-block__edit{
+	display: none;
+}
+.hidden-block_edit{
+    margin: 10px 0;
+	display:none;
+}
+.pep-text_edit{
+	line-height: 27px;
+	height: 78px;
+}
+.edit-actions{
+	.edit-actions_item{
+		display: inline-block;
+		width: 48%;
+		max-width: 100px;
+		.pepo_btn{
+			color: $colorWhite;
+		}
+		.edit-btn-save_item{
+			background: $colorBlue;
+		}
+		.edit-btn-cancel_item{
+			background: $colorLightGray;
+		}
+	}
+}
+

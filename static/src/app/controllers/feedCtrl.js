@@ -24,6 +24,7 @@ pepo.controller('feedCtrl', function($q, $location, $auth, $scope, userApi, peps
       console.log(err);
     })
     $scope.varAnswer = false;
+    $scope.newPepText = '';
   }
 
   $scope.tweets = MOCKTWEETS;
@@ -40,11 +41,13 @@ pepo.controller('feedCtrl', function($q, $location, $auth, $scope, userApi, peps
   $scope.varAnswer = false;
   $scope.varDel = false;
   $scope.openModalAnswer = function(id) {
+    $scope.varEdit1 = [];
     $scope.varAnswer = true;
   	$scope.pep = $scope.tweets[id];
   }
 
   $scope.openModalDel = function(index, id) {
+    $scope.varEdit1 = [];
     $scope.varDel = true;
   	$scope.pep = $scope.tweets[index];
     $scope.delIndex = index;
@@ -59,6 +62,31 @@ pepo.controller('feedCtrl', function($q, $location, $auth, $scope, userApi, peps
 	  }
   }
 
+  
+  $scope.editPepStart = function(index, id, text){
+    $scope.editId = id;
+    console.log(id);
+    $scope.editPepText = text;
+    $scope.editIndex = index;
+    $scope.varEdit1 = [];
+    $scope.varEdit1[index] = true;
+  }
+  
+  $scope.editPep = function(){
+    pepEdit = {text: $scope.editPepText };
+    pepsApi.editPep({id: $scope.editId}, pepEdit).$promise.then(function(data){
+      $scope.tweets.find(function(pep) {
+        if (pep._id === data._id) {
+          currentPep = pep;
+        }
+      });
+      currentPep.text = data.text;
+      $scope.varEdit1 = [];
+  }).catch(function(eror){
+    $scope.varEdit1 = [];
+  });
+  }
+
   $scope.deletePep = function(){
     pepsApi.deletePep({id: $scope.delId}).$promise.then(function(data){
         $scope.tweets.splice($scope.delIndex, 1);
@@ -66,6 +94,31 @@ pepo.controller('feedCtrl', function($q, $location, $auth, $scope, userApi, peps
       }).catch(function(eror){
     $scope.varDel=false;
     });
+  }
+
+    
+  $scope.editPepStart = function(index, id, text){
+    $scope.editId = id;
+    console.log(id);
+    $scope.editPepText = text;
+    $scope.editIndex = index;
+    $scope.varEdit1 = [];
+    $scope.varEdit1[index] = true;
+  }
+  
+  $scope.editPep = function(){
+    pepEdit = {text: $scope.editPepText };
+    pepsApi.editPep({id: $scope.editId}, pepEdit).$promise.then(function(data){
+      $scope.tweets.find(function(pep) {
+        if (pep._id === data._id) {
+          currentPep = pep;
+        }
+      });
+      currentPep.text = data.text;
+      $scope.varEdit1 = [];
+  }).catch(function(eror){
+    $scope.varEdit1 = [];
+  });
   }
 
   // Server latency mock.
