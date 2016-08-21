@@ -16,10 +16,10 @@ $colorLightGray: #b8b8b8;
 }
 .edit-actions{
 	.edit-actions_item{
-		display: inline;
+		display: inline-block;
+		width: 48%;
+		max-width: 100px;
 		.pepo_btn{
-			width: 48%;
-			max-width: 100px;
 			color: $colorWhite;
 		}
 		.edit-btn-save_item{
