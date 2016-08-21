@@ -149,6 +149,7 @@
   }
 }
 
+
 .load-more-btn {
   background: url('../img/icon-add.svg')no-repeat center;
   background-size: contain;
@@ -160,6 +161,20 @@
     background-image: url('../img/icon-add__active.svg');
   }
 }
+
+.load-more-btn__progress {
+  animation:rotation 1s linear infinite;
+  background: transparent;
+  border: 1px solid $colorBlue;
+  border-top-color: transparent;
+  border-right-color: transparent;
+  border-radius: 50%;
+  &:hover {
+    background: transparent;
+  }
+}
+
+@keyframes rotation { 100% {transform: rotate(360deg);} }
 
 @media only screen and (max-width: $iphonesWidth) {
   .tweets_item {

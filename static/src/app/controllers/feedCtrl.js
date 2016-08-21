@@ -9,6 +9,7 @@ pepo.controller('feedCtrl', function($q, $location, $auth, $scope, userApi, peps
 
   $scope.sendPep = function() {
     newPep = {
+      parent: $scope.pep.owner._id,
       owner: {
         name: $scope.currentUser.name,
         username: $scope.currentUser.username
@@ -60,11 +61,27 @@ pepo.controller('feedCtrl', function($q, $location, $auth, $scope, userApi, peps
 
   $scope.deletePep = function(){
     pepsApi.deletePep({id: $scope.delId}).$promise.then(function(data){
-      $scope.tweets.splice($scope.delIndex, 1);
-      $scope.varDel=false;
-  }).catch(function(eror){
+        $scope.tweets.splice($scope.delIndex, 1);
+        $scope.varDel=false;
+      }).catch(function(eror){
     $scope.varDel=false;
-  });
-
+    });
   }
+
+  // Server latency mock.
+  function sleep (milliSeconds) {
+    var startTime = new Date().getTime();
+    while (new Date().getTime() < startTime + milliSeconds);
+  }
+
+  $scope.loadMorePeps = function() {
+    console.log('load more peps');
+    $scope.pepsLoading = true;
+    pepsApi.getPeps().$promise.then(function(data){
+      $scope.tweets = data;
+      sleep(2000); // server latency mock.
+      $scope.pepsLoading = false;
+    });
+  }
+
 });
