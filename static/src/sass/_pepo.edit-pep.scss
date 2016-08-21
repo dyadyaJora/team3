@@ -11,19 +11,24 @@ $colorLightGray: #b8b8b8;
 	display:none;
 }
 .pep-text_edit{
+	line-height: 27px;
 	height: 78px;
 }
 .buttons-block-edit{
-  	@include outer-container;
-	.pep-btn-save_edit{
-		@include span-columns(3);
+	.pep-btn-save__edit{
+		width: 48%;
+		max-width: 100px;
 		background: $colorBlue;
 		color: $colorWhite;
 	}
-	.pep-btn-cancel_edit{
-		@include span-columns(3);
+	.pep-btn-cancel__edit{
+		width: 48%;
+		max-width: 100px;
 		background: $colorLightGray;
 		color: $colorWhite;
+	}
+	li{
+		display: inline;
 	}
 }
 
