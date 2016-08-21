@@ -67,5 +67,4 @@ pepo.controller('feedCtrl', function($q, $location, $auth, $scope, userApi, peps
   });
 
   }
-
 });
