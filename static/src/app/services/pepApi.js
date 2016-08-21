@@ -25,7 +25,8 @@ pepo.service('pepsApi', function($resource) {
     editPep: {
       method: 'PUT',
       params: {
-        id: '@id'
+        id: '@id',
+        content: '@pepData'
       }
     }
   }
