@@ -5,6 +5,7 @@ pepo.controller('feedCtrl', function($q, $location, $auth, $scope, userApi, peps
   });
   userApi.getUser().$promise.then(function(data) {
     $scope.currentUser = data;
+    console.log($scope.currentUser);
   });
 
   $scope.sendPep = function() {
@@ -62,7 +63,7 @@ pepo.controller('feedCtrl', function($q, $location, $auth, $scope, userApi, peps
 	  }
   }
 
-  
+
   $scope.editPepStart = function(index, id, text){
     $scope.editId = id;
     console.log(id);
@@ -71,7 +72,7 @@ pepo.controller('feedCtrl', function($q, $location, $auth, $scope, userApi, peps
     $scope.varEdit1 = [];
     $scope.varEdit1[index] = true;
   }
-  
+
   $scope.editPep = function(){
     pepEdit = {text: $scope.editPepText };
     pepsApi.editPep({id: $scope.editId}, pepEdit).$promise.then(function(data){
@@ -96,7 +97,7 @@ pepo.controller('feedCtrl', function($q, $location, $auth, $scope, userApi, peps
     });
   }
 
-    
+
   $scope.editPepStart = function(index, id, text){
     $scope.editId = id;
     console.log(id);
@@ -105,7 +106,7 @@ pepo.controller('feedCtrl', function($q, $location, $auth, $scope, userApi, peps
     $scope.varEdit1 = [];
     $scope.varEdit1[index] = true;
   }
-  
+
   $scope.editPep = function(){
     pepEdit = {text: $scope.editPepText };
     pepsApi.editPep({id: $scope.editId}, pepEdit).$promise.then(function(data){
