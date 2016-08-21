@@ -80,10 +80,10 @@
       <section class="tweet-content">
         <p class="tweet-content_text" ng-class="{'novisible-block__edit': varEdit1[$index]}">{{tweet.text}}</p>
         <div class="hidden-block_edit tweet-content_text" ng-class="{'visible-block__edit': varEdit1[$index]}">
-          <textarea ng-model="$parent.editPepText"></textarea>
+          <textarea ng-model="$parent.editPepText" class="pepo_textinput pep-text_edit"></textarea>
           <div class="buttons-block-edit">
-            <input type="button" value="Отменить" ng-click="varEdit1[$index]=''">
-            <input type="submit" value="Сохранить" ng-click="editPep()">
+            <input type="button" value="Отменить" ng-click="varEdit1[$index]=''" class="pepo_btn pep-btn-cancel_edit">
+            <input type="submit" value="Сохранить" ng-click="editPep()" class="pepo_btn pep-btn-save_edit">
           </div>
         </div>
       </section>

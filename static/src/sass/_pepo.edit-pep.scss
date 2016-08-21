@@ -1,3 +1,5 @@
+$colorLightGray: #b8b8b8;
+
 .visible-block__edit{
 	display: block !important; 
 }
@@ -5,5 +7,23 @@
 	display: none;
 }
 .hidden-block_edit{
+    margin: 10px 0;
 	display:none;
 }
+.pep-text_edit{
+	height: 78px;
+}
+.buttons-block-edit{
+  	@include outer-container;
+	.pep-btn-save_edit{
+		@include span-columns(3);
+		background: $colorBlue;
+		color: $colorWhite;
+	}
+	.pep-btn-cancel_edit{
+		@include span-columns(3);
+		background: $colorLightGray;
+		color: $colorWhite;
+	}
+}
+
