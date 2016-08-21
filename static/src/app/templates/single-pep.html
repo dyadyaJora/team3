@@ -24,10 +24,10 @@
       <div class="answer-info" ng-show="parent">в ответ пользователю <span class="answer-info_username" ng-click="goToUser(parent.owner.username)">@{{parent.owner.username}}</span></div>
       <header class="single-tweet-header">
         <div class="single-tweet-header_user">
-          <img ng-src="{{currentTweet.owner.thumbUrl}}" alt="" class="single-tweet-header_user-img">
+          <img ng-click="goToUser(currentTweet.owner.username)"  ng-src="{{currentTweet.owner.thumbUrl}}" alt="" class="single-tweet-header_user-img">
           <div class="single-tweet-header_name-wrapper">
-            <div class="single-tweet-header_user-name">{{currentTweet.owner.name}}</div>
-            <div class="single-tweet-header_user-login">@{{currentTweet.owner.username}}</div>
+            <div ng-click="goToUser(currentTweet.owner.username)"  class="single-tweet-header_user-name">{{currentTweet.owner.name}}</div>
+            <div ng-click="goToUser(currentTweet.owner.username)" class="single-tweet-header_user-login">@{{currentTweet.owner.username}}</div>
           </div>
         </div>
         <button class="pepo_btn user_subscribe">+ Читаю</button>
@@ -61,7 +61,7 @@
       </footer>
     </div>
 
-    <ul class="tweet-answers" ng-show="currentTweet.childrens">
+    <ul class="tweet-answers" ng-show="currentTweet.children">
       <li class="tweet-answers_item" ng-repeat="answer in currentTweet.childrens">
         <header class="tweet-header">
           <div class="tweet-header_user">

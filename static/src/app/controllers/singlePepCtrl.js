@@ -10,10 +10,6 @@ pepo.controller('singlePepCtrl', function($location, $scope, pepsApi, userApi, M
     $scope.currentUser = data;
   });
 
-  $scope.currentTweet = MOCKTWEETS[0];
-
-  $scope.parent = $scope.currentTweet.parent;
-
   $scope.isOwner = function(user, tweetOwner) {
      return user === tweetOwner;
   }
