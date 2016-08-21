@@ -5,7 +5,6 @@ pepo.controller('feedCtrl', function($q, $location, $auth, $scope, userApi, peps
   });
   userApi.getUser().$promise.then(function(data) {
     $scope.currentUser = data;
-    console.log($scope.currentUser);
   });
 
   $scope.sendPep = function() {
