@@ -74,10 +74,13 @@ pepo.controller('feedCtrl', function($q, $location, $auth, $scope, userApi, peps
   
   $scope.editPep = function(){
     pepEdit = {text: $scope.editPepText };
-    console.log($scope.editPepText);
-    pepsApi.editPep({id: $scope.editId, content: pepEdit}).$promise.then(function(data){
-      console.log(data);
-      $scope.tweets[data._id].text = data.content;
+    pepsApi.editPep({id: $scope.editId}, pepEdit).$promise.then(function(data){
+      $scope.tweets.find(function(pep) {
+        if (pep._id === data._id) {
+          currentPep = pep;
+        }
+      });
+      currentPep.text = data.text;
       $scope.varEdit1 = [];
   }).catch(function(eror){
     $scope.varEdit1 = [];
