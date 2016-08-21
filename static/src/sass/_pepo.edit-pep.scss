@@ -14,21 +14,20 @@ $colorLightGray: #b8b8b8;
 	line-height: 27px;
 	height: 78px;
 }
-.buttons-block-edit{
-	.pep-btn-save__edit{
-		width: 48%;
-		max-width: 100px;
-		background: $colorBlue;
-		color: $colorWhite;
-	}
-	.pep-btn-cancel__edit{
-		width: 48%;
-		max-width: 100px;
-		background: $colorLightGray;
-		color: $colorWhite;
-	}
-	li{
+.edit-actions{
+	.edit-actions_item{
 		display: inline;
+		.pepo_btn{
+			width: 48%;
+			max-width: 100px;
+			color: $colorWhite;
+		}
+		.edit-btn-save_item{
+			background: $colorBlue;
+		}
+		.edit-btn-cancel_item{
+			background: $colorLightGray;
+		}
 	}
 }
 
