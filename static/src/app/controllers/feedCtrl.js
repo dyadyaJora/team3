@@ -74,12 +74,13 @@ pepo.controller('feedCtrl', function($q, $location, $auth, $scope, userApi, peps
     while (new Date().getTime() < startTime + milliSeconds);
   }
 
+  var localPepsOffset = 0;
   $scope.loadMorePeps = function() {
-    console.log('load more peps');
     $scope.pepsLoading = true;
-    pepsApi.getPeps().$promise.then(function(data){
-      $scope.tweets = data;
-      sleep(2000); // server latency mock.
+    localPepsOffset += 5;
+    var res = pepsApi.getPeps({offset:localPepsOffset, count:5}).$promise.then(function(data){
+      $scope.tweets = $scope.tweets.concat(data);
+      sleep(1000); // server latency mock.
       $scope.pepsLoading = false;
     });
   }
