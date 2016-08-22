@@ -31,11 +31,18 @@ to { background: #fff;}
 		display: inline-block;
 		width: 48%;
 		max-width: 100px;
+    	margin: 5px 5px 5px 0;
 		.pepo_btn{
 			color: $colorWhite;
+			&:hover{
+				transform: scale(1.05);
+				background: $colorBlue__hover;
+			}
 		}
+
 		.edit-btn-save_item{
 			background: $colorBlue;
+			
 		}
 		.edit-btn-cancel_item{
 			background: $colorLightGray;
