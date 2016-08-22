@@ -79,7 +79,11 @@
   transition: opacity 400ms;
   &:hover {
     opacity: 1;
+    transform: scale(1.1);
     transition: opacity 200ms;
+  }
+  &:active{
+    transform: scale(0.9);
   }
 }
 .tweet-actions_item__likes .tweet-actions_icon {

@@ -1,5 +1,28 @@
 $colorLightGray: #b8b8b8;
 
+@-webkit-keyframes bg {
+from {background: #fff09d;}
+to { background: #fff;}
+}
+@-moz-keyframes bg {
+from {background: #fff09d;}
+to { background: #fff;}
+}
+@-ms-keyframes bg {
+from {background: #fff09d;}
+to { background: #fff;}
+}
+@-o-keyframes bg {
+from {background: #fff09d;}
+to { background: #fff;}
+}
+@keyframes bg {
+from {background: #fff09d;}
+to { background: #fff;}
+}
+.anim{
+	@include animation (bg  2s ease-in-out);
+}
 .visible-block__edit{
 	display: block !important; 
 }
@@ -19,11 +42,22 @@ $colorLightGray: #b8b8b8;
 		display: inline-block;
 		width: 48%;
 		max-width: 100px;
+    	margin: 5px 5px 5px 0;
 		.pepo_btn{
 			color: $colorWhite;
+			&:hover{
+				transform: scale(1.05);
+				background: $colorBlue__hover;
+			}
+			&:active{
+				transform: scale(0.95);
+			}
 		}
+
 		.edit-btn-save_item{
 			background: $colorBlue;
+
+			
 		}
 		.edit-btn-cancel_item{
 			background: $colorLightGray;
