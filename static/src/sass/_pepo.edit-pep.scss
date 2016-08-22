@@ -38,10 +38,14 @@ to { background: #fff;}
 				transform: scale(1.05);
 				background: $colorBlue__hover;
 			}
+			&:active{
+				transform: scale(0.95);
+			}
 		}
 
 		.edit-btn-save_item{
 			background: $colorBlue;
+			
 			
 		}
 		.edit-btn-cancel_item{
