@@ -4,13 +4,24 @@ $colorLightGray: #b8b8b8;
 from {background: #fff09d;}
 to { background: #fff;}
 }
+@-moz-keyframes bg {
+from {background: #fff09d;}
+to { background: #fff;}
+}
+@-ms-keyframes bg {
+from {background: #fff09d;}
+to { background: #fff;}
+}
+@-o-keyframes bg {
+from {background: #fff09d;}
+to { background: #fff;}
+}
 @keyframes bg {
 from {background: #fff09d;}
 to { background: #fff;}
 }
 .anim{
-	-webkit-animation: bg 2s ease-in-out;
-	animation: bg  2s ease-in-out;
+	@include animation (bg  2s ease-in-out);
 }
 .visible-block__edit{
 	display: block !important; 
@@ -45,7 +56,7 @@ to { background: #fff;}
 
 		.edit-btn-save_item{
 			background: $colorBlue;
-			
+
 			
 		}
 		.edit-btn-cancel_item{
