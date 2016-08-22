@@ -85,6 +85,10 @@ pepo.controller('feedCtrl', function($q, $location, $auth, $scope, userApi, peps
 
   $scope.editAnim = [];
   $scope.editPep = function(){
+    if ($scope.tweets[$scope.editIndex].text == $scope.editPepText) {
+      $scope.varEdit1 = [];
+      return;
+    }
     $scope.editAnim[$scope.editIndex] = true;
     pepEdit = {text: $scope.editPepText };
     pepsApi.editPep({id: $scope.editId}, pepEdit).$promise.then(function(data){
