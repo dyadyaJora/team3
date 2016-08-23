@@ -8,21 +8,29 @@ pepo.controller('feedCtrl', function($q, $location, $auth, $scope, userApi, peps
 
   });
 
+  $scope.tweets = MOCKTWEETS;
+  currentLocation = [];
+
+  $scope.goToUser = function(username) {
+    $location.path('/@' + username);
+  }
+
   // Get coordinates.
   function show_map(position) {
-    var latitude = position.coords.latitude;
-    var longitude = position.coords.longitude;
+    currentLocation.push(position.coords.latitude);
+    currentLocation.push(position.coords.longitude);
   }
 
   navigator.geolocation.getCurrentPosition(show_map);
 
   $scope.sendPep = function() {
     newPep = {
-      location: [33, 22],
+      location: currentLocation,
       parent: $scope.pep.owner._id,
       owner: {
         name: $scope.currentUser.name,
-        username: $scope.currentUser.username
+        username: $scope.currentUser.username,
+        thumbUrl: $scope.currentUser.thumbUrl
       },
       text: $scope.newPepText
     }
@@ -36,13 +44,6 @@ pepo.controller('feedCtrl', function($q, $location, $auth, $scope, userApi, peps
     $scope.varAnswer = false;
     $scope.newPepText = '';
   }
-
-  $scope.tweets = MOCKTWEETS;
-
-  $scope.logout = function() {
-    $auth.logout();
-    $location.path('/');
-  };
 
   $scope.goToPep = function(pepId) {
     $location.path('/pep' + pepId);

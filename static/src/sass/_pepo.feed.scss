@@ -30,18 +30,27 @@
   vertical-align: middle;
 }
 .tweet-header_user-img {
+  cursor: pointer;
   border-radius: 50%;
   margin-right: 6px;
   width: 100%;
   max-width: 50px;
 }
 .tweet-header_user-name {
-  color: $colorBlue;
-  font-size: 22px;
+  color: $colorBlack;
+  cursor: pointer;
+  font-size: 20px;
+  &:hover {
+    color: $colorBlue;
+  }
 }
 .tweet-header_user-login {
+  cursor: pointer;
   font-size: 14px;
   color: $colorGrey;
+  &:hover {
+    color: $colorBlue;
+  }
 }
 .tweet-header_date {
   color: $colorGrey;
@@ -58,6 +67,7 @@
   font-size: 15px;
   line-height: 20px;
   padding-left: 60px;
+  overflow: hidden;
 }
 .tweet-footer {
   padding-left: 60px;
