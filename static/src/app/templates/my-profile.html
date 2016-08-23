@@ -1,7 +1,7 @@
 <pepo-header></pepo-header>
 <section class="page-container">
     <div class="user-profile">
-        <img ng-src="{{tweet.owner.thumbUrl}}" alt="" class="user-profile_img">
+        <img ng-src="{{currentUser.avatarUrl}}" alt="" class="user-profile_img">
         <div class="user-profile_content">
             <div class="user-profile_name">{{currentUser.name}}</div>
             <div class="user-profile_nickname">@{{currentUser.username}}</div>
@@ -95,7 +95,7 @@
 
 
    <section class="page-container">
-  <ul class="tweets">
+  <ul class="tweets tweets__userpage">
     <li class="tweets_item" ng-init="i=0" ng-repeat="tweet in tweets">
       <header class="tweet-header">
         <div class="tweet-header_user">

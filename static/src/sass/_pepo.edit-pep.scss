@@ -1,5 +1,3 @@
-$colorLightGray: #b8b8b8;
-
 @-webkit-keyframes bg {
 from {background: #fff09d;}
 to { background: #fff;}
@@ -47,9 +45,6 @@ to { background: #fff;}
 			color: $colorWhite;
 			padding: 10px;
 			text-align: center;
-			&:hover{
-				background: $colorBlue__hover;
-			}
 			&:active{
 				transform: scale(0.95);
 			}
@@ -58,11 +53,15 @@ to { background: #fff;}
 		.actions-btn-save_item, 
 		.actions-btn-del_item{
 			background: $colorBlue;
-
-			
+			&:hover{
+				background: $colorBlue__hover;
+			}
 		}
 		.actions-btn-cancel_item{
 			background: $colorLightGray;
+			&:hover{
+				background: $colorLightGray__hover;
+			}
 		}
 	}
 }
