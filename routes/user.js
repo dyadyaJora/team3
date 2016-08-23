@@ -2,6 +2,7 @@ var express = require('express');
 var mongoose = require('mongoose');
 var multer = require('multer');
 var sharp = require('sharp');
+var Promise = require('bluebird');
 var fileStorage = require('../lib/file-storage');
 
 var router = express.Router();
@@ -19,29 +20,23 @@ module.exports = function(passport) {
   router.patch('/',
     upload.single('avatar'),
     function(req, res, next) {
-      if (req.file) {
-        req.user.avatar = req.file.filename;
+      createAvatar(req.file)
+        .then(function(fileName) {
+          if (fileName) {
+            req.user.avatar = fileName;
+          }
 
-        sharp(req.file.path)
-          .resize(175, 175)
-          .toFile('uploads/avatar/175_' + req.file.filename)
-          .then(function() {
-            return sharp('uploads/avatar/175_' + req.file.filename)
-              .resize(50, 50)
-              .toFile('uploads/avatar/50_' + req.file.filename);
-          });
-      }
-
-      req.user.patch(req.body, function(err, user) {
-        if (err) {
+          return req.user.patch(req.body);
+        })
+        .then(function(user) {
+          res.json(user);
+        })
+        .catch(function(err) {
           if (err.name == 'ValidationError') {
             err.status = 422;
           }
           return next(err);
-        }
-
-        res.json(user);
-      });
+        });
     });
 
   router.delete('/', function(req, res, next) {
@@ -56,3 +51,21 @@ module.exports = function(passport) {
   return router;
 
 };
+
+function createAvatar(file) {
+  if (file) {
+    return sharp(file.path)
+      .resize(175, 175)
+      .toFile('uploads/avatar/175_' + file.filename)
+      .then(function() {
+        return sharp('uploads/avatar/175_' + file.filename)
+          .resize(50, 50)
+          .toFile('uploads/avatar/50_' + file.filename);
+      }).then(function() {
+        return file.filename;
+      });
+
+  } else {
+    return Promise.resolve();
+  }
+}

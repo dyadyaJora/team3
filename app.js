@@ -9,12 +9,13 @@ var logger = require('morgan');
 var bodyParser = require('body-parser');
 var passport = require('passport');
 var mongoose = require('mongoose');
+var Promise = require('bluebird');
 
 var app = express();
 
 var config = require('./config');
 
-mongoose.Promise = global.Promise;
+mongoose.Promise = Promise;
 mongoose.connect(config.mongodbUri);
 require('./models/user');
 require('./models/status');
