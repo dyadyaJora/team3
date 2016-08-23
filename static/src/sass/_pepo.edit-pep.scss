@@ -37,16 +37,17 @@ to { background: #fff;}
 	line-height: 27px;
 	height: 78px;
 }
-.edit-actions{
-	.edit-actions_item{
+.actions-btn-block{
+	.actions-btn-block_item{
 		display: inline-block;
 		width: 48%;
 		max-width: 100px;
     	margin: 5px 5px 5px 0;
 		.pepo_btn{
 			color: $colorWhite;
+			padding: 10px;
+			text-align: center;
 			&:hover{
-				transform: scale(1.05);
 				background: $colorBlue__hover;
 			}
 			&:active{
@@ -54,12 +55,13 @@ to { background: #fff;}
 			}
 		}
 
-		.edit-btn-save_item{
+		.actions-btn-save_item, 
+		.actions-btn-del_item{
 			background: $colorBlue;
 
 			
 		}
-		.edit-btn-cancel_item{
+		.actions-btn-cancel_item{
 			background: $colorLightGray;
 		}
 	}
