@@ -51,10 +51,14 @@
         </div>
       </section>
       <section class="tweet-type_answer">
-        <div class="tweet-buttons-block_answer">
-          <input type="submit" value="Отмена" ng-click="varDel=''">
-          <input type="submit" value="Удалить" ng-click="deletePep()">
-        </div>
+        <ul class="actions-btn-block">
+        <li class="actions-btn-block_item">
+          <div class="pepo_btn actions-btn-cancel_item" ng-click="varDel=''">Отменить</div>
+        </li>
+        <li class="actions-btn-block_item">
+          <div class="pepo_btn actions-btn-del_item"  ng-click="deletePep()">Удалить</div>
+        </li>
+        </ul>
       </section>
     </div>
   </div>
@@ -81,12 +85,12 @@
         <p class="tweet-content_text" ng-class="{'novisible-block__edit': varEdit1[$index], 'anim': editAnim[$index]}">{{tweet.text}}</p>
         <div class="hidden-block_edit tweet-content_text" ng-class="{'visible-block__edit': varEdit1[$index]}">
           <textarea ng-model="$parent.editPepText" class="pepo_textinput pep-text_edit"></textarea>
-          <ul class="edit-actions">
-            <li class="edit-actions_item">
-            <div ng-click="varEdit1[$index]=''" class="pepo_btn edit-btn-cancel_item">Отменить</div>
+          <ul class="actions-btn-block">
+            <li class="actions-btn-block_item">
+            <div ng-click="varEdit1[$index]=''" class="pepo_btn actions-btn-cancel_item">Отменить</div>
             </li>
-            <li class="edit-actions_item">
-            <div ng-click="editPep()" class="pepo_btn edit-btn-save_item">Сохранить</div>
+            <li class="actions-btn-block_item">
+            <div ng-click="editPep()" class="pepo_btn actions-btn-save_item">Сохранить</div>
             </li>
           </ul>
         </div>
