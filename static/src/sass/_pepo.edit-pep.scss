@@ -45,8 +45,9 @@ to { background: #fff;}
     	margin: 5px 5px 5px 0;
 		.pepo_btn{
 			color: $colorWhite;
+			padding: 10px;
+			text-align: center;
 			&:hover{
-				transform: scale(1.05);
 				background: $colorBlue__hover;
 			}
 			&:active{

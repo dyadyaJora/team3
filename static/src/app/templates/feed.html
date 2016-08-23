@@ -83,10 +83,10 @@
           <textarea ng-model="$parent.editPepText" class="pepo_textinput pep-text_edit"></textarea>
           <ul class="edit-actions">
             <li class="edit-actions_item">
-            <input type="button" value="Отменить" ng-click="varEdit1[$index]=''" class="pepo_btn edit-btn-cancel_item">
+            <div ng-click="varEdit1[$index]=''" class="pepo_btn edit-btn-cancel_item">Отменить</div>
             </li>
             <li class="edit-actions_item">
-            <input type="submit" value="Сохранить" ng-click="editPep()" class="pepo_btn edit-btn-save_item">
+            <div ng-click="editPep()" class="pepo_btn edit-btn-save_item">Сохранить</div>
             </li>
           </ul>
         </div>
