@@ -15,7 +15,7 @@ module.exports = function(passport) {
       if (req.authInfo.isNew) {
         res.status(201);
       }
-      res.json(req.user);
+      res.json(req.user.toObject());
     });
 
   router.get('/vkontakte', function(req, res) {
@@ -29,7 +29,7 @@ module.exports = function(passport) {
       if (req.authInfo.isNew) {
         res.status(201);
       }
-      res.json(req.user);
+      res.json(req.user.toObject());
     });
 
   return router;

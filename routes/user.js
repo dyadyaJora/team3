@@ -14,7 +14,7 @@ module.exports = function(passport) {
   router.use(passport.authenticate('bearer', { session: false }));
 
   router.get('/', function(req, res) {
-    res.json(req.user.toObject({ virtuals: true }));
+    res.json(req.user.toObject());
   });
 
   router.patch('/',
@@ -29,7 +29,7 @@ module.exports = function(passport) {
           return req.user.patch(req.body);
         })
         .then(function(user) {
-          res.json(user);
+          res.json(user.toObject());
         })
         .catch(function(err) {
           if (err.name == 'ValidationError') {

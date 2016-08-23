@@ -4,7 +4,7 @@ var mongoose = require('mongoose');
 var router = express.Router();
 var User = mongoose.model('User');
 
-var showFields = '_id username name';
+var showFields = '_id username name avatar';
 
 module.exports = function(passport) {
 
@@ -15,14 +15,16 @@ module.exports = function(passport) {
       .exec(function(err, users) {
         if (err) { return next(err); }
 
-        res.json(users);
+        res.json(users.map(function(user) {
+          return user.toObject();
+        }));
       });
   });
 
   router.get('/:username',
     findUser(showFields),
     function(req, res) {
-      res.json(req._user);
+      res.json(req._user.toObject());
     });
 
   router.get('/:username/following',
@@ -33,7 +35,9 @@ module.exports = function(passport) {
         function(err, user) {
           if (err) { return next(err); }
 
-          res.json(user.following);
+          res.json(user.following.map(function(user) {
+            return user.toObject();
+          }));
         });
 
     });
@@ -48,7 +52,9 @@ module.exports = function(passport) {
         .exec(function(err, users) {
           if (err) { return next(err); }
 
-          res.json(users);
+          res.json(users.map(function(user) {
+            return user.toObject();
+          }));
         });
 
     });

@@ -80,6 +80,8 @@ userSchema.pre('save', function(next) {
   generateToken(this, next);
 });
 
+userSchema.set('toObject', { virtuals: true });
+
 mongoose.model('User', userSchema);
 
 function generateToken(user, done) {

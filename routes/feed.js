@@ -5,7 +5,7 @@ var router = express.Router();
 var Status = mongoose.model('Status');
 
 var statusFields = '_id text owner';
-var userFields = '_id username name';
+var userFields = '_id username name avatar';
 
 module.exports = function(passport) {
 
@@ -26,7 +26,9 @@ module.exports = function(passport) {
         .exec(function(err, statuses) {
           if (err) { return next(err); }
 
-          res.json(statuses);
+          res.json(statuses.map(function(status) {
+            return status.toObject();
+          }));
         });
 
     });
