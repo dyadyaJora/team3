@@ -1,4 +1,4 @@
-window.pepo = angular.module('pepo', ['ngRoute', 'ngResource', 'satellizer'])
+window.pepo = angular.module('pepo', ['ngRoute', 'ngResource', 'satellizer', 'ymaps'])
   .config(function($routeProvider, $authProvider) {
     $routeProvider
       .when('/', {
@@ -51,4 +51,3 @@ window.pepo = angular.module('pepo', ['ngRoute', 'ngResource', 'satellizer'])
       display: 'mobile'
     });
   });
-
