@@ -16,7 +16,8 @@
   $modal-image-height: 135px;
   $modal-image-width: $modal-image-height;
   $modal-trigger-image-width: 300px;
-  .modal-answer__active{
+  .modal-answer__active, 
+  .new-pep__active{
     visibility: visible !important;
     opacity: 1 !important;
   }

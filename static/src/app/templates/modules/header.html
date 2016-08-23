@@ -10,7 +10,7 @@
 		</div>
 		<div class="header-actions">
 			<ul class="header-actions-list">
-				<li class="header-action_item"><input type="button" class="header-btn add-twitt_contain__mod" title="Button" value=""/></li>
+				<li class="header-action_item"><input type="button" class="header-btn add-twitt_contain__mod" ng-click="openNewpep($index)" title="Button" value=""/></li>
 				<li class="header-action_item"><input type="button" class="header-btn search-user_contain__mod" title="Button" value=""/></li>
 				<li class="header-action_item"><input type="button" ng-click="toggleMenu()" class="header-btn header_user_logout-btn__mod" title="Button" value=""/></li>
 			</ul>
@@ -26,6 +26,26 @@
 			<li class="slide-menu_item slide-menu_item__separator"><a class="slide-menu_link" href="">Редактировать</a></li>
 			<li ng-click="logout()" class="slide-menu_item"><a class="slide-menu_link" href="">Выйти</a></li>
 		</ul>
-		<button class="cancel-menu_btn"  ng-click="toggleMenu()" >
+		<button class="cancel-menu_btn"  ng-click="toggleMenu()" ></button>
 	</div>
+</div>
+
+<div class="modal">
+  <div class="modal-fade-screen" ng-class="{'new-pep__active': varNewpep}" ng-click="closeNewpep($event)">
+    <div class="modal-inner">
+      <div class="modal-close" ng-click="varNewpep=''"></div>
+      <header class="pepo-modal-top">Новый Pep </header>
+    
+      <section class="tweet-type_answer">
+        <div class="tweet-textarea_answer">
+          <textarea ng-model="newPepText" tabindex="1" autofocus id="tt">
+          </textarea>
+        </div>
+        <div class="tweet-buttons-block_answer">
+          <input type="file">
+          <input type="submit" value="Добавить pep" class="tweet-btn_answer" ng-click="publishNewpep()">
+        </div>
+      </section>
+    </div>
+  </div>
 </div>

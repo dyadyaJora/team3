@@ -18,6 +18,7 @@ $iphonesWidth: 414px;
 
 body {
   @include outer-container();
+  overflow-x: hidden;
   background: #f2eee8;
   font-family: sans-serif;
   margin: 0 auto;
