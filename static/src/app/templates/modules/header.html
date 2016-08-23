@@ -1,8 +1,8 @@
 <header class="header">
 	<div class="header-restrictor">
 		<div class="header_logo">
-			<a href="/" class="header_logo-img">PEPO</a>
-		</div> 
+			<a href="#/" class="header_logo-img">PEPO</a>
+		</div>
 		<div class="header_user">
 			<div class="header_user-profil">
 				<p class="header_user_avatar-name">BobDodo</p>
@@ -14,16 +14,16 @@
 				<li class="header-action_item"><input type="button" class="header-btn search-user_contain__mod" title="Button" value=""/></li>
 				<li class="header-action_item"><input type="button" ng-click="toggleMenu()" class="header-btn header_user_logout-btn__mod" title="Button" value=""/></li>
 			</ul>
-		</div> 		
-	</div>	
+		</div>
+	</div>
 </header>
 <div class="slide-effect_bg" ng-class="{'slide-effect_bg__show': menuOpened }" ng-click="closeSlideMenu($event)">
 	<div class="slide-menu">
 		<ul class="slide-menu_list">
 			<li class="slide-menu_item"><a class="slide-menu_link" href="">Лента</a></li>
 			<li class="slide-menu_item slide-menu_item__separator "><a class="slide-menu_link" href="">Поиск</a></li>
-			<li class="slide-menu_item"><a class="slide-menu_link" href="">Мой профиль</a></li>
-			<li class="slide-menu_item slide-menu_item__separator"><a class="slide-menu_link" href="">Редактировать</a></li>
+			<li class="slide-menu_item"><a class="slide-menu_link" href="/#/@me">Мой профиль</a></li>
+			<li class="slide-menu_item slide-menu_item__separator"><a class="slide-menu_link" href="/#/edit-profile">Редактировать</a></li>
 			<li ng-click="logout()" class="slide-menu_item"><a class="slide-menu_link" href="">Выйти</a></li>
 		</ul>
 		<button class="cancel-menu_btn"  ng-click="toggleMenu()" ></button>
@@ -35,7 +35,7 @@
     <div class="modal-inner">
       <div class="modal-close" ng-click="varNewpep=''"></div>
       <header class="pepo-modal-top">Новый Pep </header>
-    
+
       <section class="tweet-type_answer">
         <div class="tweet-textarea_answer">
           <textarea ng-model="newPepText" tabindex="1" autofocus id="tt">

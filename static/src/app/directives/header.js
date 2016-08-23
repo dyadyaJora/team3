@@ -1,9 +1,14 @@
-angular.module('pepo').directive('pepoHeader', function($auth, $location, pepsApi) {
+angular.module('pepo').directive('pepoHeader', function($auth, $location, pepsApi, userApi) {
 	return {
 		restrict: "E",
 		replace: false,
 		templateUrl: '../build/templates/modules/header.html',
 		link: function($scope , $element, $attrs) {
+
+      userApi.getUser().$promise.then(function(data) {
+        $scope.currentUser = data;
+      });
+
 			 $scope.logout = function() {
 			    $auth.logout();
 			    $location.path('/');
