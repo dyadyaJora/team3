@@ -63,7 +63,6 @@ pepo.controller('myProfileCtrl', function($location, $auth, $scope, userApi,peps
 	  }
   }
 
-
   $scope.deletePep = function(){
     pepsApi.deletePep({id: $scope.delId}).$promise.then(function(data){
         $scope.tweets.splice($scope.delIndex, 1);
