@@ -5,10 +5,20 @@ pepo.controller('feedCtrl', function($q, $location, $auth, $scope, userApi, peps
   });
   userApi.getUser().$promise.then(function(data) {
     $scope.currentUser = data;
+
   });
+
+  // Get coordinates.
+  function show_map(position) {
+    var latitude = position.coords.latitude;
+    var longitude = position.coords.longitude;
+  }
+
+  navigator.geolocation.getCurrentPosition(show_map);
 
   $scope.sendPep = function() {
     newPep = {
+      location: [33, 22],
       parent: $scope.pep.owner._id,
       owner: {
         name: $scope.currentUser.name,
