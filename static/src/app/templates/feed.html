@@ -2,11 +2,10 @@
   <div class="modal-fade-screen" ng-class="{'modal-answer__active': varAnswer}" ng-click="closeModalAnswer($event)">
     <div class="modal-inner">
       <div class="modal-close" ng-click="varAnswer=''"></div>
-      <header class="pepo-modal-top">Ответить @{{pep.owner.username}}
-      </header>
+      <header ng-click="goToUser(pep.owner.username)" class="pepo-modal-top">Ответить <span class="pep-answer-username">@{{pep.owner.username}}</span></header>
       <section class="tweet_answer">
         <div class="tweet-user-img_answer">
-          <img ng-src="{{pep.owner.thumbUrl}}" alt="">
+          <img ng-src="{{pep.owner.avatarUrl}}" alt="">
         </div>
         <div class="tweet-content_answer">
           <div class="tweet-header_user-name">{{pep.owner.name}}
@@ -19,12 +18,12 @@
       </section>
       <section class="tweet-type_answer">
         <div class="tweet-textarea_answer">
-          <textarea ng-model="newPepText" tabindex="1" autofocus id="tt">
+          <textarea class="new-pep-input" ng-model="newPepText" tabindex="1" autofocus id="tt">
           </textarea>
         </div>
         <div class="tweet-buttons-block_answer">
           <input type="file">
-          <input type="submit" value="Ответить" class="tweet-btn_answer" ng-click="sendPep()">
+          <div class="pepo_btn pepo_btn__answer" ng-click="sendPep()">Ответить</div>
         </div>
       </section>
     </div>
@@ -70,10 +69,10 @@
     <li class="tweets_item" ng-init="i=0" ng-repeat="tweet in tweets">
       <header class="tweet-header">
         <div class="tweet-header_user">
-          <img ng-src="{{tweet.owner.thumbUrl}}" alt="" class="tweet-header_user-img">
+          <img ng-click="goToUser(tweet.owner.username)" ng-src="{{tweet.owner.thumbUrl}}" alt="" class="tweet-header_user-img">
           <div class="tweet-header_name-wrapper">
-            <div class="tweet-header_user-name">{{tweet.owner.name}}</div>
-            <div class="tweet-header_user-login">@{{tweet.owner.username}}</div>
+            <div ng-click="goToUser(tweet.owner.username)" class="tweet-header_user-name">{{tweet.owner.name}}</div>
+            <div ng-click="goToUser(tweet.owner.username)" class="tweet-header_user-login">@{{tweet.owner.username}}</div>
           </div>
         </div>
         <div class="tweet-header_date" ng-click="goToPep(tweet._id)">434534523345{{tweet.createdAt}}</div>

@@ -45,7 +45,7 @@
 .header_logo-img {
 	margin: 0;
 }
-@media only screen and (max-width: $mobileWidth) {	
+@media only screen and (max-width: $mobileWidth) {
 	.header_logo {
 		@include span-columns(4);
 	}
@@ -62,9 +62,9 @@
 	height: 40px;
     width: 30px;
     margin-left: auto;
-  
+
 }
-.search-user_contain__mod {	
+.search-user_contain__mod {
 	background: url('../img/icon-zoom-white.svg') no-repeat center;
 	background-size: contain;
     height: 40px;

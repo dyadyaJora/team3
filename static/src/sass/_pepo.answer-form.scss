@@ -16,7 +16,7 @@
   $modal-image-height: 135px;
   $modal-image-width: $modal-image-height;
   $modal-trigger-image-width: 300px;
-  .modal-answer__active, 
+  .modal-answer__active,
   .new-pep__active{
     visibility: visible !important;
     opacity: 1 !important;
@@ -192,3 +192,45 @@
     }
   }
 }
+
+.pep-answer-username {
+  cursor: pointer;
+  color: $colorGrey;
+  &:hover {
+    color: $colorBlue;
+  }
+}
+
+.new-pep-input {
+  border-radius: 4px;
+  box-sizing: border-box;
+  font-size: 14px;
+  height: 200px;
+  padding: 10px;
+  width: 100%;
+  &:focus {
+    outline: none;
+    border-color: $colorBlue;
+  }
+}
+
+.pepo_btn__answer {
+  color: $colorWhite;
+  background: $colorBlue;
+  line-height: 40px;
+  text-align: center;
+  max-width: 120px;
+  margin-left: auto;
+  &:hover {
+    background: $colorBlue__hover;
+  }
+}
+
+
+
+
+
+
+
+
+
