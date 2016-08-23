@@ -7,6 +7,7 @@ var Schema = mongoose.Schema;
 var userSchema = new Schema({
   username: { type: String, required: true, trim: true, minlength: 4 },
   name: { type: String, required: true, maxlength: 20 },
+  avatar: String,
   fbId: Number,
   vkId: Number,
   token: { type: String },
@@ -65,11 +66,21 @@ userSchema.methods.unFollow = function(user, cb) {
   }, cb);
 };
 
+userSchema.virtual('avatarUrl').get(function() {
+  return this.avatar && '/uploads/avatar/175_' + this.avatar;
+});
+
+userSchema.virtual('thumbUrl').get(function() {
+  return this.avatar && '/uploads/avatar/50_' + this.avatar;
+});
+
 userSchema.pre('save', function(next) {
   if (this.token) { return next(); }
 
   generateToken(this, next);
 });
+
+userSchema.set('toObject', { virtuals: true });
 
 mongoose.model('User', userSchema);
 

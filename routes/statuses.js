@@ -5,7 +5,7 @@ var router = express.Router();
 var Status = mongoose.model('Status');
 
 var statusFields = '_id text owner';
-var userFields = '_id username name';
+var userFields = '_id username name avatar';
 
 var permitParams = ['text'];
 
@@ -20,7 +20,9 @@ module.exports = function(passport) {
       .exec(function(err, statuses) {
         if (err) { return next(err); }
 
-        res.json(statuses);
+        res.json(statuses.map(function(status) {
+          return status.toObject();
+        }));
       });
   });
 
@@ -42,14 +44,14 @@ module.exports = function(passport) {
         if (err) { return next(err); }
 
         res.status(201);
-        res.json(status);
+        res.json(status.toObject());
       });
     });
 
   router.get('/:id',
     findStatus(statusFields),
     function(req, res) {
-      res.json(req._status);
+      res.json(req._status.toObject());
     });
 
   router.patch('/:id',
@@ -59,7 +61,7 @@ module.exports = function(passport) {
       req._status.patch(req.body, function(err, status) {
         if (err) { return next(err); }
 
-        res.json(status);
+        res.json(status.toObject());
       });
     });
 

@@ -16,4 +16,6 @@ statusSchema.plugin(patchPlugin, {
 
 statusSchema.plugin(paginationPlugin);
 
+statusSchema.set('toObject', { virtuals: true });
+
 mongoose.model('Status', statusSchema);
