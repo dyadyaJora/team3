@@ -64,7 +64,7 @@
 </div>
 <pepo-header></pepo-header>
 
-<section class="page-container">
+<section class="page-container" ng-class="{'page-container__no-scroll': menuIsOpen}">
   <ul class="tweets">
     <li class="tweets_item" ng-init="i=0" ng-repeat="tweet in tweets">
       <header class="tweet-header">

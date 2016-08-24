@@ -18,6 +18,7 @@
 	</div>
 </header>
 <div class="slide-effect_bg" ng-class="{'slide-effect_bg__show': menuOpened }" ng-click="closeSlideMenu($event)">
+</div>
 	<div class="slide-menu">
 		<ul class="slide-menu_list">
 			<li class="slide-menu_item"><a class="slide-menu_link" href="">Лента</a></li>
@@ -26,9 +27,9 @@
 			<li class="slide-menu_item slide-menu_item__separator"><a class="slide-menu_link" href="/#/edit-profile">Редактировать</a></li>
 			<li ng-click="logout()" class="slide-menu_item"><a class="slide-menu_link" href="">Выйти</a></li>
 		</ul>
-		<button class="cancel-menu_btn"  ng-click="toggleMenu()" ></button>
+		<button class="cancel-menu_btn"  ng-click="closeSlideMenu($event)" ></button>
 	</div>
-</div>
+
 
 <div class="modal">
   <div class="modal-fade-screen" ng-class="{'new-pep__active': varNewpep}" ng-click="closeNewpep($event)">

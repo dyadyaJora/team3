@@ -1,9 +1,11 @@
-angular.module('pepo').directive('pepoHeader', function($auth, $location, pepsApi, userApi) {
+angular.module('pepo').directive('pepoHeader', function($rootScope, $auth, $location, pepsApi, userApi) {
 	return {
 		restrict: "E",
 		replace: false,
 		templateUrl: '../build/templates/modules/header.html',
 		link: function($scope , $element, $attrs) {
+
+      var body = angular.element(document).find('body');
 
       userApi.getUser().$promise.then(function(data) {
         $scope.currentUser = data;
@@ -15,13 +17,16 @@ angular.module('pepo').directive('pepoHeader', function($auth, $location, pepsAp
 			};
 			$scope.closeSlideMenu = function($event) {
 				var click = angular.element($event.target);
-				if(click.hasClass("slide-effect_bg")) {
+				if(click.hasClass('slide-effect_bg') || click.hasClass('cancel-menu_btn')) {
 					$scope.menuOpened = false;
+          body.removeClass('no-scroll')
 				}
 			}
+
 			$scope.menuOpened = false;
 			$scope.toggleMenu = function( ) {
 				$scope.menuOpened = !$scope.menuOpened;
+        body.addClass('no-scroll');
 			};
 
 			$scope.varNewpep = false;

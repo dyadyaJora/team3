@@ -1,15 +1,15 @@
-pepo.controller('feedCtrl', function($q, $location, $auth, $scope, userApi, pepsApi, MOCKTWEETS) {
+pepo.controller('feedCtrl', function($rootScope, $q, $location, $auth, $scope, userApi, pepsApi, MOCKTWEETS) {
   $scope.newPepText = '';
   pepsApi.getPeps().$promise.then(function(data){
     $scope.tweets = data;
   });
   userApi.getUser().$promise.then(function(data) {
     $scope.currentUser = data;
-
   });
 
   $scope.tweets = MOCKTWEETS;
   currentLocation = [];
+
 
   $scope.goToUser = function(username) {
     $location.path('/@' + username);
