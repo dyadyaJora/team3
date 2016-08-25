@@ -1,23 +1,47 @@
-pepo.controller('editProfileCtrl', function ($location, $scope, MOCKUSERS, multipartForm) {
-    console.log('Edit profile');
-    $scope.user = MOCKUSERS[1];
+pepo.controller('editProfileCtrl', function ($q, $route, $location, $scope, userApi,  MOCKUSERS, multipartForm) {
+
+    userApi.getUser().$promise.then(function(data) {
+      $scope.user = data;
+    });
+
+    $scope.formPristine = true;
     $scope.varOpenEditPhoto = false;
     $scope.userEdit = {};
+
+    $scope.$watch(function() {
+      if ($scope.editProfileForm.$dirty) {
+        $scope.dataChanged = false;
+      }
+
+      if ($scope.userEdit.avatar) {
+        $scope.formPristine = false;
+        $scope.newAvatarName = $scope.userEdit.avatar.name;
+        $scope.varOpenEditPhoto = false;
+      }
+    });
+
+
     $scope.updateUser = function () {
-      console.log($scope.userEdit);
+      if ($scope.formPristine) {return}
+      $scope.userEdit.username = $scope.user.username;
+      $scope.userEdit.description = $scope.user.description;
       var uploadUrl = '/api/user';
-      multipartForm.patch(uploadUrl, $scope.userEdit);
-
-
-        // $location.path('/feed');
+      multipartForm.patch(uploadUrl, $scope.userEdit).then(function(data){
+        $route.reload();
+      })
+      .catch(function(err) {
+        throw new Error('updateUser: editProfileCtrl.js');
+      })
     };
 
     $scope.editCancel = function () {
         $location.path('/feed');
     };
+
     $scope.openModalEditPhoto = function () {
         $scope.varOpenEditPhoto = true;
     };
+
     $scope.closeModalEditPhoto = function () {
         $scope.varOpenEditPhoto = false;
     }
