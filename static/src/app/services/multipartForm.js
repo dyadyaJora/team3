@@ -1,4 +1,4 @@
-pepo.service('multipartForm', function($http) {
+pepo.service('multipartForm', function($q, $http) {
   this.patch = function (uploadUrl, data) {
     var fd = new FormData();
 
@@ -6,9 +6,9 @@ pepo.service('multipartForm', function($http) {
       fd.append(key, data[key]);
     }
 
-    $http.patch(uploadUrl, fd, {
+    return $q.when($http.patch(uploadUrl, fd, {
       transformRequest: angular.identity,
       headers: {'Content-Type': undefined }
-    })
+    }))
   }
 });

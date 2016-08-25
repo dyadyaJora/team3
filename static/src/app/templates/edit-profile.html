@@ -2,23 +2,26 @@
 <section class="page-container" ng-class="{'page-container__no-scroll':varOpenEditPhoto}">
   <h1 class="pepo-title">Edit profile:</h1>
 
-  <ul class="user-edit">
-    <li class="user-edit_item">
-      <input type="text" class="pepo_textinput user-edit_name" ng-model="user.username">
+  <form name="editProfileForm">
+    <ul class="user-edit">
+      <li class="user-edit_item">
+        <input type="text" class="pepo_textinput user-edit_name" ng-model="user.username">
 
-    <li class="user-edit_item">
-      <div class="user-edit_img-wrapper">
-        <img ng-src="{{user.avatarUrl}}" alt="{{user.name}}" ng-click="openModalEditPhoto()" class="user-edit_img">
-      </div>
+      <li class="user-edit_item">
+        <div class="user-edit_img-wrapper">
+          <img ng-src="{{user.avatarUrl}}" alt="{{user.name}}" ng-click="openModalEditPhoto()" class="user-edit_img">
+          <div class="new-avatar-tip" ng-show="newAvatarName">New avatar: {{newAvatarName}}</div>
+        </div>
 
-    <li class="user-edit_item">
-      <textarea class="pepo_textinput user-edit_description" ng-model="user.description"></textarea>
+      <li class="user-edit_item">
+        <textarea class="pepo_textinput user-edit_description" ng-model="user.description"></textarea>
 
-    <li class="user-edit_item user-edit_item__nosepation">
-      <button ng-click="updateUser()" class="pepo_btn user-edit_save">Save changes</button>
-    <li class="user-edit_item">
-      <button ng-click="editCancel()" class="pepo_btn user-edit_cancel">Cancel</button>
-  </ul>
+      <li class="user-edit_item user-edit_item__nosepation">
+        <div ng-click="updateUser()" class="pepo_btn user-edit_save" ng-class="{'user-edit_save__disabled': formPristine}">Save changes</div>
+      <li class="user-edit_item">
+        <div ng-click="editCancel()" class="pepo_btn user-edit_cancel">Cancel</div>
+    </ul>
+  </form>
 
 </section>
 

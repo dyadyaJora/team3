@@ -25,6 +25,7 @@ $sizeIconUpload: 24px;
 
 .user-edit_img {
   display: block;
+  cursor: pointer;
   width: 200px;
   margin-right: auto;
   margin-left: auto;
@@ -39,6 +40,8 @@ $sizeIconUpload: 24px;
   color: $colorWhite;
   font-size: 22px;
   transition: background 200ms;
+  text-align: center;
+  line-height: 40px;
   &:hover {
     background: $colorBlue__hover;
   }
@@ -49,6 +52,8 @@ $sizeIconUpload: 24px;
   color: $colorWhite;
   font-size: 22px;
   transition: background 200ms;
+  text-align: center;
+  line-height: 40px;
   &:hover {
     background: $colorRed__hover;
   }
@@ -151,3 +156,62 @@ $sizeIconUpload: 24px;
     }
   }
 }
+
+.user-edit_save__disabled {
+  cursor: default;
+  background: $colorGrey;
+  opacity: .5;
+  &:hover {
+    background: $colorGrey;
+  }
+}
+
+.new-avatar-tip {
+  color: $colorGrey;
+  font-size: 13px;
+  text-align: center;
+  margin-top: 16px;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
