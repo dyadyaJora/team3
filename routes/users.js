@@ -22,7 +22,7 @@ module.exports = function(passport) {
   });
 
   router.get('/:username',
-    findUser(showFields),
+    findUser(showFields + ' description'),
     function(req, res) {
       res.json(req._user.toObject());
     });

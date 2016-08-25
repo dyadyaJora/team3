@@ -8,6 +8,7 @@ var userSchema = new Schema({
   username: { type: String, required: true, trim: true, minlength: 4 },
   name: { type: String, required: true, maxlength: 20 },
   avatar: String,
+  description: String,
   fbId: Number,
   vkId: Number,
   token: { type: String },
@@ -33,7 +34,7 @@ userSchema.path('username').validate(function(value, done) {
 }, 'Такой логин уже зарегистрирован.');
 
 userSchema.plugin(patchPlugin, {
-  permitParams: ['username', 'name']
+  permitParams: ['username', 'name', 'description']
 });
 
 userSchema.plugin(paginationPlugin);
