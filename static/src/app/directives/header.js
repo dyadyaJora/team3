@@ -9,6 +9,7 @@ angular.module('pepo').directive('pepoHeader', function($rootScope, $auth, $loca
 
       userApi.getUser().$promise.then(function(data) {
         $scope.currentUser = data;
+        $scope.$broadcast('currentUserLoaded');
       });
 
 			 $scope.logout = function() {

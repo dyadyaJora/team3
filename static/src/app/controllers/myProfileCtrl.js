@@ -4,11 +4,34 @@ pepo.controller('myProfileCtrl', function($location, $auth, $scope, userApi, use
 
   usersApi.getUser({username: currentUserId}).$promise.then(function(data) {
     $scope.currentPageUser = data;
+    checkFollow();
   });
 
   usersApi.getUserStatuses({username: currentUserId}).$promise.then(function(data){
    	$scope.tweets = data;
   });
+
+  function checkFollow() {
+    $scope.$on('currentUserLoaded', function() {
+      $scope.currentUser.following.some(function(followingUser) {
+        if (followingUser === $scope.currentPageUser._id) {
+          $scope.followed = true;
+        }
+      });
+    });
+  }
+
+  $scope.subscribe = function() {
+    usersApi.followUser({username: currentUserId}).$promise.then(function(){
+      $scope.followed = true;
+    })
+  }
+
+  $scope.unsubscribe = function() {
+    usersApi.unfollowUser({username: currentUserId}).$promise.then(function(){
+      $scope.followed = false;
+    })
+  }
 
   $scope.sendPep = function() {
     newPep = {

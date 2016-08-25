@@ -5,9 +5,12 @@
         <div class="user-profile_content">
             <div class="user-profile_name">{{currentPageUser.name}}</div>
             <div class="user-profile_nickname">@{{currentPageUser.username}}</div>
-            <button class="pepo_btn user-profile_subscribe btn-top">+ Читать</button>
+
+            <div ng-hide="followed" class="pepo_btn user-profile_subscribe btn-top" ng-click="subscribe()">+ Читать</div>
+            <div ng-show="followed" class="pepo_btn user-profile_unsubscribe btn-top" ng-click="unsubscribe()">Читаю</div>
             <p class="user-profile_description">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Beatae dolore esse et eum ex illum minus porro quam quos repudiandae?</p>
-            <button class="pepo_btn user-profile_subscribe btn-bottom">+ Читать</button>
+            <div ng-hide="followed" class="pepo_btn user-profile_subscribe btn-bottom" ng-click="subscribe()">+ Читать</div>
+            <div ng-show="followed" class="pepo_btn user-profile_unsubscribe btn-bottom" ng-click="unsubscribe()">Читаю</div>
         </div>
 
     </div>
@@ -152,5 +155,4 @@
 
   <div class="load-more-btn" ng-click="loadMorePeps()" ng-class="{'load-more-btn__progress': pepsLoading}"></div>
 
-</section>
 </section>
