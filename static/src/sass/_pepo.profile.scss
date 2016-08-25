@@ -40,18 +40,46 @@
     color: $colorWhite;
     background: $colorBtnSubscribe;
     font-size: 14px;
-    transition: background 200ms;
     border-radius: 0;
+    text-align: center;
+    line-height: 40px;
     &:hover {
       background: $colorBtnSubscribe__hover;
     }
   }
 
-  .btn-top{
+  .btn-top {
     display: none;
   }
-  .btn-bottom{
+  .btn-bottom {
     display: block;
+  }
+
+  .user-profile_unsubscribe {
+    position: absolute;
+    bottom: 30px;
+    width: 95px;
+    color: $colorWhite;
+    background: $colorBtnSubscribe;
+    font-size: 14px;
+    border-radius: 0;
+    text-align: center;
+    line-height: 40px;
+    &:hover {
+      background: $colorBtnRed__hover;
+      color: transparent;
+      &:before {
+        content: 'Отписаться';
+        color: $colorWhite;
+        position: absolute;
+        text-align: center;
+        top:0;
+        left:0;
+        height: 100%;
+        width: 100%;
+
+      }
+    }
   }
 
   .user-profile_description {

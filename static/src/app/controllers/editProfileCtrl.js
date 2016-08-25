@@ -2,6 +2,7 @@ pepo.controller('editProfileCtrl', function ($q, $route, $location, $scope, user
 
     userApi.getUser().$promise.then(function(data) {
       $scope.user = data;
+      $scope.user.avatarUrl = $scope.user.avatarUrl || '../img/lisa.jpg';
     });
 
     $scope.formPristine = true;

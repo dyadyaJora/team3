@@ -1,16 +1,39 @@
-pepo.controller('myProfileCtrl', function($location, $auth, $scope, userApi,pepsApi, MOCKTWEETS){
-    console.log('myProfileCtrl');
+pepo.controller('myProfileCtrl', function($location, $auth, $scope, userApi, usersApi, pepsApi, MOCKTWEETS){
 
-  pepsApi.getPeps().$promise.then(function(data){
+  currentUserId = $location.path().slice(2);
+
+  usersApi.getUser({username: currentUserId}).$promise.then(function(data) {
+    $scope.currentPageUser = data;
+    checkFollow();
+  });
+
+  usersApi.getUserStatuses({username: currentUserId}).$promise.then(function(data){
    	$scope.tweets = data;
   });
-  userApi.getUser().$promise.then(function(data) {
-    $scope.currentUser = data;
-    console.log($scope.currentUser);
-  });
 
-    $scope.tweets = MOCKTWEETS;
- $scope.sendPep = function() {
+  function checkFollow() {
+    $scope.$on('currentUserLoaded', function() {
+      $scope.currentUser.following.some(function(followingUser) {
+        if (followingUser === $scope.currentPageUser._id) {
+          $scope.followed = true;
+        }
+      });
+    });
+  }
+
+  $scope.subscribe = function() {
+    usersApi.followUser({username: currentUserId}).$promise.then(function(){
+      $scope.followed = true;
+    })
+  }
+
+  $scope.unsubscribe = function() {
+    usersApi.unfollowUser({username: currentUserId}).$promise.then(function(){
+      $scope.followed = false;
+    })
+  }
+
+  $scope.sendPep = function() {
     newPep = {
       parent: $scope.pep.owner._id,
       owner: {
@@ -41,6 +64,7 @@ pepo.controller('myProfileCtrl', function($location, $auth, $scope, userApi,peps
 
   $scope.varAnswer = false;
   $scope.varDel = false;
+
   $scope.openModalAnswer = function(id) {
     $scope.varEdit1 = [];
     $scope.varAnswer = true;
@@ -71,7 +95,6 @@ pepo.controller('myProfileCtrl', function($location, $auth, $scope, userApi,peps
     $scope.varDel=false;
     });
   }
-
 
   $scope.editPepStart = function(index, id, text){
     $scope.editId = id;
@@ -104,7 +127,6 @@ pepo.controller('myProfileCtrl', function($location, $auth, $scope, userApi,peps
   setTimeout(function(){ $scope.editAnim = [];}, 2000);
   }
 
-
       // Server latency mock.
   function sleep (milliSeconds) {
     var startTime = new Date().getTime();
@@ -115,7 +137,7 @@ pepo.controller('myProfileCtrl', function($location, $auth, $scope, userApi,peps
   $scope.loadMorePeps = function() {
     $scope.pepsLoading = true;
     localPepsOffset += 5;
-    var res = pepsApi.getPeps({offset:localPepsOffset, count:5}).$promise.then(function(data){
+    var res = usersApi.getUserStatuses({username: currentUserId}, {offset:localPepsOffset, count:5}).$promise.then(function(data){
       $scope.tweets = $scope.tweets.concat(data);
       sleep(1000); // server latency mock.
       $scope.pepsLoading = false;

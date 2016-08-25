@@ -1,13 +1,16 @@
 <pepo-header></pepo-header>
 <section class="page-container">
     <div class="user-profile">
-        <img ng-src="{{currentUser.avatarUrl}}" alt="" class="user-profile_img">
+        <img ng-src="{{currentPageUser.avatarUrl}}" alt="" class="user-profile_img">
         <div class="user-profile_content">
-            <div class="user-profile_name">{{currentUser.name}}</div>
-            <div class="user-profile_nickname">@{{currentUser.username}}</div>
-            <button class="pepo_btn user-profile_subscribe btn-top">+ Читать</button>
+            <div class="user-profile_name">{{currentPageUser.name}}</div>
+            <div class="user-profile_nickname">@{{currentPageUser.username}}</div>
+
+            <div ng-hide="followed" class="pepo_btn user-profile_subscribe btn-top" ng-click="subscribe()">+ Читать</div>
+            <div ng-show="followed" class="pepo_btn user-profile_unsubscribe btn-top" ng-click="unsubscribe()">Читаю</div>
             <p class="user-profile_description">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Beatae dolore esse et eum ex illum minus porro quam quos repudiandae?</p>
-            <button class="pepo_btn user-profile_subscribe btn-bottom">+ Читать</button>
+            <div ng-hide="followed" class="pepo_btn user-profile_subscribe btn-bottom" ng-click="subscribe()">+ Читать</div>
+            <div ng-show="followed" class="pepo_btn user-profile_unsubscribe btn-bottom" ng-click="unsubscribe()">Читаю</div>
         </div>
 
     </div>
@@ -136,11 +139,11 @@
             <div class="tweet-actions_coutn"> 2</div>
            </li>
 
-          <li class="tweet-actions_item tweet-actions_item__edit" >
+          <li ng-show="tweet.owner.username == currentUser.username" class="tweet-actions_item tweet-actions_item__edit" >
             <div class="tweet-actions_icon" ng-click="editPepStart($index, tweet._id, tweet.text)"></div>
           </li>
 
-           <li class="tweet-actions_item tweet-actions_item__remove" ng-click="openModalDel($index, tweet._id)">
+           <li ng-show="tweet.owner.username == currentUser.username" class="tweet-actions_item tweet-actions_item__remove" ng-click="openModalDel($index, tweet._id)">
             <div class="tweet-actions_icon"></div>
           </li>
 
@@ -152,5 +155,4 @@
 
   <div class="load-more-btn" ng-click="loadMorePeps()" ng-class="{'load-more-btn__progress': pepsLoading}"></div>
 
-</section>
 </section>

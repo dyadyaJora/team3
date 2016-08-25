@@ -98,11 +98,39 @@
   font-size: 14px;
   position: absolute;
   top: 30px;
-  transition: background 200ms;
+  text-align: center;
+  line-height: 40px;
   right: 15px;
   width: 95px;
   &:hover {
     background: $colorBtnSubscribe__hover;
+  }
+}
+
+.user_unsubscribe {
+  color: $colorWhite;
+  background: $colorBtnSubscribe;
+  font-size: 14px;
+  position: absolute;
+  top: 30px;
+  text-align: center;
+  line-height: 40px;
+  right: 15px;
+  width: 95px;
+  &:hover {
+    background: $colorBtnRed__hover;
+    color: transparent;
+    &:before {
+      content: 'Отписаться';
+      color: $colorWhite;
+      position: absolute;
+      text-align: center;
+      top:0;
+      left:0;
+      height: 100%;
+      width: 100%;
+
+    }
   }
 }
 

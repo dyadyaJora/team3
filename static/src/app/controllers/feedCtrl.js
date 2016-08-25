@@ -1,19 +1,7 @@
-pepo.controller('feedCtrl', function($rootScope, $q, $location, $auth, $scope, userApi, pepsApi, MOCKTWEETS) {
+pepo.controller('feedCtrl', function($rootScope, $q, $location, $auth, $scope, userApi, feedApi, pepsApi) {
   $scope.newPepText = '';
-  pepsApi.getPeps().$promise.then(function(data){
-    $scope.tweets = data;
-  });
-  userApi.getUser().$promise.then(function(data) {
-    $scope.currentUser = data;
-  });
-
-  $scope.tweets = MOCKTWEETS;
   currentLocation = [];
-
-
-  $scope.goToUser = function(username) {
-    $location.path('/@' + username);
-  }
+  navigator.geolocation.getCurrentPosition(show_map);
 
   // Get coordinates.
   function show_map(position) {
@@ -21,7 +9,13 @@ pepo.controller('feedCtrl', function($rootScope, $q, $location, $auth, $scope, u
     currentLocation.push(position.coords.longitude);
   }
 
-  navigator.geolocation.getCurrentPosition(show_map);
+  feedApi.getFeed().$promise.then(function(data){
+    $scope.tweets = data;
+  });
+
+  $scope.goToUser = function(username) {
+    $location.path('/@' + username);
+  }
 
   $scope.sendPep = function() {
     newPep = {
@@ -125,7 +119,7 @@ pepo.controller('feedCtrl', function($rootScope, $q, $location, $auth, $scope, u
   $scope.loadMorePeps = function() {
     $scope.pepsLoading = true;
     localPepsOffset += 5;
-    var res = pepsApi.getPeps({offset:localPepsOffset, count:5}).$promise.then(function(data){
+    var res = feedApi.getFeed({offset:localPepsOffset, count:5}).$promise.then(function(data){
       $scope.tweets = $scope.tweets.concat(data);
       sleep(1000); // server latency mock.
       $scope.pepsLoading = false;
