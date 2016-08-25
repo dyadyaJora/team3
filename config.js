@@ -2,6 +2,8 @@ module.exports = {
 
   mongodbUri: process.env.MONGODB_URI || 'mongodb://localhost/pepo-dev',
 
+  sharpEnabled: process.env.SHARP_DISABLED !== 'yes',
+
   passportOptions: {
 
     facebook: {
