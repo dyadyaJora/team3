@@ -23,21 +23,19 @@
   }
   .user-profile_name {
     color: #3d3d48;
-    font-size: 20px;
+    font-size: 18px;
     font-weight: bold;
     max-width: calc(100% - 100px);
     text-overflow: ellipsis;
     overflow: hidden;
+    white-space: nowrap;
   }
   .user-profile_nickname {
     color: $colorTextLightGrey;
     font-size: 13px;
     position: relative;
-    top: -3px;
   }
   .user-profile_subscribe {
-    position: absolute;
-    bottom: 30px;
     width: 95px;
     color: $colorWhite;
     background: $colorBtnSubscribe;
@@ -47,6 +45,13 @@
     &:hover {
       background: $colorBtnSubscribe__hover;
     }
+  }
+
+  .btn-top{
+    display: none;
+  }
+  .btn-bottom{
+    display: block;
   }
 
   .user-profile_description {
@@ -118,6 +123,12 @@
     .user-profile-info {
       text-align: center;
     }
+    .btn-top{
+      display: block;
+    }
+    .btn-bottom{
+      display: none;
+    }
   }
 }
 
@@ -128,6 +139,12 @@
   }
   .user-profile{
     margin-bottom: 0;
+  }
+  .btn-top{
+    display: block;
+  }
+  .btn-bottom{
+    display: none;
   }
 }
 

@@ -16,13 +16,20 @@
   $modal-image-height: 135px;
   $modal-image-width: $modal-image-height;
   $modal-trigger-image-width: 300px;
+  .tweet-content_text{
+    padding-left:0;
+    @include media( $mobileWidth){
+      padding-left:60px;
+    }
+  }
   .modal-answer__active,
   .new-pep__active{
     visibility: visible !important;
     opacity: 1 !important;
   }
   .pepo-modal-top{
-    padding: 1.5em;
+    padding: 25px;
+    padding-right: 50px;
     text-align: center;
     border-bottom: 1px solid $colorGrey;
   }
@@ -97,7 +104,7 @@
     border-radius: $base-border-radius;
     margin: auto;
     margin-top: 15vh;
-    max-height: 95%;
+    max-height: 70vh;
     overflow: auto;
     position: relative;
     transition: opacity 0.25s ease;
@@ -111,6 +118,7 @@
 
     @include media($large-screen) {
       width: 50%;
+      margin-top:0;
     }
 
     .modal-intro {
