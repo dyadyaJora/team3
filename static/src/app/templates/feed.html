@@ -4,18 +4,23 @@
       <div class="modal-close" ng-click="varAnswer=''"></div>
       <header ng-click="goToUser(pep.owner.username)" class="pepo-modal-top">Ответить <span class="pep-answer-username">@{{pep.owner.username}}</span></header>
       <section class="tweet_answer">
-        <div class="tweet-user-img_answer">
-          <img ng-src="{{pep.owner.avatarUrl}}" alt="">
-        </div>
-        <div class="tweet-content_answer">
-          <div class="tweet-header_user-name">{{pep.owner.name}}
+              <header class="tweet-header">
+        <div class="tweet-header_user">
+          <img ng-click="goToUser(pep.owner.username)" ng-src="{{pep.owner.thumbUrl}}" alt="" class="tweet-header_user-img">
+          <div class="tweet-header_name-wrapper">
+            <div ng-click="goToUser(tweet.owner.username)" class="tweet-header_user-name">{{pep.owner.name}}</div>
+            <div ng-click="goToUser(tweet.owner.username)" class="tweet-header_user-login">@{{pep.owner.username}}</div>
           </div>
-          <div class="tweet-header_user-login">@{{pep.owner.username}}
-          </div>
-          <div class="tweet-header_date__answer">{{pep.createdAt}}</div>
-          <p class="tweet-content_text__answer">{{pep.text}}</p>
         </div>
+        <div class="tweet-header_date" ng-click="goToPep(pep._id)">434534523345{{pep.createdAt}}</div>
+      </header>
+
+
+      <section class="tweet-content">
+        <p class="tweet-content_text">{{pep.text}}</p>
+        </section>
       </section>
+
       <section class="tweet-type_answer">
         <div class="tweet-textarea_answer">
           <textarea class="new-pep-input" ng-model="newPepText" tabindex="1" autofocus id="tt">
