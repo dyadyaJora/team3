@@ -4,7 +4,7 @@
 
   <ul class="user-edit">
     <li class="user-edit_item">
-      <input type="text" class="pepo_textinput user-edit_name" value="{{user.username}}">
+      <input type="text" class="pepo_textinput user-edit_name" ng-model="user.username">
 
     <li class="user-edit_item">
       <div class="user-edit_img-wrapper">
@@ -12,7 +12,7 @@
       </div>
 
     <li class="user-edit_item">
-      <textarea class="pepo_textinput user-edit_description">{{user.description}}</textarea>
+      <textarea class="pepo_textinput user-edit_description" ng-model="user.description"></textarea>
 
     <li class="user-edit_item user-edit_item__nosepation">
       <button ng-click="updateUser()" class="pepo_btn user-edit_save">Save changes</button>
