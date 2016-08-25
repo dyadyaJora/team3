@@ -16,6 +16,12 @@
   $modal-image-height: 135px;
   $modal-image-width: $modal-image-height;
   $modal-trigger-image-width: 300px;
+  .tweet-content_text{
+    padding-left:0;
+    @include media(530px){
+      padding-left:60px;
+    }
+  }
   .modal-answer__active,
   .new-pep__active{
     visibility: visible !important;
@@ -111,6 +117,7 @@
 
     @include media($large-screen) {
       width: 50%;
+      margin-top:0;
     }
 
     .modal-intro {
