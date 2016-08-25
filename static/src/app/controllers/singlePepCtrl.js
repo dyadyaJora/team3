@@ -6,9 +6,6 @@ pepo.controller('singlePepCtrl', function($location, $scope, pepsApi, userApi, M
     $scope.currentTweet = data;
     $scope.parent = $scope.currentTweet.parent;
   });
-  userApi.getUser().$promise.then(function(data) {
-    $scope.currentUser = data;
-  });
 
   $scope.isOwner = function(user, tweetOwner) {
      return user === tweetOwner;
