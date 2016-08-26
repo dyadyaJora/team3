@@ -3,6 +3,7 @@ pepo.controller('editProfileCtrl', function ($q, $route, $location, $scope, user
     userApi.getUser().$promise.then(function(data) {
       $scope.user = data;
       $scope.user.avatarUrl = $scope.user.avatarUrl || '../img/lisa.jpg';
+      console.log($scope.user);
     });
 
     $scope.formPristine = true;
@@ -11,7 +12,7 @@ pepo.controller('editProfileCtrl', function ($q, $route, $location, $scope, user
 
     $scope.$watch(function() {
       if ($scope.editProfileForm.$dirty) {
-        $scope.dataChanged = false;
+        $scope.formPristine = false;
       }
 
       if ($scope.userEdit.avatar) {
