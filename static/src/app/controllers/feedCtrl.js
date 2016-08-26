@@ -43,13 +43,7 @@ pepo.controller('feedCtrl', function($rootScope, $q, $location, $auth, $scope, u
     $location.path('/pep' + pepId);
   }
 
-  $scope.varAnswer = false;
-  $scope.varDel = false;
-  $scope.openModalAnswer = function(id) {
-    $scope.varEdit1 = [];
-    $scope.varAnswer = true;
-  	$scope.pep = $scope.tweets[id];
-  }
+
 
   $scope.openModalDel = function(index, id) {
     $scope.varEdit1 = [];
@@ -59,13 +53,6 @@ pepo.controller('feedCtrl', function($rootScope, $q, $location, $auth, $scope, u
     $scope.delId = id;
   }
 
-  $scope.closeModalAnswer = function($event){
-	var click = angular.element($event.target).parent();
-	if(click.hasClass("modal")){
-		$scope.varAnswer=false;
-		$scope.varDel=false;
-	  }
-  }
 
 
   $scope.deletePep = function(){
