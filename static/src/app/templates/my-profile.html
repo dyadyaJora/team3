@@ -8,7 +8,7 @@
 
             <div ng-hide="followed" class="pepo_btn user-profile_subscribe btn-top" ng-click="subscribe()">+ Читать</div>
             <div ng-show="followed" class="pepo_btn user-profile_unsubscribe btn-top" ng-click="unsubscribe()">Читаю</div>
-            <p class="user-profile_description">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Beatae dolore esse et eum ex illum minus porro quam quos repudiandae?</p>
+            <p class="user-profile_description">{{currentPageUser.description}}</p>
             <div ng-hide="followed" class="pepo_btn user-profile_subscribe btn-bottom" ng-click="subscribe()">+ Читать</div>
             <div ng-show="followed" class="pepo_btn user-profile_unsubscribe btn-bottom" ng-click="unsubscribe()">Читаю</div>
         </div>
