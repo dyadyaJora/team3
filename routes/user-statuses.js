@@ -4,7 +4,7 @@ var mongoose = require('mongoose');
 var router = express.Router();
 var Status = mongoose.model('Status');
 
-var statusFields = '_id text owner';
+var statusFields = '_id text location owner';
 var userFields = '_id username name avatar';
 
 router.get('/', function(req, res, next) {

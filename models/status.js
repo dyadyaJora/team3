@@ -5,13 +5,14 @@ var Schema = mongoose.Schema;
 
 var statusSchema = new Schema({
   text: { type: String, required: true },
-  owner: { type: Schema.Types.ObjectId, ref: 'User', required: true }
+  owner: { type: Schema.Types.ObjectId, ref: 'User', required: true },
+  location: { type: [Number], index: '2dsphere'}
 }, {
   timestamps: true
 });
 
 statusSchema.plugin(patchPlugin, {
-  permitParams: ['text']
+  permitParams: ['text', 'location']
 });
 
 statusSchema.plugin(paginationPlugin);

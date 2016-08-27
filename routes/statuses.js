@@ -4,10 +4,10 @@ var mongoose = require('mongoose');
 var router = express.Router();
 var Status = mongoose.model('Status');
 
-var statusFields = '_id text owner';
+var statusFields = '_id text owner location';
 var userFields = '_id username name avatar';
 
-var permitParams = ['text'];
+var permitParams = ['text', 'location'];
 
 module.exports = function(passport) {
 
@@ -58,6 +58,7 @@ module.exports = function(passport) {
     passport.authenticate('bearer', { session: false }),
     findStatus(), checkOwner,
     function(req, res, next) {
+      console.log(req.body);
       req._status.patch(req.body, function(err, status) {
         if (err) { return next(err); }
 
