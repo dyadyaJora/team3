@@ -1,6 +1,14 @@
-pepo.controller('usersCtrl', function($location, $scope, usersApi, userApi, MOCKUSERS) {
+pepo.controller('usersCtrl', function($location, $scope, usersApi, userApi, debounce, MOCKUSERS) {
   $scope.searchValue = '';
   $scope.subscribed = [];
+
+  $scope.fn = debounce(function () {
+      console.log($scope.searchValue);
+      usersApi.getUsers({q: $scope.searchValue}).$promise.then(function(data){
+        $scope.users = data;
+      });
+    }, 2000);
+  
 
   $scope.$on('currentUserLoaded', function() {
      getUsers();

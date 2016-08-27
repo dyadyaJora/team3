@@ -1,15 +1,15 @@
 <pepo-header></pepo-header>
 <section class="page-container">
   <div class="users-search">
-    <input ng-model="searchValue.name" type="text" class="users-search_input" placeholder="Search...">
+    <input ng-model="searchValue" ng-change="fn()" type="text" class="users-search_input" placeholder="Search...">
   </div>
 
   <div class="pepo-info">
-    <div class="pepo-info_text">Найдено {{(users | filter:searchValue).length}} пеповчан</div>
+    <div class="pepo-info_text">Найдено  пеповчан</div>
   </div>
 
   <ul class="users-list">
-    <li ng-repeat="user in users | filter:searchValue" ng-init="isSubscribe(user._id)" class="users-list_item user">
+    <li ng-repeat="user in users" ng-init="isSubscribe(user._id)" class="users-list_item user">
       <img ng-click="goToUser(user.username)" ng-src="{{user.avatarUrl}}" alt="" class="user_img">
       <div class="user_content">
         <div ng-click="goToUser(user.username)" class="user_name">{{user.name}}</div>
