@@ -81,6 +81,8 @@ module.exports = function(passport) {
     }
   );
 
+  router.use('/:id/replies', findStatus('_id, owner'), require('./status-replies'));
+
   return router;
 
 };
