@@ -4,7 +4,7 @@ var mongoose = require('mongoose');
 var router = express.Router();
 var Status = mongoose.model('Status');
 
-var statusFields = '_id text owner location';
+var statusFields = '_id text owner location createdAt updatedAt';
 var userFields = '_id username name avatar';
 
 var permitParams = ['text', 'location'];
