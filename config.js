@@ -22,7 +22,8 @@ module.exports = {
     facebook: {
       clientID: process.env.FACEBOOK_APP_ID,
       clientSecret: process.env.FACEBOOK_APP_SECRET,
-      callbackURL: baseUrl + '/api/auth/facebook'
+      callbackURL: baseUrl + '/api/auth/facebook',
+      profileFields: ['id', 'displayName', 'picture.type(large)']
     },
 
     vkontakte: {

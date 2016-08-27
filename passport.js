@@ -33,17 +33,30 @@ module.exports = function(passport) {
 
           if (user) { return done(null, user); }
 
-          user = new User({
-            username: 'fb' + profile.id,
-            name: prepareName(profile.displayName),
-            fbId: profile.id
-          });
+          // TODO DRY
+          downloadAvatar(profile.photos)
+            .then(function(file) {
+              return cropPicture(file, 'uploads/avatar/', config.cropParams.userAvatar);
+            })
+            .then(function(file) {
+              user = new User({
+                username: 'fb' + profile.id,
+                name: prepareName(profile.displayName),
+                fbId: profile.id
+              });
 
-          user.save(function(err, user) {
-            if (err) { return done(err); }
+              if (file) {
+                user.avatar = file.filename;
+              }
 
-            done(null, user, { isNew: true });
-          });
+              return user.save();
+            })
+            .then(function(user) {
+              done(null, user, { isNew: true });
+            })
+            .catch(function(err) {
+              done(err);
+            });
         });
       }
     )
@@ -58,7 +71,7 @@ module.exports = function(passport) {
 
           if (user) { return done(null, user); }
 
-
+          // TODO DRY
           downloadAvatar(profile.photos)
             .then(function(file) {
               return cropPicture(file, 'uploads/avatar/', config.cropParams.userAvatar);
