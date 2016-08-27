@@ -4,7 +4,7 @@ var mongoose = require('mongoose');
 var router = express.Router();
 var Status = mongoose.model('Status');
 
-var statusFields = '_id text location owner';
+var statusFields = '_id text location owner createdAt updatedAt';
 var userFields = '_id username name avatar';
 
 module.exports = function(passport) {
