@@ -4,6 +4,15 @@ module.exports = {
 
   baseUrl: baseUrl,
 
+  cropParams: {
+
+    userAvatar: [
+      { name: 'avatar', w: 175, h: 175 },
+      { name: 'thumb', w: 50, h: 50 }
+    ]
+
+  },
+
   mongodbUri: process.env.MONGODB_URI || 'mongodb://localhost/pepo-dev',
 
   sharpEnabled: process.env.SHARP_DISABLED !== 'yes',
