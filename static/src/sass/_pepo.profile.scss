@@ -96,14 +96,31 @@
   margin-left: auto;
   margin-right: auto;
   padding: 7px 15px;
+  position: relative;
   background: $colorWhite;
+  .user-info-item_line{
+    height: 2px;
+    background: #80a8cc;
+    position: absolute;
+    width: 55px;
+    left:15px;
+  }
+  .first-item{
+    left:15px;
+  }
+  .second-item{
+    left:86px;
+  }
+  .third-item{
+    left: 171px;
+  }
   .user-profile-info_item {
     display: inline-block;
     text-align: center;
     padding: 0 10px;
     vertical-align: top;
     &.user-profile-info_item__active {
-      border-bottom: 2px solid $colorBtnSubscribe;
+      //border-bottom: 2px solid $colorBtnSubscribe;
     }
     &:last-child {
       margin-right: 0;

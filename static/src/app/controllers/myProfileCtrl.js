@@ -143,4 +143,10 @@ pepo.controller('myProfileCtrl', function($location, $auth, $scope, userApi, use
       $scope.pepsLoading = false;
     });
   }
+  $scope.varInfo = 0;
+  $scope.varInfoArr = [true, false, false];
+  $scope.itemInfo = function(index){
+    $scope.varInfoArr=[];
+    $scope.varInfoArr[index] = true;
+  }
 });
