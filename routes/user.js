@@ -1,7 +1,7 @@
+var config = require('../config');
 var express = require('express');
 var mongoose = require('mongoose');
 var multer = require('multer');
-var sharp = require('sharp');
 var Promise = require('bluebird');
 var fileStorage = require('../lib/file-storage');
 
@@ -53,19 +53,20 @@ module.exports = function(passport) {
 };
 
 function createAvatar(file) {
-  if (file) {
-    return sharp(file.path)
-      .resize(175, 175)
-      .toFile('uploads/avatar/175_' + file.filename)
-      .then(function() {
-        return sharp('uploads/avatar/175_' + file.filename)
-          .resize(50, 50)
-          .toFile('uploads/avatar/50_' + file.filename);
-      }).then(function() {
-        return file.filename;
-      });
-
-  } else {
+  if (!config.sharpEnabled || !file) {
     return Promise.resolve();
   }
+
+  var sharp = require('sharp');
+
+  return sharp(file.path)
+    .resize(175, 175)
+    .toFile('uploads/avatar/175_' + file.filename)
+    .then(function() {
+      return sharp('uploads/avatar/175_' + file.filename)
+        .resize(50, 50)
+        .toFile('uploads/avatar/50_' + file.filename);
+    }).then(function() {
+      return file.filename;
+    });
 }
