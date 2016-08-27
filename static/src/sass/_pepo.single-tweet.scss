@@ -63,7 +63,7 @@
 .single-tweet-header_user-name {
   color: $colorBlack;
   cursor: pointer;
-  font-size: 26px;
+  font-size: 18px;
   max-width: 330px;
   white-space: nowrap;
   overflow: hidden;
@@ -74,7 +74,7 @@
 
 }
 .single-tweet-header_user-login {
-  font-size: 16px;
+  font-size: 12px;
   color: $colorGrey;
   cursor: pointer;
   &:hover {
@@ -92,7 +92,7 @@
   color: $colorTextGrey;
   font-size: 32px;
   line-height: 34px;
-  margin-top: 15px;
+  margin-top: 26px;
 }
 .single-tweet-footer {
   padding-left: 3px;
@@ -171,6 +171,7 @@
   position: relative;
   padding-left: 24px;
   margin-left: 72px;
+  margin-bottom: 20px;
   &:before {
     content: '';
     background: url('../img/back-arrow.svg')no-repeat center;

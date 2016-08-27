@@ -61,8 +61,8 @@
       </footer>
     </div>
 
-    <ul class="tweet-answers" ng-show="currentTweet.children">
-      <li class="tweet-answers_item" ng-repeat="answer in currentTweet.childrens">
+    <ul class="tweet-answers" ng-show="currentTweet.children.length">
+      <li class="tweet-answers_item" ng-repeat="answer in currentTweet.children">
         <header class="tweet-header">
           <div class="tweet-header_user">
             <img ng-src="{{answer.owner.thumbUrl}}" alt="" class="tweet-header_user-img">

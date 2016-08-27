@@ -22,7 +22,7 @@ angular.module('pepo').directive('modalAnswer', function($rootScope, $auth, $loc
 			  $scope.sendPep = function() {
     newPep = {
       location: currentLocation,
-      parent: $scope.pep.owner._id,
+      parent: $scope.pep._id,
       owner: {
         name: $scope.currentUser.name,
         username: $scope.currentUser.username,

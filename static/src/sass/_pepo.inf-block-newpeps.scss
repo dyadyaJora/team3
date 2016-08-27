@@ -1,8 +1,9 @@
 .inf-block {
+  display: none;
 	margin-top: 40px;
 	padding-top: 5px;
 	width: 100%;
-	
+
 }
 .inf-block_contain {
 	background-color: $colorBlue;
@@ -13,17 +14,17 @@
 	margin: auto;
 	text-align: center;
 	line-height: 50px;
-	transform: scale(0.1);
+	transform: scale(0);
 	transition: transform 200ms ease-out;
 	color: $colorWhite;
 	height: 50px;
 	width: 100px;
-	
+
 }
 .inf-block_text {
 	margin: 0 auto;
 }
 .inf-block_contain__show {
 	transform: none;
-	
+
 }
