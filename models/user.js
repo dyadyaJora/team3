@@ -5,7 +5,7 @@ var paginationPlugin = require('../lib/pagination-plugin');
 var Schema = mongoose.Schema;
 
 var userSchema = new Schema({
-  username: { type: String, required: true, trim: true, minlength: 4 },
+  username: { type: String, required: true, trim: true, minlength: 4, unique: true },
   name: { type: String, required: true, maxlength: 20 },
   avatar: String,
   description: String,
