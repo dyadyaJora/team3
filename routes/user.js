@@ -32,7 +32,7 @@ module.exports = function(passport) {
           res.json(user.toObject());
         })
         .catch(function(err) {
-          if (err.name == 'ValidationError') {
+          if (err.name == 'ValidationError' || err.code == 11000) {
             err.status = 422;
           }
           return next(err);
