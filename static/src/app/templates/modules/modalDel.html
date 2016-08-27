@@ -1,0 +1,37 @@
+<div class="modal">
+  <div class="modal-fade-screen" ng-class="{'modal-answer__active': varDel}" ng-click="closeModalAnswer($event)">
+    <div class="modal-inner">
+      <div class="modal-close" ng-click="varDel=''"></div>
+      <header class="pepo-modal-top">Вы уверены что хотите удалить пеп?
+      </header>
+        <section class="tweet_answer">
+        <header class="tweet-header">
+        <div class="tweet-header_user">
+          <img ng-click="goToUser(pep.owner.username)" ng-src="{{pep.owner.thumbUrl}}" alt="" class="tweet-header_user-img">
+          <div class="tweet-header_name-wrapper">
+            <div ng-click="goToUser(tweet.owner.username)" class="tweet-header_user-name">{{pep.owner.name}}</div>
+            <div ng-click="goToUser(tweet.owner.username)" class="tweet-header_user-login">@{{pep.owner.username}}</div>
+          </div>
+        </div>
+        <div class="tweet-header_date" ng-click="goToPep(pep._id)">434534523345{{pep.createdAt}}</div>
+      </header>
+
+
+      <section class="tweet-content">
+        <p class="tweet-content_text">{{pep.text}}</p>
+        </section>
+      </section>
+
+      <section class="tweet-type_answer">
+        <ul class="actions-btn-block">
+        <li class="actions-btn-block_item">
+          <div class="pepo_btn actions-btn-cancel_item" ng-click="varDel=''">Отменить</div>
+        </li>
+        <li class="actions-btn-block_item">
+          <div class="pepo_btn actions-btn-del_item"  ng-click="deletePep()">Удалить</div>
+        </li>
+        </ul>
+      </section>
+    </div>
+  </div>
+</div>

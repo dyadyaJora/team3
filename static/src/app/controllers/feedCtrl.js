@@ -45,13 +45,7 @@ pepo.controller('feedCtrl', function($rootScope, $q, $location, $auth, $scope, u
 
 
 
-  $scope.openModalDel = function(index, id) {
-    $scope.varEdit1 = [];
-    $scope.varDel = true;
-  	$scope.pep = $scope.tweets[index];
-    $scope.delIndex = index;
-    $scope.delId = id;
-  }
+
 
 
 
