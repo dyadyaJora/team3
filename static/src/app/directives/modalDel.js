@@ -11,6 +11,14 @@ angular.module('pepo').directive('modalDel', function($rootScope, $auth, $locati
 				$scope.delIndex = index;
 				$scope.delId = id;
 			 }
+			$scope.deletePep = function(){
+				pepsApi.deletePep({id: $scope.delId}).$promise.then(function(data){
+					$scope.tweets.splice($scope.delIndex, 1);
+					$scope.varDel=false;
+				}).catch(function(eror){
+					$scope.varDel=false;
+				});
+			}
 
 		}
 	}

@@ -1,3 +1,5 @@
+<modal-answer></modal-answer>
+<modal-del></modal-del>
 <pepo-header></pepo-header>
 <section class="page-container">
     <div class="user-profile">
@@ -31,71 +33,6 @@
         </ul>
     </div>
 
-<div class="modal">
-  <div class="modal-fade-screen" ng-class="{'modal-answer__active': varAnswer}" ng-click="closeModalAnswer($event)">
-    <div class="modal-inner">
-      <div class="modal-close" ng-click="varAnswer=''"></div>
-      <header class="pepo-modal-top">Ответить @{{pep.owner.username}}
-      </header>
-      <section class="tweet_answer">
-        <div class="tweet-user-img_answer">
-          <img ng-src="{{pep.owner.thumbUrl}}" alt="">
-        </div>
-        <div class="tweet-content_answer">
-          <div class="tweet-header_user-name">{{pep.owner.name}}
-          </div>
-          <div class="tweet-header_user-login">@{{pep.owner.username}}
-          </div>
-          <div class="tweet-header_date__answer">{{pep.createdAt}}</div>
-          <p class="tweet-content_text__answer">{{pep.text}}</p>
-        </div>
-      </section>
-      <section class="tweet-type_answer">
-        <div class="tweet-textarea_answer">
-          <textarea ng-model="newPepText" tabindex="1" autofocus id="tt">
-          </textarea>
-        </div>
-        <div class="tweet-buttons-block_answer">
-          <input type="file">
-          <input type="submit" value="Ответить" class="tweet-btn_answer" ng-click="sendPep()">
-        </div>
-      </section>
-    </div>
-  </div>
-</div>
-
-<div class="modal">
-  <div class="modal-fade-screen" ng-class="{'modal-answer__active': varDel}" ng-click="closeModalAnswer($event)">
-    <div class="modal-inner">
-      <div class="modal-close" ng-click="varDel=''"></div>
-      <header class="pepo-modal-top">Вы уверены что хотите удалить пеп?
-      </header>
-      <section class="tweet_answer">
-        <div class="tweet-user-img_answer">
-          <img ng-src="{{pep.owner.thumbUrl}}" alt="">
-        </div>
-        <div class="tweet-content_answer">
-          <div class="tweet-header_user-name">{{pep.owner.name}}
-          </div>
-          <div class="tweet-header_user-login">@{{pep.owner.username}}
-          </div>
-          <div class="tweet-header_date__answer">{{pep.createdAt}}</div>
-          <p class="tweet-content_text__answer">{{pep.text}}</p>
-        </div>
-      </section>
-      <section class="tweet-type_answer">
-        <ul class="actions-btn-block">
-        <li class="actions-btn-block_item">
-          <div class="pepo_btn actions-btn-cancel_item" ng-click="varDel=''">Отменить</div>
-        </li>
-        <li class="actions-btn-block_item">
-          <div class="pepo_btn actions-btn-del_item"  ng-click="deletePep()">Удалить</div>
-        </li>
-        </ul>
-      </section>
-    </div>
-  </div>
-</div>
 
   <ul class="tweets tweets__userpage">
     <li class="tweets_item" ng-init="i=0" ng-repeat="tweet in tweets">

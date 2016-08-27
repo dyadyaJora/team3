@@ -42,23 +42,7 @@ pepo.controller('feedCtrl', function($rootScope, $q, $location, $auth, $scope, u
   $scope.goToPep = function(pepId) {
     $location.path('/pep' + pepId);
   }
-
-
-
-
-
-
-
-  $scope.deletePep = function(){
-    pepsApi.deletePep({id: $scope.delId}).$promise.then(function(data){
-        $scope.tweets.splice($scope.delIndex, 1);
-        $scope.varDel=false;
-      }).catch(function(eror){
-    $scope.varDel=false;
-    });
-  }
-
-
+  
   $scope.editPepStart = function(index, id, text){
     $scope.editId = id;
     console.log(id);
