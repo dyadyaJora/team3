@@ -6,7 +6,8 @@ var Schema = mongoose.Schema;
 var statusSchema = new Schema({
   text: { type: String, required: true },
   owner: { type: Schema.Types.ObjectId, ref: 'User', required: true },
-  location: { type: [Number], index: '2dsphere'}
+  location: { type: [Number], index: '2dsphere'},
+  parent: { type: Schema.Types.ObjectId, ref: 'Status' }
 }, {
   timestamps: true
 });
