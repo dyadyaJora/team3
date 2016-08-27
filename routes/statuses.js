@@ -40,27 +40,45 @@ module.exports = function(passport) {
 
       status.owner = req.user._id;
 
-      status.save(function(err, status) {
-        if (err) { return next(err); }
-
-        res.status(201);
-        res.json(status.toObject());
-      });
+      status.save()
+        .then(function(status) {
+          return status.populate('parent', statusFields)
+            .execPopulate();
+        })
+        .then(function(status) {
+          res.status(201);
+          res.json(status.toObject());
+        })
+        .catch(function(err) {
+          next(err);
+        });
     });
 
   router.get('/:id',
-    findStatus(statusFields + ' parent'),
+    findStatus(statusFields + ' parent', true),
     function(req, res) {
-      req._status.populate('parent', function(err, status) {
-        res.json(status.toObject());
-      });
+      Status.find({ parent: req._status._id })
+        .populate({ path: 'owner', select: userFields })
+        .select(statusFields)
+        .paginate(req.query)
+        .sort('-createdAt')
+        .exec(function(err, statuses) {
+          if (err) { return next(err); }
+
+          var status = req._status.toObject();
+
+          status.chilren = statuses.map(function(status) {
+            return status.toObject();
+          });
+
+          res.json(status);
+        });
     });
 
   router.patch('/:id',
     passport.authenticate('bearer', { session: false }),
-    findStatus(), checkOwner,
+    findStatus(null, true), checkOwner,
     function(req, res, next) {
-      console.log(req.body);
       req._status.patch(req.body, function(err, status) {
         if (err) { return next(err); }
 
@@ -81,13 +99,13 @@ module.exports = function(passport) {
     }
   );
 
-  router.use('/:id/replies', findStatus('_id, owner'), require('./status-replies'));
+  router.use('/:id/children', findStatus('_id, owner'), require('./status-children'));
 
   return router;
 
 };
 
-function findStatus(fields) {
+function findStatus(fields, populateParent) {
 
   return function(req, res, next) {
     if (!mongoose.Types.ObjectId.isValid(req.params.id)) {
@@ -96,10 +114,14 @@ function findStatus(fields) {
       return next(err);
     }
 
-    Status.findOne({ _id: req.params.id })
-      .populate({ path: 'owner', select: userFields })
-      .select(fields)
-      .exec(function(err, status) {
+    var query = Status.findOne({ _id: req.params.id })
+      .populate({ path: 'owner', select: userFields });
+
+    if (populateParent) {
+      query = query.populate({ path: 'parent', select: statusFields });
+    }
+
+    query.select(fields).exec(function(err, status) {
         if (err) { return next(err); }
 
         if (!status) {
