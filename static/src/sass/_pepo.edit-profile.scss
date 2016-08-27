@@ -125,7 +125,7 @@ $sizeIconUpload: 24px;
   }
   .modal-edit-user-photo_form {
     position: absolute;
-    top: 200px;
+    top: 130px;
     left: 50%;
     width: 80%;
     max-width: 500px;
@@ -136,6 +136,7 @@ $sizeIconUpload: 24px;
     transition: opacity ease-out 500ms;
     label {
       display: block;
+      cursor: pointer;
       margin: 20px 35px 20px 10px;
       .icon-upload {
         display: inline-block;

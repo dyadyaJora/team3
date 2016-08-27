@@ -1,4 +1,4 @@
-angular.module('pepo').directive('pepoHeader', function($rootScope, $auth, $location, pepsApi, userApi) {
+angular.module('pepo').directive('pepoHeader', function($rootScope, $auth, $location, pepsApi, userApi, feedApi) {
 	return {
 		restrict: "E",
 		replace: false,
@@ -6,11 +6,14 @@ angular.module('pepo').directive('pepoHeader', function($rootScope, $auth, $loca
 		link: function($scope , $element, $attrs) {
 
       var body = angular.element(document).find('body');
-
+			body.removeClass('no-scroll');
       userApi.getUser().$promise.then(function(data) {
         $scope.currentUser = data;
         $scope.$broadcast('currentUserLoaded');
-      });
+      })
+		  .catch (function () {
+			  $location.path('/');
+		  })
 
 			 $scope.logout = function() {
 			    $auth.logout();
@@ -74,6 +77,10 @@ angular.module('pepo').directive('pepoHeader', function($rootScope, $auth, $loca
 			$scope.varInf = false;
 			$scope.openInfNewPeps = function() {
 				$scope.varInf = !$scope.varInf;
+			}
+
+			$scope.goToMyProfile = function() {
+				$location.path('/@' + $scope.currentUser.username);
 			}
 		}
 	}
