@@ -10,10 +10,13 @@ pepo.controller('myProfileCtrl', function($location, $auth, $scope, userApi, use
    	$scope.tweets = data;
   });
 
-    usersApi.getFollowers({username: currentUserId}).$promise.then(function(data){
-    //$scope.tweets = data;
+  usersApi.getFollowers({username: currentUserId}).$promise.then(function(data){
     $scope.followersCount = data.length;
+  });
+
+  usersApi.getFollowings({username: currentUserId}).$promise.then(function(data){
     console.log(data);
+    $scope.followingCount = data.length;
   });
 
   function checkFollow() {

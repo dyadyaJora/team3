@@ -39,6 +39,14 @@ pepo.service('usersApi', function($resource) {
         username: '@username',
         followers: 'followers'
       }
+    },
+    getFollowings: {
+      method: 'GET',
+      isArray: true,
+      params: {
+        username: '@username',
+        followers: 'following'
+      }
     }
   }
   );
