@@ -1,7 +1,6 @@
 pepo.controller('myProfileCtrl', function($location, $auth, $scope, userApi, usersApi, pepsApi, MOCKTWEETS){
 
   currentUserId = $location.path().slice(2);
-
   usersApi.getUser({username: currentUserId}).$promise.then(function(data) {
     $scope.currentPageUser = data;
     checkFollow();
@@ -9,6 +8,15 @@ pepo.controller('myProfileCtrl', function($location, $auth, $scope, userApi, use
 
   usersApi.getUserStatuses({username: currentUserId}).$promise.then(function(data){
    	$scope.tweets = data;
+  });
+
+  usersApi.getFollowers({username: currentUserId}).$promise.then(function(data){
+    $scope.followersCount = data.length;
+  });
+
+  usersApi.getFollowings({username: currentUserId}).$promise.then(function(data){
+    console.log(data);
+    $scope.followingCount = data.length;
   });
 
   function checkFollow() {

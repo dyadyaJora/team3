@@ -1,5 +1,5 @@
 pepo.service('usersApi', function($resource) {
-  return $resource('/api/users/:username/:statuses/:follow', {}, {
+  return $resource('/api/users/:username/:statuses/:follow/:followers', {}, {
     getUsers: {
       method: 'GET',
       isArray: true
@@ -30,6 +30,22 @@ pepo.service('usersApi', function($resource) {
       params: {
         username: '@username',
         follow: 'follow'
+      }
+    },
+    getFollowers: {
+      method: 'GET',
+      isArray: true,
+      params: {
+        username: '@username',
+        followers: 'followers'
+      }
+    },
+    getFollowings: {
+      method: 'GET',
+      isArray: true,
+      params: {
+        username: '@username',
+        followers: 'following'
       }
     }
   }
