@@ -3,6 +3,7 @@ var mongoose = require('mongoose');
 
 var router = express.Router();
 var Status = mongoose.model('Status');
+var User = mongoose.model('User');
 
 var statusFields = '_id text owner location createdAt updatedAt';
 var userFields = '_id username name avatar';
@@ -60,7 +61,7 @@ module.exports = function(passport) {
       Status.find({ parent: req._status._id })
         .populate({ path: 'owner', select: userFields })
         .select(statusFields)
-        .paginate(req.query)
+        .paginate({})
         .sort('-createdAt')
         .exec(function(err, statuses) {
           if (err) { return next(err); }
@@ -121,17 +122,29 @@ function findStatus(fields, populateParent) {
       query = query.populate({ path: 'parent', select: statusFields });
     }
 
-    query.select(fields).exec(function(err, status) {
-        if (err) { return next(err); }
-
+    query.select(fields).exec()
+      .then(function(status) {
         if (!status) {
           var error = new Error('Пеп не найден.');
           error.status = 404;
-          next(error);
+          throw error;
         }
 
+        if (populateParent && status.parent) {
+          return status.parent.populate('owner', userFields).execPopulate()
+            .then(function() {
+              return status;
+            });
+        } else {
+          return status;
+        }
+      })
+      .then(function(status) {
         req._status = status;
         next();
+      })
+      .catch(function(err) {
+        next(err);
       });
   }
 
