@@ -17,28 +17,6 @@ pepo.controller('feedCtrl', function($rootScope, $q, $location, $auth, $scope, u
     $location.path('/@' + username);
   }
 
-  $scope.sendPep = function() {
-    newPep = {
-      location: currentLocation,
-      parent: $scope.pep.owner._id,
-      owner: {
-        name: $scope.currentUser.name,
-        username: $scope.currentUser.username,
-        thumbUrl: $scope.currentUser.thumbUrl
-      },
-      text: $scope.newPepText
-    }
-    pepsApi.sendPep(newPep).$promise.then(function(data){
-      newPep._id = data._id
-      $scope.tweets.unshift(newPep);
-    })
-    .catch(function(err) {
-      console.log(err);
-    })
-    $scope.varAnswer = false;
-    $scope.newPepText = '';
-  }
-
   $scope.goToPep = function(pepId) {
     $location.path('/pep' + pepId);
   }

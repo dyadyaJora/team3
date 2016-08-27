@@ -19,6 +19,27 @@ angular.module('pepo').directive('modalAnswer', function($rootScope, $auth, $loc
 					$scope.varDel=false;
 				}
 			}
+			  $scope.sendPep = function() {
+    newPep = {
+      location: currentLocation,
+      parent: $scope.pep.owner._id,
+      owner: {
+        name: $scope.currentUser.name,
+        username: $scope.currentUser.username,
+        thumbUrl: $scope.currentUser.thumbUrl
+      },
+      text: $scope.newPepText
+    }
+    pepsApi.sendPep(newPep).$promise.then(function(data){
+      newPep._id = data._id
+      $scope.tweets.unshift(newPep);
+    })
+    .catch(function(err) {
+      console.log(err);
+    })
+    $scope.varAnswer = false;
+    $scope.newPepText = '';
+  }
 
 		}
 	}
