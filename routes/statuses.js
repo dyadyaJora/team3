@@ -7,7 +7,7 @@ var Status = mongoose.model('Status');
 var statusFields = '_id text owner location createdAt updatedAt';
 var userFields = '_id username name avatar';
 
-var permitParams = ['text', 'location'];
+var permitParams = ['text', 'location', 'parent'];
 
 module.exports = function(passport) {
 
@@ -49,9 +49,11 @@ module.exports = function(passport) {
     });
 
   router.get('/:id',
-    findStatus(statusFields),
+    findStatus(statusFields + ' parent'),
     function(req, res) {
-      res.json(req._status.toObject());
+      req._status.populate('parent', function(err, status) {
+        res.json(status.toObject());
+      });
     });
 
   router.patch('/:id',
