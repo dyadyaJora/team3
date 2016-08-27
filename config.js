@@ -9,13 +9,13 @@ module.exports = {
     facebook: {
       clientID: process.env.FACEBOOK_APP_ID,
       clientSecret: process.env.FACEBOOK_APP_SECRET,
-      callbackURL: 'http://localhost:3000/api/auth/facebook'
+      callbackURL: 'http://37.139.14.106:3000/api/auth/facebook'
     },
 
     vkontakte: {
       clientID: process.env.VKONTAKTE_APP_ID,
       clientSecret: process.env.VKONTAKTE_APP_SECRET,
-      callbackURL: "http://localhost:3000/api/auth/vkontakte"
+      callbackURL: "http://37.139.14.106:3000/api/auth/vkontakte"
     }
 
   }
