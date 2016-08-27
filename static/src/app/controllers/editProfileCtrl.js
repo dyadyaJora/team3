@@ -1,15 +1,21 @@
+
 pepo.controller('editProfileCtrl', function ($rootScope, $q, $route, $location, $scope, userApi,  MOCKUSERS, multipartForm) {
+    var body = angular.element(document).find('body');
+
     userApi.getUser().$promise.then(function(data) {
       $scope.user = data;
-      $scope.user.avatarUrl = $scope.user.avatarUrl || '../img/lisa.jpg';
-      console.log($scope.user);
+      $scope.user.avatarUrl = $scope.user.avatarUrl || '../build/img/lisa.jpg';
 
     });
-
+        $scope.$on('localAvatarChange', function ( event, img ) {
+            $scope.$apply(function () {
+                $scope.user.avatarUrl = img;
+                $scope.varOpenEditPhoto = false;
+            })
+        })
     $scope.formPristine = true;
     $scope.varOpenEditPhoto = false;
     $scope.userEdit = {};
-
     $scope.$watch(function() {
 
       if ($scope.editProfileForm.$dirty) {
@@ -19,10 +25,10 @@ pepo.controller('editProfileCtrl', function ($rootScope, $q, $route, $location, 
       if ($scope.userEdit.avatar) {
         $scope.formPristine = false;
         $scope.newAvatarName = $scope.userEdit.avatar.name;
-        $scope.varOpenEditPhoto = false;
+
+          body.removeClass('no-scroll');
       }
     });
-
 
     $scope.updateUser = function () {
       if ($scope.formPristine) {return}
@@ -43,9 +49,11 @@ pepo.controller('editProfileCtrl', function ($rootScope, $q, $route, $location, 
 
     $scope.openModalEditPhoto = function () {
         $scope.varOpenEditPhoto = true;
+        body.addClass('no-scroll')
     };
 
     $scope.closeModalEditPhoto = function () {
         $scope.varOpenEditPhoto = false;
+        body.removeClass('no-scroll')
     }
 });
