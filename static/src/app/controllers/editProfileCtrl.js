@@ -1,9 +1,9 @@
-pepo.controller('editProfileCtrl', function ($q, $route, $location, $scope, userApi,  MOCKUSERS, multipartForm) {
-
+pepo.controller('editProfileCtrl', function ($rootScope, $q, $route, $location, $scope, userApi,  MOCKUSERS, multipartForm) {
     userApi.getUser().$promise.then(function(data) {
       $scope.user = data;
       $scope.user.avatarUrl = $scope.user.avatarUrl || '../img/lisa.jpg';
       console.log($scope.user);
+
     });
 
     $scope.formPristine = true;
@@ -11,6 +11,7 @@ pepo.controller('editProfileCtrl', function ($q, $route, $location, $scope, user
     $scope.userEdit = {};
 
     $scope.$watch(function() {
+
       if ($scope.editProfileForm.$dirty) {
         $scope.formPristine = false;
       }
