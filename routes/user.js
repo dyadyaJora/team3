@@ -2,8 +2,8 @@ var config = require('../config');
 var express = require('express');
 var mongoose = require('mongoose');
 var multer = require('multer');
-var Promise = require('bluebird');
 var fileStorage = require('../lib/file-storage');
+var cropPicture = require('../lib/picture-utils').cropPicture;
 
 var router = express.Router();
 var User = mongoose.model('User');
@@ -20,10 +20,10 @@ module.exports = function(passport) {
   router.patch('/',
     upload.single('avatar'),
     function(req, res, next) {
-      createAvatar(req.file)
-        .then(function(fileName) {
-          if (fileName) {
-            req.user.avatar = fileName;
+      cropPicture(req.file, 'uploads/avatar/', config.cropParams.userAvatar)
+        .then(function(file) {
+          if (file) {
+            req.user.avatar = file.filename;
           }
 
           return req.user.patch(req.body);
@@ -51,22 +51,3 @@ module.exports = function(passport) {
   return router;
 
 };
-
-function createAvatar(file) {
-  if (!config.sharpEnabled || !file) {
-    return Promise.resolve();
-  }
-
-  var sharp = require('sharp');
-
-  return sharp(file.path)
-    .resize(175, 175)
-    .toFile('uploads/avatar/175_' + file.filename)
-    .then(function() {
-      return sharp('uploads/avatar/175_' + file.filename)
-        .resize(50, 50)
-        .toFile('uploads/avatar/50_' + file.filename);
-    }).then(function() {
-      return file.filename;
-    });
-}

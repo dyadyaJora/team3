@@ -4,6 +4,15 @@ module.exports = {
 
   baseUrl: baseUrl,
 
+  cropParams: {
+
+    userAvatar: [
+      { name: 'avatar', w: 175, h: 175 },
+      { name: 'thumb', w: 50, h: 50 }
+    ]
+
+  },
+
   mongodbUri: process.env.MONGODB_URI || 'mongodb://localhost/pepo-dev',
 
   sharpEnabled: process.env.SHARP_DISABLED !== 'yes',
@@ -13,7 +22,8 @@ module.exports = {
     facebook: {
       clientID: process.env.FACEBOOK_APP_ID,
       clientSecret: process.env.FACEBOOK_APP_SECRET,
-      callbackURL: baseUrl + '/api/auth/facebook'
+      callbackURL: baseUrl + '/api/auth/facebook',
+      profileFields: ['id', 'displayName', 'picture.type(large)']
     },
 
     vkontakte: {
