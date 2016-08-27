@@ -20,7 +20,7 @@ angular.module('pepo').directive('pepoHeader', function($rootScope, $auth, $loca
 				var click = angular.element($event.target);
 				if(click.hasClass('slide-effect_bg') || click.hasClass('cancel-menu_btn')) {
 					$scope.menuOpened = false;
-          body.removeClass('no-scroll')
+          			body.removeClass('no-scroll')
 				}
 			}
 
@@ -70,6 +70,10 @@ angular.module('pepo').directive('pepoHeader', function($rootScope, $auth, $loca
 			    })
 			    $scope.varNewpep = false;
 			    $scope.newPepText = '';
+			}
+			$scope.varInf = false;
+			$scope.openInfNewPeps = function() {
+				$scope.varInf = !$scope.varInf;
 			}
 		}
 	}

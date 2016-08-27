@@ -12,8 +12,13 @@
 			<ul class="header-actions-list">
 				<li class="header-action_item"><div class="header-btn add-twitt_contain__mod" ng-click="openNewpep($index)"></div></li>
 				<li class="header-action_item"><a href="#/users" class="header-btn search-user_contain__mod"></a></li>
-				<li class="header-action_item"><input type="button" ng-click="toggleMenu()" class="header-btn header_user_logout-btn__mod" title="Button" value=""/></li>
+				<li class="header-action_item"><div ng-click="toggleMenu()" class="header-btn header_user_logout-btn__mod" ></div></li>
 			</ul>
+		</div>
+	</div>
+	<div class="inf-block">
+		<div class="inf-block_contain" ng-class="{'inf-block_contain__show': varInf }" ng-click="openInfNewPeps()">
+			<p class="inf-block_text">5 New Peps</p>
 		</div>
 	</div>
 </header>
@@ -27,7 +32,7 @@
 			<li class="slide-menu_item slide-menu_item__separator"><a class="slide-menu_link" href="/#/edit-profile">Редактировать</a></li>
 			<li ng-click="logout()" class="slide-menu_item"><a class="slide-menu_link" href="">Выйти</a></li>
 		</ul>
-		<button class="cancel-menu_btn"  ng-click="closeSlideMenu($event)" ></button>
+		<div class="cancel-menu_btn"  ng-click="closeSlideMenu($event)" ></div>
 	</div>
 
 
@@ -35,7 +40,7 @@
   <div class="modal-fade-screen" ng-class="{'new-pep__active': varNewpep}" ng-click="closeNewpep($event)">
     <div class="modal-inner">
       <div class="modal-close" ng-click="varNewpep=''"></div>
-      <header class="pepo-modal-top">Новый Pep </header>
+      <header class="pepo-modal-top pepo-modal-top__mod ">Новый Pep </header>
 
       <section class="tweet-type_answer">
         <div class="tweet-textarea_answer">

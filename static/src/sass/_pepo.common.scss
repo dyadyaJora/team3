@@ -41,7 +41,7 @@ a {
   overflow-y: hidden;
 }
 .page-container {
-  padding: 40px 20px 80px;
+  padding: 64px 20px 80px;
   max-width: 600px;
   margin: auto;
   overflow: hidden;
@@ -103,7 +103,7 @@ a {
 
 @media only screen and (max-width: $mobileWidth) {
   .page-container {
-    padding: 40px 10px 80px;
+    padding: 64px 10px 80px;
   }
 }
 
@@ -112,6 +112,6 @@ a {
     background: $colorWhite;
   }
   .page-container {
-    padding: 40px 0 80px;
+    padding: 46px 0 80px;
   }
 }
