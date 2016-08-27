@@ -1,5 +1,5 @@
-window.pepo = angular.module('pepo', ['ngRoute', 'ngResource', 'satellizer', 'ymaps'])
-  .config(function($routeProvider, $authProvider) {
+window.pepo = angular.module('pepo', ['ngRoute', 'ngResource', 'satellizer', 'ymaps', 'pepo.config'])
+  .config(function($routeProvider, $authProvider, CONFIG) {
     $routeProvider
       .when('/', {
         templateUrl: './build/templates/login.html',
@@ -32,7 +32,7 @@ window.pepo = angular.module('pepo', ['ngRoute', 'ngResource', 'satellizer', 'ym
       .otherwise({redirectTo: '/'});
 
     $authProvider.facebook({
-      clientId: '100397853745218',
+      clientId: CONFIG.facebook.clientID,
       redirectUri: window.location.origin + '/api/auth/facebook',
       url: '/api/auth/facebook'
     });
@@ -40,7 +40,7 @@ window.pepo = angular.module('pepo', ['ngRoute', 'ngResource', 'satellizer', 'ym
     $authProvider.oauth2({
       name: 'vkontakte',
       url: '/api/auth/vkontakte',
-      clientId: '5589421',
+      clientId: CONFIG.vkontakte.clientID,
       redirectUri: window.location.origin + '/api/auth/vkontakte',
       authorizationEndpoint: 'https://oauth.vk.com/authorize',
       optionalUrlParams: ['display'],
