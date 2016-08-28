@@ -7,6 +7,10 @@
 .tweets__userpage, .followers__userpage, .following__userpage{
    margin-top: 20px;
 }
+.user-info-item_disable{
+  cursor: default;
+  opacity: 0.4;
+}
 
 .user-profile {
   background: $colorWhite;
