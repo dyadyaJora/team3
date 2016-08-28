@@ -24,18 +24,18 @@
                 <div class="user-info-item_line" ng-class="{'first-item': varInfoArr[0], 'second-item': varInfoArr[1], 'third-item': varInfoArr[2]}"></div>
             </li>
             <li class="user-profile-info_item" ng-click="itemInfo(1)">
-                <div class="user-profile-info_number">{{followingCount}}</div>
+                <div class="user-profile-info_number">{{following.length}}</div>
                 <div class="user-profile-info_label">читаемых</div>
             </li>
             <li class="user-profile-info_item" ng-click="itemInfo(2)">
-                <div class="user-profile-info_number">{{followersCount}}</div>
+                <div class="user-profile-info_number">{{followers.length}}</div>
                 <div class="user-profile-info_label">читателей</div>
             </li>
         </ul>
     </div>
 
-
-  <ul class="tweets tweets__userpage">
+<!-- Блок пепов -->
+  <ul class="tweets tweets__userpage" ng-class="{'hidden-block_profile': varInfoArr[0]==false, 'visible-block_profile': varInfoArr[0]}">
     <li class="tweets_item" ng-init="i=0" ng-repeat="tweet in tweets">
       <header class="tweet-header">
         <div class="tweet-header_user">
@@ -90,6 +90,65 @@
     </li>
   </ul>
 
+<!-- Блок читающих -->
+
+  <ul class="users-list  following following__userpage" ng-class="{'hidden-block_profile': varInfoArr[1]==false, 'visible-block_profile': varInfoArr[1]}">
+    <li ng-repeat="user in following" ng-init="isSubscribe(user._id)" class="users-list_item user">
+      <img ng-click="goToUser(user.username)" ng-src="{{user.avatarUrl}}" alt="" class="user_img">
+      <div class="user_content">
+        <div ng-click="goToUser(user.username)" class="user_name">{{user.name}}</div>
+        <div ng-click="goToUser(user.username)" class="user_nickname">@{{user.username}}</div>
+        <div ng-hide="subscribed[user._id]" class="pepo_btn user_subscribe" ng-click="subscribe(user.username, user._id)">+ Читать</div>
+        <div ng-show="subscribed[user._id]" class="pepo_btn user_unsubscribe" ng-click="unsubscribe(user.username, user._id)">Читаю</div>
+        <p class="user_description">{{user.description}}</p>
+
+        <ul class="user-info">
+          <li class="user-info_item">
+            <div class="user-info_number">{{user.statusesCount}}</div>
+            <div class="user-info_label">пепов</div>
+          </li>
+          <li class="user-info_item">
+            <div class="user-info_number">{{user.followingCount}}</div>
+            <div class="user-info_label">читаемых</div>
+          </li>
+          <li class="user-info_item">
+            <div class="user-info_number">{{user.followersCount}}</div>
+            <div class="user-info_label">читателей</div>
+          </li>
+        </ul>
+      </div>
+    </li>
+  </ul>
+
+<!-- Блок читаемых -->  
+
+  <ul class="users-list  followers followers__userpage" ng-class="{'hidden-block_profile': varInfoArr[2]==false, 'visible-block_profile': varInfoArr[2]}">
+    <li ng-repeat="user in followers" ng-init="isSubscribe(user._id)" class="users-list_item user">
+      <img ng-click="goToUser(user.username)" ng-src="{{user.avatarUrl}}" alt="" class="user_img">
+      <div class="user_content">
+        <div ng-click="goToUser(user.username)" class="user_name">{{user.name}}</div>
+        <div ng-click="goToUser(user.username)" class="user_nickname">@{{user.username}}</div>
+        <div ng-hide="subscribed[user._id]" class="pepo_btn user_subscribe" ng-click="subscribe(user.username, user._id)">+ Читать</div>
+        <div ng-show="subscribed[user._id]" class="pepo_btn user_unsubscribe" ng-click="unsubscribe(user.username, user._id)">Читаю</div>
+        <p class="user_description">{{user.description}}</p>
+
+        <ul class="user-info">
+          <li class="user-info_item">
+            <div class="user-info_number">{{user.statusesCount}}</div>
+            <div class="user-info_label">пепов</div>
+          </li>
+          <li class="user-info_item">
+            <div class="user-info_number">{{user.followingCount}}</div>
+            <div class="user-info_label">читаемых</div>
+          </li>
+          <li class="user-info_item">
+            <div class="user-info_number">{{user.followersCount}}</div>
+            <div class="user-info_label">читателей</div>
+          </li>
+        </ul>
+      </div>
+    </li>
+  </ul>
 
   <div class="load-more-btn" ng-click="loadMorePeps()" ng-class="{'load-more-btn__progress': pepsLoading}"></div>
 

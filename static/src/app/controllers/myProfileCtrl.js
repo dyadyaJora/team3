@@ -11,12 +11,13 @@ pepo.controller('myProfileCtrl', function($location, $auth, $scope, userApi, use
   });
 
   usersApi.getFollowers({username: currentUserId}).$promise.then(function(data){
-    $scope.followersCount = data.length;
+    //$scope.followers = data;
+    $scope.followers = MOCKUSERS;
   });
 
   usersApi.getFollowings({username: currentUserId}).$promise.then(function(data){
-    console.log(data);
-    $scope.followingCount = data.length;
+    //$scope.following = data;
+    $scope.following = MOCKUSERS;
   });
 
   function checkFollow() {
@@ -154,7 +155,7 @@ pepo.controller('myProfileCtrl', function($location, $auth, $scope, userApi, use
   $scope.varInfo = 0;
   $scope.varInfoArr = [true, false, false];
   $scope.itemInfo = function(index){
-    $scope.varInfoArr=[];
+    $scope.varInfoArr=[false, false, false];
     $scope.varInfoArr[index] = true;
   }
 });

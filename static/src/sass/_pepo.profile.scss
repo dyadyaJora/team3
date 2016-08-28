@@ -1,6 +1,13 @@
-.tweets__userpage{
+.hidden-block_profile{
+  display: none;
+}
+.visible-block_profile{
+  display: block;
+}
+.tweets__userpage, .followers__userpage, .following__userpage{
    margin-top: 20px;
 }
+
 .user-profile {
   background: $colorWhite;
   margin-bottom: 20px;
@@ -177,6 +184,12 @@
       display: none;
     }
   }
+      .followers, .following{
+      .users-list_item{
+        border: 1px solid #e0e0e0;
+        border-bottom:none ;
+      }
+    }
 }
 
 @media only screen and (max-width: $iphonesWidth) {
@@ -193,6 +206,12 @@
   .btn-bottom{
     display: none;
   }
+  .followers, .following{
+  .users-list_item{
+      border:none ;
+      border-bottom: 1px solid #e0e0e0;
+  }
+}
 }
 
 
