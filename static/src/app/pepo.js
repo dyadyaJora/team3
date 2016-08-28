@@ -1,5 +1,5 @@
-window.pepo = angular.module('pepo', ['ngRoute', 'ngResource', 'satellizer', 'ymaps', 'pepo.config'])
-  .config(function($routeProvider, $authProvider, CONFIG) {
+window.pepo = angular.module('pepo', ['ngRoute', 'ngResource', 'satellizer', 'ymaps'])
+  .config(function($routeProvider, $authProvider) {
     $routeProvider
       .when('/', {
         templateUrl: './build/templates/login.html',
