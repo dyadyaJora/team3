@@ -8,10 +8,10 @@
             <div class="user-profile_name">{{currentPageUser.name}}</div>
             <div class="user-profile_nickname">@{{currentPageUser.username}}</div>
 
-            <div ng-hide="followed" class="pepo_btn user-profile_subscribe btn-top" ng-click="subscribe()">+ Читать</div>
+            <div ng-hide="followed || (currentPageUser.username == currentUser.username)"  class="pepo_btn user-profile_subscribe btn-top" ng-click="subscribe()">+ Читать</div>
             <div ng-show="followed" class="pepo_btn user-profile_unsubscribe btn-top" ng-click="unsubscribe()">Читаю</div>
-            <p class="user-profile_description">{{currentPageUser.description}}</p>
-            <div ng-hide="followed" class="pepo_btn user-profile_subscribe btn-bottom" ng-click="subscribe()">+ Читать</div>
+            <p class="user-profile_description" ng-class="{'mgtop': (followed || (currentPageUser.username == currentUser.username)) }">{{currentPageUser.description}}</p>
+            <div ng-hide="followed || (currentPageUser.username == currentUser.username)" class="pepo_btn user-profile_subscribe btn-bottom" ng-click="subscribe()">+ Читать</div>
             <div ng-show="followed" class="pepo_btn user-profile_unsubscribe btn-bottom" ng-click="unsubscribe()">Читаю</div>
         </div>
 

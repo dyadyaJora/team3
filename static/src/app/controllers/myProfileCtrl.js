@@ -155,7 +155,7 @@ pepo.controller('myProfileCtrl', function($location, $auth, $scope, userApi, use
   $scope.varInfo = 0;
   $scope.varInfoArr = [true, false, false];
   $scope.itemInfo = function(index){
-    if( (index==1 && $scope.following.length!=0) || (index==2 && $scope.followers.length!=0) || (index==0 && /*pepsCount!=0 */) )
+    if( ((index==1) && ($scope.following.length!=0)) || ((index==2) && ($scope.followers.length!=0)) || (index==0 && 1 /*pepsCount!=0 */) )
     {$scope.varInfoArr=[false, false, false];
     $scope.varInfoArr[index] = true;
   }
