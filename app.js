@@ -32,7 +32,7 @@ app.use(passport.initialize());
 var initPassport = require('./passport');
 initPassport(passport);
 
-app.use('/', require('./routes/index'));
+app.use('/', require('./routes'));
 app.use('/api/auth', require('./routes/auth')(passport));
 app.use('/api/user', require('./routes/user')(passport));
 app.use('/api/users', require('./routes/users')(passport));

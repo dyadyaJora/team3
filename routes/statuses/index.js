@@ -100,7 +100,7 @@ module.exports = function(passport) {
     }
   );
 
-  router.use('/:id/children', findStatus('_id, owner'), require('./status-children'));
+  router.use('/:id/children', findStatus('_id, owner'), require('./children'));
 
   return router;
 
