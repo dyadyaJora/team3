@@ -11,13 +11,13 @@ pepo.controller('myProfileCtrl', function($location, $auth, $scope, userApi, use
   });
 
   usersApi.getFollowers({username: currentUserId}).$promise.then(function(data){
-    //$scope.followers = data;
-    $scope.followers = MOCKUSERS;
+    $scope.followers = data;
+    //$scope.followers = MOCKUSERS;
   });
 
   usersApi.getFollowings({username: currentUserId}).$promise.then(function(data){
-    //$scope.following = data;
-    $scope.following = MOCKUSERS;
+    $scope.following = data;
+    //$scope.following = MOCKUSERS;
   });
 
   function checkFollow() {
