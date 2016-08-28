@@ -1,16 +1,14 @@
 var express = require('express');
 var mongoose = require('mongoose');
+var config = require('../../config');
 
 var router = express.Router();
 var Status = mongoose.model('Status');
 
-var statusFields = '_id text location owner createdAt updatedAt';
-var userFields = '_id username name avatar';
-
 router.get('/', function(req, res, next) {
   Status.find({ owner: req._user._id })
-    .select(statusFields)
-    .populate({ path: 'owner', select: userFields })
+    .select(config.showFields.status)
+    .populate({ path: 'owner', select: config.showFields.user })
     .paginate(req.query)
     .sort('-createdAt')
     .exec(function(err, statuses) {

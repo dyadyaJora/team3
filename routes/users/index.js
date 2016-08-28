@@ -1,10 +1,11 @@
 var express = require('express');
 var mongoose = require('mongoose');
+var config = require('../../config');
 
 var router = express.Router();
 var User = mongoose.model('User');
 
-var showFields = '_id username name avatar';
+var showFields = config.showFields.user;
 
 module.exports = function(passport) {
 
