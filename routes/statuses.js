@@ -68,7 +68,7 @@ module.exports = function(passport) {
 
           var status = req._status.toObject();
 
-          status.chilren = statuses.map(function(status) {
+          status.children = statuses.map(function(status) {
             return status.toObject();
           });
 
