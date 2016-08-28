@@ -13,6 +13,13 @@ module.exports = {
 
   },
 
+  showFields: {
+
+    user: '_id username name avatar',
+    status: '_id text location owner createdAt updatedAt'
+
+  },
+
   mongodbUri: process.env.MONGODB_URI || 'mongodb://localhost/pepo-dev',
 
   sharpEnabled: process.env.SHARP_DISABLED !== 'yes',

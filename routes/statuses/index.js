@@ -1,12 +1,13 @@
 var express = require('express');
 var mongoose = require('mongoose');
+var config = require('../../config');
 
 var router = express.Router();
 var Status = mongoose.model('Status');
 var User = mongoose.model('User');
 
-var statusFields = '_id text owner location createdAt updatedAt';
-var userFields = '_id username name avatar';
+var statusFields = config.showFields.status;
+var userFields = config.showFields.user;
 
 var permitParams = ['text', 'location', 'parent'];
 
@@ -100,7 +101,7 @@ module.exports = function(passport) {
     }
   );
 
-  router.use('/:id/children', findStatus('_id, owner'), require('./status-children'));
+  router.use('/:id/children', findStatus('_id, owner'), require('./children'));
 
   return router;
 
