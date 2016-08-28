@@ -1,4 +1,8 @@
+<<<<<<< fa85e4b269163a7a59eed1289f292fb472e7a4c6
 angular.module('pepo').directive('pepoHeader', function($rootScope, $auth, $location, pepsApi, userApi, feedApi) {
+=======
+angular.module('pepo').directive('pepoHeader', function($rootScope, $auth, $location, pepsApi, userApi,$timeout) {
+>>>>>>> Scroll after creating new pep.
 	return {
 		restrict: "E",
 		replace: false,
@@ -65,8 +69,13 @@ angular.module('pepo').directive('pepoHeader', function($rootScope, $auth, $loca
     				}
 				}
 			    pepsApi.sendPep(newPep).$promise.then(function(data){
-			      newPep._id = data._id
-			      $scope.tweets.unshift(newPep);
+			      	newPep._id = data._id
+			     	$scope.tweets.unshift(newPep);
+			     	$timeout(function () {
+				        document.getElementsByTagName('body')[0].scrollTop = 0;
+				        console.log( document.getElementsByClassName("tweets"));
+				    });
+			      	
 			    })
 			    .catch(function(err) {
 			      console.log(err);
