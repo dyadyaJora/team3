@@ -28,73 +28,15 @@ module.exports = function(passport) {
       res.json(req._user.toObject());
     });
 
-  router.get('/:username/following',
-    findUser('following'),
-    function(req, res, next) {
+  router.use('/:username/following', findUser('following'), require('./following'));
 
-      req._user.populate('following', showFields,
-        function(err, user) {
-          if (err) { return next(err); }
+  router.use('/:username/followers', findUser('_id'), require('./followers'));
 
-          res.json(user.following.map(function(user) {
-            return user.toObject();
-          }));
-        });
-
-    });
-
-  router.get('/:username/followers',
-    findUser('_id'),
-    function(req, res, next) {
-
-      User.find({ following: req._user._id })
-        .select(showFields)
-        .paginate(req.query)
-        .exec(function(err, users) {
-          if (err) { return next(err); }
-
-          res.json(users.map(function(user) {
-            return user.toObject();
-          }));
-        });
-
-    });
-
-  router.post('/:username/follow',
+  router.use('/:username/follow',
     passport.authenticate('bearer', { session: false }),
-    findUser('_id'),
-    function(req, res, next) {
-      console.log(req.user._id, req._user._id, req.user._id.equals(req._user._id));
-      if (req.user._id.equals(req._user._id)) {
-        var err = new Error('Невозможно подписаться на данного пользователя.');
-        err.status = 403;
-        return next(err);
-      }
+    findUser('_id'), require('./follow'));
 
-      req.user.follow(req._user, function(err) {
-        if (err) { return next(err); }
-
-        res.status(204);
-        res.end();
-      });
-
-    });
-
-  router.delete('/:username/follow',
-    passport.authenticate('bearer', { session: false }),
-    findUser('_id'),
-    function(req, res, next) {
-      req.user.unFollow(req._user, function(err) {
-        if (err) { return next(err); }
-
-        res.status(204);
-        res.end();
-      });
-
-    });
-
-  router.use('/:username/statuses',
-    findUser('_id'), require('./statuses'));
+  router.use('/:username/statuses', findUser('_id'), require('./statuses'));
 
   return router;
 };
