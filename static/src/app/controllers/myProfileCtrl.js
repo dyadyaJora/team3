@@ -9,6 +9,7 @@ pepo.controller('myProfileCtrl', function($location, $auth, $scope, userApi, use
    	$scope.tweets = data;
   });
 
+  function getInfoItems(){
   usersApi.getFollowers({username: currentUserId}).$promise.then(function(data){
     $scope.followers = data;
   });
@@ -16,29 +17,20 @@ pepo.controller('myProfileCtrl', function($location, $auth, $scope, userApi, use
   usersApi.getFollowings({username: currentUserId}).$promise.then(function(data){
     $scope.following = data;
   });
+  }
 
+  getInfoItems();
   function checkFollow() {
     $scope.$on('currentUserLoaded', function() {
       $scope.currentUser.following.some(function(followingUser) {
         if (followingUser === $scope.currentPageUser._id) {
           $scope.followed = true;
+        console.log("dd");
         }
       });
     });
   }
 
-  $scope.$on('currentUserLoaded', function() {
-     getUsers();
-  });
-
-  function getUsers() {
-    usersApi.getUsers().$promise.then(function(data) {
-      $scope.users = data;
-        console.log($scope.users);
-    }).catch(function(eror){
-      console.log(eror);
-    });
-  }
 
   $scope.isSubscribe = function(userId) {
     console.log('init');
@@ -53,13 +45,8 @@ pepo.controller('myProfileCtrl', function($location, $auth, $scope, userApi, use
     usersApi.followUser({username: username}).$promise.then(function(){
       //$scope.followed = true;
       $scope.subscribed[userId] = true;
-            usersApi.getFollowers({username: currentUserId}).$promise.then(function(data){
-        $scope.followers = data;
-      });
 
-      usersApi.getFollowings({username: currentUserId}).$promise.then(function(data){
-        $scope.following = data;
-      });
+      getInfoItems();
     });
   }
 
@@ -67,13 +54,8 @@ pepo.controller('myProfileCtrl', function($location, $auth, $scope, userApi, use
     usersApi.unfollowUser({username: username}).$promise.then(function(){
       //$scope.followed = false;
       $scope.subscribed[userId] = false;
-      usersApi.getFollowers({username: currentUserId}).$promise.then(function(data){
-        $scope.followers = data;
-      });
 
-      usersApi.getFollowings({username: currentUserId}).$promise.then(function(data){
-        $scope.following = data;
-      });
+      getInfoItems();
     });
   }
 

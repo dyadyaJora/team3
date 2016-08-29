@@ -8,11 +8,11 @@
             <div class="user-profile_name">{{currentPageUser.name}}</div>
             <div class="user-profile_nickname">@{{currentPageUser.username}}</div>
 
-            <div ng-hide="followed || (currentPageUser.username == currentUser.username)"  class="pepo_btn user-profile_subscribe btn-top" ng-click="subscribe()">+ Читать</div>
-            <div ng-show="followed" class="pepo_btn user-profile_unsubscribe btn-top" ng-click="unsubscribe()">Читаю</div>
+            <div ng-hide="subscribed[currentPageUser._id] || (currentPageUser.username == currentUser.username)"  class="pepo_btn user-profile_subscribe btn-top" ng-click="subscribe(currentPageUser.username, currentPageUser._id)">+ Читать</div>
+            <div ng-show="subscribed[currentPageUser._id]" class="pepo_btn user-profile_unsubscribe btn-top" ng-click="unsubscribe(currentPageUser.username, currentPageUser._id)">Читаю</div>
             <p class="user-profile_description" ng-class="{'mgtop': (followed || (currentPageUser.username == currentUser.username)) }">{{currentPageUser.description}}</p>
-            <div ng-hide="followed || (currentPageUser.username == currentUser.username)" class="pepo_btn user-profile_subscribe btn-bottom" ng-click="subscribe()">+ Читать</div>
-            <div ng-show="followed" class="pepo_btn user-profile_unsubscribe btn-bottom" ng-click="unsubscribe()">Читаю</div>
+            <div ng-hide="subscribed[currentPageUser._id] || (currentPageUser.username == currentUser.username)" class="pepo_btn user-profile_subscribe btn-bottom" ng-click="subscribe(currentPageUser.username, currentPageUser._id)">+ Читать</div>
+            <div ng-show="subscribed[currentPageUser._id]" class="pepo_btn user-profile_unsubscribe btn-bottom" ng-click="unsubscribe(currentPageUser.username, currentPageUser._id)">Читаю</div>
         </div>
 
     </div>
