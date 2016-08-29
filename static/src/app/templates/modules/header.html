@@ -1,5 +1,4 @@
-<div>
-	<header class="header">
+<header class="header">
 		<div class="header-restrictor">
 			<div class="header_logo">
 				<a href="#/" class="header_logo-img">PEPO</a>
@@ -22,8 +21,9 @@
 				<p class="inf-block_text">5 New Peps</p>
 			</div>
 		</div>
-	</header>
-	<div class="slide-effect_bg" ng-class="{'slide-effect_bg__show': menuOpened }" ng-click="closeSlideMenu($event)">
+</header>
+
+<div class="slide-effect_bg" ng-class="{'slide-effect_bg__show': menuOpened }" ng-click="closeSlideMenu($event)">
 	</div>
 		<div class="slide-menu">
 			<ul class="slide-menu_list">
@@ -42,7 +42,6 @@
 	    <div class="modal-inner">
 	      <div class="modal-close" ng-click="varNewpep=''"></div>
 	      <header class="pepo-modal-top pepo-modal-top__mod ">Новый Pep </header>
-
 	      <section class="tweet-type_answer">
 	        <div class="tweet-textarea_answer">
 	          <textarea ng-model="newPepText" tabindex="1" autofocus id="tt">
@@ -56,4 +55,3 @@
 	    </div>
 	  </div>
 	</div>
-</div>	

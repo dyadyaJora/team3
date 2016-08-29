@@ -1,7 +1,7 @@
 angular.module('pepo').directive('pepoHeader', function($rootScope, $auth, $location, pepsApi, userApi,feedApi, $document) {
 	return {
 		restrict: "E",
-		replace: true,
+		replace: false,
 		templateUrl: '../build/templates/modules/header.html',
 		link: function($scope , $element, $attrs) {
 			$scope.varHeightheader = document.getElementsByClassName('header')[0].clientHeight;
@@ -68,10 +68,7 @@ angular.module('pepo').directive('pepoHeader', function($rootScope, $auth, $loca
 			    pepsApi.sendPep(newPep).$promise.then(function(data){
 			      	newPep._id = data._id
 			     	$scope.tweets.unshift(newPep);
-			     	$document.scrollTop(0, 300);
-				    
-				    
-			      	
+			     	$document.scrollTop(0, 300);     	
 			    })
 			    .catch(function(err) {
 			      console.log(err);
