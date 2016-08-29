@@ -98,7 +98,7 @@
       <div class="user_content">
         <div ng-click="goToUser(user.username)" class="user_name">{{user.name}}</div>
         <div ng-click="goToUser(user.username)" class="user_nickname">@{{user.username}}</div>
-        <div ng-hide="subscribed[user._id]" class="pepo_btn user_subscribe" ng-click="subscribe(user.username, user._id)">+ Читать</div>
+        <div ng-hide="subscribed[user._id] || (user.username == currentUser.username)" class="pepo_btn user_subscribe" ng-click="subscribe(user.username, user._id)">+ Читать</div>
         <div ng-show="subscribed[user._id]" class="pepo_btn user_unsubscribe" ng-click="unsubscribe(user.username, user._id)">Читаю</div>
         <p class="user_description">{{user.description}}</p>
 
@@ -128,7 +128,7 @@
       <div class="user_content">
         <div ng-click="goToUser(user.username)" class="user_name">{{user.name}}</div>
         <div ng-click="goToUser(user.username)" class="user_nickname">@{{user.username}}</div>
-        <div ng-hide="subscribed[user._id]" class="pepo_btn user_subscribe" ng-click="subscribe(user.username, user._id)">+ Читать</div>
+        <div ng-hide="subscribed[user._id] || (user.username == currentUser.username)" class="pepo_btn user_subscribe" ng-click="subscribe(user.username, user._id)">+ Читать</div>
         <div ng-show="subscribed[user._id]" class="pepo_btn user_unsubscribe" ng-click="unsubscribe(user.username, user._id)">Читаю</div>
         <p class="user_description">{{user.description}}</p>
 

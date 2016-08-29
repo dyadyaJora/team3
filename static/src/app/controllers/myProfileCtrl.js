@@ -1,23 +1,20 @@
 pepo.controller('myProfileCtrl', function($location, $auth, $scope, userApi, usersApi, pepsApi, MOCKTWEETS){
-
+  $scope.subscribed = [];
   currentUserId = $location.path().slice(2);
   usersApi.getUser({username: currentUserId}).$promise.then(function(data) {
     $scope.currentPageUser = data;
     checkFollow();
   });
-
   usersApi.getUserStatuses({username: currentUserId}).$promise.then(function(data){
    	$scope.tweets = data;
   });
 
   usersApi.getFollowers({username: currentUserId}).$promise.then(function(data){
     $scope.followers = data;
-    //$scope.followers = MOCKUSERS;
   });
 
   usersApi.getFollowings({username: currentUserId}).$promise.then(function(data){
     $scope.following = data;
-    //$scope.following = MOCKUSERS;
   });
 
   function checkFollow() {
@@ -30,16 +27,54 @@ pepo.controller('myProfileCtrl', function($location, $auth, $scope, userApi, use
     });
   }
 
-  $scope.subscribe = function() {
-    usersApi.followUser({username: currentUserId}).$promise.then(function(){
-      $scope.followed = true;
-    })
+  $scope.$on('currentUserLoaded', function() {
+     getUsers();
+  });
+
+  function getUsers() {
+    usersApi.getUsers().$promise.then(function(data) {
+      $scope.users = data;
+        console.log($scope.users);
+    }).catch(function(eror){
+      console.log(eror);
+    });
   }
 
-  $scope.unsubscribe = function() {
-    usersApi.unfollowUser({username: currentUserId}).$promise.then(function(){
-      $scope.followed = false;
-    })
+  $scope.isSubscribe = function(userId) {
+    console.log('init');
+    $scope.currentUser.following.some(function(followingUser) {
+      if(followingUser === userId) {
+        $scope.subscribed[userId] = true;
+      }
+    });
+  }
+
+  $scope.subscribe = function(username, userId) {
+    usersApi.followUser({username: username}).$promise.then(function(){
+      //$scope.followed = true;
+      $scope.subscribed[userId] = true;
+            usersApi.getFollowers({username: currentUserId}).$promise.then(function(data){
+        $scope.followers = data;
+      });
+
+      usersApi.getFollowings({username: currentUserId}).$promise.then(function(data){
+        $scope.following = data;
+      });
+    });
+  }
+
+  $scope.unsubscribe = function(username, userId) {
+    usersApi.unfollowUser({username: username}).$promise.then(function(){
+      //$scope.followed = false;
+      $scope.subscribed[userId] = false;
+      usersApi.getFollowers({username: currentUserId}).$promise.then(function(data){
+        $scope.followers = data;
+      });
+
+      usersApi.getFollowings({username: currentUserId}).$promise.then(function(data){
+        $scope.following = data;
+      });
+    });
   }
 
   $scope.sendPep = function() {
