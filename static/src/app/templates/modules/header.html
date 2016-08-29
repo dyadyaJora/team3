@@ -1,57 +1,59 @@
-<header class="header">
-	<div class="header-restrictor">
-		<div class="header_logo">
-			<a href="#/" class="header_logo-img">PEPO</a>
-		</div>
-		<div class="header_user">
-			<div class="header_user-profil">
-				<p class="header_user_avatar-name" ng-show="currentUser">{{currentUser.username}}</p>
+<div>
+	<header class="header">
+		<div class="header-restrictor">
+			<div class="header_logo">
+				<a href="#/" class="header_logo-img">PEPO</a>
+			</div>
+			<div class="header_user">
+				<div class="header_user-profil">
+					<p class="header_user_avatar-name" ng-show="currentUser">{{currentUser.username}}</p>
+				</div>
+			</div>
+			<div class="header-actions">
+				<ul class="header-actions-list">
+					<li class="header-action_item" ng-show="currentUser"><div class="header-btn add-twitt_contain__mod" ng-click="openNewpep($index)"></div></li>
+					<li class="header-action_item" ng-show="currentUser"><a href="#/users" class="header-btn search-user_contain__mod"></a></li>
+					<li class="header-action_item" ng-show="currentUser"><div ng-click="toggleMenu()" class="header-btn header_user_logout-btn__mod" ></div></li>
+				</ul>
 			</div>
 		</div>
-		<div class="header-actions">
-			<ul class="header-actions-list">
-				<li class="header-action_item" ng-show="currentUser"><div class="header-btn add-twitt_contain__mod" ng-click="openNewpep($index)"></div></li>
-				<li class="header-action_item" ng-show="currentUser"><a href="#/users" class="header-btn search-user_contain__mod"></a></li>
-				<li class="header-action_item" ng-show="currentUser"><div ng-click="toggleMenu()" class="header-btn header_user_logout-btn__mod" ></div></li>
+		<div class="inf-block">
+			<div class="inf-block_contain" ng-class="{'inf-block_contain__show': varInf }" ng-click="openInfNewPeps()">
+				<p class="inf-block_text">5 New Peps</p>
+			</div>
+		</div>
+	</header>
+	<div class="slide-effect_bg" ng-class="{'slide-effect_bg__show': menuOpened }" ng-click="closeSlideMenu($event)">
+	</div>
+		<div class="slide-menu">
+			<ul class="slide-menu_list">
+				<li class="slide-menu_item"><a class="slide-menu_link" href="">Лента</a></li>
+				<li class="slide-menu_item slide-menu_item__separator "><a class="slide-menu_link" href="">Поиск</a></li>
+				<li class="slide-menu_item"><a class="slide-menu_link" ng-click="goToMyProfile()">Мой профиль</a></li>
+				<li class="slide-menu_item slide-menu_item__separator"><a class="slide-menu_link" href="/#/edit-profile">Редактировать</a></li>
+				<li ng-click="logout()" class="slide-menu_item"><a class="slide-menu_link" href="">Выйти</a></li>
 			</ul>
+			<div class="cancel-menu_btn"  ng-click="closeSlideMenu($event)" ></div>
 		</div>
-	</div>
-	<div class="inf-block">
-		<div class="inf-block_contain" ng-class="{'inf-block_contain__show': varInf }" ng-click="openInfNewPeps()">
-			<p class="inf-block_text">5 New Peps</p>
-		</div>
-	</div>
-</header>
-<div class="slide-effect_bg" ng-class="{'slide-effect_bg__show': menuOpened }" ng-click="closeSlideMenu($event)">
-</div>
-	<div class="slide-menu">
-		<ul class="slide-menu_list">
-			<li class="slide-menu_item"><a class="slide-menu_link" href="">Лента</a></li>
-			<li class="slide-menu_item slide-menu_item__separator "><a class="slide-menu_link" href="">Поиск</a></li>
-			<li class="slide-menu_item"><a class="slide-menu_link" ng-click="goToMyProfile()">Мой профиль</a></li>
-			<li class="slide-menu_item slide-menu_item__separator"><a class="slide-menu_link" href="/#/edit-profile">Редактировать</a></li>
-			<li ng-click="logout()" class="slide-menu_item"><a class="slide-menu_link" href="">Выйти</a></li>
-		</ul>
-		<div class="cancel-menu_btn"  ng-click="closeSlideMenu($event)" ></div>
-	</div>
 
 
-<div class="modal">
-  <div class="modal-fade-screen" ng-class="{'new-pep__active': varNewpep}" ng-click="closeNewpep($event)">
-    <div class="modal-inner">
-      <div class="modal-close" ng-click="varNewpep=''"></div>
-      <header class="pepo-modal-top pepo-modal-top__mod ">Новый Pep </header>
+	<div class="modal">
+	  <div class="modal-fade-screen" ng-class="{'new-pep__active': varNewpep}" ng-click="closeNewpep($event)">
+	    <div class="modal-inner">
+	      <div class="modal-close" ng-click="varNewpep=''"></div>
+	      <header class="pepo-modal-top pepo-modal-top__mod ">Новый Pep </header>
 
-      <section class="tweet-type_answer">
-        <div class="tweet-textarea_answer">
-          <textarea ng-model="newPepText" tabindex="1" autofocus id="tt">
-          </textarea>
-        </div>
-        <div class="tweet-buttons-block_answer">
-          <input type="file">
-          <input type="submit" value="Добавить pep" class="tweet-btn_answer" ng-click="publishNewpep()">
-        </div>
-      </section>
-    </div>
-  </div>
-</div>
+	      <section class="tweet-type_answer">
+	        <div class="tweet-textarea_answer">
+	          <textarea ng-model="newPepText" tabindex="1" autofocus id="tt">
+	          </textarea>
+	        </div>
+	        <div class="tweet-buttons-block_answer">
+	          <input type="file">
+	          <input type="submit" value="Добавить pep" class="tweet-btn_answer" ng-click="publishNewpep()">
+	        </div>
+	      </section>
+	    </div>
+	  </div>
+	</div>
+</div>	

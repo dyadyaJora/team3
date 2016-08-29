@@ -1,4 +1,4 @@
-pepo.controller('feedCtrl', function($rootScope, $q, $location, $auth, $scope, userApi, feedApi, pepsApi) {
+pepo.controller('feedCtrl', function($rootScope, $q, $location, $auth, $scope, userApi, feedApi, pepsApi,$document) {
   $scope.newPepText = '';
   currentLocation = [];
   navigator.geolocation.getCurrentPosition(show_map);
@@ -50,7 +50,8 @@ pepo.controller('feedCtrl', function($rootScope, $q, $location, $auth, $scope, u
     $scope.varEdit1 = [];
   });
   setTimeout(function(){ $scope.editAnim = [];}, 2000);
-        
+    //document.getElementsByTagName('body')[0].scrollTop = document.getElementsByClassName('tweets_item')[$scope.editIndex].offsetTop - $scope.varHeightheader ;
+     $document.scrollTop(document.getElementsByClassName('tweets_item')[$scope.editIndex].offsetTop - $scope.varHeightheader, 300);
   }
 
   // Server latency mock.

@@ -1,10 +1,10 @@
-
-angular.module('pepo').directive('pepoHeader', function($rootScope, $auth, $location, pepsApi, userApi,$timeout,feedApi) {
+angular.module('pepo').directive('pepoHeader', function($rootScope, $auth, $location, pepsApi, userApi,feedApi, $document) {
 	return {
 		restrict: "E",
-		replace: false,
+		replace: true,
 		templateUrl: '../build/templates/modules/header.html',
 		link: function($scope , $element, $attrs) {
+			$scope.varHeightheader = document.getElementsByClassName('header')[0].clientHeight;
 
       var body = angular.element(document).find('body');
 			body.removeClass('no-scroll');
@@ -68,10 +68,9 @@ angular.module('pepo').directive('pepoHeader', function($rootScope, $auth, $loca
 			    pepsApi.sendPep(newPep).$promise.then(function(data){
 			      	newPep._id = data._id
 			     	$scope.tweets.unshift(newPep);
-			     	$timeout(function () {
-				        document.getElementsByTagName('body')[0].scrollTop = 0;
-				        console.log( document.getElementsByClassName("tweets"));
-				    });
+			     	$document.scrollTop(0, 300);
+				    
+				    
 			      	
 			    })
 			    .catch(function(err) {
