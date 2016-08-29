@@ -1,44 +1,54 @@
 pepo.controller('myProfileCtrl', function($location, $auth, $scope, userApi, usersApi, pepsApi, MOCKTWEETS){
-
+  $scope.subscribed = [];
   currentUserId = $location.path().slice(2);
   usersApi.getUser({username: currentUserId}).$promise.then(function(data) {
     $scope.currentPageUser = data;
-    checkFollow();
   });
-
   usersApi.getUserStatuses({username: currentUserId}).$promise.then(function(data){
    	$scope.tweets = data;
   });
 
+  function getInfoItems(){
   usersApi.getFollowers({username: currentUserId}).$promise.then(function(data){
-    $scope.followersCount = data.length;
+    $scope.followers = data;
   });
 
   usersApi.getFollowings({username: currentUserId}).$promise.then(function(data){
-    console.log(data);
-    $scope.followingCount = data.length;
+    $scope.following = data;
   });
+  }
 
-  function checkFollow() {
+  getInfoItems();
+
+
+
+$scope.isSubscribe = function(userId) {
     $scope.$on('currentUserLoaded', function() {
+      console.log('init');
       $scope.currentUser.following.some(function(followingUser) {
-        if (followingUser === $scope.currentPageUser._id) {
-          $scope.followed = true;
+        if(followingUser === userId) {
+          $scope.subscribed[userId] = true;
         }
       });
+    })
+  }
+
+  $scope.subscribe = function(username, userId) {
+    usersApi.followUser({username: username}).$promise.then(function(){
+      //$scope.followed = true;
+      $scope.subscribed[userId] = true;
+
+      getInfoItems();
     });
   }
 
-  $scope.subscribe = function() {
-    usersApi.followUser({username: currentUserId}).$promise.then(function(){
-      $scope.followed = true;
-    })
-  }
+  $scope.unsubscribe = function(username, userId) {
+    usersApi.unfollowUser({username: username}).$promise.then(function(){
+      //$scope.followed = false;
+      $scope.subscribed[userId] = false;
 
-  $scope.unsubscribe = function() {
-    usersApi.unfollowUser({username: currentUserId}).$promise.then(function(){
-      $scope.followed = false;
-    })
+      getInfoItems();
+    });
   }
 
   $scope.sendPep = function() {
@@ -154,7 +164,12 @@ pepo.controller('myProfileCtrl', function($location, $auth, $scope, userApi, use
   $scope.varInfo = 0;
   $scope.varInfoArr = [true, false, false];
   $scope.itemInfo = function(index){
-    $scope.varInfoArr=[];
+    if( ((index==1) && ($scope.following.length!=0)) || ((index==2) && ($scope.followers.length!=0)) || (index==0 && 1 /*pepsCount!=0 */) )
+    {$scope.varInfoArr=[false, false, false];
     $scope.varInfoArr[index] = true;
+  }
+  }
+  $scope.goToUser = function(username) {
+    $location.path('/@' + username);
   }
 });
