@@ -1,0 +1,34 @@
+.emoji-wrapper {
+  position: absolute;
+  top: -13px;
+  right: 0;
+}
+
+.emoji-btn {
+  cursor: pointer;
+
+}
+
+.emoji-pack {
+  border: 1px solid #c7c7c7;
+  border-radius: 4px;
+  padding: 10px 0 10px 10px;
+  background: #ffffff;
+  position: absolute;
+  top: 25px;
+  left: -130px;
+  max-height: 200px;
+  width: 240px;
+  overflow-y: auto;
+}
+
+.emoji-pack-list_item {
+  cursor: pointer;
+  display: inline-block;
+  vertical-align: top;
+  margin-right: 15px;
+  margin-bottom: 15px;
+  &:last-child {
+    margin-right: 0;
+  }
+}

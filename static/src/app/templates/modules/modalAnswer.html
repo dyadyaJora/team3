@@ -17,17 +17,28 @@
 
 
       <section class="tweet-content">
-        <p class="tweet-content_text">{{pep.text}}</p>
+        <p ng-bind-html="pep.text | emoticons" class="tweet-content_text"></p>
         </section>
       </section>
 
       <section class="tweet-type_answer">
         <div class="tweet-textarea_answer">
-          <textarea class="new-pep-input" ng-model="newPepText" tabindex="1" autofocus id="tt">
+          <textarea class="new-pep-input" ng-bind-html="newPepText" ng-model="newPepText" tabindex="1" autofocus id="tt">
           </textarea>
         </div>
         <div class="tweet-buttons-block_answer">
           <input type="file">
+          <div class="emoji-wrapper">
+            <div ng-click="toggleEmoji()" ng-init="emojiBtn = ':smile:'" ng-bind-html="emojiBtn | emoticons" class="emoji-btn"></div>
+            <div ng-show="emojiOpen" class="emoji-pack">
+              <ul class="emoji-pack-list">
+                <li ng-repeat="icon in emojiPack" ng-click="addEmoji(icon)" class="emoji-pack-list_item">
+                  <span ng-bind-html="icon | emoticons"></span>
+                </li>
+              </ul>
+            </div>
+          </div>
+
           <div class="pepo_btn pepo_btn__answer" ng-click="sendPep()">Ответить</div>
         </div>
       </section>
