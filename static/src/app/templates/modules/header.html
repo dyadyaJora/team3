@@ -5,14 +5,14 @@
 		</div>
 		<div class="header_user">
 			<div class="header_user-profil">
-				<p class="header_user_avatar-name">BobDodo</p>
+				<p class="header_user_avatar-name" ng-show="currentUser">{{currentUser.username}}</p>
 			</div>
 		</div>
 		<div class="header-actions">
 			<ul class="header-actions-list">
-				<li class="header-action_item"><div class="header-btn add-twitt_contain__mod" ng-click="openNewpep($index)"></div></li>
-				<li class="header-action_item"><a href="#/users" class="header-btn search-user_contain__mod"></a></li>
-				<li class="header-action_item"><div ng-click="toggleMenu()" class="header-btn header_user_logout-btn__mod" ></div></li>
+				<li class="header-action_item" ng-show="currentUser"><div class="header-btn add-twitt_contain__mod" ng-click="openNewpep($index)"></div></li>
+				<li class="header-action_item" ng-show="currentUser"><a href="#/users" class="header-btn search-user_contain__mod"></a></li>
+				<li class="header-action_item" ng-show="currentUser"><div ng-click="toggleMenu()" class="header-btn header_user_logout-btn__mod" ></div></li>
 			</ul>
 		</div>
 	</div>

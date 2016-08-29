@@ -1,8 +1,5 @@
-<<<<<<< fa85e4b269163a7a59eed1289f292fb472e7a4c6
-angular.module('pepo').directive('pepoHeader', function($rootScope, $auth, $location, pepsApi, userApi, feedApi) {
-=======
-angular.module('pepo').directive('pepoHeader', function($rootScope, $auth, $location, pepsApi, userApi,$timeout) {
->>>>>>> Scroll after creating new pep.
+
+angular.module('pepo').directive('pepoHeader', function($rootScope, $auth, $location, pepsApi, userApi,$timeout,feedApi) {
 	return {
 		restrict: "E",
 		replace: false,

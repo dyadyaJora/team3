@@ -50,6 +50,7 @@ pepo.controller('feedCtrl', function($rootScope, $q, $location, $auth, $scope, u
     $scope.varEdit1 = [];
   });
   setTimeout(function(){ $scope.editAnim = [];}, 2000);
+        
   }
 
   // Server latency mock.
