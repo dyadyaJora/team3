@@ -14,6 +14,7 @@ path = {
         templates: './static/src/app/templates/**/*.html',
         fonts: './static/src/fonts/*',
         img: './static/src/img/*',
+        images: './static/src/images/**/*',
         imgSvg: './static/src/img/*.svg',
         imgJpg: './static/src/img/*.jpg',
         imgPng: './static/src/img/*.png'
@@ -23,6 +24,7 @@ path = {
         css: './build/css/',
         fonts: './build/fonts/',
         img: './build/img/',
+        images: './build/images/',
         templates: './build/templates'
     }
 }
@@ -33,7 +35,9 @@ gulp.task('vendors', function () {
         './node_modules/angular-route/angular-route.min.js',
         './node_modules/angular-resource/angular-resource.min.js',
         './node_modules/satellizer/dist/satellizer.min.js',
-        './node_modules/angular-scroll/angular-scroll.min.js'
+        './node_modules/angular-scroll/angular-scroll.min.js',
+        './node_modules/angular-sanitize/angular-sanitize.min.js',
+        './node_modules/ng-emoticons/dist/ng-emoticons.min.js'
     ])
         .pipe(concat('vendors.js'))
         .pipe(gulp.dest(path.dist.js));
@@ -44,7 +48,12 @@ gulp.task('fonts', function () {
         .pipe(gulp.dest(path.dist.fonts));
 });
 
-gulp.task('imgMin', function () {
+gulp.task('replaceImages', function () {
+    gulp.src(path.src.images)
+        .pipe(gulp.dest(path.dist.images));
+});
+
+gulp.task('imgMin', ['replaceImages'], function () {
     gulp.src(path.src.img)
         .pipe(gulp.dest(path.dist.img));
 });
@@ -56,7 +65,7 @@ gulp.task('jsConcat', function () {
 });
 
 gulp.task('templates', function () {
-    gulp.src(path.src.templates) 
+    gulp.src(path.src.templates)
         .pipe(gulp.dest(path.dist.templates));
 });
 

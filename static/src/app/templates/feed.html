@@ -19,7 +19,7 @@
 
 
       <section class="tweet-content">
-        <p class="tweet-content_text" ng-class="{'novisible-block__edit': varEdit1[$index], 'anim': editAnim[$index]}">{{tweet.text}}</p>
+        <p ng-bind-html="tweet.text | emoticons" class="tweet-content_text" ng-class="{'novisible-block__edit': varEdit1[$index], 'anim': editAnim[$index]}"></p>
         <div class="hidden-block_edit tweet-content_text" ng-class="{'visible-block__edit': varEdit1[$index]}">
           <textarea ng-model="$parent.editPepText" class="pepo_textinput pep-text_edit"></textarea>
           <ul class="actions-btn-block">
@@ -69,7 +69,6 @@
 
     </li>
   </ul>
-
   <div class="load-more-btn" ng-click="loadMorePeps()" ng-class="{'load-more-btn__progress': pepsLoading}"></div>
 
 </section>

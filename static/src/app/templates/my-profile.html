@@ -51,7 +51,7 @@
 
 
       <section class="tweet-content">
-        <p class="tweet-content_text" ng-class="{'novisible-block__edit': varEdit1[$index], 'anim': editAnim[$index]}">{{tweet.text}}</p>
+        <p ng-bind-html="tweet.text | emoticons" class="tweet-content_text" ng-class="{'novisible-block__edit': varEdit1[$index], 'anim': editAnim[$index]}"></p>
         <div class="hidden-block_edit tweet-content_text" ng-class="{'visible-block__edit': varEdit1[$index]}">
           <textarea ng-model="$parent.editPepText" class="pepo_textinput pep-text_edit"></textarea>
           <ul class="actions-btn-block">
@@ -120,7 +120,7 @@
     </li>
   </ul>
 
-<!-- Блок читаемых -->  
+<!-- Блок читаемых -->
 
   <ul class="users-list  followers followers__userpage" ng-class="{'hidden-block_profile': varInfoArr[2]==false, 'visible-block_profile': varInfoArr[2]}">
     <li ng-repeat="user in followers" ng-init="isSubscribe(user._id)" class="users-list_item user">

@@ -20,7 +20,7 @@ pepo.controller('feedCtrl', function($rootScope, $q, $location, $auth, $scope, u
   $scope.goToPep = function(pepId) {
     $location.path('/pep' + pepId);
   }
-  
+
   $scope.editPepStart = function(index, id, text){
     $scope.editId = id;
     console.log(id);

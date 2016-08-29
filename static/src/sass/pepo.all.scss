@@ -2,6 +2,7 @@
 
 @import "../../../node_modules/bourbon/app/assets/stylesheets/_bourbon";
 @import "../../../node_modules/bourbon-neat/app/assets/stylesheets/_neat";
+@import "../../../node_modules/ng-emoticons/dist/ng-emoticons.min";
 
 @import "_pepo.common";
 @import "_pepo.feed";
@@ -17,4 +18,5 @@
 @import "_pepo.edit-pep";
 @import "_pepo.map";
 @import "_pepo.inf-block-newpeps";
+@import "_pepo.emoji";
 

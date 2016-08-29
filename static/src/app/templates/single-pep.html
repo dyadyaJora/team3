@@ -16,7 +16,7 @@
       </header>
 
       <section class="single-tweet-content">
-        <p class="single-tweet-content_text">{{parent.text}}</p>
+        <p ng-bind-html="parent.text | emoticons" class="single-tweet-content_text"></p>
       </section>
     </div>
 
@@ -35,7 +35,7 @@
       </header>
 
       <section class="single-tweet-content">
-        <p class="single-tweet-content_text">{{currentTweet.text}}</p>
+        <p ng-bind-html="currentTweet.text | emoticons" class="single-tweet-content_text"></p>
       </section>
 
       <footer class="single-tweet-footer">
@@ -75,7 +75,7 @@
         </header>
 
       <section class="tweet-content">
-        <p class="tweet-content_text">{{answer.text}}</p>
+        <p ng-bind-html="answer.text | emoticons" class="tweet-content_text"></p>
       </section>
 
       <footer class="tweet-footer">
