@@ -24,10 +24,12 @@
 	@include span-columns(4);
 	line-height: 40px;
 	text-align: center;
+	min-height: 1px;
 }
 .header-actions{
-	@include span-columns(4);
+	@include span-columns(4);	
 	text-align: right;
+	min-height: 1px;
  }
 .header-actions-list {
 	display: inline-block;
