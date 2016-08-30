@@ -15,12 +15,18 @@ angular.module('pepo').directive('modalAnswer', function($rootScope, $auth, $loc
 				 $scope.varAnswer = true;
 				$scope.pep = $scope.tweets[id];
 			 }
-			$scope.closeModalAnswer = function($event){
+			$scope.closeModalAnswer = function($event, bool){
 				var click = angular.element($event.target).parent();
-				if(click.hasClass("modal")){
+        if(bool){
+          $scope.varAnswer=false;
+          $scope.varDel=false;
+          body.removeClass('no-scroll');
+          return;
+        }
+				if(click.hasClass("modal-fade-screen")){
 					$scope.varAnswer=false;
 					$scope.varDel=false;
-          body.removeClass('no-scroll')
+          body.removeClass('no-scroll');
 				}
 			}
 		  $scope.sendPep = function() {

@@ -1,7 +1,8 @@
 <div class="modal">
-  <div class="modal-fade-screen" ng-class="{'modal-answer__active': varDel}" ng-click="closeModalAnswer($event)">
+  <div class="modal-fade-screen" ng-class="{'modal-answer__active': varDel}" ng-click="closeModalAnswer($event, false)">
+  <div class="modal-wrapper">
     <div class="modal-inner">
-      <div class="modal-close" ng-click="varDel=''"></div>
+      <div class="modal-close" ng-click="closeModalAnswer($event, true)"></div>
       <header class="pepo-modal-top">Вы уверены что хотите удалить пеп?
       </header>
         <section class="tweet_answer">
@@ -25,13 +26,14 @@
       <section class="tweet-type_answer">
         <ul class="actions-btn-block">
         <li class="actions-btn-block_item">
-          <div class="pepo_btn actions-btn-cancel_item" ng-click="varDel=''">Отменить</div>
+          <div class="pepo_btn actions-btn-cancel_item" ng-click="closeModalAnswer($event, true)">Отменить</div>
         </li>
         <li class="actions-btn-block_item">
           <div class="pepo_btn actions-btn-del_item"  ng-click="deletePep()">Удалить</div>
         </li>
         </ul>
       </section>
+    </div>
     </div>
   </div>
 </div>
