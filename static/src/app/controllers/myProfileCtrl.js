@@ -1,5 +1,13 @@
 pepo.controller('myProfileCtrl', function($location, $auth, $scope, userApi, usersApi, pepsApi, MOCKTWEETS){
   $scope.subscribed = [];
+  currentLocation = [];
+  navigator.geolocation.getCurrentPosition(show_map);
+
+  // Get coordinates.
+  function show_map(position) {
+    currentLocation.push(position.coords.latitude);
+    currentLocation.push(position.coords.longitude);
+  }
   currentUserId = $location.path().slice(2);
   usersApi.getUser({username: currentUserId}).$promise.then(function(data) {
     $scope.currentPageUser = data;
