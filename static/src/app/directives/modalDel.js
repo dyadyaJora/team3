@@ -20,6 +20,7 @@ angular.module('pepo').directive('modalDel', function($rootScope, $auth, $locati
 				}).catch(function(eror){
 					$scope.varDel=false;
 				});
+          		body.removeClass('no-scroll');
 			}
 
 		}

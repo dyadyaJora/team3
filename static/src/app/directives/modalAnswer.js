@@ -48,6 +48,7 @@ angular.module('pepo').directive('modalAnswer', function($rootScope, $auth, $loc
           console.log(err);
         })
         $scope.varAnswer = false;
+        body.removeClass('no-scroll');
         $scope.newPepText = '';
       }
       $scope.toggleEmoji = function(emoji) {
