@@ -26,7 +26,6 @@ pepo.controller('myProfileCtrl', function($location, $auth, $scope, userApi, use
        $scope.currentUser.following.some(function(followingUser) {
          if (followingUser === $scope.currentPageUser._id) {
           $scope.subscribed[$scope.currentPageUser._id] = true;
-          console.log("dd");
          }
        });
      });
@@ -41,7 +40,6 @@ $scope.isSubscribe = function(userId) {
         }
       });
     });
-    console.log($scope.subscribed);
   }
 
   $scope.subscribe = function(username, userId) {
