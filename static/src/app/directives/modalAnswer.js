@@ -7,9 +7,10 @@ angular.module('pepo').directive('modalAnswer', function($rootScope, $auth, $loc
       $scope.emojiPack = [':bowtie:', ':smile:', ':laughing:', ':blush:', ':smiley:', ':relaxed:', ':smirk:', ':heart_eyes:', ':kissing_heart:', ':kissing_closed_eyes:', ':flushed:', ':relieved:', ':satisfied:', ':grin:', ':wink:', ':stuck_out_tongue_winking_eye:', ':stuck_out_tongue_closed_eyes:', ':grinning:', ':kissing:', ':winky_face:', ':kissing_smiling_eyes:', ':stuck_out_tongue:', ':sleeping:', ':worried:', ':frowning:', ':smiley_cat:', ':smile_cat:', ':heart_eyes_cat:', ':kissing_cat:', ':smirk_cat:', ':scream_cat:', ':crying_cat_face:', ':joy_cat:', ':pouting_cat:'];
 			$scope.varAnswer = false;
       $scope.emojiOpen = false;
+      var body = angular.element(document).find('body');
 			$scope.openModalAnswer = function(id) {
 				$scope.varDel = false;
-
+        body.addClass('no-scroll');
 				$scope.varEdit1 = [];
 				 $scope.varAnswer = true;
 				$scope.pep = $scope.tweets[id];
@@ -19,6 +20,7 @@ angular.module('pepo').directive('modalAnswer', function($rootScope, $auth, $loc
 				if(click.hasClass("modal")){
 					$scope.varAnswer=false;
 					$scope.varDel=false;
+          body.removeClass('no-scroll')
 				}
 			}
 		  $scope.sendPep = function() {

@@ -1,5 +1,6 @@
 <div class="modal">
   <div class="modal-fade-screen" ng-class="{'modal-answer__active': varAnswer}" ng-click="closeModalAnswer($event)">
+  <div class="modal-wrapper">
     <div class="modal-inner">
       <div class="modal-close" ng-click="varAnswer=''"></div>
       <header ng-click="goToUser(pep.owner.username)" class="pepo-modal-top">Ответить <span class="pep-answer-username">@{{pep.owner.username}}</span></header>
@@ -42,6 +43,7 @@
           <div class="pepo_btn pepo_btn__answer" ng-click="sendPep()">Ответить</div>
         </div>
       </section>
+    </div>
     </div>
   </div>
 </div>
