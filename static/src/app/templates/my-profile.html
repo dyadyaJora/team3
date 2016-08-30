@@ -4,7 +4,7 @@
 <section class="page-container">
     <div class="user-profile">
         <img ng-src="{{currentPageUser.avatarUrl}}" alt="" class="user-profile_img">
-        <div class="user-profile_content">
+        <div class="user-profile_content" ng-init="isSubscribe(currentPageUser._id)">
             <div class="user-profile_name">{{currentPageUser.name}}</div>
             <div class="user-profile_nickname">@{{currentPageUser.username}}</div>
 

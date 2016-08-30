@@ -67,7 +67,6 @@
   }
 
   .user-profile_unsubscribe {
-    position: absolute;
     bottom: 30px;
     width: 95px;
     color: $colorWhite;
@@ -80,15 +79,12 @@
       background: $colorBtnRed__hover;
       color: transparent;
       &:before {
+        display: inline-block;
         content: 'Отписаться';
         color: $colorWhite;
-        position: absolute;
         text-align: center;
-        top:0;
-        left:0;
         height: 100%;
         width: 100%;
-
       }
     }
   }
@@ -152,7 +148,7 @@
 
 @media only screen and (max-width: $mobileWidth) {
   .user-profile {
-    .user-profile_subscribe {
+    .user-profile_subscribe, .user-profile_unsubscribe{
       position: initial;
       width: calc(100% - 125px);
       margin: 37px 0 0 125px;
