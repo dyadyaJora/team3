@@ -30,9 +30,9 @@
             <div ng-click="goToUser(currentTweet.owner.username)" class="single-tweet-header_user-login">@{{currentTweet.owner.username}}</div>
           </div>
         </div>
-        <button class="pepo_btn user_subscribe" ng-hide="currentTweet.owner.username==currentUser.username || followed">+ Читать</button>
-
-        <button class="pepo_btn user_unsubscribe" ng-hide="currentTweet.owner.username==currentUser.username|| !followed"> Читаю</button>
+        <button class="pepo_btn user_subscribe" ng-hide="currentTweet.owner.username==currentUser.username || followed" ng-click="subscribe(currentTweet.owner.username)">+ Читать</button>
+        
+        <button class="pepo_btn user_unsubscribe" ng-hide="currentTweet.owner.username==currentUser.username|| !followed" ng-click="unsubscribe(currentTweet.owner.username)"> Читаю</button>
         <div am-time-ago="currentTweet.createdAt" class="single-tweet-header_date"></div>
       </header>
 

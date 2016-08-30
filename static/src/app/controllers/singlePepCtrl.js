@@ -1,9 +1,8 @@
-pepo.controller('singlePepCtrl', function($location, $scope, pepsApi, userApi, MOCKTWEETS) {
+pepo.controller('singlePepCtrl', function($location, $scope, pepsApi, userApi, usersApi, MOCKTWEETS) {
 
 
   $scope.$on('currentUserLoaded', function() {
     $scope.curUser = $scope.currentUser;
-    console.log($scope.currentUser);
   });
 
   currentPepId = $location.path().slice(4);
@@ -30,4 +29,17 @@ pepo.controller('singlePepCtrl', function($location, $scope, pepsApi, userApi, M
        });
      });
    }
+
+  $scope.subscribe = function(username) {
+    usersApi.followUser({username: username}).$promise.then(function(){
+      $scope.followed = true;
+    });
+  }
+
+  $scope.unsubscribe = function(username) {
+    usersApi.unfollowUser({username: username}).$promise.then(function(){
+      $scope.followed = false;
+    });
+  }
+
 });
