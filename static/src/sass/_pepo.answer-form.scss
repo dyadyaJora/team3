@@ -119,19 +119,19 @@
     background: $modal-background;
     border-radius: $base-border-radius;
     margin: auto;
-    margin-top: 15vh;
+    margin-top:10px;
     position: relative;
     transition: opacity 0.25s ease;
     width: 95%;
-    max-width: 500px;
+    max-width: 600px;
 
     @include media($medium-screen) {
-      width: 60%;
+      //width: 60%;
     }
 
     @include media($large-screen) {
-      width: 50%;
-      margin-top:0;
+      //width: 50%;
+      margin-top:15vh;
     }
 
     .modal-intro {
