@@ -1,8 +1,8 @@
 <div class="modal">
-  <div class="modal-fade-screen" ng-class="{'modal-answer__active': varAnswer}" ng-click="closeModalAnswer($event, false)">
+  <div class="modal-fade-screen" ng-class="{'modal-answer__active': varAnswer}" ng-click="closeModalAnswer($event)">
   <div class="modal-wrapper">
     <div class="modal-inner">
-      <div class="modal-close" ng-click="closeModalAnswer($event, true)"></div>
+      <div class="modal-close" ng-click="closeModal()"></div>
       <header class="pepo-modal-top">Ответить <span class="pep-answer-username" ng-click="goToUser(pep.owner.username)">@{{pep.owner.username}}</span></header>
       <section class="tweet_answer">
               <header class="tweet-header">
