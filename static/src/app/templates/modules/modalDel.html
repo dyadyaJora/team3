@@ -10,8 +10,8 @@
         <div class="tweet-header_user">
           <img ng-click="goToUser(pep.owner.username)" ng-src="{{pep.owner.thumbUrl}}" alt="" class="tweet-header_user-img">
           <div class="tweet-header_name-wrapper">
-            <div ng-click="goToUser(tweet.owner.username)" class="tweet-header_user-name">{{pep.owner.name}}</div>
-            <div ng-click="goToUser(tweet.owner.username)" class="tweet-header_user-login">@{{pep.owner.username}}</div>
+            <div ng-click="goToUser(pep.owner.username)" class="tweet-header_user-name">{{pep.owner.name}}</div>
+            <div ng-click="goToUser(pep.owner.username)" class="tweet-header_user-login">@{{pep.owner.username}}</div>
           </div>
         </div>
         <div class="tweet-header_date" ng-click="goToPep(pep._id)">434534523345{{pep.createdAt}}</div>
