@@ -20,6 +20,10 @@ pepo.controller('singlePepCtrl', function($location, $scope, pepsApi, userApi, u
     $location.path('/@' + username);
   }
 
+  $scope.goToPep = function(pepId) {
+    $location.path('/pep' + pepId);
+  }
+
   function checkFollow() {
      $scope.$on('currentUserLoaded', function() {
        $scope.currentUser.following.some(function(followingUser) {

@@ -12,7 +12,7 @@
             <div ng-click="goToUser(parent.owner.username)" class="single-tweet-header_user-login">@{{parent.owner.username}}</div>
           </div>
         </div>
-        <div am-time-ago="parent.createdAt" class="single-tweet-header_date"></div>
+        <div am-time-ago="parent.createdAt" class="single-tweet-header_date" ng-click="goToPep(parent._id)"></div>
       </header>
 
       <section class="single-tweet-content">
@@ -69,11 +69,12 @@
           <div class="tweet-header_user">
             <img ng-src="{{answer.owner.thumbUrl}}" alt="" class="tweet-header_user-img">
             <div class="tweet-header_name-wrapper">
-              <div class="tweet-header_user-name">{{answer.owner.name}}</div>
-              <div class="tweet-header_user-login">@{{answer.owner.username}}</div>
+              <div class="tweet-header_user-name" ng-click="goToUser(answer.owner.username)">{{answer.owner.name}}</div>
+              <div class="tweet-header_user-login" ng-click="goToUser(answer.owner.username)">@{{answer.owner.username}}</div>
             </div>
           </div>
-          <div am-time-ago="answer.createdAt" class="tweet-header_date"></div>
+          
+          <div am-time-ago="answer.createdAt" class="tweet-header_date"  ng-click="goToPep(answer._id)"></div>
         </header>
 
       <section class="tweet-content">
