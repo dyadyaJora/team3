@@ -12,6 +12,8 @@ var mongoose = require('mongoose');
 var Promise = require('bluebird');
 
 var app = express();
+var server = require('http').createServer(app);
+var io = require('socket.io')(server);
 
 var config = require('./config');
 
