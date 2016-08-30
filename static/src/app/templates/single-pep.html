@@ -52,11 +52,11 @@
             <div class="single-tweet-actions_coutn">2</div>
           </li>
 
-          <li class="single-tweet-actions_item single-tweet-actions_item__edit">
+          <li class="single-tweet-actions_item single-tweet-actions_item__edit" ng-show="isOwner(currentUser.username, currentTweet.owner.username)">
             <div class="single-tweet-actions_icon"></div>
           </li>
 
-           <li class="single-tweet-actions_item single-tweet-actions_item__remove">
+           <li class="single-tweet-actions_item single-tweet-actions_item__remove" ng-show="isOwner(currentUser.username, currentTweet.owner.username)">
             <div class="single-tweet-actions_icon"></div>
           </li>
         </ul>
@@ -92,11 +92,11 @@
             <div class="tweet-actions_coutn">2</div>
           </li>
 
-          <li class="tweet-actions_item tweet-actions_item__edit" ng-show="isOwner(currentTweet.owner.username, answer.owner.username)">
+          <li class="tweet-actions_item tweet-actions_item__edit" ng-show="isOwner(currentUser.username, answer.owner.username)">
             <div class="tweet-actions_icon"></div>
           </li>
 
-           <li class="tweet-actions_item tweet-actions_item__remove" ng-show="isOwner(currentTweet.owner.username, answer.owner.username)">
+           <li class="tweet-actions_item tweet-actions_item__remove" ng-show="isOwner(currentUser.username, answer.owner.username)">
             <div class="tweet-actions_icon"></div>
           </li>
         </ul>
