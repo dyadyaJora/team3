@@ -86,4 +86,26 @@ pepo.controller('singlePepCtrl', function($location, $scope, pepsApi, userApi, u
   });
   setTimeout(function(){ $scope.editAnim = [];}, 2000);
   }
+
+  $scope.editPep = function(){
+    if ($scope.currentTweet.children[$scope.editIndex].text == $scope.editPepText) {
+      $scope.varEdit1 = [];
+      console.log($scope.currentTweet.children[$scope.editIndex].text, $scope.editPepText);
+      return;
+    } 
+    $scope.editAnim[$scope.editIndex] = true;
+    pepEdit = {text: $scope.editPepText };
+    pepsApi.editPep({id: $scope.editId}, pepEdit).$promise.then(function(data){
+      $scope.currentTweet.children.find(function(pep) {
+        if (pep._id === data._id) {
+          currentPep = pep;
+        }
+      });
+      currentPep.text = data.text;
+      $scope.varEdit1 = [];
+  }).catch(function(eror){
+    $scope.varEdit1 = [];
+  });
+  setTimeout(function(){ $scope.editAnim = [];}, 2000);
+  }
 });

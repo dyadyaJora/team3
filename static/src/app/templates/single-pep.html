@@ -39,12 +39,12 @@
       </header>
 
       <section class="single-tweet-content">
-        <p ng-bind-html="currentTweet.text | emoticons" class="single-tweet-content_text" ng-class="{'novisible-block__edit': varEdit1[0], 'anim': editAnim[0]}"></p>
-        <div class="hidden-block_edit tweet-content_text" ng-class="{'visible-block__edit': varEdit1[0]}">
+        <p ng-bind-html="currentTweet.text | emoticons" class="single-tweet-content_text" ng-class="{'novisible-block__edit': varEdit1[-1], 'anim': editAnim[-1]}"></p>
+        <div class="hidden-block_edit tweet-content_text" ng-class="{'visible-block__edit': varEdit1[-1]}">
           <textarea ng-model="editPepText" class="pepo_textinput pep-text_edit"></textarea>
           <ul class="actions-btn-block">
             <li class="actions-btn-block_item">
-            <div ng-click="varEdit1[0]=''" class="pepo_btn actions-btn-cancel_item">Отменить</div>
+            <div ng-click="varEdit1[-1]=''" class="pepo_btn actions-btn-cancel_item">Отменить</div>
             </li>
             <li class="actions-btn-block_item">
             <div ng-click="editMainPep()" class="pepo_btn actions-btn-save_item">Сохранить</div>
@@ -65,11 +65,11 @@
             <div class="single-tweet-actions_coutn">2</div>
           </li>
 
-          <li class="single-tweet-actions_item single-tweet-actions_item__edit" ng-show="isOwner(currentUser.username, currentTweet.owner.username)" ng-click="editPepStart(0, currentTweet._id, currentTweet.text)">
+          <li class="single-tweet-actions_item single-tweet-actions_item__edit" ng-show="isOwner(currentUser.username, currentTweet.owner.username)" ng-click="editPepStart(-1, currentTweet._id, currentTweet.text)">
             <div class="single-tweet-actions_icon"></div>
           </li>
 
-           <li class="single-tweet-actions_item single-tweet-actions_item__remove" ng-show="isOwner(currentUser.username, currentTweet.owner.username)" ng-click="openModalD(currentTweet)">
+           <li class="single-tweet-actions_item single-tweet-actions_item__remove" ng-show="isOwner(currentUser.username, currentTweet.owner.username)" ng-click="openModalD(currentTweet, true)">
             <div class="single-tweet-actions_icon"></div>
           </li>
         </ul>
@@ -91,7 +91,18 @@
         </header>
 
       <section class="tweet-content">
-        <p ng-bind-html="answer.text | emoticons" class="tweet-content_text"></p>
+        <p ng-bind-html="answer.text | emoticons" class="tweet-content_text" ng-class="{'novisible-block__edit': varEdit1[$index], 'anim': editAnim[$index]}"></p>
+        <div class="hidden-block_edit tweet-content_text" ng-class="{'visible-block__edit': varEdit1[$index]}">
+          <textarea ng-model="$parent.editPepText" class="pepo_textinput pep-text_edit"></textarea>
+          <ul class="actions-btn-block">
+            <li class="actions-btn-block_item">
+            <div ng-click="varEdit1[$index]=''" class="pepo_btn actions-btn-cancel_item">Отменить</div>
+            </li>
+            <li class="actions-btn-block_item">
+            <div ng-click="editPep()" class="pepo_btn actions-btn-save_item">Сохранить</div>
+            </li>
+          </ul>
+        </div>        
       </section>
 
       <footer class="tweet-footer">
@@ -101,16 +112,16 @@
             <div class="tweet-actions_coutn">3</div>
           </li>
 
-           <li class="tweet-actions_item tweet-actions_item__answers">
+           <li class="tweet-actions_item tweet-actions_item__answers" ng-click="openModalAns(currentTweet.children[$index])">
             <div class="tweet-actions_icon"></div>
             <div class="tweet-actions_coutn">2</div>
           </li>
 
-          <li class="tweet-actions_item tweet-actions_item__edit" ng-show="isOwner(currentUser.username, answer.owner.username)">
+          <li class="tweet-actions_item tweet-actions_item__edit" ng-show="isOwner(currentUser.username, answer.owner.username)" ng-click="editPepStart($index, answer._id, answer.text)">
             <div class="tweet-actions_icon"></div>
           </li>
 
-           <li class="tweet-actions_item tweet-actions_item__remove" ng-show="isOwner(currentUser.username, answer.owner.username)">
+           <li class="tweet-actions_item tweet-actions_item__remove" ng-show="isOwner(currentUser.username, answer.owner.username)" ng-click="openModalD(currentTweet.children[$index], false)">
             <div class="tweet-actions_icon"></div>
           </li>
         </ul>

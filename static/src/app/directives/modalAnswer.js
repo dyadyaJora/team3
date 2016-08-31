@@ -49,7 +49,7 @@ angular.module('pepo').directive('modalAnswer', function($rootScope, $auth, $loc
         if($scope.tweets!=undefined){
           $scope.tweets.unshift(newPep);
         }
-        if($scope.currentTweet!=undefined){
+        if($scope.currentTweet!=undefined && newPep.parent==$scope.currentTweet._id){
           $scope.currentTweet.children.unshift(newPep);
         }
       })

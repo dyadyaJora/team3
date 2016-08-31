@@ -14,22 +14,25 @@ angular.module('pepo').directive('modalDel', function($rootScope, $auth, $locati
 				$scope.delId = id;
 				body.addClass('no-scroll');
 			 }
-			$scope.openModalD = function (tweet){
+			$scope.openModalD = function (tweet, isMainPep){
 				$scope.varAnswer = false;
 				body.addClass('no-scroll');
 				$scope.varEdit1 = [];
 				$scope.varDel = true;
 				$scope.pep = tweet;
 				$scope.delId = tweet._id;
-				singlePep = true;
+				singlePep = isMainPep;
 			}
 			$scope.deletePep = function(){
 				pepsApi.deletePep({id: $scope.delId}).$promise.then(function(data){
 					if($scope.tweets!=undefined){
 						$scope.tweets.splice($scope.delIndex, 1);
-					}
+					} else{
 					if (singlePep) {
 						$location.path('/feed');
+					} else{
+						$scope.currentTweet.children.splice($scope.delIndex, 1);
+					}
 					}
 					$scope.varDel=false;
 				}).catch(function(eror){
