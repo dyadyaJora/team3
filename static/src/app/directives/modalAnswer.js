@@ -45,7 +45,8 @@ angular.module('pepo').directive('modalAnswer', function($rootScope, $auth, $loc
         text: $scope.newPepText
       }
       pepsApi.sendPep(newPep).$promise.then(function(data){
-        newPep._id = data._id
+        newPep._id = data._id;
+        newPep.createdAt = data.createdAt;
         if($scope.tweets!=undefined){
           $scope.tweets.unshift(newPep);
         }
