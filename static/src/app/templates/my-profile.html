@@ -45,7 +45,7 @@
             <div class="tweet-header_user-login">@{{tweet.owner.username}}</div>
           </div>
         </div>
-        <div class="tweet-header_date" ng-click="goToPep(tweet._id)">{{tweet.createdAt}}</div>
+        <div am-time-ago="tweet.createdAt" class="tweet-header_date" ng-click="goToPep(tweet._id)"></div>
       </header>
 
 
