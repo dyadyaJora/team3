@@ -1,4 +1,4 @@
-angular.module('pepo').directive('pepoHeader', function($rootScope, $auth, $location, pepsApi, userApi,feedApi, $document) {
+pepo.directive('pepoHeader', function($rootScope, $auth, $location, pepsApi, userApi,feedApi, $document) {
 	return {
 		restrict: "E",
 		replace: false,

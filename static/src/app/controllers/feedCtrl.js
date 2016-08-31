@@ -1,4 +1,4 @@
-pepo.controller('feedCtrl', function($rootScope, $q, $location, $auth, $scope, userApi, feedApi, pepsApi,$document) {
+pepo.controller('feedCtrl', function($rootScope, $q, $location, $auth, $scope, userApi, feedApi, pepsApi, $document) {
   $scope.newPepText = '';
   currentLocation = [];
   navigator.geolocation.getCurrentPosition(show_map);
