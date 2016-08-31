@@ -24,6 +24,8 @@ module.exports = {
 
   sharpEnabled: process.env.SHARP_DISABLED !== 'yes',
 
+  socketDebounce: 3000,
+
   passportOptions: {
 
     facebook: {

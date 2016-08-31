@@ -12,6 +12,7 @@ var mongoose = require('mongoose');
 var Promise = require('bluebird');
 
 var app = express();
+app.io = require('socket.io')();
 
 var config = require('./config');
 
@@ -36,7 +37,7 @@ app.use('/', require('./routes'));
 app.use('/api/auth', require('./routes/auth')(passport));
 app.use('/api/user', require('./routes/user')(passport));
 app.use('/api/users', require('./routes/users')(passport));
-app.use('/api/statuses', require('./routes/statuses')(passport));
+app.use('/api/statuses', require('./routes/statuses')(passport, app.io));
 app.use('/api/feed', require('./routes/feed')(passport));
 
 // catch 404 and forward to error handler

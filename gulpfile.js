@@ -39,7 +39,8 @@ gulp.task('vendors', function () {
         './node_modules/angular-sanitize/angular-sanitize.min.js',
         './node_modules/ng-emoticons/dist/ng-emoticons.min.js',
         './node_modules/moment/moment.js',
-        './node_modules/angular-moment/angular-moment.min.js'
+        './node_modules/angular-moment/angular-moment.min.js',
+        './node_modules/socket.io-client/socket.io.js'
     ])
         .pipe(concat('vendors.js'))
         .pipe(gulp.dest(path.dist.js));
