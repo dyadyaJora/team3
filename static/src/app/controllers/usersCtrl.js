@@ -8,7 +8,7 @@ pepo.controller('usersCtrl', function($location, $scope, usersApi, userApi, debo
         $scope.users = data;
       });
     }, 2000);
-  
+
 
   $scope.$on('currentUserLoaded', function() {
      getUsers();
@@ -46,5 +46,22 @@ pepo.controller('usersCtrl', function($location, $scope, usersApi, userApi, debo
 
   $scope.goToUser = function(username) {
     $location.path('/@' + username);
+  }
+
+  // Server latency mock.
+  function sleep (milliSeconds) {
+    var startTime = new Date().getTime();
+    while (new Date().getTime() < startTime + milliSeconds);
+  }
+
+  var localUsersOffset = 0;
+  $scope.loadMoreUsers = function() {
+    $scope.usersLoading = true;
+    localUsersOffset += 5;
+    var res = usersApi.getUsers({offset:localUsersOffset, count:5}).$promise.then(function(data){
+      $scope.users = $scope.users.concat(data);
+      sleep(1000); // server latency mock.
+      $scope.usersLoading = false;
+    });
   }
 });
