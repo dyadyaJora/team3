@@ -4,6 +4,9 @@
   border: 1px solid $colorBorder;
   border-radius: 4px 4px 0 0;
   padding: 12px;
+  .hidden-block_edit{
+    padding:0;
+  }
 }
 
 .single-tweet-parent {
