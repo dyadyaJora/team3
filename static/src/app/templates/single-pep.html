@@ -39,7 +39,18 @@
       </header>
 
       <section class="single-tweet-content">
-        <p ng-bind-html="currentTweet.text | emoticons" class="single-tweet-content_text"></p>
+        <p ng-bind-html="currentTweet.text | emoticons" class="single-tweet-content_text" ng-class="{'novisible-block__edit': varEdit1[0], 'anim': editAnim[0]}"></p>
+        <div class="hidden-block_edit tweet-content_text" ng-class="{'visible-block__edit': varEdit1[0]}">
+          <textarea ng-model="editPepText" class="pepo_textinput pep-text_edit"></textarea>
+          <ul class="actions-btn-block">
+            <li class="actions-btn-block_item">
+            <div ng-click="varEdit1[0]=''" class="pepo_btn actions-btn-cancel_item">Отменить</div>
+            </li>
+            <li class="actions-btn-block_item">
+            <div ng-click="editMainPep()" class="pepo_btn actions-btn-save_item">Сохранить</div>
+            </li>
+          </ul>
+        </div>        
       </section>
 
       <footer class="single-tweet-footer">
@@ -54,7 +65,7 @@
             <div class="single-tweet-actions_coutn">2</div>
           </li>
 
-          <li class="single-tweet-actions_item single-tweet-actions_item__edit" ng-show="isOwner(currentUser.username, currentTweet.owner.username)">
+          <li class="single-tweet-actions_item single-tweet-actions_item__edit" ng-show="isOwner(currentUser.username, currentTweet.owner.username)" ng-click="editPepStart(0, currentTweet._id, currentTweet.text)">
             <div class="single-tweet-actions_icon"></div>
           </li>
 

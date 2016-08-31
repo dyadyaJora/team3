@@ -70,7 +70,7 @@ $scope.isSubscribe = function(userId) {
 
   $scope.logout = function() {
     $auth.logout();
-    $location.path('/');
+    $ tion.path('/');
   };
 
   $scope.goToPep = function(pepId) {
