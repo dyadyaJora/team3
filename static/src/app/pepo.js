@@ -1,4 +1,4 @@
-window.pepo = angular.module('pepo', ['ngRoute', 'ngResource', 'satellizer', 'ymaps', 'pepo.config', 'duScroll', 'ngEmoticons'])
+window.pepo = angular.module('pepo', ['ngRoute', 'ngResource', 'satellizer', 'ymaps', 'pepo.config', 'duScroll', 'ngEmoticons', 'angularMoment'])
   .config(function($routeProvider, $authProvider, CONFIG) {
     $routeProvider
       .when('/', {
