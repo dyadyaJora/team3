@@ -14,6 +14,9 @@
   border-left: 1px solid $colorBorder;
   border-right: 1px solid $colorBorder;
   padding: 12px;
+  .single-tweet-header_date{
+     cursor: pointer;
+  }
 }
 
 .single-tweet .user_subscribe, .single-tweet .user_unsubscribe {
