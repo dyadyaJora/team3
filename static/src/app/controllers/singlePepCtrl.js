@@ -1,5 +1,13 @@
 pepo.controller('singlePepCtrl', function($location, $scope, pepsApi, userApi, usersApi, MOCKTWEETS) {
 
+  currentLocation = [];
+  navigator.geolocation.getCurrentPosition(show_map);
+
+  // Get coordinates.
+  function show_map(position) {
+    currentLocation.push(position.coords.latitude);
+    currentLocation.push(position.coords.longitude);
+  }
 
   $scope.$on('currentUserLoaded', function() {
     $scope.curUser = $scope.currentUser;
