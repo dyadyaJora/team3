@@ -1,6 +1,7 @@
 var express = require('express');
 var mongoose = require('mongoose');
 var config = require('../../config');
+var debounce = require('lodash.debounce');
 
 var router = express.Router();
 var Status = mongoose.model('Status');
@@ -11,7 +12,10 @@ var userFields = config.showFields.user;
 
 var permitParams = ['text', 'location', 'parent'];
 
-module.exports = function(passport) {
+var statuses = [];
+var sendStatuses;
+
+module.exports = function(passport, io) {
 
   router.get('/', function(req, res, next) {
     Status.find({})
@@ -48,6 +52,12 @@ module.exports = function(passport) {
             .execPopulate();
         })
         .then(function(status) {
+          statuses.push({
+            id: status._id,
+            owner: req.user._id
+          });
+          sendStatuses(io);
+
           res.status(201);
           res.json(status.toObject());
         })
@@ -150,6 +160,13 @@ function findStatus(fields, populateParent) {
   }
 
 }
+
+sendStatuses = debounce(function(io) {
+  io.sockets.emit('statuses', {
+    count: statuses.length,
+    data: statuses
+  });
+}, config.socketDebounce);
 
 function checkOwner(req, res, next) {
   if (!req.user._id.equals(req._status.owner._id)) {
