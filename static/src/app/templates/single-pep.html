@@ -58,7 +58,7 @@
             <div class="single-tweet-actions_icon"></div>
           </li>
 
-           <li class="single-tweet-actions_item single-tweet-actions_item__remove" ng-show="isOwner(currentUser.username, currentTweet.owner.username)">
+           <li class="single-tweet-actions_item single-tweet-actions_item__remove" ng-show="isOwner(currentUser.username, currentTweet.owner.username)" ng-click="openModalD(currentTweet)">
             <div class="single-tweet-actions_icon"></div>
           </li>
         </ul>

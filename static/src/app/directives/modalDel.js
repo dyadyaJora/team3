@@ -4,23 +4,38 @@ angular.module('pepo').directive('modalDel', function($rootScope, $auth, $locati
 		replace: false,
 		templateUrl: '../build/templates/modules/modalDel.html',
 		link: function($scope , $element, $attrs) {
-      		var body = angular.element(document).find('body');
+			var body = angular.element(document).find('body');
+			var singlePep = false;
 			$scope.openModalDel = function(index, id) {
 				$scope.varEdit1 = [];
 				 $scope.varDel = true;
 				$scope.pep = $scope.tweets[index];
 				$scope.delIndex = index;
 				$scope.delId = id;
-        		body.addClass('no-scroll');
+				body.addClass('no-scroll');
 			 }
+			$scope.openModalD = function (tweet){
+				$scope.varAnswer = false;
+				body.addClass('no-scroll');
+				$scope.varEdit1 = [];
+				$scope.varDel = true;
+				$scope.pep = tweet;
+				$scope.delId = tweet._id;
+				singlePep = true;
+			}
 			$scope.deletePep = function(){
 				pepsApi.deletePep({id: $scope.delId}).$promise.then(function(data){
-					$scope.tweets.splice($scope.delIndex, 1);
+					if($scope.tweets!=undefined){
+						$scope.tweets.splice($scope.delIndex, 1);
+					}
+					if (singlePep) {
+						$location.path('/feed');
+					}
 					$scope.varDel=false;
 				}).catch(function(eror){
 					$scope.varDel=false;
 				});
-          	body.removeClass('no-scroll');
+				body.removeClass('no-scroll');
 			}
 
 		}
