@@ -9,6 +9,10 @@
   }
 }
 
+.single-tweet .pep-map-toogle_item {
+  margin-left: 23px;
+}
+
 .single-tweet-parent {
   background: #f7f6f4;
   border-left: 1px solid $colorBorder;
@@ -209,7 +213,7 @@
 }
 
 @media only screen and (max-width: $mobileWidth) {
-  .single-tweet 
+  .single-tweet
   {
     .user_subscribe{
     position: static;
