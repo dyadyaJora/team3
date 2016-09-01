@@ -87,6 +87,17 @@
 
         </ul>
       </footer>
+
+      <div ng-if="tweet.location" class="pep-location" ng-init="center=[tweet.location[0], tweet.location[1]];zoom='15'">
+        <ul class="pep-map-toogle">
+          <li class="pep-map-toogle_item" ng-hide="showMap" ng-click="showMap = true">Открыть карту</a>
+          <li class="pep-map-toogle_item" ng-show="showMap" ng-click="showMap = false">Скрыть карту</a>
+        </ul>
+        <yandex-map ng-if="showMap" ng-class="{'pep-map__active': showMap}" center="center" zoom="zoom" class="pep-map">
+          <ymap-marker coordinates="[tweet.location[0], tweet.location[1]]"></ymap-marker>
+        </yandex-map>
+        </div>
+      </div>
     </li>
   </ul>
 

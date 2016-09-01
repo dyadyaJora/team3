@@ -33,7 +33,7 @@
           </div>
         </div>
         <button class="pepo_btn user_subscribe" ng-hide="currentTweet.owner.username==currentUser.username || followed" ng-click="subscribe(currentTweet.owner.username)">+ Читать</button>
-        
+
         <button class="pepo_btn user_unsubscribe" ng-hide="currentTweet.owner.username==currentUser.username|| !followed" ng-click="unsubscribe(currentTweet.owner.username)"> Читаю</button>
         <div am-time-ago="currentTweet.createdAt" class="single-tweet-header_date"></div>
       </header>
@@ -50,7 +50,7 @@
             <div ng-click="editMainPep()" class="pepo_btn actions-btn-save_item">Сохранить</div>
             </li>
           </ul>
-        </div>        
+        </div>
       </section>
 
       <footer class="single-tweet-footer">
@@ -74,7 +74,17 @@
           </li>
         </ul>
       </footer>
-    </div>
+
+      <div ng-if="currentTweet.location" class="pep-location" ng-init="center=[currentTweet.location[0], currentTweet.location[1]];zoom='15'">
+        <ul class="pep-map-toogle">
+          <li class="pep-map-toogle_item" ng-hide="showMap" ng-click="showMap = true">Открыть карту</a>
+          <li class="pep-map-toogle_item" ng-show="showMap" ng-click="showMap = false">Скрыть карту</a>
+        </ul>
+        <yandex-map ng-if="showMap" ng-class="{'pep-map__active': showMap}" center="center" zoom="zoom" class="pep-map">
+          <ymap-marker coordinates="[currentTweet.location[0], currentTweet.location[1]]"></ymap-marker>
+        </yandex-map>
+        </div>
+      </div>
 
     <ul class="tweet-answers" ng-show="currentTweet.children.length">
       <li class="tweet-answers_item" ng-repeat="answer in currentTweet.children">
@@ -86,7 +96,7 @@
               <div class="tweet-header_user-login" ng-click="goToUser(answer.owner.username)">@{{answer.owner.username}}</div>
             </div>
           </div>
-          
+
           <div am-time-ago="answer.createdAt" class="tweet-header_date"  ng-click="goToPep(answer._id)"></div>
         </header>
 
@@ -114,7 +124,7 @@
              </div>
            </li>
           </ul>
-        </div>        
+        </div>
       </section>
 
       <footer class="tweet-footer">
@@ -138,6 +148,17 @@
           </li>
         </ul>
       </footer>
+
+      <div ng-if="answer.location" class="pep-location" ng-init="center=[answer.location[0], answer.location[1]];zoom='15'">
+        <ul class="pep-map-toogle">
+          <li class="pep-map-toogle_item" ng-hide="showMap" ng-click="showMap = true">Открыть карту</a>
+          <li class="pep-map-toogle_item" ng-show="showMap" ng-click="showMap = false">Скрыть карту</a>
+        </ul>
+        <yandex-map ng-if="showMap" ng-class="{'pep-map__active': showMap}" center="center" zoom="zoom" class="pep-map">
+          <ymap-marker coordinates="[answer.location[0], answer.location[1]]"></ymap-marker>
+        </yandex-map>
+        </div>
+      </div>
 
       </li>
     </ul>
