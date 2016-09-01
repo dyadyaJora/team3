@@ -79,6 +79,7 @@ $scope.isSubscribe = function(userId) {
 
 
   $scope.editPepStart = function(index, id, text){
+    $scope.emojiOpen = false;
     $scope.editId = id;
     console.log(id);
     $scope.editPepText = text;
@@ -89,6 +90,7 @@ $scope.isSubscribe = function(userId) {
 
   $scope.editAnim = [];
   $scope.editPep = function(){
+    $scope.emojiOpen = false;
     if ($scope.tweets[$scope.editIndex].text == $scope.editPepText) {
       $scope.varEdit1 = [];
       return;
@@ -135,5 +137,8 @@ $scope.isSubscribe = function(userId) {
   }
   $scope.goToUser = function(username) {
     $location.path('/@' + username);
+  }
+  $scope.addEmojiEdit = function(emoji) {
+     $scope.editPepText += emoji;
   }
 });
