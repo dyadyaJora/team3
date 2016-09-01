@@ -100,6 +100,18 @@
     transform: scale(0.9);
   }
 }
+.tweet-content{
+    .tweet-content_text{
+    overflow:visible;
+  }
+  .actions-btn-block{
+    position:relative;
+    .emoji-wrapper{
+      top:0;
+      right:0;
+    }
+  }
+}
 .tweet-actions_item__likes .tweet-actions_icon {
   background: url(../img/icon-like.svg)no-repeat center;
 }
