@@ -249,8 +249,16 @@
     background: $colorBlue__hover;
   }
   .counter-limit-to {
-    
+    position: absolute;
+    line-height: 40px;
+    right: 130px;
   }
+}
+.counter-limit-to {
+  color: grey;
+  position: absolute;
+  line-height: 40px;
+  right: 130px;
 }
 
 
