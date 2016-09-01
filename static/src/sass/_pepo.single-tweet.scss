@@ -4,6 +4,9 @@
   border: 1px solid $colorBorder;
   border-radius: 4px 4px 0 0;
   padding: 12px;
+  .hidden-block_edit{
+    padding:0;
+  }
 }
 
 .single-tweet-parent {
@@ -11,9 +14,12 @@
   border-left: 1px solid $colorBorder;
   border-right: 1px solid $colorBorder;
   padding: 12px;
+  .single-tweet-header_date{
+     cursor: pointer;
+  }
 }
 
-.single-tweet .user_subscribe {
+.single-tweet .user_subscribe, .single-tweet .user_unsubscribe {
   right: 0;
 }
 
@@ -195,12 +201,32 @@
   }
 }
 
+.actions-btn-block_item{
+  .emoji-wrapper{
+    top:175px;
+    right:15px;
+  }
+}
+
 @media only screen and (max-width: $mobileWidth) {
-  .single-tweet .user_subscribe {
+  .single-tweet 
+  {
+    .user_subscribe{
     position: static;
     margin-top: 15px;
     width: 100%;
+    }
+    .user_unsubscribe{
+    position: static;
+    margin-top: 15px;
+    width: 100%;
+    left:0;
+    &:before{
+      position:relative;
+      display: inline-block;
+    }
   }
+}
 }
 
 @media only screen and (max-width: $iphonesWidth) {

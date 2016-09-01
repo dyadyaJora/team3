@@ -16,10 +16,11 @@
   background: #ffffff;
   position: absolute;
   top: 25px;
-  left: -130px;
+  left: -195px;
   max-height: 200px;
   width: 240px;
   overflow-y: auto;
+  z-index:2;
 }
 
 .emoji-pack-list_item {

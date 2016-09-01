@@ -71,6 +71,11 @@
 .tweet-footer {
   padding-left: 60px;
 }
+.tweet-actions{
+  ul{
+    z-index:1;
+  }
+}
 .tweet-actions_item {
   display: inline-block;
   vertical-align: top;

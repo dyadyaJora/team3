@@ -1,4 +1,6 @@
 <pepo-header></pepo-header>
+<modal-answer></modal-answer>
+<modal-del></modal-del>
 
 <section class="page-container">
   <div class="single-tweet-wrapper">
@@ -12,7 +14,7 @@
             <div ng-click="goToUser(parent.owner.username)" class="single-tweet-header_user-login">@{{parent.owner.username}}</div>
           </div>
         </div>
-        <div am-time-ago="parent.createdAt" class="single-tweet-header_date"></div>
+        <div am-time-ago="parent.createdAt" class="single-tweet-header_date" ng-click="goToPep(parent._id)"></div>
       </header>
 
       <section class="single-tweet-content">
@@ -30,11 +32,25 @@
             <div ng-click="goToUser(currentTweet.owner.username)" class="single-tweet-header_user-login">@{{currentTweet.owner.username}}</div>
           </div>
         </div>
+        <button class="pepo_btn user_subscribe" ng-hide="currentTweet.owner.username==currentUser.username || followed" ng-click="subscribe(currentTweet.owner.username)">+ Читать</button>
+        
+        <button class="pepo_btn user_unsubscribe" ng-hide="currentTweet.owner.username==currentUser.username|| !followed" ng-click="unsubscribe(currentTweet.owner.username)"> Читаю</button>
         <div am-time-ago="currentTweet.createdAt" class="single-tweet-header_date"></div>
       </header>
 
       <section class="single-tweet-content">
-        <p ng-bind-html="currentTweet.text | emoticons" class="single-tweet-content_text"></p>
+        <p ng-bind-html="currentTweet.text | emoticons" class="single-tweet-content_text" ng-class="{'novisible-block__edit': varEdit1[-1], 'anim': editAnim[-1]}"></p>
+        <div class="hidden-block_edit tweet-content_text" ng-class="{'visible-block__edit': varEdit1[-1]}">
+          <textarea ng-model="editPepText" class="pepo_textinput pep-text_edit"></textarea>
+          <ul class="actions-btn-block">
+            <li class="actions-btn-block_item">
+            <div ng-click="varEdit1[-1]=''" class="pepo_btn actions-btn-cancel_item">Отменить</div>
+            </li>
+            <li class="actions-btn-block_item">
+            <div ng-click="editMainPep()" class="pepo_btn actions-btn-save_item">Сохранить</div>
+            </li>
+          </ul>
+        </div>        
       </section>
 
       <footer class="single-tweet-footer">
@@ -44,16 +60,16 @@
             <div class="single-tweet-actions_coutn">3</div>
           </li>
 
-           <li class="single-tweet-actions_item single-tweet-actions_item__answers">
+           <li class="single-tweet-actions_item single-tweet-actions_item__answers" ng-click="openModalAns(currentTweet)">
             <div class="single-tweet-actions_icon"></div>
             <div class="single-tweet-actions_coutn">2</div>
           </li>
 
-          <li class="single-tweet-actions_item single-tweet-actions_item__edit">
+          <li class="single-tweet-actions_item single-tweet-actions_item__edit" ng-show="isOwner(currentUser.username, currentTweet.owner.username)" ng-click="editPepStart(-1, currentTweet._id, currentTweet.text)">
             <div class="single-tweet-actions_icon"></div>
           </li>
 
-           <li class="single-tweet-actions_item single-tweet-actions_item__remove">
+           <li class="single-tweet-actions_item single-tweet-actions_item__remove" ng-show="isOwner(currentUser.username, currentTweet.owner.username)" ng-click="openModalD(currentTweet, true)">
             <div class="single-tweet-actions_icon"></div>
           </li>
         </ul>
@@ -66,15 +82,39 @@
           <div class="tweet-header_user">
             <img ng-src="{{answer.owner.thumbUrl}}" alt="" class="tweet-header_user-img">
             <div class="tweet-header_name-wrapper">
-              <div class="tweet-header_user-name">{{answer.owner.name}}</div>
-              <div class="tweet-header_user-login">@{{answer.owner.username}}</div>
+              <div class="tweet-header_user-name" ng-click="goToUser(answer.owner.username)">{{answer.owner.name}}</div>
+              <div class="tweet-header_user-login" ng-click="goToUser(answer.owner.username)">@{{answer.owner.username}}</div>
             </div>
           </div>
-          <div am-time-ago="answer.createdAt" class="tweet-header_date"></div>
+          
+          <div am-time-ago="answer.createdAt" class="tweet-header_date"  ng-click="goToPep(answer._id)"></div>
         </header>
 
       <section class="tweet-content">
-        <p ng-bind-html="answer.text | emoticons" class="tweet-content_text"></p>
+        <p ng-bind-html="answer.text | emoticons" class="tweet-content_text" ng-class="{'novisible-block__edit': varEdit1[$index], 'anim': editAnim[$index]}"></p>
+        <div class="hidden-block_edit tweet-content_text" ng-class="{'visible-block__edit': varEdit1[$index]}">
+          <textarea ng-model="$parent.editPepText" class="pepo_textinput pep-text_edit"></textarea>
+          <ul class="actions-btn-block">
+            <li class="actions-btn-block_item">
+            <div ng-click="varEdit1[$index]=''" class="pepo_btn actions-btn-cancel_item">Отменить</div>
+            </li>
+            <li class="actions-btn-block_item">
+            <div ng-click="editPep()" class="pepo_btn actions-btn-save_item">Сохранить</div>
+            </li>
+            <li class="actions-btn-block_item">
+              <div class="emoji-wrapper">
+                <div ng-click="toggleEmoji()" ng-init="emojiBtn = ':smile:'" ng-bind-html="emojiBtn | emoticons" class="emoji-btn"></div>
+                <div ng-show="emojiOpen" class="emoji-pack">
+                  <ul class="emoji-pack-list">
+                    <li ng-repeat="icon in emojiPack" ng-click="addEmojiEdit(icon)" class="emoji-pack-list_item">
+                     <span ng-bind-html="icon | emoticons"></span>
+                   </li>
+                 </ul>
+               </div>
+             </div>
+           </li>
+          </ul>
+        </div>        
       </section>
 
       <footer class="tweet-footer">
@@ -84,16 +124,16 @@
             <div class="tweet-actions_coutn">3</div>
           </li>
 
-           <li class="tweet-actions_item tweet-actions_item__answers">
+           <li class="tweet-actions_item tweet-actions_item__answers" ng-click="openModalAns(currentTweet.children[$index])">
             <div class="tweet-actions_icon"></div>
             <div class="tweet-actions_coutn">2</div>
           </li>
 
-          <li class="tweet-actions_item tweet-actions_item__edit" ng-show="isOwner(currentTweet.owner.username, answer.owner.username)">
+          <li class="tweet-actions_item tweet-actions_item__edit" ng-show="isOwner(currentUser.username, answer.owner.username)" ng-click="editPepStart($index, answer._id, answer.text)">
             <div class="tweet-actions_icon"></div>
           </li>
 
-           <li class="tweet-actions_item tweet-actions_item__remove" ng-show="isOwner(currentTweet.owner.username, answer.owner.username)">
+           <li class="tweet-actions_item tweet-actions_item__remove" ng-show="isOwner(currentUser.username, answer.owner.username)" ng-click="openModalD(currentTweet.children[$index], false)">
             <div class="tweet-actions_icon"></div>
           </li>
         </ul>

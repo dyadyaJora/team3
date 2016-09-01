@@ -12,9 +12,16 @@ angular.module('pepo').directive('modalAnswer', function($rootScope, $auth, $loc
         $scope.varDel = false;
         body.addClass('no-scroll');
         $scope.varEdit1 = [];
-         $scope.varAnswer = true;
+        $scope.varAnswer = true;
         $scope.pep = $scope.tweets[id];
        }
+      $scope.openModalAns = function (tweet){
+        $scope.varDel = false;
+        body.addClass('no-scroll');
+        $scope.varEdit1 = [];
+        $scope.varAnswer = true;
+        $scope.pep = tweet;
+      }
       $scope.closeModal = function () {
         $scope.varAnswer=false;
         $scope.varDel=false;
@@ -38,8 +45,14 @@ angular.module('pepo').directive('modalAnswer', function($rootScope, $auth, $loc
         text: $scope.newPepText
       }
       pepsApi.sendPep(newPep).$promise.then(function(data){
-        newPep._id = data._id
-        $scope.tweets.unshift(newPep);
+        newPep._id = data._id;
+        newPep.createdAt = data.createdAt;
+        if($scope.tweets!=undefined){
+          $scope.tweets.unshift(newPep);
+        }
+        if($scope.currentTweet!=undefined && newPep.parent==$scope.currentTweet._id){
+          $scope.currentTweet.children.unshift(newPep);
+        }
       })
       .catch(function(err) {
         console.log(err);
