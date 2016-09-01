@@ -1,7 +1,7 @@
 var mongoose = require('mongoose');
+var mongoosePaginate = require('mongoose-paginate');
 var crypto = require('crypto');
 var patchPlugin = require('../lib/patch-plugin.js');
-var paginationPlugin = require('../lib/pagination-plugin');
 var Schema = mongoose.Schema;
 
 var userSchema = new Schema({
@@ -37,7 +37,7 @@ userSchema.plugin(patchPlugin, {
   permitParams: ['username', 'name', 'description']
 });
 
-userSchema.plugin(paginationPlugin);
+userSchema.plugin(mongoosePaginate);
 
 userSchema.methods.isFollowing = function(user) {
   return this.following.indexOf(user._id) != -1;
