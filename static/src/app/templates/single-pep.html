@@ -44,7 +44,8 @@
           <textarea ng-model="editPepText" class="pepo_textinput pep-text_edit"></textarea>
           <ul class="actions-btn-block">
             <li class="actions-btn-block_item">
-            <div ng-click="varEdit1[-1]=''" class="pepo_btn actions-btn-cancel_item">Отменить</div>
+            <div ng-click="varEdit1[-1]=''; 
+        emojiOpen = false;" class="pepo_btn actions-btn-cancel_item">Отменить</div>
             </li>
             <li class="actions-btn-block_item">
             <div ng-click="editMainPep()" class="pepo_btn actions-btn-save_item">Сохранить</div>

@@ -25,6 +25,7 @@ angular.module('pepo').directive('modalAnswer', function($rootScope, $auth, $loc
       $scope.closeModal = function () {
         $scope.varAnswer=false;
         $scope.varDel=false;
+        $scope.emojiOpen = false;
         body.removeClass('no-scroll');
       }
       $scope.closeModalAnswer = function($event){
