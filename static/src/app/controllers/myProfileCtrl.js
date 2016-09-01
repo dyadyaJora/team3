@@ -121,7 +121,8 @@ $scope.isSubscribe = function(userId) {
   $scope.loadMorePeps = function() {
     $scope.pepsLoading = true;
     localPepsOffset += 5;
-    var res = usersApi.getUserStatuses({username: currentUserId}, {offset:localPepsOffset, count:5}).$promise.then(function(data){
+    console.log({offset:localPepsOffset, count:5});
+    var res = usersApi.getUserStatuses({username: currentUserId, offset:localPepsOffset, count:5}).$promise.then(function(data){
       $scope.tweets = $scope.tweets.concat(data);
       sleep(1000); // server latency mock.
       $scope.pepsLoading = false;
