@@ -108,4 +108,7 @@ pepo.controller('singlePepCtrl', function($location, $scope, pepsApi, userApi, u
   });
   setTimeout(function(){ $scope.editAnim = [];}, 2000);
   }
+  $scope.addEmojiEdit = function(emoji) {
+     $scope.editPepText += emoji;
+  }
 });

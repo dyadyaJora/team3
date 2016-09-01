@@ -101,6 +101,18 @@
             <li class="actions-btn-block_item">
             <div ng-click="editPep()" class="pepo_btn actions-btn-save_item">Сохранить</div>
             </li>
+            <li class="actions-btn-block_item">
+              <div class="emoji-wrapper">
+                <div ng-click="toggleEmoji()" ng-init="emojiBtn = ':smile:'" ng-bind-html="emojiBtn | emoticons" class="emoji-btn"></div>
+                <div ng-show="emojiOpen" class="emoji-pack">
+                  <ul class="emoji-pack-list">
+                    <li ng-repeat="icon in emojiPack" ng-click="addEmojiEdit(icon)" class="emoji-pack-list_item">
+                     <span ng-bind-html="icon | emoticons"></span>
+                   </li>
+                 </ul>
+               </div>
+             </div>
+           </li>
           </ul>
         </div>        
       </section>
