@@ -1,6 +1,7 @@
 pepo.controller('feedCtrl', function($rootScope, $q, $location, $auth, $scope, userApi, feedApi, pepsApi, $document) {
   $scope.newPepText = '';
   currentLocation = [];
+  totalPeps = 0;
   navigator.geolocation.getCurrentPosition(show_map);
 
   // Get coordinates.
@@ -9,8 +10,21 @@ pepo.controller('feedCtrl', function($rootScope, $q, $location, $auth, $scope, u
     currentLocation.push(position.coords.longitude);
   }
 
+  function checkLoadMore() {
+    console.log($scope.tweets.length);
+    console.log(totalPeps);
+    console.log('---------------')
+    if ($scope.tweets.length >= totalPeps) {
+      $scope.allPepsLoaded = true;
+    }
+  }
+
   feedApi.getFeed().$promise.then(function(data){
-    $scope.tweets = data;
+    console.log(data);
+    $scope.tweets = data.statuses;
+    totalPeps = data.totalCount;
+    checkLoadMore();
+
   });
 
   $scope.goToUser = function(username) {
@@ -23,7 +37,6 @@ pepo.controller('feedCtrl', function($rootScope, $q, $location, $auth, $scope, u
 
   $scope.editPepStart = function(index, id, text){
     $scope.editId = id;
-    console.log(id);
     $scope.editPepText = text;
     $scope.editIndex = index;
     $scope.varEdit1 = [];
@@ -68,6 +81,7 @@ pepo.controller('feedCtrl', function($rootScope, $q, $location, $auth, $scope, u
     localPepsOffset += 5;
     var res = feedApi.getFeed({offset:localPepsOffset, count:5}).$promise.then(function(data){
       $scope.tweets = $scope.tweets.concat(data);
+      checkLoadMore();
       sleep(1000); // server latency mock.
       $scope.pepsLoading = false;
     });

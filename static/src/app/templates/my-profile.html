@@ -35,7 +35,8 @@
     </div>
 
 <!-- Блок пепов -->
-  <ul class="tweets tweets__userpage" ng-class="{'hidden-block_profile': varInfoArr[0]==false, 'visible-block_profile': varInfoArr[0]}">
+<div class="user-peps" ng-class="{'hidden-block_profile': varInfoArr[0]==false, 'visible-block_profile': varInfoArr[0]}">
+  <ul class="tweets tweets__userpage">
     <li class="tweets_item" ng-init="i=0" ng-repeat="tweet in tweets">
       <header class="tweet-header">
         <div class="tweet-header_user">
@@ -47,8 +48,6 @@
         </div>
         <div am-time-ago="tweet.createdAt" class="tweet-header_date" ng-click="goToPep(tweet._id)"></div>
       </header>
-
-
 
       <section class="tweet-content">
         <p ng-bind-html="tweet.text | emoticons" class="tweet-content_text" ng-class="{'novisible-block__edit': varEdit1[$index], 'anim': editAnim[$index]}"></p>
@@ -108,14 +107,16 @@
         <yandex-map ng-if="showMap" ng-class="{'pep-map__active': showMap}" center="center" zoom="zoom" class="pep-map">
           <ymap-marker coordinates="[tweet.location[0], tweet.location[1]]"></ymap-marker>
         </yandex-map>
-        </div>
       </div>
     </li>
   </ul>
+  <div class="load-more-btn" ng-click="loadMorePeps()" ng-class="{'load-more-btn__progress': pepsLoading}"></div>
+</div>
 
-<!-- Блок читающих -->
+<!-- Блок читаемых -->
 
-  <ul class="users-list  following following__userpage" ng-class="{'hidden-block_profile': varInfoArr[1]==false, 'visible-block_profile': varInfoArr[1]}">
+<div class="user-following"  ng-class="{'hidden-block_profile': varInfoArr[1]==false, 'visible-block_profile': varInfoArr[1]}">
+  <ul class="users-list  following following__userpage">
     <li ng-repeat="user in following" ng-init="isSubscribe(user._id)" class="users-list_item user">
       <img ng-click="goToUser(user.username)" ng-src="{{user.avatarUrl}}" alt="" class="user_img">
       <div class="user_content">
@@ -142,10 +143,13 @@
       </div>
     </li>
   </ul>
+  <div class="load-more-btn" ng-click="loadMoreFollowers()" ng-class="{'load-more-btn__progress': followersLoading}"></div>
+</div>
 
-<!-- Блок читаемых -->
+<!-- Блок читателей -->
 
-  <ul class="users-list  followers followers__userpage" ng-class="{'hidden-block_profile': varInfoArr[2]==false, 'visible-block_profile': varInfoArr[2]}">
+<div class="user-followers" ng-class="{'hidden-block_profile': varInfoArr[2]==false, 'visible-block_profile': varInfoArr[2]}">
+  <ul class="users-list  followers followers__userpage" >
     <li ng-repeat="user in followers" ng-init="isSubscribe(user._id)" class="users-list_item user">
       <img ng-click="goToUser(user.username)" ng-src="{{user.avatarUrl}}" alt="" class="user_img">
       <div class="user_content">
@@ -172,7 +176,7 @@
       </div>
     </li>
   </ul>
-
   <div class="load-more-btn" ng-click="loadMorePeps()" ng-class="{'load-more-btn__progress': pepsLoading}"></div>
+</div>
 
 </section>
