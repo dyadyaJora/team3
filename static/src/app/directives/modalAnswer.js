@@ -14,6 +14,7 @@ angular.module('pepo').directive('modalAnswer', function($rootScope, $auth, $loc
         $scope.varEdit1 = [];
         $scope.varAnswer = true;
         $scope.pep = $scope.tweets[id];
+        $scope.emojiOpen = false;
        }
       $scope.openModalAns = function (tweet){
         $scope.varDel = false;
@@ -21,10 +22,12 @@ angular.module('pepo').directive('modalAnswer', function($rootScope, $auth, $loc
         $scope.varEdit1 = [];
         $scope.varAnswer = true;
         $scope.pep = tweet;
+        $scope.emojiOpen = false;
       }
       $scope.closeModal = function () {
         $scope.varAnswer=false;
         $scope.varDel=false;
+        $scope.emojiOpen = false;
         body.removeClass('no-scroll');
       }
       $scope.closeModalAnswer = function($event){

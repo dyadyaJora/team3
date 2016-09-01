@@ -28,10 +28,12 @@ pepo.controller('feedCtrl', function($rootScope, $q, $location, $auth, $scope, u
     $scope.editIndex = index;
     $scope.varEdit1 = [];
     $scope.varEdit1[index] = true;
+    $scope.emojiOpen = false;
   }
 
   $scope.editAnim = [];
   $scope.editPep = function(){
+    $scope.emojiOpen = false;
     if ($scope.tweets[$scope.editIndex].text == $scope.editPepText) {
       $scope.varEdit1 = [];
       return;
@@ -70,5 +72,7 @@ pepo.controller('feedCtrl', function($rootScope, $q, $location, $auth, $scope, u
       $scope.pepsLoading = false;
     });
   }
-
+  $scope.addEmojiEdit = function(emoji) {
+     $scope.editPepText += emoji;
+  }
 });

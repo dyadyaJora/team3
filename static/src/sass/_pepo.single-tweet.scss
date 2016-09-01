@@ -7,6 +7,16 @@
   .hidden-block_edit{
     padding:0;
   }
+  .tweet-content_text{
+    overflow:visible;
+  }
+  .actions-btn-block{
+    position:relative;
+    .emoji-wrapper{
+      top:0;
+      right:0;
+    }
+  }
 }
 
 .single-tweet .pep-map-toogle_item {
@@ -211,6 +221,7 @@
     right:15px;
   }
 }
+
 
 @media only screen and (max-width: $mobileWidth) {
   .single-tweet
