@@ -58,6 +58,16 @@
 		@include span-columns(8);
 	}
 }
+.header-btn {
+  cursor: pointer;
+  opacity: 0.8;
+  border: none;
+  line-height: 40px;
+    &:hover {
+    opacity: 1;
+  }
+}
+
 .add-twitt_contain__mod{
 	background: url('../img/add-message.svg') no-repeat center;
 	background-size: contain;

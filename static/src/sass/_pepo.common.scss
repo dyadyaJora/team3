@@ -75,18 +75,6 @@ a {
     border: 1px solid $colorBlue;
   }
 }
-.header-btn {
-  cursor: pointer;
-  opacity: 0.8;
-  border: none;
-  line-height: 40px;
-  &:focus {
-      display: none;
-  }
-    &:hover {
-    opacity: 1;
-  }
-}
 
 .pepo_btn {
   cursor: pointer;

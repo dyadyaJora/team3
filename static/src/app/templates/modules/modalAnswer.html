@@ -24,8 +24,9 @@
 
       <section class="tweet-type_answer">
         <div class="tweet-textarea_answer">
-          <textarea class="new-pep-input" ng-bind-html="newPepText" ng-model="newPepText" tabindex="1" autofocus id="tt">
+          <textarea limit-to="140" class="new-pep-input" ng-bind-html="newPepText" ng-model="newPepText" tabindex="1" autofocus id="tt">
           </textarea>
+          
         </div>
         <div class="tweet-buttons-block_answer">
           <input type="file">
@@ -39,8 +40,9 @@
               </ul>
             </div>
           </div>
-
-          <div class="pepo_btn pepo_btn__answer" ng-click="sendPep()">Ответить</div>
+              <div class="counter-limit-to">{{t}}</div>
+              <div class="pepo_btn pepo_btn__answer" ng-click="sendPep()">Ответить</div>
+             
         </div>
       </section>
     </div>
