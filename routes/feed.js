@@ -11,24 +11,16 @@ module.exports = function(passport) {
     passport.authenticate('bearer', { session: false }),
     function(req, res, next) {
 
-      Status
-        .find({
-          $or: [
-            { owner: req.user._id },
-            { owner: { $in: req.user.following } }
-          ]
-        })
-        .select(config.showFields.status)
-        .populate({ path: 'owner', select: config.showFields.user })
-        .sort('-createdAt')
-        .paginate(req.query)
-        .exec(function(err, statuses) {
-          if (err) { return next(err); }
+      Status.pagination(req, {
+        $or: [
+          { owner: req.user._id },
+          { owner: { $in: req.user.following } }
+        ]
+      }, function(err, result) {
+        if (err) { return next(err); }
 
-          res.json(statuses.map(function(status) {
-            return status.toObject();
-          }));
-        });
+        res.json(result);
+      });
 
     });
 

@@ -1,7 +1,7 @@
 var express = require('express');
 var mongoose = require('mongoose');
-var config = require('../../config');
 var debounce = require('lodash.debounce');
+var config = require('../../config');
 
 var router = express.Router();
 var Status = mongoose.model('Status');
@@ -18,18 +18,11 @@ var sendStatuses;
 module.exports = function(passport, io) {
 
   router.get('/', function(req, res, next) {
-    Status.find({})
-      .populate({ path: 'owner', select: userFields })
-      .select(statusFields)
-      .paginate(req.query)
-      .sort('-createdAt')
-      .exec(function(err, statuses) {
-        if (err) { return next(err); }
+    Status.pagination(req, {}, function(err, result) {
+      if (err) { return next(err); }
 
-        res.json(statuses.map(function(status) {
-          return status.toObject();
-        }));
-      });
+      res.json(result);
+    });
   });
 
   router.post('/',
@@ -72,7 +65,6 @@ module.exports = function(passport, io) {
       Status.find({ parent: req._status._id })
         .populate({ path: 'owner', select: userFields })
         .select(statusFields)
-        .paginate({})
         .sort('-createdAt')
         .exec(function(err, statuses) {
           if (err) { return next(err); }

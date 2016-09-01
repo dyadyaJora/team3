@@ -6,18 +6,11 @@ var router = express.Router();
 var Status = mongoose.model('Status');
 
 router.get('/', function(req, res, next) {
-  Status.find({ owner: req._user._id })
-    .select(config.showFields.status)
-    .populate({ path: 'owner', select: config.showFields.user })
-    .paginate(req.query)
-    .sort('-createdAt')
-    .exec(function(err, statuses) {
-      if (err) { return next(err); }
+  Status.pagination(req, { owner: req._user._id }, function(err, result) {
+    if (err) { return next(err); }
 
-      res.json(statuses.map(function(status) {
-        return status.toObject();
-      }));
-    });
+    res.json(result);
+  });
 });
 
 module.exports = router;

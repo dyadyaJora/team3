@@ -5,16 +5,27 @@ var config = require('../../config');
 var router = express.Router();
 var User = mongoose.model('User');
 
-// TODO pagination
 router.get('/', function(req, res, next) {
-  req._user.populate('following', config.showFields.user,
-    function(err, user) {
-      if (err) { return next(err); }
 
-      res.json(user.following.map(function(user) {
+  User.paginate({
+    _id: { $in: req._user.following }
+  }, {
+    select: config.showFields.user,
+    offset: req.query.skip || 0,
+    limit: req.query.count || 5
+  }, function(err, result) {
+    if (err) {
+      return next(err);
+    }
+
+    res.json({
+      totalCount: result.total,
+      users: result.docs.map(function(user) {
         return user.toObject();
-      }));
+      })
     });
+  });
+
 });
 
 module.exports = router;
