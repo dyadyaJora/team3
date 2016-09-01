@@ -57,11 +57,11 @@
             <div class="tweet-actions_coutn"> 2</div>
            </li>
 
-          <li class="tweet-actions_item tweet-actions_item__edit" >
+          <li ng-show="currentUser.username == tweet.owner.username"  class="tweet-actions_item tweet-actions_item__edit" >
             <div class="tweet-actions_icon" ng-click="editPepStart($index, tweet._id, tweet.text)"></div>
           </li>
 
-           <li class="tweet-actions_item tweet-actions_item__remove" ng-click="openModalDel($index, tweet._id)">
+           <li ng-show="currentUser.username == tweet.owner.username" class="tweet-actions_item tweet-actions_item__remove" ng-click="openModalDel($index, tweet._id)">
             <div class="tweet-actions_icon"></div>
           </li>
 
