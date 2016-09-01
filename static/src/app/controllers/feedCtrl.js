@@ -28,6 +28,7 @@ pepo.controller('feedCtrl', function($rootScope, $q, $location, $auth, $scope, u
     $scope.editIndex = index;
     $scope.varEdit1 = [];
     $scope.varEdit1[index] = true;
+    $scope.emojiOpen = false;
   }
 
   $scope.editAnim = [];
