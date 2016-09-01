@@ -16,8 +16,7 @@ pepo.controller('usersCtrl', function($location, $scope, usersApi, userApi, debo
 
   function getUsers() {
     usersApi.getUsers().$promise.then(function(data) {
-      $scope.users = data;
-        console.log($scope.users);
+      $scope.users = data.users;
     }).catch(function(eror){
       console.log(eror);
     });

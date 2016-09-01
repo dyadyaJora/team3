@@ -8,23 +8,26 @@ pepo.controller('myProfileCtrl', function($location, $auth, $scope, userApi, use
     currentLocation.push(position.coords.latitude);
     currentLocation.push(position.coords.longitude);
   }
+
   currentUserId = $location.path().slice(2);
   usersApi.getUser({username: currentUserId}).$promise.then(function(data) {
     $scope.currentPageUser = data;
     checkFollow();
   });
+
   usersApi.getUserStatuses({username: currentUserId}).$promise.then(function(data){
-   	$scope.tweets = data;
+   	$scope.tweets = data.statuses;
+    totalPeps = data.totalCount;
   });
 
-  function getInfoItems(){
-  usersApi.getFollowers({username: currentUserId}).$promise.then(function(data){
-    $scope.followers = data;
-  });
+  function getInfoItems() {
+    usersApi.getFollowers({username: currentUserId}).$promise.then(function(data){
+      $scope.followers = data.users;
+    });
 
-  usersApi.getFollowings({username: currentUserId}).$promise.then(function(data){
-    $scope.following = data;
-  });
+    usersApi.getFollowings({username: currentUserId}).$promise.then(function(data){
+      $scope.following = data.users;
+    });
   }
 
   getInfoItems();
@@ -121,12 +124,24 @@ $scope.isSubscribe = function(userId) {
   $scope.loadMorePeps = function() {
     $scope.pepsLoading = true;
     localPepsOffset += 5;
-    var res = usersApi.getUserStatuses({username: currentUserId}, {offset:localPepsOffset, count:5}).$promise.then(function(data){
+    var res = usersApi.getUserStatuses({username: currentUserId, offset:localPepsOffset, count:5}).$promise.then(function(data){
       $scope.tweets = $scope.tweets.concat(data);
       sleep(1000); // server latency mock.
       $scope.pepsLoading = false;
     });
   }
+
+  var localFollowersOffset = 0;
+  $scope.loadMoreFollowers = function() {
+    $scope.followersLoading = true;
+    localFollowersOffset += 5;
+    var res = usersApi.getFollowers({username: currentUserId, offset:localFollowersOffset, count:5}).$promise.then(function(data){
+      $scope.followers = $scope.followers.concat(data.users);
+      sleep(1000); // server latency mock.
+      $scope.followersLoading = false;
+    });
+  }
+
   $scope.varInfo = 0;
   $scope.varInfoArr = [true, false, false];
   $scope.itemInfo = function(index){
