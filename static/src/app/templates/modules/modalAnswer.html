@@ -29,7 +29,6 @@
           
         </div>
         <div class="tweet-buttons-block_answer">
-          <input type="file">
           <div class="emoji-wrapper">
             <div ng-click="toggleEmoji()" ng-init="emojiBtn = ':smile:'" ng-bind-html="emojiBtn | emoticons" class="emoji-btn"></div>
             <div ng-show="emojiOpen" class="emoji-pack">
@@ -40,8 +39,14 @@
               </ul>
             </div>
           </div>
+          <div class="file-upload">
+                <label>
+                  <img src="build/img/camera.png" class="upload-icon">
+                    <input type="file" name="file">
+                </label>
+            </div>
               <div class="counter-limit-to">{{t}}</div>
-              <div class="pepo_btn pepo_btn__answer" ng-click="sendPep()">Ответить</div>
+              <div class="pepo_btn pepo_btn__answer pepo_btn_mg" ng-click="sendPep()">Ответить</div>
              
         </div>
       </section>
