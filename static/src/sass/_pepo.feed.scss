@@ -206,6 +206,13 @@
 
 @keyframes rotation { 100% {transform: rotate(360deg);} }
 
+.tweet-content_text a {
+  color: $colorBlue;
+  &:hover {
+    text-decoration: underline;
+  }
+}
+
 @media only screen and (max-width: $iphonesWidth) {
   .tweets_item {
     border: none;
