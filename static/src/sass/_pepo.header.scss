@@ -116,4 +116,22 @@
 	max-height: 80px;
 	max-width: 80px;
 }
+.tweet-btn_send{
+	float: right;
+}
+.send-emoji{
+	position:absolute;
+	right:0;
+	top:-24px;
+}
+.file-upload{
+	display:inline-block;
+	input[type="file"]{
+		display: none;
+	}
+	.upload-icon{
+		width:40px;
+		cursor: pointer;
+	}
+}
 

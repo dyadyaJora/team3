@@ -38,7 +38,7 @@
 
 
 	<div class="modal">
-	  <div class="modal-fade-screen" ng-class="{'new-pep__active': varNewpep}" ng-click="closeNewpep($event)">
+	  <div class="modal-fade-screen" ng-class="{'new-pep__active': varNewpep}" ng-click="closeNewpepAnswer($event)">
 	    <div class="modal-inner">
 	      <div class="modal-close" ng-click="varNewpep=''"></div>
 	      <header class="pepo-modal-top pepo-modal-top__mod ">Новый Pep </header>
@@ -48,8 +48,23 @@
 	          </textarea>
 	        </div>
 	        <div class="tweet-buttons-block_answer">
-	          <input type="file">
-	          <input type="submit" value="Добавить pep" class="tweet-btn_answer" ng-click="publishNewpep()">
+              <div class="send-emoji">
+                <div ng-click="toggleEmoji()" ng-init="emojiBtn = ':smile:'" ng-bind-html="emojiBtn | emoticons" class="emoji-btn"></div>
+                <div ng-show="emojiOpen" class="emoji-pack">
+                  <ul class="emoji-pack-list">
+                    <li ng-repeat="icon in emojiPack" ng-click="addEmoji(icon)" class="emoji-pack-list_item">
+                     <span ng-bind-html="icon | emoticons"></span>
+                   </li>
+                 </ul>
+               </div>
+             </div>
+	        <div class="file-upload">
+                <label>
+                	<img src="build/img/camera.png" class="upload-icon">
+                    <input type="file" name="file">
+                </label>
+            </div>
+	          <input type="submit" value="Добавить pep" class="tweet-btn_send pepo_btn pepo_btn__answer" ng-click="publishNewpep()">
 	        </div>
 	      </section>
 	    </div>
