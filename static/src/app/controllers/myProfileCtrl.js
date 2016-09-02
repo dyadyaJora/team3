@@ -24,12 +24,10 @@ pepo.controller('myProfileCtrl', function($location, $auth, $scope, userApi, use
   function getInfoItems() {
     usersApi.getFollowers({username: currentUserId}).$promise.then(function(data){
       $scope.followers = data.users;
-      console.log(data);
     });
 
     usersApi.getFollowings({username: currentUserId}).$promise.then(function(data){
       $scope.following = data.users;
-      console.log(data);
     });
   }
 

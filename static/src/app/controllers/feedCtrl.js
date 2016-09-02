@@ -104,6 +104,7 @@ pepo.controller('feedCtrl', function($rootScope, $q, $location, $auth, $scope, u
     isLink=true;
     var hlink = /(HTTP:\/\/|HTTPS:\/\/)([a-zA-Z0-9.\/&?_=!*,\(\)+-]+)/i;
     text.replace(hlink, function(url){
+      $scope.linkUrl = url;
       $scope.linkImg = "http://mini.s-shot.ru/1024x768/240/PNG/?" + url;
       isLink=false;
     });
