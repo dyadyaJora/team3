@@ -116,4 +116,14 @@
 	max-height: 80px;
 	max-width: 80px;
 }
+.file-upload{
+	display:inline-block;
+	input[type="file"]{
+		display: none;
+	}
+	.upload-icon{
+		width:40px;
+		cursor: pointer;
+	}
+}
 
