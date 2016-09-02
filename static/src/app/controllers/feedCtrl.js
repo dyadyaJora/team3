@@ -100,10 +100,13 @@ pepo.controller('feedCtrl', function($rootScope, $q, $location, $auth, $scope, u
     return isLink;
   }
   */
-  $scope.hasLink = function(text){
+  $scope.hasLink = function(text,id){
+    isLink=true;
     var hlink = /(HTTP:\/\/|HTTPS:\/\/)([a-zA-Z0-9.\/&?_=!*,\(\)+-]+)/i;
     text.replace(hlink, function(url){
       $scope.linkImg = "http://mini.s-shot.ru/1024x768/240/PNG/?" + url;
-    })
+      isLink=false;
+    });
+    return isLink;
   }
 });

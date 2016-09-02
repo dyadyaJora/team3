@@ -5,7 +5,7 @@
 
 <section class="page-container" ng-class="{'page-container__no-scroll': menuIsOpen}">
   <ul class="tweets">
-    <li class="tweets_item" ng-init="i=0" ng-repeat="tweet in tweets">
+    <li class="tweets_item" ng-repeat="tweet in tweets">
       <header class="tweet-header">
         <div class="tweet-header_user">
           <img ng-click="goToUser(tweet.owner.username)" ng-src="{{tweet.owner.thumbUrl}}" alt="" class="tweet-header_user-img">
@@ -19,7 +19,7 @@
 
 
       <section class="tweet-content">
-        <div class="link-preview_block clearfix" ng-hide="hasLink(tweet.text)">
+        <div class="link-preview_block clearfix" ng-hide="hasLink(tweet.text, tweet._id)">
           <img ng-src="{{linkImg}}" class="link-preview_img">
           <h2 class="link-preview_title">Title</h2>
           <span>что-то</span>
