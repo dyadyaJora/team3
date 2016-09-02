@@ -100,6 +100,14 @@
     transform: scale(0.9);
   }
 }
+    .clearfix:before,
+    .clearfix:after {
+      content: " ";
+      display: table;
+    }
+    .clearfix:after {
+      clear: both;
+      }
 .tweet-content{
     .link-preview_block{
     margin: 10px;
@@ -110,9 +118,6 @@
       float: left;
       width: 30%;
       padding-right: 10px;
-    }
-    .clearfix{
-      clear:both;
     }
     }
     .tweet-content_text{

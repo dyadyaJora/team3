@@ -19,11 +19,10 @@
 
 
       <section class="tweet-content">
-        <div class="link-preview_block" ng-hide="hasLink(tweet._id)">
+        <div class="link-preview_block clearfix" ng-hide="hasLink(tweet._id)">
           <img ng-src="{{linkImg}}" class="link-preview_img">
           <h2 class="link-preview_title">Title</h2>
           <span>что-то</span>
-          <div class="clearfix"></div>
         </div>
         <p ng-bind-html="tweet.text | emoticons" class="tweet-content_text" ng-class="{'novisible-block__edit': varEdit1[$index], 'anim': editAnim[$index]}" id="a{{tweet._id}}"></p>
         <div class="hidden-block_edit tweet-content_text" ng-class="{'visible-block__edit': varEdit1[$index]}">
