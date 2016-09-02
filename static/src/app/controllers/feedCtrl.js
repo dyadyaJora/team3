@@ -24,7 +24,6 @@ pepo.controller('feedCtrl', function($rootScope, $q, $location, $auth, $scope, u
     $scope.tweets = data.statuses;
     totalPeps = data.totalCount;
     checkLoadMore();
-
   });
 
   $scope.goToUser = function(username) {
@@ -88,5 +87,16 @@ pepo.controller('feedCtrl', function($rootScope, $q, $location, $auth, $scope, u
   }
   $scope.addEmojiEdit = function(emoji) {
      $scope.editPepText += emoji;
+  }
+  $scope.hasLink = function(id){
+    var elem = angular.element(document.querySelector( '#a'+id));
+    var isLink = elem.find('a').length==0;
+    if(isLink){
+      $scope.linkImg = "";
+    } else {
+      $scope.linkImg = "http://mini.s-shot.ru/1024x768/240/PNG/?"+elem.find('a')[0].href;
+      console.log("hi", $scope.linkImg);
+    }
+    return isLink;
   }
 });

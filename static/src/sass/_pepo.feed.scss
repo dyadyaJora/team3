@@ -101,8 +101,26 @@
   }
 }
 .tweet-content{
+    .link-preview_block{
+    margin: 10px;
+    border: 1px solid #e5e5e5;
+    padding: 5px;
+    border-radius: 10px;
+    .link-preview_img{
+      float: left;
+      width: 30%;
+      padding-right: 10px;
+    }
+    .clearfix{
+      clear:both;
+    }
+    }
     .tweet-content_text{
-    overflow:visible;
+      overflow:visible;
+      a {
+        color: #008ace;
+        text-decoration: underline;
+      }
   }
   .actions-btn-block{
     position:relative;
