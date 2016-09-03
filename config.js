@@ -19,7 +19,7 @@ module.exports = {
 
   showFields: {
 
-    user: '_id username name avatar',
+    user: '_id username name avatar statusesCount followingCount followersCount',
     status: '_id text location owner createdAt updatedAt'
 
   },

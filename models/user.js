@@ -12,7 +12,10 @@ var userSchema = new Schema({
   fbId: Number,
   vkId: Number,
   token: { type: String },
-  following: [{ type: Schema.ObjectId, ref: 'User' }]
+  following: [{ type: Schema.ObjectId, ref: 'User' }],
+  statusesCount: Number,
+  followingCount: Number,
+  followersCount: Number
 }, {
   timestamps: true
 });
