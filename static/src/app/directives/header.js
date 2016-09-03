@@ -85,6 +85,7 @@ pepo.directive('pepoHeader', function($rootScope, $auth, $location, pepsApi, use
 			}
 			$scope.varInf = false;
 			$scope.openInfNewPeps = function() {
+        $rootScope.$broadcast('morePeapsLoaded', $scope.newPeps);
 				$scope.varInf = !$scope.varInf;
 			}
 

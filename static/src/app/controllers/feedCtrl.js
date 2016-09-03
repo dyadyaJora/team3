@@ -90,6 +90,16 @@ pepo.controller('feedCtrl', function($rootScope, $q, $location, $auth, $scope, u
       $scope.pepsLoading = false;
     });
   }
+
+  $rootScope.$on('morePeapsLoaded', function(ev, data) {
+    var res = feedApi.getFeed({offset:0, count:data}).$promise.then(function(data){
+      $scope.tweets = $scope.tweets.concat(data.statuses);
+      checkLoadMore();
+      sleep(1000); // server latency mock.
+      $scope.pepsLoading = false;
+    });
+  });
+
   $scope.addEmojiEdit = function(emoji) {
      $scope.editPepText += emoji;
   }
