@@ -75,7 +75,7 @@ pepo.directive('pepoHeader', function($rootScope, $auth, $location, pepsApi, use
 			    pepsApi.sendPep(newPep).$promise.then(function(data){
 			      	newPep._id = data._id
 			     	$scope.tweets.unshift(newPep);
-			     	$document.scrollTop(0, 300);     	
+			     	$document.scrollTop(0, 300);
 			    })
 			    .catch(function(err) {
 			      console.log(err);
@@ -87,6 +87,20 @@ pepo.directive('pepoHeader', function($rootScope, $auth, $location, pepsApi, use
 			$scope.openInfNewPeps = function() {
 				$scope.varInf = !$scope.varInf;
 			}
+
+      $rootScope.$on('recieveBySocket', function(ev, data){
+        $scope.newPeps = 0;
+        $scope.currentUser.following.forEach(function(id) {
+          data.forEach(function(pepOwnerId) {
+            if(pepOwnerId === id) {
+              $scope.newPeps++;
+              if(!$scope.varInf) {
+                $scope.varInf = true;
+              }
+            }
+          })
+        });
+      });
 
 			$scope.goToMyProfile = function() {
 				$location.path('/@' + $scope.currentUser.username);
