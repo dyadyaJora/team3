@@ -20,7 +20,10 @@ module.exports = function(passport) {
   router.patch('/',
     upload.single('avatar'),
     function(req, res, next) {
-      cropPicture(req.file, 'uploads/avatar/', config.cropParams.userAvatar)
+      cropPicture(req.file, 'uploads/avatar/', config.cropParams.userAvatar.slice())
+        .catch(function() {
+          return null;
+        })
         .then(function(file) {
           if (file) {
             req.user.avatar = file.filename;

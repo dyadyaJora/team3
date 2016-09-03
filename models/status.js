@@ -8,7 +8,8 @@ var statusSchema = new Schema({
   text: { type: String, required: true },
   owner: { type: Schema.Types.ObjectId, ref: 'User', required: true },
   location: { type: [Number], index: '2dsphere'},
-  parent: { type: Schema.Types.ObjectId, ref: 'Status' }
+  parent: { type: Schema.Types.ObjectId, ref: 'Status' },
+  image: String
 }, {
   timestamps: true
 });
@@ -43,5 +44,9 @@ statusSchema.statics.pagination = function(req, find, cb) {
     });
   });
 };
+
+statusSchema.virtual('imageUrl').get(function() {
+  return this.image && '/uploads/status/preview_' + this.image;
+});
 
 mongoose.model('Status', statusSchema);
