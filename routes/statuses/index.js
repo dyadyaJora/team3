@@ -12,8 +12,8 @@ var userFields = config.showFields.user;
 
 var permitParams = ['text', 'location', 'parent'];
 
-var statuses = [];
-var sendStatuses;
+var userIds = [];
+var sendMsg;
 
 module.exports = function(passport, io) {
 
@@ -45,11 +45,8 @@ module.exports = function(passport, io) {
             .execPopulate();
         })
         .then(function(status) {
-          statuses.push({
-            id: status._id,
-            owner: req.user._id
-          });
-          sendStatuses(io);
+          userIds.push(req._user._id);
+          sendMsg(io);
 
           res.status(201);
           res.json(status.toObject());
@@ -153,11 +150,9 @@ function findStatus(fields, populateParent) {
 
 }
 
-sendStatuses = debounce(function(io) {
-  io.sockets.emit('statuses', {
-    count: statuses.length,
-    data: statuses
-  });
+sendMsg = debounce(function(io) {
+  io.sockets.emit('feed', userIds);
+  userIds = [];
 }, config.socketDebounce);
 
 function checkOwner(req, res, next) {
