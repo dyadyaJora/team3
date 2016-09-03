@@ -9,8 +9,8 @@ router.get('/', function(req, res, next) {
 
   User.paginate({ following: req._user._id }, {
     select: config.showFields.user,
-    offset: req.query.skip || 0,
-    limit: req.query.count || 5
+    offset: +req.query.offset || 0,
+    limit: +req.query.count || 5
   }, function(err, result) {
     if (err) {
       return next(err);

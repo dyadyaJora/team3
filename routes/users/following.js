@@ -11,8 +11,8 @@ router.get('/', function(req, res, next) {
     _id: { $in: req._user.following }
   }, {
     select: config.showFields.user,
-    offset: req.query.skip || 0,
-    limit: req.query.count || 5
+    offset: +req.query.offset || 0,
+    limit: +req.query.count || 5
   }, function(err, result) {
     if (err) {
       return next(err);
