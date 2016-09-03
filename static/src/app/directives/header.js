@@ -67,13 +67,16 @@ pepo.directive('pepoHeader', function($rootScope, $auth, $location, pepsApi, use
 			$scope.publishNewpep = function() {
 				newPep = {
 				    text: $scope.newPepText,
+					location: currentLocation,
 				    owner: {
 				        name: $scope.currentUser.name,
-				        username: $scope.currentUser.username
+				        username: $scope.currentUser.username,
+						thumbUrl: $scope.currentUser.thumbUrl
     				}
 				}
 			    pepsApi.sendPep(newPep).$promise.then(function(data){
-			      	newPep._id = data._id
+			      	newPep._id = data._id;
+					newPep.createdAt = data.createdAt;
 			     	$scope.tweets.unshift(newPep);
 			     	$document.scrollTop(0, 300);
 			    })
@@ -105,6 +108,10 @@ pepo.directive('pepoHeader', function($rootScope, $auth, $location, pepsApi, use
 
 			$scope.goToMyProfile = function() {
 				$location.path('/@' + $scope.currentUser.username);
+			}
+			
+			$scope.closeEmoji = function () {
+				$scope.emojiOpen = false
 			}
 		}
 	}

@@ -208,6 +208,7 @@
   }
   .tweet-buttons-block_answer{
     @include span-columns(12);
+    padding-top: 40px;
     position:relative;
     .tweet-btn_answer{
       position:absolute;

@@ -27,8 +27,8 @@
 	</div>
 		<div class="slide-menu">
 			<ul class="slide-menu_list">
-				<li class="slide-menu_item"><a class="slide-menu_link" href="#/feed">Лента</a></li>
-				<li class="slide-menu_item slide-menu_item__separator "><a class="slide-menu_link" href="#/users">Поиск</a></li>
+				<li class="slide-menu_item"><a class="slide-menu_link" href="">Лента</a></li>
+				<li class="slide-menu_item slide-menu_item__separator "><a class="slide-menu_link" href="">Поиск</a></li>
 				<li class="slide-menu_item"><a class="slide-menu_link" ng-click="goToMyProfile()">Мой профиль</a></li>
 				<li class="slide-menu_item slide-menu_item__separator"><a class="slide-menu_link" href="/#/edit-profile">Редактировать</a></li>
 				<li ng-click="logout()" class="slide-menu_item"><a class="slide-menu_link" href="">Выйти</a></li>
@@ -39,13 +39,12 @@
 
 	<div class="modal">
 	  <div class="modal-fade-screen" ng-class="{'new-pep__active': varNewpep}" ng-click="closeNewpepAnswer($event)">
-	  <div class="modal-wrapper">
 	    <div class="modal-inner">
-	      <div class="modal-close" ng-click="closeModalSend()"></div>
+	      <div class="modal-close" ng-click="varNewpep=''; closeEmoji()"></div>
 	      <header class="pepo-modal-top pepo-modal-top__mod ">Новый Pep </header>
 	      <section class="tweet-type_answer">
 	        <div class="tweet-textarea_answer">
-	          <textarea ng-model="newPepText" tabindex="1" autofocus id="tt">
+	          <textarea ng-model="newPepText" tabindex="1" autofocus id="tt" ng-focus="closeEmoji()">
 	          </textarea>
 	        </div>
 	        <div class="tweet-buttons-block_answer">
@@ -68,7 +67,6 @@
 	          <div class="tweet-btn_send pepo_btn pepo_btn__answer" ng-click="publishNewpep()">Добавить pep</div>
 	        </div>
 	      </section>
-	    </div>
 	    </div>
 	  </div>
 	</div>
