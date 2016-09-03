@@ -19,6 +19,11 @@
 
 
       <section class="tweet-content">
+      <div class="link-preview_block clearfix" ng-show="tweet.link">
+          <img ng-src="{{tweet.link.img}}" class="link-preview_img">
+          <h2 class="link-preview_title"><a href="{{tweet.link.url}}" class="link-header">{{tweet.link.title}}</a></h2>
+          <span>{{tweet.link.description}}</span>
+        </div>
         <p ng-bind-html="tweet.text | emoticons" class="tweet-content_text" ng-class="{'novisible-block__edit': varEdit1[$index], 'anim': editAnim[$index]}"></p>
         <div class="hidden-block_edit tweet-content_text" ng-class="{'visible-block__edit': varEdit1[$index]}">
           <textarea ng-model="$parent.editPepText" class="pepo_textinput pep-text_edit"></textarea>
