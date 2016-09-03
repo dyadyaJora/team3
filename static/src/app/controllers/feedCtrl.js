@@ -4,9 +4,8 @@ pepo.controller('feedCtrl', function($rootScope, $q, $location, $auth, $scope, u
   totalPeps = 0;
   navigator.geolocation.getCurrentPosition(show_map);
 
-  pepoSocket.on('statuses', function (data) {
-    console.log('socket');
-    console.log(data);
+  pepoSocket.on('feed', function (data) {
+    $rootScope.$broadcast('recieveBySocket', data);
   });
 
   // Get coordinates.
