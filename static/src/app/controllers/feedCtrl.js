@@ -1,8 +1,13 @@
-pepo.controller('feedCtrl', function($rootScope, $q, $location, $auth, $scope, userApi, feedApi, pepsApi, $document) {
+pepo.controller('feedCtrl', function($rootScope, $q, $location, $auth, $scope, userApi, feedApi, pepsApi, $document, pepoSocket) {
   $scope.newPepText = '';
   currentLocation = [];
   totalPeps = 0;
   navigator.geolocation.getCurrentPosition(show_map);
+
+  pepoSocket.on('statuses', function (data) {
+    console.log('socket');
+    console.log(data);
+  });
 
   // Get coordinates.
   function show_map(position) {
