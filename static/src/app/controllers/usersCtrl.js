@@ -11,6 +11,7 @@ pepo.controller('usersCtrl', function($location, $scope, usersApi, userApi, debo
 
 
   $scope.$on('currentUserLoaded', function() {
+     $scope.curUser = $scope.currentUser;
      getUsers();
   });
 
