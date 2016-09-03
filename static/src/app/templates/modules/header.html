@@ -39,8 +39,9 @@
 
 	<div class="modal">
 	  <div class="modal-fade-screen" ng-class="{'new-pep__active': varNewpep}" ng-click="closeNewpepAnswer($event)">
+	  <div class="modal-wrapper">
 	    <div class="modal-inner">
-	      <div class="modal-close" ng-click="varNewpep=''"></div>
+	      <div class="modal-close" ng-click="closeModalSend()"></div>
 	      <header class="pepo-modal-top pepo-modal-top__mod ">Новый Pep </header>
 	      <section class="tweet-type_answer">
 	        <div class="tweet-textarea_answer">
@@ -67,6 +68,7 @@
 	          <div class="tweet-btn_send pepo_btn pepo_btn__answer" ng-click="publishNewpep()">Добавить pep</div>
 	        </div>
 	      </section>
+	    </div>
 	    </div>
 	  </div>
 	</div>

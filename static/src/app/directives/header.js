@@ -37,6 +37,7 @@ pepo.directive('pepoHeader', function($rootScope, $auth, $location, pepsApi, use
 			$scope.varNewpep = false;
 			$scope.varDel = false;
 			$scope.openNewpep = function(id) {
+        		body.addClass('no-scroll');
 			    $scope.varEdit1 = [];
 			    $scope.varNewpep = true;
 			   	$scope.newPepText = "";
@@ -56,7 +57,12 @@ pepo.directive('pepoHeader', function($rootScope, $auth, $location, pepsApi, use
 				if(click.hasClass("modal")){
 					$scope.varNewpep=false;
 					$scope.varDel=false;
+          			body.removeClass('no-scroll')
 				}
+			}
+			$scope.closeModalSend = function(){
+				$scope.varNewpep='';
+          		body.removeClass('no-scroll')
 			}
 			$scope.publishNewpep = function() {
 				newPep = {
@@ -75,7 +81,7 @@ pepo.directive('pepoHeader', function($rootScope, $auth, $location, pepsApi, use
 			      console.log(err);
 			    })
 			    $scope.varNewpep = false;
-			    $scope.newPepText = '';
+			    $scope.closeModalSend();
 			}
 			$scope.varInf = false;
 			$scope.openInfNewPeps = function() {
