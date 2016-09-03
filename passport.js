@@ -103,7 +103,7 @@ function downloadAvatar(photos) {
 
   return downloadPicture(photos[0].value, 'uploads/avatar/')
     .then(function(file) {
-      return cropPicture(file, 'uploads/avatar/', config.cropParams.userAvatar);
+      return cropPicture(file, 'uploads/avatar/', config.cropParams.userAvatar.slice());
     }).catch(function() {
       return null;
     });
