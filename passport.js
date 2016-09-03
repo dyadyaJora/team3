@@ -36,9 +36,6 @@ module.exports = function(passport) {
 
           downloadAvatar(profile.photos)
             .then(function(file) {
-              return cropPicture(file, 'uploads/avatar/', config.cropParams.userAvatar);
-            })
-            .then(function(file) {
               user = new User({
                 username: 'fb' + profile.id,
                 name: prepareName(profile.displayName),
@@ -74,9 +71,6 @@ module.exports = function(passport) {
           // TODO image quality
           downloadAvatar(profile.photos)
             .then(function(file) {
-              return cropPicture(file, 'uploads/avatar/', config.cropParams.userAvatar);
-            })
-            .then(function(file) {
               user = new User({
                 username: 'vk' + profile.id,
                 name: prepareName(profile.displayName),
@@ -107,7 +101,12 @@ function downloadAvatar(photos) {
     return Promise.resolve();
   }
 
-  return downloadPicture(photos[0].value, 'uploads/avatar/');
+  return downloadPicture(photos[0].value, 'uploads/avatar/')
+    .then(function(file) {
+      return cropPicture(file, 'uploads/avatar/', config.cropParams.userAvatar);
+    }).catch(function() {
+      return null;
+    });
 }
 
 function prepareName(name) {
