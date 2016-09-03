@@ -125,7 +125,7 @@ $scope.isSubscribe = function(userId) {
     $scope.pepsLoading = true;
     localPepsOffset += 5;
     var res = usersApi.getUserStatuses({username: currentUserId, offset:localPepsOffset, count:5}).$promise.then(function(data){
-      $scope.tweets = $scope.tweets.concat(data);
+      $scope.tweets = $scope.tweets.concat(data.statuses);
       sleep(1000); // server latency mock.
       $scope.pepsLoading = false;
     });
@@ -139,6 +139,17 @@ $scope.isSubscribe = function(userId) {
       $scope.followers = $scope.followers.concat(data.users);
       sleep(1000); // server latency mock.
       $scope.followersLoading = false;
+    });
+  }
+
+  var localFollowingOffset = 0;
+  $scope.loadMoreFollowing = function() {
+    $scope.followingLoading = true;
+    localFollowingOffset += 5;
+    var res = usersApi.getFollowings({username: currentUserId, offset:localFollowingOffset, count:5}).$promise.then(function(data){
+      $scope.following = $scope.following.concat(data.users);
+      sleep(1000); // server latency mock.
+      $scope.followingLoading = false;
     });
   }
 

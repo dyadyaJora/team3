@@ -84,7 +84,7 @@ pepo.controller('feedCtrl', function($rootScope, $q, $location, $auth, $scope, u
     $scope.pepsLoading = true;
     localPepsOffset += 5;
     var res = feedApi.getFeed({offset:localPepsOffset, count:5}).$promise.then(function(data){
-      $scope.tweets = $scope.tweets.concat(data);
+      $scope.tweets = $scope.tweets.concat(data.statuses);
       checkLoadMore();
       sleep(1000); // server latency mock.
       $scope.pepsLoading = false;
