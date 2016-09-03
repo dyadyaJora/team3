@@ -45,7 +45,7 @@ module.exports = function(passport, io) {
             .execPopulate();
         })
         .then(function(status) {
-          userIds.push(req._user._id);
+          userIds.push(req.user._id);
           sendMsg(io);
 
           res.status(201);
