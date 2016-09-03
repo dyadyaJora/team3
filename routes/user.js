@@ -21,7 +21,6 @@ module.exports = function(passport) {
     upload.single('avatar'),
     function(req, res, next) {
       cropPicture(req.file, 'uploads/avatar/', config.cropParams.userAvatar.slice())
-        // TODO handle errors
         .catch(function() {
           return null;
         })

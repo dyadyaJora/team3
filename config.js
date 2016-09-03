@@ -9,6 +9,10 @@ module.exports = {
     userAvatar: [
       { name: 'avatar', w: 175, h: 175 },
       { name: 'thumb', w: 50, h: 50 }
+    ],
+
+    statusImage: [
+      { name: 'preview', w: 800, h: 600 }
     ]
 
   },
