@@ -60,6 +60,9 @@ module.exports = function(passport, io) {
             .execPopulate();
         })
         .then(function(status) {
+          return updateCount(status, req.user);
+        })
+        .then(function(status) {
           userIds.push(req.user._id);
           sendMsg(io);
 
@@ -117,12 +120,17 @@ module.exports = function(passport, io) {
     passport.authenticate('bearer', { session: false }),
     findStatus('_id, owner'), checkOwner,
     function(req, res, next) {
-      req._status.remove(function(err) {
-        if (err) { return next(err); }
-
-        res.status(204);
-        res.end();
-      });
+      req._status.remove()
+        .then(function() {
+          return updateCount(null, req.user);
+        })
+        .then(function() {
+          res.status(204);
+          res.end();
+        })
+        .catch(function(err) {
+          next(err);
+        });
     }
   );
 
@@ -174,6 +182,20 @@ function findStatus(fields, populateParent) {
       });
   }
 
+}
+
+function updateCount(status, user) {
+  return Status.find({ owner: user._id }).count()
+    .then(function(count) {
+      user.statusesCount = count;
+      return user.save();
+    })
+    .then(function() {
+      return status;
+    })
+    .catch(function() {
+      return status;
+    });
 }
 
 sendMsg = debounce(function(io) {

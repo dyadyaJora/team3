@@ -12,7 +12,10 @@ var userSchema = new Schema({
   fbId: Number,
   vkId: Number,
   token: { type: String },
-  following: [{ type: Schema.ObjectId, ref: 'User' }]
+  following: [{ type: Schema.ObjectId, ref: 'User' }],
+  statusesCount: { type: Number, default: 0 },
+  followingCount: { type: Number, default: 0 },
+  followersCount: { type: Number, default: 0 }
 }, {
   timestamps: true
 });
@@ -48,23 +51,23 @@ userSchema.methods.follow = function(user, cb) {
     return cb();
   }
 
-  this.model('User').update({
+  return this.model('User').update({
     _id: this._id
   }, {
     $push: {
       following: user._id
     }
-  }, cb);
+  });
 };
 
 userSchema.methods.unFollow = function(user, cb) {
-  this.model('User').update({
+  return this.model('User').update({
     _id: this._id
   }, {
     $pull: {
       following: user._id
     }
-  }, cb);
+  });
 };
 
 userSchema.virtual('avatarUrl').get(function() {
