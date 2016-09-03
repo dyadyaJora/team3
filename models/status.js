@@ -30,8 +30,8 @@ statusSchema.statics.pagination = function(req, find, cb) {
       select: config.showFields.user
     },
     sort: '-createdAt',
-    offset: req.query.skip || 0,
-    limit: req.query.count || 5
+    offset: +req.query.offset || 0,
+    limit: +req.query.count || 5
   }, function(err, result) {
     if (err) { return cb(err, null); }
 
