@@ -11,21 +11,46 @@ router.post('/', function(req, res, next) {
     return next(err);
   }
 
-  req.user.follow(req._user, function(err) {
-    if (err) { return next(err); }
-
-    res.status(204);
-    res.end();
-  });
+  req.user.follow(req._user)
+    .then(function() {
+      return updateCounters(req.user, req._user);
+    })
+    .then(function() {
+      res.status(204);
+      res.end();
+    })
+    .catch(function(err) {
+      next(err);
+    });
 });
 
 router.delete('/', function(req, res, next) {
-  req.user.unFollow(req._user, function(err) {
-    if (err) { return next(err); }
-
-    res.status(204);
-    res.end();
-  });
+  req.user.unFollow(req._user)
+    .then(function() {
+      return updateCounters(req.user, req._user);
+    })
+    .then(function() {
+      res.status(204);
+      res.end();
+    })
+    .catch(function(err) {
+      next(err);
+    });
 });
 
 module.exports = router;
+
+function updateCounters(me, another) {
+  return User.find({ following: another._id }).count()
+    .then(function(count) {
+      another.followersCount = count;
+      return another.save();
+    })
+    .then(function() {
+      return User.findOne({ _id: me._id })
+        .then(function(user) {
+          user.followingCount = user.following.length;
+          return user.save();
+        });
+    });
+}

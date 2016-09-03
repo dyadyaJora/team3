@@ -191,7 +191,6 @@ function updateCount(status, user) {
       return user.save();
     })
     .then(function() {
-      console.log(status);
       return status;
     })
     .catch(function() {
