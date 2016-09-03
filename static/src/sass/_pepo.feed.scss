@@ -100,9 +100,46 @@
     transform: scale(0.9);
   }
 }
+.preview-link{
+    color: #656565;
+    text-decoration: underline;
+    &:hover{
+      color: $colorBlue__hover;
+      transition: color 0.5s;
+    }
+    &:active{
+      color: $colorBlue;
+    }
+}
+    .clearfix:before,
+    .clearfix:after {
+      content: " ";
+      display: table;
+    }
+    .clearfix:after {
+      clear: both;
+      }
+.link-header{
+  color:#000;
+}
 .tweet-content{
+  .link-preview_block{
+    margin: 10px;
+    border: 1px solid #e5e5e5;
+    padding: 5px;
+    border-radius: 10px;
+    .link-preview_img{
+      float: left;
+      width: 30%;
+      padding-right: 10px;
+    }
+    }
     .tweet-content_text{
     overflow:visible;
+    a {
+        color: #008ace;
+        text-decoration: underline;
+      }
   }
   .actions-btn-block{
     position:relative;
