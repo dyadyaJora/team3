@@ -38,7 +38,7 @@ module.exports = function(passport) {
 
   router.use('/:username/follow',
     passport.authenticate('bearer', { session: false }),
-    findUser('_id'), require('./follow'));
+    findUser(), require('./follow'));
 
   router.use('/:username/statuses', findUser('_id'), require('./statuses'));
 
