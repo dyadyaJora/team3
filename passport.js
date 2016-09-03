@@ -1,8 +1,9 @@
+var Promise = require('bluebird');
 var BearerStrategy = require('passport-http-bearer').Strategy;
 var FacebookStrategy = require('passport-facebook').Strategy;
 var VKontakteStrategy = require('passport-vkontakte').Strategy;
 
-var downloadAvatar = require('./lib/picture-utils').downloadUserAvatar;
+var downloadPicture = require('./lib/picture-utils').downloadPicture;
 var cropPicture = require('./lib/picture-utils').cropPicture;
 
 var mongoose = require('mongoose');
@@ -33,7 +34,6 @@ module.exports = function(passport) {
 
           if (user) { return done(null, user); }
 
-          // TODO DRY
           downloadAvatar(profile.photos)
             .then(function(file) {
               return cropPicture(file, 'uploads/avatar/', config.cropParams.userAvatar);
@@ -71,7 +71,7 @@ module.exports = function(passport) {
 
           if (user) { return done(null, user); }
 
-          // TODO DRY
+          // TODO image quality
           downloadAvatar(profile.photos)
             .then(function(file) {
               return cropPicture(file, 'uploads/avatar/', config.cropParams.userAvatar);
@@ -101,6 +101,14 @@ module.exports = function(passport) {
   );
 
 };
+
+function downloadAvatar(photos) {
+  if (!photos || !Array.isArray(photos) || photos.length === 0) {
+    return Promise.resolve();
+  }
+
+  return downloadPicture(photos[0].value, 'uploads/avatar/');
+}
 
 function prepareName(name) {
   return name.replace(/\s+/, ' ')
