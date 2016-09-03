@@ -55,20 +55,24 @@ statusSchema.statics.pagination = function(req, find, cb) {
 };
 
 statusSchema.pre('save', function(next) {
-  if (this.text) {
-    var match = this.text.match(urlPattern);
-    if (match) {
-      var self = this;
-      metascraper.scrapeUrl(match[0])
-        .then(function(metadata) {
-          self.link = metadata;
-          next();
-        })
-        .catch(function() {
-          next();
-        })
-    }
+  if (!this.text) {
+    return next();
   }
+
+  var match = this.text.match(urlPattern);
+  if (!match) {
+    return next();
+  }
+
+  var self = this;
+  metascraper.scrapeUrl(match[0])
+    .then(function(metadata) {
+      self.link = metadata;
+      next();
+    })
+    .catch(function() {
+      next();
+    });
 });
 
 statusSchema.virtual('imageUrl').get(function() {
