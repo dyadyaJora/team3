@@ -29,4 +29,13 @@ router.post('/',
       });
   });
 
+router.delete('/', function(req, res, next) {
+  // TODO remove files from disk
+  req._status.image = undefined;
+  req._status.save(function() {
+    res.status(204);
+    res.end();
+  });
+});
+
 module.exports = router;
