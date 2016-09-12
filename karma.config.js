@@ -18,7 +18,7 @@ module.exports = function(config) {
       'build/js/vendors.js',
       'node_modules/angular-mocks/angular-mocks.js',
       'build/js/pepo.all.js',
-      'tests/*.js'
+      'tests/unit/*.js'
     ],
 
 
