@@ -3,13 +3,10 @@ var mongoose = require('mongoose');
 var debounce = require('lodash.debounce');
 var multer = require('multer');
 var config = require('../../config');
-var cropPicture = require('../../lib/picture-utils').cropPicture;
-var fileStorage = require('../../lib/file-storage');
 
 var router = express.Router();
 var Status = mongoose.model('Status');
 var User = mongoose.model('User');
-var upload = multer({ storage: fileStorage('uploads/status/') });
 
 var statusFields = config.showFields.status;
 var userFields = config.showFields.user;
@@ -31,7 +28,6 @@ module.exports = function(passport, io) {
 
   router.post('/',
     passport.authenticate('bearer', { session: false }),
-    upload.single('image'),
     function(req, res, next) {
       var params = req.body;
       var status = new Status();
@@ -44,17 +40,7 @@ module.exports = function(passport, io) {
 
       status.owner = req.user._id;
 
-      cropPicture(req.file, 'uploads/status/', config.cropParams.statusImage.slice())
-        .catch(function() {
-          return null;
-        })
-        .then(function(file) {
-          if (file) {
-            status.image = file.filename;
-          }
-
-          return status.save();
-        })
+      status.save()
         .then(function(status) {
           return status.populate('parent', statusFields)
             .execPopulate();
@@ -96,24 +82,13 @@ module.exports = function(passport, io) {
 
   router.patch('/:id',
     passport.authenticate('bearer', { session: false }),
-    upload.single('image'),
     findStatus(null, true), checkOwner,
     function(req, res, next) {
-      cropPicture(req.file, 'uploads/status/', config.cropParams.statusImage.slice())
-        .catch(function() {
-          return null;
-        })
-        .then(function(file) {
-          if (file) {
-            req._status.image = file.filename;
-          }
+      req._status.patch(req.body, function(err, status) {
+        if (err) { return next(err); }
 
-          req._status.patch(req.body, function(err, status) {
-            if (err) { return next(err); }
-
-            res.json(status.toObject());
-          });
-        });
+        res.json(status.toObject());
+      });
     });
 
   router.delete('/:id',
@@ -133,6 +108,10 @@ module.exports = function(passport, io) {
         });
     }
   );
+
+  router.use('/:id/image',
+    passport.authenticate('bearer', { session: false }),
+    findStatus(null, true), checkOwner, require('./image'));
 
   router.use('/:id/children', findStatus('_id, owner'), require('./children'));
 
