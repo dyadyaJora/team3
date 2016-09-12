@@ -1,36 +1,45 @@
+/* global pepo, angular */
 pepo.directive('pepoHeader', function($rootScope, $auth, $location, pepsApi, userApi,feedApi, $document) {
-	return {
-		restrict: "E",
-		replace: false,
-		templateUrl: '../build/templates/modules/header.html',
-		link: function($scope , $element, $attrs) {
-			$scope.varHeightheader = document.getElementsByClassName('header')[0].clientHeight;
+  return {
+    restrict: 'E',
+    replace: false,
+    templateUrl: '../build/templates/modules/header.html',
+    link: function($scope) {
+      $scope.varHeightheader = document.getElementsByClassName('header')[0].clientHeight;
 
-      var body = angular.element(document).find('body');
-			body.removeClass('no-scroll');
-      userApi.getUser().$promise.then(function(data) {
-        $scope.currentUser = data;
-        $scope.$broadcast('currentUserLoaded');
-      })
-		  .catch (function () {
-			  $location.path('/');
-		  })
+      var body = angular.element(document.body);
+      body.removeClass('no-scroll');
 
-			 $scope.logout = function() {
-			    $auth.logout();
-			    $location.path('/');
-			};
-			$scope.closeSlideMenu = function($event) {
-				var click = angular.element($event.target);
-				if(click.hasClass('slide-effect_bg') || click.hasClass('cancel-menu_btn')) {
-					$scope.menuOpened = false;
-          			body.removeClass('no-scroll')
-				}
-			}
+      userApi.getUser().$promise
+        .then(function(data) {
+          $scope.currentUser = data;
+          $scope.$broadcast('currentUserLoaded');
+        }).catch(function() {
+          $location.path('/');
+        });
 
-			$scope.menuOpened = false;
-			$scope.toggleMenu = function( ) {
-				$scope.menuOpened = !$scope.menuOpened;
+      $scope.logout = function() {
+        $auth.logout();
+        $location.path('/');
+      };
+
+      $scope.closeSlideMenu = function($event) {
+        var click = angular.element($event.target);
+        if(click.hasClass('slide-effect_bg') || click.hasClass('cancel-menu_btn')) {
+          $scope.menuOpened = false;
+          body.removeClass('no-scroll');
+        }
+      };
+
+      $scope.menuOpened = false;
+      $scope.toggleMenu = function() {
+        $scope.menuOpened = !$scope.menuOpened;
+        body.addClass('no-scroll');
+      };
+
+      $scope.varNewpep = false;
+      $scope.varDel = false;
+      $scope.openNewpep = function(id) {
         body.addClass('no-scroll');
 			};
 
@@ -96,8 +105,8 @@ pepo.directive('pepoHeader', function($rootScope, $auth, $location, pepsApi, use
 			$scope.varInf = false;
 			$scope.openInfNewPeps = function() {
         $rootScope.$broadcast('morePeapsLoaded', $scope.newPeps);
-				$scope.varInf = !$scope.varInf;
-			}
+        $scope.varInf = !$scope.varInf;
+      };
 
       $rootScope.$on('recieveBySocket', function(ev, data){
         $scope.newPeps = 0;
@@ -109,17 +118,17 @@ pepo.directive('pepoHeader', function($rootScope, $auth, $location, pepsApi, use
                 $scope.varInf = true;
               }
             }
-          })
+          });
         });
       });
 
-			$scope.goToMyProfile = function() {
-				$location.path('/@' + $scope.currentUser.username);
-			}
-			
-			$scope.closeEmoji = function () {
-				$scope.emojiOpen = false
-			}
-		}
-	}
-}) ;
+      $scope.goToMyProfile = function() {
+        $location.path('/@' + $scope.currentUser.username);
+      };
+
+      $scope.closeEmoji = function() {
+        $scope.emojiOpen = false;
+      };
+    }
+  };
+});
