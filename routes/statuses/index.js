@@ -53,6 +53,8 @@ module.exports = function(passport, io) {
           sendMsg(io);
 
           res.status(201);
+
+          status.owner = req.user;
           res.json(status.toObject());
         })
         .catch(function(err) {
