@@ -9,7 +9,8 @@
     "build": "./node_modules/.bin/gulp",
     "build:dev": "./node_modules/.bin/gulp dev",
     "lint:server": "./node_modules/.bin/eslint ./",
-    "lint:app": "./node_modules/.bin/eslint -c ./static/src/app/.eslintrc --no-ignore ./static/src/app/"
+    "lint:app": "./node_modules/.bin/eslint -c ./static/src/app/.eslintrc --no-ignore ./static/src/app/",
+    "tests": "node ./node_modules/karma/bin/karma start karma.config.js"
   },
   "repository": {
     "type": "git",
@@ -62,6 +63,12 @@
     "gulp-imagemin": "^3.0.2",
     "gulp-jslint": "^1.0.1",
     "gulp-svgmin": "^1.2.2",
-    "gulp-watch": "^4.3.9"
+    "gulp-watch": "^4.3.9",
+    "istanbul": "^0.4.5",
+    "karma": "^1.3.0",
+    "karma-chrome-launcher": "^2.0.0",
+    "karma-coverage": "^1.1.1",
+    "karma-jasmine": "^1.0.2",
+    "karma-phantomjs-launcher": "^1.0.2"
   }
 }
