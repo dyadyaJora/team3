@@ -60,18 +60,18 @@ $scope.isSubscribe = function(userId) {
     usersApi.followUser({username: username}).$promise.then(function(){
       //$scope.followed = true;
       $scope.subscribed[userId] = true;
-    });
     getInfoItems();
     getUser();
+    });
   }
 
   $scope.unsubscribe = function(username, userId) {
     usersApi.unfollowUser({username: username}).$promise.then(function(){
       //$scope.followed = false;
       $scope.subscribed[userId] = false;
-    });
     getInfoItems();
     getUser();
+    });
   }
 
   $scope.logout = function() {
