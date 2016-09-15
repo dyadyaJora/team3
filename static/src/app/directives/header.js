@@ -54,7 +54,7 @@ pepo.directive('pepoHeader', function($rootScope, $auth, $location, pepsApi, use
 
 			$scope.closeNewpepAnswer = function($event){
 				var click = angular.element($event.target).parent();
-				if(click.hasClass("modal-fade-screen")){
+				if(click.hasClass("modal")){
 					$scope.varNewpep=false;
 					$scope.varDel=false;
           			body.removeClass('no-scroll')
@@ -62,6 +62,7 @@ pepo.directive('pepoHeader', function($rootScope, $auth, $location, pepsApi, use
 			}
 			$scope.closeModalSend = function(){
 				$scope.varNewpep='';
+				$scope.closeEmoji();
           		body.removeClass('no-scroll')
 			}
 			$scope.publishNewpep = function() {
