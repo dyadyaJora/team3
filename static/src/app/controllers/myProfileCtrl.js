@@ -10,10 +10,13 @@ pepo.controller('myProfileCtrl', function($location, $auth, $scope, userApi, use
   }
 
   currentUserId = $location.path().slice(2);
-  usersApi.getUser({username: currentUserId}).$promise.then(function(data) {
-    $scope.currentPageUser = data;
+  function getUser(){
+    usersApi.getUser({username: currentUserId}).$promise.then(function(data) {
+      $scope.currentPageUser = data;
     checkFollow();
   });
+  };
+  getUser();
 
   usersApi.getUserStatuses({username: currentUserId}).$promise.then(function(data){
    	$scope.tweets = data.statuses;
@@ -59,6 +62,7 @@ $scope.isSubscribe = function(userId) {
       $scope.subscribed[userId] = true;
 
       getInfoItems();
+      getUser();
     });
   }
 
@@ -68,6 +72,7 @@ $scope.isSubscribe = function(userId) {
       $scope.subscribed[userId] = false;
 
       getInfoItems();
+      getUser();
     });
   }
 

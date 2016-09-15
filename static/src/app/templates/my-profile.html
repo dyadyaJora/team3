@@ -19,16 +19,16 @@
     <div class="user-profile-info">
         <ul>
             <li class="user-profile-info_item user-profile-info_item__active" ng-click="itemInfo(0)" ng-class="{'user-info-item_disable': currentPageUser.statusesCount==0}">
-                <div class="user-profile-info_number">0{{currentPageUser.statusesCount}}</div>
+                <div class="user-profile-info_number">{{currentPageUser.statusesCount}}</div>
                 <div class="user-profile-info_label">пепов</div>
                 <div class="user-info-item_line" ng-class="{'first-item': varInfoArr[0], 'second-item': varInfoArr[1], 'third-item': varInfoArr[2]}"></div>
             </li>
-            <li class="user-profile-info_item" ng-click="itemInfo(1)" ng-class="{'user-info-item_disable': following.length==0}">
-                <div class="user-profile-info_number">{{following.length}}</div>
+            <li class="user-profile-info_item" ng-click="itemInfo(1)" ng-class="{'user-info-item_disable': currentPageUser.followingCount==0}">
+                <div class="user-profile-info_number">{{currentPageUser.followingCount}}</div>
                 <div class="user-profile-info_label">читаемых</div>
             </li>
-            <li class="user-profile-info_item" ng-click="itemInfo(2)" ng-class="{'user-info-item_disable': followers.length==0}">
-                <div class="user-profile-info_number">{{followers.length}}</div>
+            <li class="user-profile-info_item" ng-click="itemInfo(2)" ng-class="{'user-info-item_disable': currentPageUser.followersCount==0}">
+                <div class="user-profile-info_number">{{currentPageUser.followersCount}}</div>
                 <div class="user-profile-info_label">читателей</div>
             </li>
         </ul>
