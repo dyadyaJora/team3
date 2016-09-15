@@ -19,16 +19,16 @@
     <div class="user-profile-info">
         <ul>
             <li class="user-profile-info_item user-profile-info_item__active" ng-click="itemInfo(0)" ng-class="{'user-info-item_disable': currentPageUser.statusesCount==0}">
-                <div class="user-profile-info_number">0{{currentPageUser.statusesCount}}</div>
+                <div class="user-profile-info_number">{{currentPageUser.statusesCount}}</div>
                 <div class="user-profile-info_label">пепов</div>
                 <div class="user-info-item_line" ng-class="{'first-item': varInfoArr[0], 'second-item': varInfoArr[1], 'third-item': varInfoArr[2]}"></div>
             </li>
-            <li class="user-profile-info_item" ng-click="itemInfo(1)" ng-class="{'user-info-item_disable': following.length==0}">
-                <div class="user-profile-info_number">{{following.length}}</div>
+            <li class="user-profile-info_item" ng-click="itemInfo(1)" ng-class="{'user-info-item_disable': currentPageUser.followingCount==0}">
+                <div class="user-profile-info_number">{{currentPageUser.followingCount}}</div>
                 <div class="user-profile-info_label">читаемых</div>
             </li>
-            <li class="user-profile-info_item" ng-click="itemInfo(2)" ng-class="{'user-info-item_disable': followers.length==0}">
-                <div class="user-profile-info_number">{{followers.length}}</div>
+            <li class="user-profile-info_item" ng-click="itemInfo(2)" ng-class="{'user-info-item_disable': currentPageUser.followersCount==0}">
+                <div class="user-profile-info_number">{{currentPageUser.followersCount}}</div>
                 <div class="user-profile-info_label">читателей</div>
             </li>
         </ul>
@@ -126,40 +126,7 @@
         <div ng-show="subscribed[user._id]" class="pepo_btn user_unsubscribe" ng-click="unsubscribe(user.username, user._id)">Читаю</div>
         <p class="user_description">{{user.description}}</p>
 
-        <ul class="user-info">
-          <li class="user-info_item">
-            <div class="user-info_number">{{user.statusesCount}}</div>
-            <div class="user-info_label">пепов</div>
-          </li>
-          <li class="user-info_item">
-            <div class="user-info_number">{{user.followingCount}}</div>
-            <div class="user-info_label">читаемых</div>
-          </li>
-          <li class="user-info_item">
-            <div class="user-info_number">{{user.followersCount}}</div>
-            <div class="user-info_label">читателей</div>
-          </li>
-        </ul>
-      </div>
-    </li>
-  </ul>
-  <div class="load-more-btn" ng-click="loadMoreFollowers()" ng-class="{'load-more-btn__progress': followersLoading}"></div>
-</div>
-
-<!-- Блок читателей -->
-
-<div class="user-followers" ng-class="{'hidden-block_profile': varInfoArr[2]==false, 'visible-block_profile': varInfoArr[2]}">
-  <ul class="users-list  followers followers__userpage" >
-    <li ng-repeat="user in followers" ng-init="isSubscribe(user._id)" class="users-list_item user">
-      <img ng-click="goToUser(user.username)" ng-src="{{user.avatarUrl}}" alt="" class="user_img">
-      <div class="user_content">
-        <div ng-click="goToUser(user.username)" class="user_name">{{user.name}}</div>
-        <div ng-click="goToUser(user.username)" class="user_nickname">@{{user.username}}</div>
-        <div ng-hide="subscribed[user._id] || (user.username == currentUser.username)" class="pepo_btn user_subscribe" ng-click="subscribe(user.username, user._id)">+ Читать</div>
-        <div ng-show="subscribed[user._id]" class="pepo_btn user_unsubscribe" ng-click="unsubscribe(user.username, user._id)">Читаю</div>
-        <p class="user_description">{{user.description}}</p>
-
-        <ul class="user-info">
+        <ul class="user-info" ng-class="{'mg80' : user.username == currentUser.username}">
           <li class="user-info_item">
             <div class="user-info_number">{{user.statusesCount}}</div>
             <div class="user-info_label">пепов</div>
@@ -177,6 +144,39 @@
     </li>
   </ul>
   <div class="load-more-btn" ng-click="loadMoreFollowing()" ng-class="{'load-more-btn__progress': followingLoading}"></div>
+</div>
+
+<!-- Блок читателей -->
+
+<div class="user-followers" ng-class="{'hidden-block_profile': varInfoArr[2]==false, 'visible-block_profile': varInfoArr[2]}">
+  <ul class="users-list  followers followers__userpage" >
+    <li ng-repeat="user in followers" ng-init="isSubscribe(user._id)" class="users-list_item user">
+      <img ng-click="goToUser(user.username)" ng-src="{{user.avatarUrl}}" alt="" class="user_img">
+      <div class="user_content">
+        <div ng-click="goToUser(user.username)" class="user_name">{{user.name}}</div>
+        <div ng-click="goToUser(user.username)" class="user_nickname">@{{user.username}}</div>
+        <div ng-hide="subscribed[user._id] || (user.username == currentUser.username)" class="pepo_btn user_subscribe" ng-click="subscribe(user.username, user._id)">+ Читать</div>
+        <div ng-show="subscribed[user._id]" class="pepo_btn user_unsubscribe" ng-click="unsubscribe(user.username, user._id)">Читаю</div>
+        <p class="user_description">{{user.description}}</p>
+
+        <ul class="user-info" ng-class="{'mg80' : user.username == currentUser.username}">
+          <li class="user-info_item">
+            <div class="user-info_number">{{user.statusesCount}}</div>
+            <div class="user-info_label">пепов</div>
+          </li>
+          <li class="user-info_item">
+            <div class="user-info_number">{{user.followingCount}}</div>
+            <div class="user-info_label">читаемых</div>
+          </li>
+          <li class="user-info_item">
+            <div class="user-info_number">{{user.followersCount}}</div>
+            <div class="user-info_label">читателей</div>
+          </li>
+        </ul>
+      </div>
+    </li>
+  </ul>
+  <div class="load-more-btn" ng-click="loadMoreFollowers()" ng-class="{'load-more-btn__progress': followersLoading}"></div>
 </div>
 
 </section>
