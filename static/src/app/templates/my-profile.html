@@ -126,7 +126,7 @@
         <div ng-show="subscribed[user._id]" class="pepo_btn user_unsubscribe" ng-click="unsubscribe(user.username, user._id)">Читаю</div>
         <p class="user_description">{{user.description}}</p>
 
-        <ul class="user-info">
+        <ul class="user-info" ng-class="{'mg80' : user.username == currentUser.username}">
           <li class="user-info_item">
             <div class="user-info_number">{{user.statusesCount}}</div>
             <div class="user-info_label">пепов</div>
@@ -159,7 +159,7 @@
         <div ng-show="subscribed[user._id]" class="pepo_btn user_unsubscribe" ng-click="unsubscribe(user.username, user._id)">Читаю</div>
         <p class="user_description">{{user.description}}</p>
 
-        <ul class="user-info">
+        <ul class="user-info" ng-class="{'mg80' : user.username == currentUser.username}">
           <li class="user-info_item">
             <div class="user-info_number">{{user.statusesCount}}</div>
             <div class="user-info_label">пепов</div>
