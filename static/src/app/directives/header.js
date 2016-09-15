@@ -77,7 +77,9 @@ pepo.directive('pepoHeader', function($rootScope, $auth, $location, pepsApi, use
 			    pepsApi.sendPep(newPep).$promise.then(function(data){
 			      	newPep._id = data._id;
 					newPep.createdAt = data.createdAt;
-			     	$scope.tweets.unshift(newPep);
+					if($location.url().slice(2) ==  $scope.currentUser.username || $location.url()=="/feed"){
+			     		$scope.tweets.unshift(newPep);
+			     	}
 			     	$document.scrollTop(0, 300);
 			    })
 			    .catch(function(err) {

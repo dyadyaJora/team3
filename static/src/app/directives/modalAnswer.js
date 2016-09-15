@@ -54,7 +54,7 @@ angular.module('pepo').directive('modalAnswer', function($rootScope, $auth, $loc
       pepsApi.sendPep(newPep).$promise.then(function(data){
         newPep._id = data._id;
         newPep.createdAt = data.createdAt;
-        if($scope.tweets!=undefined){
+        if($scope.tweets!=undefined && ($location.url().slice(2) ==  $scope.currentUser.username || $location.url()=="/feed")){
           $scope.tweets.unshift(newPep);
         }
         if($scope.currentTweet!=undefined && newPep.parent==$scope.currentTweet._id){
