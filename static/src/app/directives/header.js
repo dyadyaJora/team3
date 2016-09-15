@@ -62,6 +62,7 @@ pepo.directive('pepoHeader', function($rootScope, $auth, $location, pepsApi, use
 			}
 			$scope.closeModalSend = function(){
 				$scope.varNewpep='';
+				$scope.closeEmoji();
           		body.removeClass('no-scroll')
 			}
 			$scope.publishNewpep = function() {
