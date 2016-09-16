@@ -18,6 +18,11 @@
       </header>
 
       <section class="single-tweet-content">
+        <div class="link-preview_block parent-link clearfix" ng-show="parent.link">
+            <img ng-src="{{parent.link.image}}" class="link-preview_img">
+            <h2 class=""><a href="{{parent.link.url}}" class="link-header" target="_blank">{{parent.link.title}}</a></h2>
+            <span>{{parent.link.description}}</span>
+          </div>
         <p ng-bind-html="parent.text | emoticons" class="single-tweet-content_text"></p>
       </section>
     </div>
