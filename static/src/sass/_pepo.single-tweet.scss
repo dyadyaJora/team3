@@ -231,6 +231,7 @@
     border: 1px solid #e5e5e5;
     padding: 5px;
     border-radius: 10px;
+    background: #f7f6f4;
     .link-preview_img{
       float: left;
       width: 40%;
@@ -239,15 +240,7 @@
     .link-preview_title{
       font-size: 36px;
     }
-  }
-  .parent-link{
-    .link-preview_img{
-      width: 30%;
     }
-    .link-preview_title{
-      font-size: 20px;
-    }
-  }
     .tweet-content_text{
     overflow:visible;
     a {
