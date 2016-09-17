@@ -45,7 +45,7 @@
 	      <header class="pepo-modal-top pepo-modal-top__mod ">Новый Pep </header>
 	      <section class="tweet-type_answer">
 	        <div class="tweet-textarea_answer">
-	          <textarea ng-model="newPepText" tabindex="1" autofocus id="tt" ng-focus="closeEmoji()">
+	          <textarea limit-to="140" ng-model="newPepText" tabindex="1" autofocus id="tt" ng-focus="closeEmoji()">
 	          </textarea>
 	        </div>
 	        <div class="tweet-buttons-block_answer">
@@ -65,6 +65,7 @@
                     <input type="file" name="file">
                 </label>
             </div>
+            <div class="counter-limit-to">{{t}}</div>
 	          <div class="tweet-btn_send pepo_btn pepo_btn__answer" ng-click="publishNewpep()">Добавить pep</div>
 	        </div>
 	      </section>

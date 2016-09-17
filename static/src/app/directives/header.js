@@ -41,7 +41,10 @@ pepo.directive('pepoHeader', function($rootScope, $auth, $location, pepsApi, use
 			    $scope.varEdit1 = [];
 			    $scope.varNewpep = true;
 			   	$scope.newPepText = "";
-			  	$scope.pep = $scope.tweets[id];
+			  	$scope.t = "";
+			  	if($scope.tweets){
+			  		$scope.pep = $scope.tweets[id];
+			  	}
 		        }
 
 			$scope.openNewpepDel = function(index, id) {
