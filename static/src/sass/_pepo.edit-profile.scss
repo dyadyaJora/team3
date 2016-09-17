@@ -59,6 +59,7 @@ $sizeIconUpload: 24px;
       left: 50%;
       transform:translateX(-50%);
       color: white;
+      width: 120px;
     }
     .user-edit-img_text{
       position: absolute;
@@ -66,6 +67,7 @@ $sizeIconUpload: 24px;
       left: 50%;
       transform:translateX(-50%);
       color: white;
+      width: 120px;
     }
   }
   &:hover{
@@ -218,6 +220,10 @@ $sizeIconUpload: 24px;
   font-size: 13px;
   text-align: center;
   margin-top: 16px;
+}
+
+.title-padd{
+  padding: 0 15px;
 }
 @media only screen and (max-width: $mobileWidth) {
   .user-edit_img-wrapper{
