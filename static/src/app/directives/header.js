@@ -69,6 +69,7 @@ pepo.directive('pepoHeader', function($rootScope, $auth, $location, pepsApi, use
           		body.removeClass('no-scroll')
 			}
 			$scope.publishNewpep = function() {
+				if($scope.hLinkLenght > $scope.limit) return;
 				newPep = {
 				    text: $scope.newPepText,
 					location: currentLocation,
