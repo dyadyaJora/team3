@@ -50,6 +50,7 @@ pepo.controller('feedCtrl', function($rootScope, $q, $location, $auth, $scope, u
 
   $scope.editAnim = [];
   $scope.editPep = function(){
+    if($scope.hLinkLenght > $scope.limit || $scope.hLinkLenght == 0) return;
     $scope.emojiOpen = false;
     if ($scope.tweets[$scope.editIndex].text == $scope.editPepText) {
       $scope.varEdit1 = [];

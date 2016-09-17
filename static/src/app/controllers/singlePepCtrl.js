@@ -67,6 +67,7 @@ pepo.controller('singlePepCtrl', function($location, $scope, pepsApi, userApi, u
 
   $scope.editAnim = [];
   $scope.editMainPep = function(){
+    if($scope.hLinkLenght > $scope.limit || $scope.hLinkLenght == 0) return;
     $scope.emojiOpen = false;
     if ($scope.currentTweet.text == $scope.editPepText) {
       $scope.varEdit1 = [];
@@ -90,6 +91,7 @@ pepo.controller('singlePepCtrl', function($location, $scope, pepsApi, userApi, u
   }
 
   $scope.editPep = function(){
+    if($scope.hLinkLenght > $scope.limit || $scope.hLinkLenght == 0) return;
     $scope.emojiOpen = false;
     if ($scope.currentTweet.children[$scope.editIndex].text == $scope.editPepText) {
       $scope.varEdit1 = [];

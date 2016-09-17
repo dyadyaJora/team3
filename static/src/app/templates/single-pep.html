@@ -48,6 +48,8 @@
         <div class="hidden-block_edit tweet-content_text" ng-class="{'visible-block__edit': varEdit1[-1]}">
           <textarea ng-model="editPepText" class="pepo_textinput pep-text_edit"></textarea>
           <ul class="actions-btn-block">
+            <div class="counter-limit-to" ng-class="{'counter-limit-red' : hLinkLenght > limit}">{{lengthWithoutLink(editPepText)}} /{{ limit}}
+            </div>
             <li class="actions-btn-block_item">
               <div ng-click="varEdit1[-1]=''; 
               emojiOpen = false;" class="pepo_btn actions-btn-cancel_item">Отменить</div>
@@ -129,6 +131,8 @@
           <div class="hidden-block_edit tweet-content_text" ng-class="{'visible-block__edit': varEdit1[$index]}">
             <textarea ng-model="$parent.editPepText" class="pepo_textinput pep-text_edit"></textarea>
             <ul class="actions-btn-block">
+              <div class="counter-limit-to" ng-class="{'counter-limit-red' : hLinkLenght > limit}">{{lengthWithoutLink($parent.editPepText)}} /{{ limit}}
+              </div>
               <li class="actions-btn-block_item">
                 <div ng-click="varEdit1[$index]=''" class="pepo_btn actions-btn-cancel_item">Отменить</div>
               </li>
