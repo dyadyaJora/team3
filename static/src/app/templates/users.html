@@ -5,17 +5,17 @@
   </div>
 
   <div class="pepo-info">
-    <div class="pepo-info_text">Найдено {{users.length}} пеповчан</div>
+    <div class="pepo-info_text">Найдено {{totalUsers}} пеповчан</div>
   </div>
 
   <ul class="users-list">
-    <li ng-repeat="user in users" ng-init="isSubscribe(user._id)" class="users-list_item user">
+    <li ng-repeat="user in users" ng-init="isSubscribe(user)" class="users-list_item user">
       <img ng-click="goToUser(user.username)" ng-src="{{user.avatarUrl}}" alt="" class="user_img">
       <div class="user_content">
         <div ng-click="goToUser(user.username)" class="user_name">{{user.name}}</div>
         <div ng-click="goToUser(user.username)" class="user_nickname">@{{user.username}}</div>
-        <div ng-hide="subscribed[user._id] || (user.username == curUser.username)" class="pepo_btn user_subscribe" ng-click="subscribe(user.username, user._id)">+ Читать</div>
-        <div ng-show="subscribed[user._id] " class="pepo_btn user_unsubscribe" ng-click="unsubscribe(user.username, user._id)">Читаю</div>
+        <div ng-hide="subscribed[user._id] || (user.username == curUser.username)" class="pepo_btn user_subscribe" ng-click="subscribe(user)">+ Читать</div>
+        <div ng-show="subscribed[user._id] " class="pepo_btn user_unsubscribe" ng-click="unsubscribe(user)">Читаю</div>
         <p class="user_description">{{user.description}}</p>
 
         <ul class="user-info" ng-class="{'mg80' : user.username == curUser.username}">
@@ -24,7 +24,7 @@
             <div class="user-info_label">пепов</div>
           </li>
           <li class="user-info_item">
-            <div class="user-info_number">{{user.followingCount}}</div>
+            <div class="user-info_number">{{ user._id == curUser._id? curUser.followingCount : user.followingCount}}</div>
             <div class="user-info_label">читаемых</div>
           </li>
           <li class="user-info_item">

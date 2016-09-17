@@ -18,29 +18,34 @@ pepo.controller('usersCtrl', function($location, $scope, usersApi, userApi, debo
   function getUsers() {
     usersApi.getUsers().$promise.then(function(data) {
       $scope.users = data.users;
+      $scope.totalUsers = data.totalCount;
     }).catch(function(eror){
       console.log(eror);
     });
   }
 
-  $scope.isSubscribe = function(userId) {
+  $scope.isSubscribe = function(user) {
     console.log('init');
     $scope.currentUser.following.some(function(followingUser) {
-      if(followingUser === userId) {
-        $scope.subscribed[userId] = true;
+      if(followingUser === user._id) {
+        $scope.subscribed[user._id] = true;
       }
     });
   }
 
-  $scope.subscribe = function(username, userId) {
-    usersApi.followUser({username: username}).$promise.then(function(){
-       $scope.subscribed[userId] = true;
+  $scope.subscribe = function(user) {
+    usersApi.followUser({username: user.username}).$promise.then(function(){
+       $scope.subscribed[user._id] = true;
+       user.followersCount++;
+       $scope.curUser.followingCount++;
     })
   }
 
-  $scope.unsubscribe = function(username, userId) {
-    usersApi.unfollowUser({username: username}).$promise.then(function(){
-       $scope.subscribed[userId] = false;
+  $scope.unsubscribe = function(user) {
+    usersApi.unfollowUser({username: user.username}).$promise.then(function(){
+       $scope.subscribed[user._id] = false;
+       user.followersCount--;
+       $scope.curUser.followingCount--;
     })
   }
 
