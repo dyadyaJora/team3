@@ -2,7 +2,6 @@ pepo.controller('feedCtrl', function($rootScope, $q, $location, $auth, $scope, u
   $scope.newPepText = '';
   currentLocation = [];
   totalPeps = 0;
-  moment.locale('ru');
   navigator.geolocation.getCurrentPosition(show_map);
 
   pepoSocket.on('feed', function (data) {

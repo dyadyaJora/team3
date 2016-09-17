@@ -1,6 +1,5 @@
 pepo.controller('singlePepCtrl', function($location, $scope, pepsApi, userApi, usersApi, MOCKTWEETS) {
 
-  moment.locale('ru');
   currentLocation = [];
   navigator.geolocation.getCurrentPosition(show_map);
 

@@ -46,4 +46,6 @@ window.pepo = angular.module('pepo', ['ngRoute', 'ngResource', 'satellizer', 'ym
       optionalUrlParams: ['display'],
       display: 'mobile'
     });
+
+    moment.locale('ru');
   });
