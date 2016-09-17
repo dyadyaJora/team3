@@ -50,15 +50,20 @@
       </header>
 
       <section class="tweet-content">
+        <div class="link-preview_block clearfix" ng-show="tweet.link">
+          <img ng-src="{{tweet.link.image}}" class="link-preview_img">
+          <h2 class="link-preview_title"><a href="{{tweet.link.url}}" class="link-header" target="_blank">{{tweet.link.title}}</a></h2>
+          <span>{{tweet.link.description}}</span>
+        </div>
         <p ng-bind-html="tweet.text | emoticons" class="tweet-content_text" ng-class="{'novisible-block__edit': varEdit1[$index], 'anim': editAnim[$index]}"></p>
         <div class="hidden-block_edit tweet-content_text" ng-class="{'visible-block__edit': varEdit1[$index]}">
           <textarea ng-model="$parent.editPepText" class="pepo_textinput pep-text_edit"></textarea>
           <ul class="actions-btn-block">
             <li class="actions-btn-block_item">
-            <div ng-click="varEdit1[$index]=''" class="pepo_btn actions-btn-cancel_item">Отменить</div>
+              <div ng-click="varEdit1[$index]=''" class="pepo_btn actions-btn-cancel_item">Отменить</div>
             </li>
             <li class="actions-btn-block_item">
-            <div ng-click="editPep()" class="pepo_btn actions-btn-save_item">Сохранить</div>
+              <div ng-click="editPep()" class="pepo_btn actions-btn-save_item">Сохранить</div>
             </li>
             <li class="actions-btn-block_item">
               <div class="emoji-wrapper">
@@ -72,9 +77,9 @@
                </div>
              </div>
            </li>
-          </ul>
-        </div>
-      </section>
+         </ul>
+       </div>
+     </section>
 
       <footer class="tweet-footer">
         <ul class="tweet-actions">
