@@ -42,6 +42,7 @@ angular.module('pepo').directive('modalAnswer', function($rootScope, $auth, $loc
        }
      }
      $scope.sendPep = function() {
+      if($scope.hLinkLenght > $scope.limit || $scope.hLinkLenght == 0) return;  
       newPep = {
         location: currentLocation,
         parent: $scope.pep._id,
