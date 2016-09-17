@@ -1,6 +1,6 @@
 <pepo-header></pepo-header>
 <section class="page-container">
-  <h1 class="pepo-title">Edit profile:</h1>
+  <h1 class="pepo-title title-padd">Редактировать профиль:</h1>
 
   <form name="editProfileForm">
     <ul class="user-edit">
@@ -11,19 +11,19 @@
         <div class="user-edit_img-wrapper">
           <img ng-src="{{user.avatarUrl}}"  alt="{{user.name}}"  ng-click="openModalEditPhoto()" class="user-edit_img">
             <div class="user-edit-img_hover">
-                <span class="user-edit-img_text">Edit Photo</span>
-                <span class="user-edit-img_text__mobile">tab for edit</span>
+                <span class="user-edit-img_text">Изменить фото</span>
+                <span class="user-edit-img_text__mobile">выбрать фото</span>
             </div>
         </div>
-        <div class="new-avatar-tip" ng-show="newAvatarName">New avatar: {{newAvatarName}}</div>
+        <div class="new-avatar-tip" ng-show="newAvatarName">Новый аватар: {{newAvatarName}}</div>
 
       <li class="user-edit_item">
         <textarea class="pepo_textinput user-edit_description" ng-model="user.description"></textarea>
 
       <li class="user-edit_item user-edit_item__nosepation">
-        <div ng-click="updateUser()" class="pepo_btn user-edit_save" ng-class="{'user-edit_save__disabled': formPristine}">Save changes</div>
+        <div ng-click="updateUser()" class="pepo_btn user-edit_save" ng-class="{'user-edit_save__disabled': formPristine}">Сохранить</div>
       <li class="user-edit_item">
-        <div ng-click="editCancel()" class="pepo_btn user-edit_cancel">Cancel</div>
+        <div ng-click="editCancel()" class="pepo_btn user-edit_cancel">Отменить</div>
     </ul>
   </form>
 
@@ -35,7 +35,7 @@
         <div class="modal-edit-user-photo_close" ng-click="closeModalEditPhoto()"></div>
             <label>
                 <span class="icon-upload"></span>
-                <span class="text-upload">Upload photo</span>
+                <span class="text-upload">Загрузить фото</span>
                     <input type="file" name="upload-user-photo" avatar-load="userEdit.avatar">
             </label>
     </div>
