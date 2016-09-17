@@ -149,6 +149,11 @@
     }
   }
 }
+.actions-btn-block{
+  li.actions-btn-block_item:nth-child(3){
+    margin: 0;
+  }
+}
 .tweet-actions_item__likes .tweet-actions_icon {
   background: url(../img/icon-like.svg)no-repeat center;
 }

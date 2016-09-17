@@ -18,6 +18,7 @@ angular.module('pepo').directive('modalAnswer', function($rootScope, $auth, $loc
         $scope.pep = $scope.tweets[id];
         $scope.emojiOpen = false;
         $scope.newPepText = "";
+        $scope.t = "";
        }
       $scope.openModalAns = function (tweet){
         $scope.varDel = false;
