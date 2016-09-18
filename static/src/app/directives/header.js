@@ -1,5 +1,4 @@
-/* global pepo, angular */
-pepo.directive('pepoHeader', function($rootScope, $auth, $location, pepsApi, userApi,feedApi, $document) {
+pepo.directive('pepoHeader', function($rootScope, $auth, $location, pepsApi, userApi, feedApi, $document) {
   return {
     restrict: 'E',
     replace: false,
@@ -25,7 +24,7 @@ pepo.directive('pepoHeader', function($rootScope, $auth, $location, pepsApi, use
 
       $scope.closeSlideMenu = function($event) {
         var click = angular.element($event.target);
-        if(click.hasClass('slide-effect_bg') || click.hasClass('cancel-menu_btn')) {
+        if (click.hasClass('slide-effect_bg') || click.hasClass('cancel-menu_btn')) {
           $scope.menuOpened = false;
           body.removeClass('no-scroll');
         }
@@ -39,82 +38,91 @@ pepo.directive('pepoHeader', function($rootScope, $auth, $location, pepsApi, use
 
       $scope.varNewpep = false;
       $scope.varDel = false;
+      $scope.openNewpep = function() {
+        body.addClass('no-scroll');
+      };
+
+      $scope.varNewpep = false;
+      $scope.varDel = false;
+
       $scope.openNewpep = function(id) {
         body.addClass('no-scroll');
-			};
+        $scope.varEdit1 = [];
+        $scope.varNewpep = true;
+        $scope.newPepText = '';
+        $scope.t = '';
+        if ($scope.tweets) {
+          $scope.pep = $scope.tweets[id];
+        }
+      };
 
-			$scope.varNewpep = false;
-			$scope.varDel = false;
-			$scope.openNewpep = function(id) {
-        		body.addClass('no-scroll');
-			    $scope.varEdit1 = [];
-			    $scope.varNewpep = true;
-			   	$scope.newPepText = "";
-			  	$scope.t = "";
-			  	if($scope.tweets){
-			  		$scope.pep = $scope.tweets[id];
-			  	}
-		        }
+      $scope.openNewpepDel = function(index, id) {
+        $scope.varEdit1 = [];
+        $scope.varDel = true;
+        $scope.pep = $scope.tweets[index];
+        $scope.delIndex = index;
+        $scope.delId = id;
+      };
 
-			$scope.openNewpepDel = function(index, id) {
-				    $scope.varEdit1 = [];
-				    $scope.varDel = true;
-				  	$scope.pep = $scope.tweets[index];
-				    $scope.delIndex = index;
-				    $scope.delId = id;
-				}
+      $scope.closeNewpepAnswer = function($event) {
+        var click = angular.element($event.target).parent();
+        if (click.hasClass('modal-fade-screen')) {
+          $scope.varNewpep = false;
+          $scope.varDel = false;
+          body.removeClass('no-scroll');
+        }
+      };
 
-			$scope.closeNewpepAnswer = function($event){
-				var click = angular.element($event.target).parent();
-				if(click.hasClass("modal-fade-screen")){
-					$scope.varNewpep=false;
-					$scope.varDel=false;
-          			body.removeClass('no-scroll')
-				}
-			}
-			$scope.closeModalSend = function(){
-				$scope.varNewpep='';
-				$scope.closeEmoji();
-          		body.removeClass('no-scroll')
-			}
-			$scope.publishNewpep = function() {
-				if($scope.hLinkLenght > $scope.limit || $scope.hLinkLenght == 0) return;
-				newPep = {
-				    text: $scope.newPepText,
-					location: currentLocation,
-				    owner: {
-				        name: $scope.currentUser.name,
-				        username: $scope.currentUser.username,
-						thumbUrl: $scope.currentUser.thumbUrl
-    				}
-				}
-			    pepsApi.sendPep(newPep).$promise.then(function(data){
-			      	newPep._id = data._id;
-					newPep.createdAt = data.createdAt;
-					if($location.url().slice(2) ==  $scope.currentUser.username || $location.url()=="/feed"){
-			     		$scope.tweets.unshift(newPep);
-			     	}
-			     	$document.scrollTop(0, 300);
-			    })
-			    .catch(function(err) {
-			      console.log(err);
-			    })
-			    $scope.varNewpep = false;
-			    $scope.closeModalSend();
-			}
-			$scope.varInf = false;
-			$scope.openInfNewPeps = function() {
+      $scope.closeModalSend = function() {
+        $scope.varNewpep = '';
+        $scope.closeEmoji();
+        body.removeClass('no-scroll');
+      };
+
+      $scope.publishNewpep = function() {
+        if ($scope.hLinkLenght > $scope.limit || $scope.hLinkLenght == 0) {
+          return;
+        }
+
+        var newPep = {
+          text: $scope.newPepText,
+          location: currentLocation,
+          owner: {
+            name: $scope.currentUser.name,
+            username: $scope.currentUser.username,
+            thumbUrl: $scope.currentUser.thumbUrl
+          }
+        };
+
+        pepsApi.sendPep(newPep).$promise
+          .then(function(data) {
+            newPep._id = data._id;
+            newPep.createdAt = data.createdAt;
+
+            if ($location.url().slice(2) == $scope.currentUser.username || $location.url() == '/feed') {
+              $scope.tweets.unshift(newPep);
+            }
+
+            $document.scrollTop(0, 300);
+          });
+
+        $scope.varNewpep = false;
+        $scope.closeModalSend();
+      };
+
+      $scope.varInf = false;
+      $scope.openInfNewPeps = function() {
         $rootScope.$broadcast('morePeapsLoaded', $scope.newPeps);
         $scope.varInf = !$scope.varInf;
       };
 
-      $rootScope.$on('recieveBySocket', function(ev, data){
+      $rootScope.$on('recieveBySocket', function(ev, data) {
         $scope.newPeps = 0;
         $scope.currentUser.following.forEach(function(id) {
           data.forEach(function(pepOwnerId) {
-            if(pepOwnerId === id) {
+            if (pepOwnerId === id) {
               $scope.newPeps++;
-              if(!$scope.varInf) {
+              if (!$scope.varInf) {
                 $scope.varInf = true;
               }
             }
