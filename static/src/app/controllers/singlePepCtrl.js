@@ -18,6 +18,8 @@ pepo.controller('singlePepCtrl', function($location, $scope, pepsApi, userApi, u
     $scope.currentTweet = data;
     $scope.parent = $scope.currentTweet.parent;
     checkFollow();
+  }).catch(function(err){
+    $location.path('/not-found-pep');
   });
 
   $scope.isOwner = function(user, tweetOwner) {
