@@ -56,3 +56,18 @@
       </div>
     </div>
 </div>
+
+<div class="modal">
+  <div class="modal-fade-screen" ng-class="{'modal-answer__active': isVisible() == -1}">
+  <div class="modal-wrapper" ng-click="closeMesModal_bg($event)">
+    <div class="modal-inner">
+      <div class="modal-close" ng-click="closeMesModal()"></div>
+      <header class="pepo-modal-top">Ошибка</header>
+      <section class="pepo-modal-text">Введенные данные недопустимы!<br>Проверьте их и повторите операцию</section>
+      <footer class="pepo-modal-footer">
+        <div class="pepo_btn pepo_btn__answer pepo_btn__error" ng-click="closeMesModal()">ОК</div>
+      </footer>
+      </div>
+      </div>
+    </div>
+</div>

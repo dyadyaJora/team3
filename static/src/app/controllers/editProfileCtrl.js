@@ -40,6 +40,8 @@ pepo.controller('editProfileCtrl', function ($rootScope, $q, $route, $location, 
         $rootScope.success = 1;
       })
       .catch(function(err) {
+        console.log(err);
+        $rootScope.success = -1;
         throw new Error('updateUser: editProfileCtrl.js');
       })
     };

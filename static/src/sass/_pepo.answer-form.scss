@@ -160,6 +160,12 @@
   .pepo-modal-text, .pepo-modal-footer{
     padding: 10px 25px;
   }
+  .pepo_btn__error{
+    background: #f00;
+    &:hover{
+      background: #e03636;
+    }
+  }
   .modal-state:checked + .modal-fade-screen {
     opacity: 1;
     visibility: visible;
