@@ -1,0 +1,30 @@
+.not-found__wrapper{
+	@include pad();
+	padding-top:50px;
+	@include outer-container;
+}
+.not-found_img-block{
+	@include span-columns(4);
+	.not-found_img{
+		width: 100%;
+	}
+}
+.not-found_text-block{
+	@include span-columns(8);
+}
+.not-found_error-text{
+	text-align: center;
+	a{
+		color: $colorLinks;
+		text-decoration: underline;
+	}
+}
+@media screen and (max-width:$mobileWidth){
+	.not-found_text-block{
+		@include span-columns(12);
+	}
+	.not-found_img-block{
+		@include span-columns(8);
+		@include shift(2);
+	}
+}
