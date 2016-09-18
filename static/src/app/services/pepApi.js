@@ -11,10 +11,7 @@ pepo.service('pepsApi', function($resource) {
       }
     },
     sendPep: {
-      method: 'POST',
-      params: {
-        pepData: '@pepData'
-      }
+      method: 'POST'
     },
     deletePep: {
       method: 'DELETE',

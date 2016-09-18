@@ -1,4 +1,4 @@
-pepo.directive('pepoHeader', function($rootScope, $auth, $location, pepsApi, userApi, feedApi, $document) {
+pepo.directive('pepoHeader', function($rootScope, $auth, $location, pepsApi, userApi, feedApi, $document, imageUpload) {
   return {
     restrict: 'E',
     replace: false,
@@ -80,25 +80,20 @@ pepo.directive('pepoHeader', function($rootScope, $auth, $location, pepsApi, use
       };
 
       $scope.publishNewpep = function() {
-        if ($scope.hLinkLenght > $scope.limit || $scope.hLinkLenght == 0) {
+        if (!$scope.newPepText || $scope.hLinkLenght > $scope.limit) {
           return;
         }
 
         var newPep = {
           text: $scope.newPepText,
-          location: currentLocation,
-          owner: {
-            name: $scope.currentUser.name,
-            username: $scope.currentUser.username,
-            thumbUrl: $scope.currentUser.thumbUrl
-          }
+          location: currentLocation
         };
 
         pepsApi.sendPep(newPep).$promise
-          .then(function(data) {
-            newPep._id = data._id;
-            newPep.createdAt = data.createdAt;
-
+          .then(function(newPep) {
+            return imageUpload(newPep, $scope.file);
+          })
+          .then(function(newPep) {
             if ($location.url().slice(2) == $scope.currentUser.username || $location.url() == '/feed') {
               $scope.tweets.unshift(newPep);
             }
