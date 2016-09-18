@@ -1,4 +1,5 @@
 <pepo-header></pepo-header>
+
 <section class="page-container">
   <h1 class="pepo-title title-padd">Редактировать профиль:</h1>
 
@@ -41,3 +42,17 @@
     </div>
 </div>
 
+<div class="modal">
+  <div class="modal-fade-screen" ng-class="{'modal-answer__active': isVisible() == 1}">
+  <div class="modal-wrapper" ng-click="closeMesModal_bg($event)">
+    <div class="modal-inner">
+      <div class="modal-close" ng-click="closeMesModal()"></div>
+      <header class="pepo-modal-top">Информация</header>
+      <section class="pepo-modal-text">Данные успешно сохранены!</section>
+      <footer class="pepo-modal-footer">
+        <div class="pepo_btn pepo_btn__answer" ng-click="closeMesModal()">ОК</div>
+      </footer>
+      </div>
+      </div>
+    </div>
+</div>

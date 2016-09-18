@@ -157,7 +157,9 @@
       }
     }
   }
-
+  .pepo-modal-text, .pepo-modal-footer{
+    padding: 10px 25px;
+  }
   .modal-state:checked + .modal-fade-screen {
     opacity: 1;
     visibility: visible;
