@@ -18,6 +18,7 @@ angular.module('pepo').directive('modalAnswer', function($rootScope, $auth, $loc
         $scope.pep = $scope.tweets[id];
         $scope.emojiOpen = false;
         $scope.newPepText = "";
+        $scope.t = "";
        }
       $scope.openModalAns = function (tweet){
         $scope.varDel = false;
@@ -41,6 +42,7 @@ angular.module('pepo').directive('modalAnswer', function($rootScope, $auth, $loc
        }
      }
      $scope.sendPep = function() {
+      if($scope.hLinkLenght > $scope.limit || $scope.hLinkLenght == 0) return;  
       newPep = {
         location: currentLocation,
         parent: $scope.pep._id,

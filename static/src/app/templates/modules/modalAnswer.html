@@ -13,7 +13,7 @@
             <div ng-click="goToUser(pep.owner.username)" class="tweet-header_user-login">@{{pep.owner.username}}</div>
           </div>
         </div>
-        <div class="tweet-header_date" ng-click="goToPep(pep._id)">{{pep.createdAt}}</div>
+        <div class="tweet-header_date" am-time-ago="pep.createdAt" ng-click="goToPep(pep._id)"></div>
       </header>
 
 
@@ -45,7 +45,7 @@
                     <input type="file" name="file">
                 </label>
             </div>
-              <div class="counter-limit-to">{{t}}</div>
+              <div class="counter-limit-to" ng-class="{'counter-limit-red' : hLinkLenght > limit}">{{lengthWithoutLink(newPepText)}} /{{ limit}}</div>
               <div class="pepo_btn pepo_btn__answer pepo_btn_mg" ng-click="sendPep()">Ответить</div>
              
         </div>
