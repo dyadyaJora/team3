@@ -37,8 +37,10 @@ pepo.controller('editProfileCtrl', function ($rootScope, $q, $route, $location, 
       var uploadUrl = '/api/user';
       multipartForm.patch(uploadUrl, $scope.userEdit).then(function(data){
         $route.reload();
+        $rootScope.success = 1;
       })
       .catch(function(err) {
+        $rootScope.success = -1;
         throw new Error('updateUser: editProfileCtrl.js');
       })
     };
@@ -55,5 +57,24 @@ pepo.controller('editProfileCtrl', function ($rootScope, $q, $route, $location, 
     $scope.closeModalEditPhoto = function () {
         $scope.varOpenEditPhoto = false;
         body.removeClass('no-scroll')
+    }
+
+    $scope.isVisible = function () {
+      if($rootScope.success){
+        body.addClass('no-scroll');
+      }
+      return $rootScope.success;
+    }
+
+    $scope.closeMesModal = function () {
+      body.removeClass('no-scroll');
+      $rootScope.success = undefined;
+    }
+
+    $scope.closeMesModal_bg = function($event){
+      var click = angular.element($event.target).parent();
+      if(click.hasClass("modal-fade-screen")){
+        $scope.closeMesModal();
+      }
     }
 });
