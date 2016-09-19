@@ -1,4 +1,4 @@
-pepo.controller('loginCtrl', function($location, $q, $scope, $auth, userApi){
+pepo.controller('loginCtrl', function($location, $q, $scope, $auth, userApi, $rootScope){
   console.log('loginCtrl');
 
   if ($auth.isAuthenticated()) {$location.path('/feed')}
@@ -12,6 +12,7 @@ pepo.controller('loginCtrl', function($location, $q, $scope, $auth, userApi){
             break;
 
           case 201:
+            $rootScope.firstLogin = true;
             $location.path('/edit-profile');
             break;
 
