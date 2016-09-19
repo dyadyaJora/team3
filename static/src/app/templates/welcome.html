@@ -1,5 +1,65 @@
 <pepo-header></pepo-header>
 <modal-answer></modal-answer>
 <section class="page-container">
-	Welcome
+	<div class="pepo-title welcome_title">
+		Добро пожаловать в ПЕПО, {{currentUser.username}}!
+		<br>
+		У нас вы можете:
+	</div>
+	<ul class="users-list">
+    <li class="users-list_item user welcome_item">
+      <img src="./build/img/welcome_1.png" alt="" class="welcome_img">
+      <div class="welcome_content">
+        <div class="welcome_item-title">Писать свои пепы</div>        
+        <p class="welcome_item-description">Можно делиться своими сообщениями, прикреплять картинки и чекиниться
+        </p>	
+        <a href="#/@{{currentUser.username}}" class="pepo_btn pepo_btn__answer welcome_btn">Начать >></a>	
+      </div>
+    </li>
+    <li class="users-list_item user welcome_item">
+      <img src="./build/img/welcome_2.png" alt="" class="welcome_img">
+      <div class="welcome_content">
+        <div class="welcome_item-title">Искать интересные страницы</div>        
+        <p class="welcome_item-description">Можно находить и подписываться на интересные страницы, а также на страницы своих друзей
+        </p>		
+        <a href="#/users" class="pepo_btn pepo_btn__answer welcome_btn">Начать >></a>
+      </div>
+    </li>
+    <li class="users-list_item user welcome_item">
+      <img src="./build/img/welcome_3.png" alt="" class="welcome_img">
+      <div class="welcome_content">
+        <div class="welcome_item-title">Быть в курсе новостей</div>        
+        <p class="welcome_item-description">Подписывайтесь на страницы других пользователей  и тогда вы всегда сожете найти их пепы на своей ленте
+        </p>	
+        <a href="#/feed" class="pepo_btn pepo_btn__answer welcome_btn">Начать >></a>
+      </div>
+    </li>
+    <li class="users-list_item user welcome_item">
+      <img src="./build/img/welcome_4.png" alt="" class="welcome_img">
+      <div class="welcome_content">
+        <div class="welcome_item-title">Редактировать профиль</div>        
+        <p class="welcome_item-description">Отредактируйте свою страничку так, чтобы вас могли найти ваши друзья 
+        </p>	
+        <a href="#/edit-profile" class="pepo_btn pepo_btn__answer welcome_btn">Начать >></a>
+      </div>
+    </li>
+    <li class="users-list_item user welcome_item">
+      <img src="./build/img/welcome_5.png" alt="" class="welcome_img">
+      <div class="welcome_content">
+        <div class="welcome_item-title">Реагировать на чужие пепы</div>        
+        <p class="welcome_item-description">Вы можете лайкать и публиковать ответы на пепы всех пользователей
+        </p>
+        <a href="#/pep0" class="pepo_btn pepo_btn__answer welcome_btn">Начать >></a>		
+      </div>
+    </li>
+    <li class="users-list_item user welcome_item">
+      <img src="./build/img/welcome_6.png" alt="" class="welcome_img">
+      <div class="welcome_content">
+        <div class="welcome_item-title">Читать популярное</div>        
+        <p class="welcome_item-description">С нами вы будете в курсе популярных новостей ;)
+        </p>	
+        <a href="#/feed" class="pepo_btn pepo_btn__answer welcome_btn">Начать >></a>
+      </div>
+    </li>
+  </ul>
 </section>
