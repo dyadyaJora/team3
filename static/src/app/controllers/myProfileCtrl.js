@@ -14,6 +14,8 @@ pepo.controller('myProfileCtrl', function($location, $auth, $scope, userApi, use
     usersApi.getUser({username: currentUserId}).$promise.then(function(data) {
       $scope.currentPageUser = data;
     checkFollow();
+  }).catch(function(err){
+    $location.path('/not-found-user');
   });
   };
   getUser();

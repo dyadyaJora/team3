@@ -29,6 +29,10 @@ window.pepo = angular.module('pepo', ['ngRoute', 'ngResource', 'satellizer', 'ym
           templateUrl: './build/templates/users.html',
           controller: 'usersCtrl'
       })
+      .when('/not-found-:page', {
+          templateUrl: './build/templates/not-found.html',
+          controller: 'notFoundCtrl'
+      })
       .otherwise({redirectTo: '/'});
 
     $authProvider.facebook({
