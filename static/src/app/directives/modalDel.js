@@ -40,6 +40,7 @@ angular.module('pepo').directive('modalDel', function($rootScope, $auth, $locati
 				});
 				body.removeClass('no-scroll');
 				if($scope.totalPeps != undefined) $scope.totalPeps--;
+				if($location.path()[1] && $scope.currentPageUser.username == $scope.currentUser.username) $scope.currentPageUser.statusesCount--;
 			}
 
 		}
