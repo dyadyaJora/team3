@@ -36,8 +36,12 @@ pepo.controller('editProfileCtrl', function ($rootScope, $q, $route, $location, 
       $scope.userEdit.description = $scope.user.description;
       var uploadUrl = '/api/user';
       multipartForm.patch(uploadUrl, $scope.userEdit).then(function(data){
-        $route.reload();
-        $rootScope.success = 1;
+        if($rootScope.firstLogin){
+          $location.path('/welcome');
+        } else{
+          $route.reload();
+          $rootScope.success = 1;
+        }
       })
       .catch(function(err) {
         $rootScope.success = -1;
@@ -46,7 +50,11 @@ pepo.controller('editProfileCtrl', function ($rootScope, $q, $route, $location, 
     };
 
     $scope.editCancel = function () {
-        $location.path('/feed');
+      if($rootScope.firstLogin){
+          $location.path('/welcome');
+        } else {
+          $location.path('/feed');
+        }
     };
 
     $scope.openModalEditPhoto = function () {

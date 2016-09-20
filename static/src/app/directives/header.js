@@ -4,6 +4,15 @@ pepo.directive('pepoHeader', function($rootScope, $auth, $location, pepsApi, use
 		replace: false,
 		templateUrl: '../build/templates/modules/header.html',
 		link: function($scope , $element, $attrs) {
+  			currentLocation = [];
+  			navigator.geolocation.getCurrentPosition(show_map);
+  			function show_map(position) {
+    			currentLocation.push(position.coords.latitude);
+    			currentLocation.push(position.coords.longitude);
+  			}
+			if($rootScope.firstLogin && $location.path()!='/edit-profile'){
+				$location.path('/welcome');
+			}
 			$scope.varHeightheader = document.getElementsByClassName('header')[0].clientHeight;
 
       var body = angular.element(document).find('body');
