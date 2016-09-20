@@ -7,7 +7,9 @@
     "start": "node ./bin/www",
     "test": "npm run test",
     "build": "./node_modules/.bin/gulp",
-    "build:dev": "./node_modules/.bin/gulp dev"
+    "build:dev": "./node_modules/.bin/gulp dev",
+    "lint:server": "./node_modules/.bin/eslint ./",
+    "lint:app": "./node_modules/.bin/eslint -c ./static/src/app/.eslintrc --no-ignore ./static/src/app/"
   },
   "repository": {
     "type": "git",
@@ -54,6 +56,7 @@
     "angular-scroll": "^1.0.0",
     "bourbon": "^4.2.7",
     "bourbon-neat": "^1.8.0",
+    "eslint": "^3.5.0",
     "gulp-autoprefixer": "^3.1.0",
     "gulp-concat": "^2.6.0",
     "gulp-imagemin": "^3.0.2",
