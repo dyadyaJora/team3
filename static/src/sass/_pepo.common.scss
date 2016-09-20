@@ -91,7 +91,10 @@ a {
     display: none;
   }
 }
-
+.pepo_link{
+  color: #008ace;
+  text-decoration: underline;
+}
 
 @media only screen and (max-width: $mobileWidth) {
   .page-container {

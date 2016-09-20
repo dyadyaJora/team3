@@ -39,6 +39,7 @@ angular.module('pepo').directive('modalDel', function($rootScope, $auth, $locati
 					$scope.varDel=false;
 				});
 				body.removeClass('no-scroll');
+				if($scope.totalPeps != undefined) $scope.totalPeps--;
 			}
 
 		}

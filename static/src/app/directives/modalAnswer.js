@@ -70,6 +70,7 @@ angular.module('pepo').directive('modalAnswer', function($rootScope, $auth, $loc
       $scope.varAnswer = false;
       body.removeClass('no-scroll');
       $scope.newPepText = '';
+      if($scope.totalPeps != undefined) $scope.totalPeps++;
     }
     $scope.toggleEmoji = function(emoji) {
       $scope.emojiOpen = !$scope.emojiOpen;
