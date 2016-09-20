@@ -116,6 +116,18 @@
         </yandex-map>
       </div>
     </li>
+    <li class="tweets_item empty-feed" ng-class="{'empty-feed_block' : currentPageUser.statusesCount==0 && currentPageUser.username==currentUser.username}">
+      <div class="welcome_item-title">Вы не написали ни одного пепа =(</div>
+      <div class="welcome_item-description">
+        Напишите свой первый пеп сейчас !!! <br>
+        <a class="pepo_link" ng-click="openNewpep(null)">Написать&gt;&gt;</a>
+      </div>
+    </li>
+    <li class="tweets_item empty-feed" ng-class="{'empty-feed_block' : currentPageUser.statusesCount==0 && currentPageUser.username!=currentUser.username}">
+      <div class="welcome_item-description">
+        @{{currentPageUser.username}} не опубликовал(а) ни одного пепа<br>
+      </div>
+    </li>
   </ul>
   <div class="load-more-btn" ng-click="loadMorePeps()" ng-class="{'load-more-btn__progress': pepsLoading}"></div>
 </div>
