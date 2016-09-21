@@ -1,6 +1,5 @@
 var express = require('express');
 var mongoose = require('mongoose');
-var config = require('../config');
 
 var router = express.Router();
 var Status = mongoose.model('Status');
