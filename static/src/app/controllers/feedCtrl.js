@@ -15,16 +15,12 @@ pepo.controller('feedCtrl', function($rootScope, $q, $location, $auth, $scope, u
   }
 
   function checkLoadMore() {
-    console.log($scope.tweets.length);
-    console.log($scope.totalPeps);
-    console.log('---------------')
     if ($scope.tweets.length >= $scope.totalPeps) {
       $scope.allPepsLoaded = true;
     }
   }
 
   feedApi.getFeed().$promise.then(function(data){
-    console.log(data);
     $scope.tweets = data.statuses;
     $scope.totalPeps = data.totalCount;
     checkLoadMore();
