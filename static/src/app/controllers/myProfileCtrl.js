@@ -1,6 +1,6 @@
-pepo.controller('myProfileCtrl', function($location, $auth, $scope, userApi, usersApi, pepsApi, MOCKTWEETS){
+pepo.controller('myProfileCtrl', function($location, $auth, $scope, userApi, usersApi, pepsApi){
   $scope.subscribed = [];
-  currentLocation = [];
+  var currentLocation = [], currentPep;
   navigator.geolocation.getCurrentPosition(show_map);
 
   // Get coordinates.
@@ -9,20 +9,19 @@ pepo.controller('myProfileCtrl', function($location, $auth, $scope, userApi, use
     currentLocation.push(position.coords.longitude);
   }
 
-  currentUserId = $location.path().slice(2);
+  var currentUserId = $location.path().slice(2);
   function getUser(){
     usersApi.getUser({username: currentUserId}).$promise.then(function(data) {
       $scope.currentPageUser = data;
-    checkFollow();
-  }).catch(function(err){
-    $location.path('/not-found-user');
-  });
-  };
+      checkFollow();
+    }).catch(function(){
+      $location.path('/not-found-user');
+    });
+  }
   getUser();
 
   usersApi.getUserStatuses({username: currentUserId}).$promise.then(function(data){
-   	$scope.tweets = data.statuses;
-    totalPeps = data.totalCount;
+    $scope.tweets = data.statuses;
   });
 
   function getInfoItems() {
@@ -38,43 +37,40 @@ pepo.controller('myProfileCtrl', function($location, $auth, $scope, userApi, use
   getInfoItems();
 
   function checkFollow() {
-     $scope.$on('currentUserLoaded', function() {
-       $scope.currentUser.following.some(function(followingUser) {
-         if (followingUser === $scope.currentPageUser._id) {
-          $scope.subscribed[$scope.currentPageUser._id] = true;
-         }
-       });
-     });
-   }
-
-$scope.isSubscribe = function(userId) {
     $scope.$on('currentUserLoaded', function() {
-      console.log('init');
+      $scope.currentUser.following.some(function(followingUser) {
+        if (followingUser === $scope.currentPageUser._id) {
+          $scope.subscribed[$scope.currentPageUser._id] = true;
+        }
+      });
+    });
+  }
+
+  $scope.isSubscribe = function(userId) {
+    $scope.$on('currentUserLoaded', function() {
       $scope.currentUser.following.some(function(followingUser) {
         if(followingUser === userId) {
           $scope.subscribed[userId] = true;
         }
       });
     });
-  }
+  };
 
   $scope.subscribe = function(username, userId) {
     usersApi.followUser({username: username}).$promise.then(function(){
-      //$scope.followed = true;
       $scope.subscribed[userId] = true;
-    getInfoItems();
-    getUser();
+      getInfoItems();
+      getUser();
     });
-  }
+  };
 
   $scope.unsubscribe = function(username, userId) {
     usersApi.unfollowUser({username: username}).$promise.then(function(){
-      //$scope.followed = false;
       $scope.subscribed[userId] = false;
-    getInfoItems();
-    getUser();
+      getInfoItems();
+      getUser();
     });
-  }
+  };
 
   $scope.logout = function() {
     $auth.logout();
@@ -83,18 +79,17 @@ $scope.isSubscribe = function(userId) {
 
   $scope.goToPep = function(pepId) {
     $location.path('/pep' + pepId);
-  }
+  };
 
 
   $scope.editPepStart = function(index, id, text){
     $scope.emojiOpen = false;
     $scope.editId = id;
-    console.log(id);
     $scope.editPepText = text;
     $scope.editIndex = index;
     $scope.varEdit1 = [];
     $scope.varEdit1[index] = true;
-  }
+  };
 
   $scope.editAnim = [];
   $scope.editPep = function(){
@@ -105,7 +100,7 @@ $scope.isSubscribe = function(userId) {
       return;
     }
     $scope.editAnim[$scope.editIndex] = true;
-    pepEdit = {text: $scope.editPepText };
+    var pepEdit = {text: $scope.editPepText };
     pepsApi.editPep({id: $scope.editId}, pepEdit).$promise.then(function(data){
       $scope.tweets.find(function(pep) {
         if (pep._id === data._id) {
@@ -114,13 +109,13 @@ $scope.isSubscribe = function(userId) {
       });
       currentPep.text = data.text;
       $scope.varEdit1 = [];
-  }).catch(function(eror){
-    $scope.varEdit1 = [];
-  });
-  setTimeout(function(){ $scope.editAnim = [];}, 2000);
-  }
+    }).catch(function(){
+      $scope.varEdit1 = [];
+    });
+    setTimeout(function(){ $scope.editAnim = [];}, 2000);
+  };
 
-      // Server latency mock.
+  // Server latency mock.
   function sleep (milliSeconds) {
     var startTime = new Date().getTime();
     while (new Date().getTime() < startTime + milliSeconds);
@@ -130,47 +125,47 @@ $scope.isSubscribe = function(userId) {
   $scope.loadMorePeps = function() {
     $scope.pepsLoading = true;
     localPepsOffset += 5;
-    var res = usersApi.getUserStatuses({username: currentUserId, offset:localPepsOffset, count:5}).$promise.then(function(data){
+    usersApi.getUserStatuses({username: currentUserId, offset:localPepsOffset, count:5}).$promise.then(function(data){
       $scope.tweets = $scope.tweets.concat(data.statuses);
       sleep(1000); // server latency mock.
       $scope.pepsLoading = false;
     });
-  }
+  };
 
   var localFollowersOffset = 0;
   $scope.loadMoreFollowers = function() {
     $scope.followersLoading = true;
     localFollowersOffset += 5;
-    var res = usersApi.getFollowers({username: currentUserId, offset:localFollowersOffset, count:5}).$promise.then(function(data){
+    usersApi.getFollowers({username: currentUserId, offset:localFollowersOffset, count:5}).$promise.then(function(data){
       $scope.followers = $scope.followers.concat(data.users);
       sleep(1000); // server latency mock.
       $scope.followersLoading = false;
     });
-  }
+  };
 
   var localFollowingOffset = 0;
   $scope.loadMoreFollowing = function() {
     $scope.followingLoading = true;
     localFollowingOffset += 5;
-    var res = usersApi.getFollowings({username: currentUserId, offset:localFollowingOffset, count:5}).$promise.then(function(data){
+    usersApi.getFollowings({username: currentUserId, offset:localFollowingOffset, count:5}).$promise.then(function(data){
       $scope.following = $scope.following.concat(data.users);
       sleep(1000); // server latency mock.
       $scope.followingLoading = false;
     });
-  }
+  };
 
   $scope.varInfo = 0;
   $scope.varInfoArr = [true, false, false];
   $scope.itemInfo = function(index){
-    if( ((index==1) && ($scope.following.length!=0)) || ((index==2) && ($scope.followers.length!=0)) || (index==0 && 1 /*pepsCount!=0 */) )
-    {$scope.varInfoArr=[false, false, false];
-    $scope.varInfoArr[index] = true;
-  }
-  }
+    if( ((index==1) && ($scope.following.length!=0)) || ((index==2) && ($scope.followers.length!=0)) || (index==0 && 1 /*pepsCount!=0 */) ) {
+      $scope.varInfoArr=[false, false, false];
+      $scope.varInfoArr[index] = true;
+    }
+  };
   $scope.goToUser = function(username) {
     $location.path('/@' + username);
-  }
+  };
   $scope.addEmojiEdit = function(emoji) {
-     $scope.editPepText += emoji;
-  }
+    $scope.editPepText += emoji;
+  };
 });

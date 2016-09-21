@@ -61,7 +61,7 @@ pepo.controller('usersCtrl', function($location, $scope, usersApi, userApi, debo
   $scope.loadMoreUsers = function() {
     $scope.usersLoading = true;
     localUsersOffset += 5;
-    var res = usersApi.getUsers({offset:localUsersOffset, count:5}).$promise.then(function(data){
+    usersApi.getUsers({offset:localUsersOffset, count:5}).$promise.then(function(data){
       $scope.users = $scope.users.concat(data.users);
       sleep(1000); // server latency mock.
       $scope.usersLoading = false;
