@@ -142,7 +142,7 @@ pepo.directive('pepoHeader', function($rootScope, $auth, $location, pepsApi, use
         } else {
           currentLocation = undefined;
         }
-      }
+      };
     }
   };
 }) ;

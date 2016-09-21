@@ -8,7 +8,13 @@ angular.module('pepo').directive('modalAnswer', function($rootScope, $auth, $loc
       $scope.varAnswer = false;
       $scope.emojiOpen = false;
 
-      var currentLocation = undefined;
+      var currentLocation = [];
+      $scope.isLocation = true;
+      navigator.geolocation.getCurrentPosition(show_map);
+      function show_map(position) {
+        currentLocation.push(position.coords.latitude);
+        currentLocation.push(position.coords.longitude);
+      }
       var body = angular.element(document).find('body');
       $scope.t = '';
       $scope.openModalAnswer = function(id) {
@@ -80,7 +86,15 @@ angular.module('pepo').directive('modalAnswer', function($rootScope, $auth, $loc
       $scope.addEmoji = function(emoji) {
         $scope.newPepText += emoji;
       };
-
+      $scope.changeLocAnswer = function() {
+        $scope.isLocation = !$scope.isLocation;
+        if($scope.isLocation){
+          currentLocation = [];
+          navigator.geolocation.getCurrentPosition(show_map);
+        } else {
+          currentLocation = undefined;
+        }
+      };
     }
   };
 });
