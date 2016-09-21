@@ -106,6 +106,7 @@ angular.module('ymaps', [])
         });
       }
     }, 100));
+    ymaps;
   }
   var self = this;
   ymapsLoader.ready(function(ymaps) {

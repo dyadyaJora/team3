@@ -98,7 +98,7 @@ pepo.directive('pepoHeader', function($rootScope, $auth, $location, pepsApi, use
           $document.scrollTop(0, 300);
         })
         .catch(function(err) {
-          console.log(err);
+          throw new Error(err);
         });
         $scope.varNewpep = false;
         $scope.closeModalSend();

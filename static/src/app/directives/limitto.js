@@ -14,6 +14,7 @@ pepo.directive('limitTo', [function() {
         if(result){
           result.forEach(function(item, i, result){
             scope.hLinkLenght -= item.length;
+            result[i];
           });
         }
         return scope.hLinkLenght;

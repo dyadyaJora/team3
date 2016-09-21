@@ -66,7 +66,7 @@ angular.module('pepo').directive('modalAnswer', function($rootScope, $auth, $loc
           }
         })
         .catch(function(err) {
-          console.log(err);
+          throw new Error(err);
         });
         $scope.varAnswer = false;
         body.removeClass('no-scroll');
