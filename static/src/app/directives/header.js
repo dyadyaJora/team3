@@ -136,6 +136,12 @@ pepo.directive('pepoHeader', function($rootScope, $auth, $location, pepsApi, use
 
       $scope.changeLoc = function() {
         $scope.isLocation = !$scope.isLocation;
+        if($scope.isLocation){
+          currentLocation = [];
+          navigator.geolocation.getCurrentPosition(show_map);
+        } else {
+          currentLocation = undefined;
+        }
       }
     }
   };
