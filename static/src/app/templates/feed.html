@@ -87,29 +87,14 @@
       </div>
 
     </li>
+    <li class="tweets_item empty-feed" ng-class="{'empty-feed_block' : totalPeps==0}">
+      <div class="welcome_item-title">Ваша лента пуста</div>
+      <div class="welcome_item-description">
+        В вашей ленте нет пепов, подпишитесь на чьи-нибудь пепы, чтобы быть в курсе новостей! <br>
+        <a class="pepo_link" href="#/users">Подписаться&gt;&gt;</a>
+      </div>
+  </li>
   </ul>
   <div ng-hide="allPepsLoaded" class="load-more-btn" ng-click="loadMorePeps()" ng-class="{'load-more-btn__progress': pepsLoading}"></div>
 
 </section>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-

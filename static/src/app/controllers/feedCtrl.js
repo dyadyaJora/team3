@@ -1,7 +1,7 @@
 pepo.controller('feedCtrl', function($rootScope, $q, $location, $auth, $scope, userApi, feedApi, pepsApi, $document, pepoSocket) {
   $scope.newPepText = '';
   currentLocation = [];
-  totalPeps = 0;
+  $scope.totalPeps = -1;
   navigator.geolocation.getCurrentPosition(show_map);
 
   pepoSocket.on('feed', function (data) {
@@ -15,18 +15,14 @@ pepo.controller('feedCtrl', function($rootScope, $q, $location, $auth, $scope, u
   }
 
   function checkLoadMore() {
-    console.log($scope.tweets.length);
-    console.log(totalPeps);
-    console.log('---------------')
-    if ($scope.tweets.length >= totalPeps) {
+    if ($scope.tweets.length >= $scope.totalPeps) {
       $scope.allPepsLoaded = true;
     }
   }
 
   feedApi.getFeed().$promise.then(function(data){
-    console.log(data);
     $scope.tweets = data.statuses;
-    totalPeps = data.totalCount;
+    $scope.totalPeps = data.totalCount;
     checkLoadMore();
 
   });
@@ -98,6 +94,7 @@ pepo.controller('feedCtrl', function($rootScope, $q, $location, $auth, $scope, u
       checkLoadMore();
       sleep(1000); // server latency mock.
       $scope.pepsLoading = false;
+      $scope.totalPeps+=data.statuses.length;
     });
   });
 

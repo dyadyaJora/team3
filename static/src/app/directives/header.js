@@ -102,6 +102,8 @@ pepo.directive('pepoHeader', function($rootScope, $auth, $location, pepsApi, use
 			    })
 			    $scope.varNewpep = false;
 			    $scope.closeModalSend();
+			    if($scope.totalPeps != undefined) $scope.totalPeps++;
+			    if($location.path()[1] && $scope.currentPageUser.username == $scope.currentUser.username) $scope.currentPageUser.statusesCount++;
 			}
 			$scope.varInf = false;
 			$scope.openInfNewPeps = function() {
