@@ -1,18 +1,17 @@
-pepo.controller('usersCtrl', function($location, $scope, usersApi, userApi, debounce, MOCKUSERS) {
+pepo.controller('usersCtrl', function($location, $scope, usersApi, userApi, debounce) {
   $scope.searchValue = '';
   $scope.subscribed = [];
 
   $scope.fn = debounce(function () {
-      console.log($scope.searchValue);
-      usersApi.getUsers({q: $scope.searchValue}).$promise.then(function(data){
-        $scope.users = data;
-      });
-    }, 2000);
+    usersApi.getUsers({q: $scope.searchValue}).$promise.then(function(data){
+      $scope.users = data;
+    });
+  }, 2000);
 
 
   $scope.$on('currentUserLoaded', function() {
-     $scope.curUser = $scope.currentUser;
-     getUsers();
+    $scope.curUser = $scope.currentUser;
+    getUsers();
   });
 
   function getUsers() {
@@ -25,33 +24,32 @@ pepo.controller('usersCtrl', function($location, $scope, usersApi, userApi, debo
   }
 
   $scope.isSubscribe = function(user) {
-    console.log('init');
     $scope.currentUser.following.some(function(followingUser) {
       if(followingUser === user._id) {
         $scope.subscribed[user._id] = true;
       }
     });
-  }
+  };
 
   $scope.subscribe = function(user) {
     usersApi.followUser({username: user.username}).$promise.then(function(){
-       $scope.subscribed[user._id] = true;
-       user.followersCount++;
-       $scope.curUser.followingCount++;
-    })
-  }
+      $scope.subscribed[user._id] = true;
+      user.followersCount++;
+      $scope.curUser.followingCount++;
+    });
+  };
 
   $scope.unsubscribe = function(user) {
     usersApi.unfollowUser({username: user.username}).$promise.then(function(){
-       $scope.subscribed[user._id] = false;
-       user.followersCount--;
-       $scope.curUser.followingCount--;
-    })
-  }
+      $scope.subscribed[user._id] = false;
+      user.followersCount--;
+      $scope.curUser.followingCount--;
+    });
+  };
 
   $scope.goToUser = function(username) {
     $location.path('/@' + username);
-  }
+  };
 
   // Server latency mock.
   function sleep (milliSeconds) {
@@ -68,5 +66,5 @@ pepo.controller('usersCtrl', function($location, $scope, usersApi, userApi, debo
       sleep(1000); // server latency mock.
       $scope.usersLoading = false;
     });
-  }
+  };
 });
