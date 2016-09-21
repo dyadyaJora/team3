@@ -8,7 +8,6 @@ var fileStorage = require('../../lib/file-storage');
 
 var router = express.Router();
 var Status = mongoose.model('Status');
-var User = mongoose.model('User');
 var upload = multer({ storage: fileStorage('uploads/status/') });
 
 var statusFields = config.showFields.status;
@@ -76,7 +75,7 @@ module.exports = function(passport, io) {
 
   router.get('/:id',
     findStatus(statusFields + ' parent', true),
-    function(req, res) {
+    function(req, res, next) {
       Status.find({ parent: req._status._id })
         .populate({ path: 'owner', select: userFields })
         .select(statusFields)
@@ -180,7 +179,7 @@ function findStatus(fields, populateParent) {
       .catch(function(err) {
         next(err);
       });
-  }
+  };
 
 }
 

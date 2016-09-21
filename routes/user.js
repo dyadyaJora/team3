@@ -1,12 +1,10 @@
 var config = require('../config');
 var express = require('express');
-var mongoose = require('mongoose');
 var multer = require('multer');
 var fileStorage = require('../lib/file-storage');
 var cropPicture = require('../lib/picture-utils').cropPicture;
 
 var router = express.Router();
-var User = mongoose.model('User');
 var upload = multer({ storage: fileStorage('uploads/avatar/') });
 
 module.exports = function(passport) {

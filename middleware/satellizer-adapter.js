@@ -6,6 +6,6 @@ module.exports = function() {
     }
 
     next();
-  }
+  };
 
 };

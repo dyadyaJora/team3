@@ -1,6 +1,7 @@
 var mongoose = require('mongoose');
 var mongoosePaginate = require('mongoose-paginate');
 var crypto = require('crypto');
+var Promise = require('bluebird');
 var patchPlugin = require('../lib/patch-plugin.js');
 var Schema = mongoose.Schema;
 
@@ -46,9 +47,9 @@ userSchema.methods.isFollowing = function(user) {
   return this.following.indexOf(user._id) != -1;
 };
 
-userSchema.methods.follow = function(user, cb) {
+userSchema.methods.follow = function(user) {
   if (this.isFollowing(user)) {
-    return cb();
+    return Promise.resolve();
   }
 
   return this.model('User').update({
@@ -60,7 +61,7 @@ userSchema.methods.follow = function(user, cb) {
   });
 };
 
-userSchema.methods.unFollow = function(user, cb) {
+userSchema.methods.unFollow = function(user) {
   return this.model('User').update({
     _id: this._id
   }, {
