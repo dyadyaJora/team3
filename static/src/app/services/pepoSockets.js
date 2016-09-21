@@ -1,7 +1,7 @@
 pepo.factory('pepoSocket', function (socketFactory) {
- var myIoSocket = io.connect();
+  var myIoSocket = io.connect();
 
-  mySocket = socketFactory({
+  var mySocket = socketFactory({
     ioSocket: myIoSocket
   });
 
