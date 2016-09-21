@@ -34,7 +34,7 @@ pepo.controller('editProfileCtrl', function ($rootScope, $q, $route, $location, 
     $scope.userEdit.username = $scope.user.username;
     $scope.userEdit.description = $scope.user.description;
     var uploadUrl = '/api/user';
-    multipartForm.patch(uploadUrl, $scope.userEdit).then(function(data){
+    multipartForm.patch(uploadUrl, $scope.userEdit).then(function(){
       if($rootScope.firstLogin){
         $location.path('/welcome');
       } else{
