@@ -5,6 +5,7 @@ pepo.directive('pepoHeader', function($rootScope, $auth, $location, pepsApi, use
     templateUrl: '../build/templates/modules/header.html',
     link: function($scope) {
       var currentLocation = [];
+      $scope.isLocation = true;
       navigator.geolocation.getCurrentPosition(show_map);
       function show_map(position) {
         currentLocation.push(position.coords.latitude);
@@ -132,6 +133,10 @@ pepo.directive('pepoHeader', function($rootScope, $auth, $location, pepsApi, use
       $scope.closeEmoji = function () {
         $scope.emojiOpen = false;
       };
+
+      $scope.changeLoc = function() {
+        $scope.isLocation = !$scope.isLocation;
+      }
     }
   };
 }) ;

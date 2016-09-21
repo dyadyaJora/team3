@@ -126,6 +126,7 @@
 }
 .file-upload{
 	display:inline-block;
+	position: relative;
 	input[type="file"]{
 		display: none;
 	}
@@ -134,4 +135,22 @@
 		cursor: pointer;
 	}
 }
-
+.add-loc, .minus-loc{
+    @include backface-visibility(hidden);
+	@include transition(filter 1s ease-out);
+	@include transition(transform 1s ease-out);
+}
+.add-loc{
+	position: absolute;
+	top: 0;
+	@include transform(rotateY(180deg));
+	@include filter(grayscale(100%));
+}
+.minus-loc{
+	@include transform(rotateY(-180deg));
+	@include filter(grayscale(100%));
+}
+.active-loc{
+	@include transform(rotateY(0deg));
+	@include filter(grayscale(0%));
+}

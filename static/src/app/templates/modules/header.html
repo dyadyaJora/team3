@@ -65,6 +65,10 @@
                     <input type="file" name="file">
                 </label>
             </div>
+            <div class="file-upload">
+                <img src="build/img/minus-location.png" class="upload-icon minus-loc" ng-click="changeLoc()" ng-class="{'active-loc': !isLocation}">
+                <img src="build/img/add-location.png" class="upload-icon add-loc" ng-click="changeLoc()" ng-class="{'active-loc': isLocation}">
+            </div>
             <div class="counter-limit-to" ng-class="{'counter-limit-red' : hLinkLenght > limit}">{{lengthWithoutLink(newPepText)}} /{{ limit}}</div>
 	          <div class="tweet-btn_send pepo_btn pepo_btn__answer" ng-click="publishNewpep()">Добавить pep</div>
 	        </div>
