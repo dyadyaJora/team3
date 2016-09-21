@@ -30,4 +30,4 @@ pepo.service('pepsApi', function($resource) {
     }
   }
   );
-})
+});

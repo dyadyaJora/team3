@@ -1,57 +1,55 @@
-pepo.controller('usersCtrl', function($location, $scope, usersApi, userApi, debounce, MOCKUSERS) {
+pepo.controller('usersCtrl', function($location, $scope, usersApi, userApi, debounce) {
   $scope.searchValue = '';
   $scope.subscribed = [];
 
   $scope.fn = debounce(function () {
-      console.log($scope.searchValue);
-      usersApi.getUsers({q: $scope.searchValue}).$promise.then(function(data){
-        $scope.users = data;
-      });
-    }, 2000);
+    usersApi.getUsers({q: $scope.searchValue}).$promise.then(function(data){
+      $scope.users = data;
+    });
+  }, 2000);
 
 
   $scope.$on('currentUserLoaded', function() {
-     $scope.curUser = $scope.currentUser;
-     getUsers();
+    $scope.curUser = $scope.currentUser;
+    getUsers();
   });
 
   function getUsers() {
     usersApi.getUsers().$promise.then(function(data) {
       $scope.users = data.users;
       $scope.totalUsers = data.totalCount;
-    }).catch(function(eror){
-      console.log(eror);
+    }).catch(function(err){
+      throw new Error(err);
     });
   }
 
   $scope.isSubscribe = function(user) {
-    console.log('init');
     $scope.currentUser.following.some(function(followingUser) {
       if(followingUser === user._id) {
         $scope.subscribed[user._id] = true;
       }
     });
-  }
+  };
 
   $scope.subscribe = function(user) {
     usersApi.followUser({username: user.username}).$promise.then(function(){
-       $scope.subscribed[user._id] = true;
-       user.followersCount++;
-       $scope.curUser.followingCount++;
-    })
-  }
+      $scope.subscribed[user._id] = true;
+      user.followersCount++;
+      $scope.curUser.followingCount++;
+    });
+  };
 
   $scope.unsubscribe = function(user) {
     usersApi.unfollowUser({username: user.username}).$promise.then(function(){
-       $scope.subscribed[user._id] = false;
-       user.followersCount--;
-       $scope.curUser.followingCount--;
-    })
-  }
+      $scope.subscribed[user._id] = false;
+      user.followersCount--;
+      $scope.curUser.followingCount--;
+    });
+  };
 
   $scope.goToUser = function(username) {
     $location.path('/@' + username);
-  }
+  };
 
   // Server latency mock.
   function sleep (milliSeconds) {
@@ -63,10 +61,10 @@ pepo.controller('usersCtrl', function($location, $scope, usersApi, userApi, debo
   $scope.loadMoreUsers = function() {
     $scope.usersLoading = true;
     localUsersOffset += 5;
-    var res = usersApi.getUsers({offset:localUsersOffset, count:5}).$promise.then(function(data){
+    usersApi.getUsers({offset:localUsersOffset, count:5}).$promise.then(function(data){
       $scope.users = $scope.users.concat(data.users);
       sleep(1000); // server latency mock.
       $scope.usersLoading = false;
     });
-  }
+  };
 });

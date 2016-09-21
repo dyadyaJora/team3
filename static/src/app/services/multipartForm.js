@@ -9,6 +9,6 @@ pepo.service('multipartForm', function($q, $http) {
     return $q.when($http.patch(uploadUrl, fd, {
       transformRequest: angular.identity,
       headers: {'Content-Type': undefined }
-    }))
-  }
+    }));
+  };
 });

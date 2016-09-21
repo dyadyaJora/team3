@@ -1,6 +1,6 @@
 pepo.controller('feedCtrl', function($rootScope, $q, $location, $auth, $scope, userApi, feedApi, pepsApi, $document, pepoSocket) {
   $scope.newPepText = '';
-  currentLocation = [];
+  var currentLocation = [], pepEdit, currentPep;
   $scope.totalPeps = -1;
   navigator.geolocation.getCurrentPosition(show_map);
 
@@ -29,11 +29,11 @@ pepo.controller('feedCtrl', function($rootScope, $q, $location, $auth, $scope, u
 
   $scope.goToUser = function(username) {
     $location.path('/@' + username);
-  }
+  };
 
   $scope.goToPep = function(pepId) {
     $location.path('/pep' + pepId);
-  }
+  };
 
   $scope.editPepStart = function(index, id, text){
     $scope.editId = id;
@@ -42,7 +42,7 @@ pepo.controller('feedCtrl', function($rootScope, $q, $location, $auth, $scope, u
     $scope.varEdit1 = [];
     $scope.varEdit1[index] = true;
     $scope.emojiOpen = false;
-  }
+  };
 
   $scope.editAnim = [];
   $scope.editPep = function(){
@@ -62,13 +62,12 @@ pepo.controller('feedCtrl', function($rootScope, $q, $location, $auth, $scope, u
       });
       currentPep.text = data.text;
       $scope.varEdit1 = [];
-  }).catch(function(eror){
-    $scope.varEdit1 = [];
-  });
-  setTimeout(function(){ $scope.editAnim = [];}, 2000);
-    //document.getElementsByTagName('body')[0].scrollTop = document.getElementsByClassName('tweets_item')[$scope.editIndex].offsetTop - $scope.varHeightheader ;
-     $document.scrollTop(document.getElementsByClassName('tweets_item')[$scope.editIndex].offsetTop - $scope.varHeightheader, 300);
-  }
+    }).catch(function(){
+      $scope.varEdit1 = [];
+    });
+    setTimeout(function(){ $scope.editAnim = [];}, 2000);
+    $document.scrollTop(document.getElementsByClassName('tweets_item')[$scope.editIndex].offsetTop - $scope.varHeightheader, 300);
+  };
 
   // Server latency mock.
   function sleep (milliSeconds) {
@@ -80,16 +79,16 @@ pepo.controller('feedCtrl', function($rootScope, $q, $location, $auth, $scope, u
   $scope.loadMorePeps = function() {
     $scope.pepsLoading = true;
     localPepsOffset += 5;
-    var res = feedApi.getFeed({offset:localPepsOffset, count:5}).$promise.then(function(data){
+    feedApi.getFeed({offset:localPepsOffset, count:5}).$promise.then(function(data){
       $scope.tweets = $scope.tweets.concat(data.statuses);
       checkLoadMore();
       sleep(1000); // server latency mock.
       $scope.pepsLoading = false;
     });
-  }
+  };
 
   $rootScope.$on('morePeapsLoaded', function(ev, data) {
-    var res = feedApi.getFeed({offset:0, count:data}).$promise.then(function(data){
+    feedApi.getFeed({offset:0, count:data}).$promise.then(function(data){
       $scope.tweets = $scope.tweets.concat(data.statuses);
       checkLoadMore();
       sleep(1000); // server latency mock.
@@ -99,6 +98,6 @@ pepo.controller('feedCtrl', function($rootScope, $q, $location, $auth, $scope, u
   });
 
   $scope.addEmojiEdit = function(emoji) {
-     $scope.editPepText += emoji;
-  }
+    $scope.editPepText += emoji;
+  };
 });

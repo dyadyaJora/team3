@@ -24,6 +24,7 @@
     "globals": {
         "pepo": true,
         "angular": true,
-        "io": true
+        "io": true,
+        "moment": true
     }
 }

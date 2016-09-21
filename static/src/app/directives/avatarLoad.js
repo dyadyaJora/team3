@@ -2,7 +2,7 @@ pepo.directive('avatarLoad', function($rootScope, $parse) {
   return {
     restrict: 'A',
     link: function($scope, $element, $attrs) {
-      var model = $parse($attrs.avatarLoad)
+      var model = $parse($attrs.avatarLoad);
       var modelSetter = model.assign;
       $element.bind('change', function() {
         $scope.$apply(function() {
@@ -18,5 +18,5 @@ pepo.directive('avatarLoad', function($rootScope, $parse) {
         });
       });
     }
-  }
+  };
 });
