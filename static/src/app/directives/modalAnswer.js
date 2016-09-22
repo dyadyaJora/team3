@@ -8,7 +8,10 @@ angular.module('pepo').directive('modalAnswer', function($rootScope, $auth, $loc
       $scope.varAnswer = false;
       $scope.emojiOpen = false;
 
-      var currentLocation = undefined;
+      function showMap(position) {
+        $scope.currentLocation.push(position.coords.latitude);
+        $scope.currentLocation.push(position.coords.longitude);
+      }
       var body = angular.element(document).find('body');
       $scope.t = '';
       $scope.openModalAnswer = function(id) {
@@ -46,7 +49,7 @@ angular.module('pepo').directive('modalAnswer', function($rootScope, $auth, $loc
         var hlink = $scope.lengthWithoutLink($scope.newPepText);
         if(hlink > $scope.limit || hlink == 0) return;    
         var newPep = {
-          location: currentLocation,
+          location: $scope.currentLocation,
           parent: $scope.pep._id,
           owner: {
             name: $scope.currentUser.name,
@@ -80,7 +83,6 @@ angular.module('pepo').directive('modalAnswer', function($rootScope, $auth, $loc
       $scope.addEmoji = function(emoji) {
         $scope.newPepText += emoji;
       };
-
     }
   };
 });

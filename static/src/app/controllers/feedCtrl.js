@@ -1,18 +1,13 @@
 pepo.controller('feedCtrl', function($rootScope, $q, $location, $auth, $scope, userApi, feedApi, pepsApi, $document, pepoSocket) {
   $scope.newPepText = '';
-  var currentLocation = [], pepEdit, currentPep;
+  var pepEdit, currentPep;
   $scope.totalPeps = -1;
-  navigator.geolocation.getCurrentPosition(show_map);
 
   pepoSocket.on('feed', function (data) {
     $rootScope.$broadcast('recieveBySocket', data);
   });
 
   // Get coordinates.
-  function show_map(position) {
-    currentLocation.push(position.coords.latitude);
-    currentLocation.push(position.coords.longitude);
-  }
 
   function checkLoadMore() {
     if ($scope.tweets.length >= $scope.totalPeps) {
