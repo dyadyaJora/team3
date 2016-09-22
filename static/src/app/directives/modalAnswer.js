@@ -8,12 +8,9 @@ angular.module('pepo').directive('modalAnswer', function($rootScope, $auth, $loc
       $scope.varAnswer = false;
       $scope.emojiOpen = false;
 
-      var currentLocation = [];
-      $scope.isLocation = true;
-      navigator.geolocation.getCurrentPosition(show_map);
-      function show_map(position) {
-        currentLocation.push(position.coords.latitude);
-        currentLocation.push(position.coords.longitude);
+      function showMap(position) {
+        $scope.currentLocation.push(position.coords.latitude);
+        $scope.currentLocation.push(position.coords.longitude);
       }
       var body = angular.element(document).find('body');
       $scope.t = '';
@@ -52,7 +49,7 @@ angular.module('pepo').directive('modalAnswer', function($rootScope, $auth, $loc
         var hlink = $scope.lengthWithoutLink($scope.newPepText);
         if(hlink > $scope.limit || hlink == 0) return;    
         var newPep = {
-          location: currentLocation,
+          location: $scope.currentLocation,
           parent: $scope.pep._id,
           owner: {
             name: $scope.currentUser.name,
@@ -85,15 +82,6 @@ angular.module('pepo').directive('modalAnswer', function($rootScope, $auth, $loc
       };
       $scope.addEmoji = function(emoji) {
         $scope.newPepText += emoji;
-      };
-      $scope.changeLocAnswer = function() {
-        $scope.isLocation = !$scope.isLocation;
-        if($scope.isLocation){
-          currentLocation = [];
-          navigator.geolocation.getCurrentPosition(show_map);
-        } else {
-          currentLocation = undefined;
-        }
       };
     }
   };

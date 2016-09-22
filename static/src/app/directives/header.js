@@ -4,12 +4,12 @@ pepo.directive('pepoHeader', function($rootScope, $auth, $location, pepsApi, use
     replace: false,
     templateUrl: '../build/templates/modules/header.html',
     link: function($scope) {
-      var currentLocation = [];
+      $scope.currentLocation = [];
       $scope.isLocation = true;
-      navigator.geolocation.getCurrentPosition(show_map);
-      function show_map(position) {
-        currentLocation.push(position.coords.latitude);
-        currentLocation.push(position.coords.longitude);
+      navigator.geolocation.getCurrentPosition(showMap);
+      function showMap(position) {
+        $scope.currentLocation.push(position.coords.latitude);
+        $scope.currentLocation.push(position.coords.longitude);
       }
       if($rootScope.firstLogin && $location.path()!='/edit-profile'){
         $location.path('/welcome');
@@ -83,7 +83,7 @@ pepo.directive('pepoHeader', function($rootScope, $auth, $location, pepsApi, use
         if(hlink > $scope.limit || hlink == 0) return;  
         var newPep = {
           text: $scope.newPepText,
-          location: currentLocation,
+          location: $scope.currentLocation,
           owner: {
             name: $scope.currentUser.name,
             username: $scope.currentUser.username,
@@ -137,10 +137,10 @@ pepo.directive('pepoHeader', function($rootScope, $auth, $location, pepsApi, use
       $scope.changeLoc = function() {
         $scope.isLocation = !$scope.isLocation;
         if($scope.isLocation){
-          currentLocation = [];
-          navigator.geolocation.getCurrentPosition(show_map);
+          $scope.currentLocation = [];
+          navigator.geolocation.getCurrentPosition(showMap);
         } else {
-          currentLocation = undefined;
+          $scope.currentLocation = undefined;
         }
       };
     }
