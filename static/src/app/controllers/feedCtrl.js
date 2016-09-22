@@ -84,7 +84,7 @@ pepo.controller('feedCtrl', function($rootScope, $q, $location, $auth, $scope, u
 
   $rootScope.$on('morePeapsLoaded', function(ev, data) {
     feedApi.getFeed({offset:0, count:data}).$promise.then(function(data){
-      for (var i = 0; i < data.statuses.length; i++) {
+      for (var i = data.statuses.length-1; i >= 0; i--) {
         $scope.tweets.unshift(data.statuses[i]);
       }
       checkLoadMore();

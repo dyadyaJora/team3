@@ -110,10 +110,12 @@ pepo.directive('pepoHeader', function($rootScope, $auth, $location, pepsApi, use
       $scope.openInfNewPeps = function() {
         $rootScope.$broadcast('morePeapsLoaded', $scope.newPeps);
         $scope.varInf = !$scope.varInf;
+        $scope.newPeps = 0;
       };
 
+      $scope.newPeps = 0;
+
       $rootScope.$on('recieveBySocket', function(ev, data){
-        $scope.newPeps = 0;
         $scope.currentUser.following.forEach(function(id) {
           data.forEach(function(pepOwnerId) {
             if(pepOwnerId === id) {
