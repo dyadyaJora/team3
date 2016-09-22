@@ -71,3 +71,18 @@
       </div>
     </div>
 </div>
+
+<div class="modal">
+  <div class="modal-fade-screen" ng-class="{'modal-answer__active': varWelcome}">
+  <div class="modal-wrapper" ng-click="closeMesModal_bg($event)">
+    <div class="modal-inner">
+      <div class="modal-close" ng-click="closeMesModal()"></div>
+      <header class="pepo-modal-top">Добро пожаловать!</header>
+      <section class="pepo-modal-text">Вы впервые в ПЕПО. Выберите себе логин, состоящий из латинских букв длиной 4 и более символа, а также отредактируйте свой профиль</section>
+      <footer class="pepo-modal-footer">
+        <div class="pepo_btn pepo_btn__answer" ng-click="closeMesModal()">ОК</div>
+      </footer>
+      </div>
+      </div>
+    </div>
+</div>
