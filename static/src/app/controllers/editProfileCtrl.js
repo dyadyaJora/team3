@@ -1,6 +1,6 @@
 pepo.controller('editProfileCtrl', function ($rootScope, $q, $route, $location, $scope, userApi,  MOCKUSERS, multipartForm) {
   var body = angular.element(document).find('body');
-
+  $scope.varWelcome = $rootScope.firstLogin;
   userApi.getUser().$promise.then(function(data) {
     $scope.user = data;
     $scope.user.avatarUrl = $scope.user.avatarUrl || '../build/img/lisa.jpg';
@@ -76,6 +76,7 @@ pepo.controller('editProfileCtrl', function ($rootScope, $q, $route, $location, 
   $scope.closeMesModal = function () {
     body.removeClass('no-scroll');
     $rootScope.success = undefined;
+    $scope.varWelcome = false;
   };
 
   $scope.closeMesModal_bg = function($event){
