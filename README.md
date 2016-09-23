@@ -1,5 +1,5 @@
 # team3
-[![Build Status](https://travis-ci.org/dyadyaJora/team3_tests.svg?branch=master)](https://travis-ci.org/dyadyaJora/team3_tests)
+[![Build Status](https://travis-ci.org/dyadyaJora/team3_tests.svg?branch=tests)](https://travis-ci.org/dyadyaJora/team3_tests)
 
 Pepo
 
