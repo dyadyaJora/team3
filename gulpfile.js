@@ -2,7 +2,7 @@ var gulp = require('gulp'),
     concat = require('gulp-concat'),
     watch = require('gulp-watch'),
     sass = require('gulp-sass'),
-    //imagemin = require('gulp-imagemin'),
+    imagemin = require('gulp-imagemin'),
     svgmin = require('gulp-svgmin'),
     autoprefixer = require('gulp-autoprefixer');
 
