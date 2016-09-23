@@ -1,4 +1,6 @@
 # team3
+[![Build Status](https://travis-ci.org/dyadyaJora/team3_tests.svg?branch=master)](https://travis-ci.org/dyadyaJora/team3_tests)
+
 Pepo
 
 ## Run frontend env.
