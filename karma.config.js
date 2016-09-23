@@ -18,7 +18,8 @@ module.exports = function(config) {
       'build/js/vendors.js',
       'node_modules/angular-mocks/angular-mocks.js',
       'build/js/pepo.all.js',
-      'tests/unit/*.js'
+      'tests/unit/hasAllControllers.js',
+      //'tests/unit/*.js'
     ],
 
 
@@ -65,13 +66,12 @@ module.exports = function(config) {
 
     // start these browsers
     // available browser launchers: https://npmjs.org/browse/keyword/karma-launcher
-    browsers: ['Chrome', 'PhantomJS'],
-
-    //browsers: ['PhantomJS'],
+    browsers: ['PhantomJS'],
 
     // Continuous Integration mode
     // if true, Karma captures browsers, runs the tests and exits
-    singleRun: false,
+    singleRun: true,
+    browserNoActivityTimeout: 600000,
 
     // Concurrency level
     // how many browser should be started simultaneous
