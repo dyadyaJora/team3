@@ -21,11 +21,6 @@ describe('Testing each Ctrl', function() {
       scope.openModalEditPhoto();
       expect(scope.varOpenEditPhoto).toEqual(true);
       scope.editCancel();
-/*
-      scope.user = MOCKUSERS[0];
-      scope.userEdit = {};
-      scope.updateUser();
-      expect(scope.user).toEqual("bartolomew");*/
     });
 
     it('feedCtrl units', function() {

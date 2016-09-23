@@ -1,4 +1,5 @@
-pepo.constant('MOCKTWEETS',[{
+pepo.constant('MOCKTWEETS',
+  MOCKTWEETS = [{
   'id': 4471851162,
   'parent': {
     'id': '133',

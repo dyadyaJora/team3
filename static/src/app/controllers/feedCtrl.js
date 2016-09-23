@@ -1,4 +1,4 @@
-pepo.controller('feedCtrl', function($rootScope, $q, $location, $auth, $scope, userApi, feedApi, pepsApi, $document, pepoSocket) {
+pepo.controller('feedCtrl', function($rootScope, $q, $location, $auth, $scope, userApi, feedApi, pepsApi, $document, pepoSocket, MOCKTWEETS) {
   $scope.newPepText = '';
   var pepEdit, currentPep;
   $scope.totalPeps = -1;
@@ -61,7 +61,7 @@ pepo.controller('feedCtrl', function($rootScope, $q, $location, $auth, $scope, u
       $scope.varEdit1 = [];
     });
     setTimeout(function(){ $scope.editAnim = [];}, 2000);
-    $document.scrollTop(document.getElementsByClassName('tweets_item')[$scope.editIndex].offsetTop - $scope.varHeightheader, 300);
+    if(document.getElementsByClassName('tweets_item')[$scope.editIndex]) $document.scrollTop(document.getElementsByClassName('tweets_item')[$scope.editIndex].offsetTop - $scope.varHeightheader, 300);
   };
 
   // Server latency mock.
