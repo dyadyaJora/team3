@@ -18,8 +18,8 @@ module.exports = function(config) {
       'build/js/vendors.js',
       'node_modules/angular-mocks/angular-mocks.js',
       'build/js/pepo.all.js',
-      'tests/unit/hasAllControllers.js',
-      //'tests/unit/*.js'
+      //'tests/unit/hasAllControllers.js',
+      'tests/unit/*.js'
     ],
 
 
